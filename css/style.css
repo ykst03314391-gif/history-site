@@ -194,6 +194,77 @@ main {
 }
 .spot-place { color: var(--ink-soft); font-size: 0.85rem; }
 
+/* ---- 記事 ---- */
+.article-cat {
+  display: inline-block;
+  font-size: 0.72rem;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 4px;
+  padding: 1px 9px;
+  margin: 0 0 8px;
+}
+.article-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 4px;
+}
+.article-head .article-cat { margin: 0; }
+.article-date, .article-author { color: var(--ink-soft); font-size: 0.85rem; }
+
+.article-body {
+  background: var(--bg-panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 8px 32px 28px;
+  margin-top: 12px;
+}
+.article-body h1 {
+  font-size: 1.9rem;
+  border-left: 6px solid var(--accent);
+  padding-left: 14px;
+  margin: 24px 0 18px;
+}
+.article-body h2 {
+  font-size: 1.35rem;
+  border-bottom: 2px solid var(--line);
+  padding-bottom: 6px;
+  margin: 32px 0 14px;
+}
+.article-body h2::before { content: "◆ "; color: var(--accent); font-size: 0.9em; }
+.article-body h3 { font-size: 1.1rem; margin: 24px 0 10px; }
+.article-body p { margin: 0 0 16px; }
+.article-body blockquote {
+  margin: 18px 0;
+  padding: 8px 18px;
+  border-left: 4px solid var(--accent-soft);
+  background: #f3eee3;
+  color: var(--ink-soft);
+}
+.article-body ul, .article-body ol { padding-left: 1.4em; margin: 0 0 16px; }
+.article-body li { margin-bottom: 6px; }
+.article-body hr { border: none; border-top: 1px solid var(--line); margin: 28px 0; }
+.article-body a { border-bottom: 1px dotted var(--accent-soft); }
+
+.related-people {
+  margin-top: 26px;
+  padding: 16px 20px;
+  background: var(--bg-panel);
+  border: 1px solid var(--line);
+  border-left: 5px solid var(--accent);
+  border-radius: var(--radius);
+}
+.related-people h3 { margin: 0 0 10px; font-size: 1rem; }
+.tag-link {
+  background: #efe9dc;
+  color: var(--accent);
+  cursor: pointer;
+}
+.tag-link:hover { background: var(--accent); color: #fff; text-decoration: none; }
+
 .back-link { display: inline-block; margin-bottom: 20px; }
 footer.site-footer {
   text-align: center; color: var(--ink-soft); font-size: 0.85rem;

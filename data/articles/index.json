@@ -1,0 +1,15 @@
+{
+  "articles": [
+    {
+      "id": "tedorigawa-kenshin",
+      "title": "上杉謙信はなぜ手取川で織田軍に勝てたのか",
+      "category": "考察",
+      "summary": "天正5年、上杉謙信は北陸で織田の大軍を破ったとされる。通説の「織田軍の内紛」説と、近年語られる「小規模戦だった」説を整理し、勝敗を分けた要因を考えてみる。",
+      "date": "2026-07-07",
+      "author": "管理人",
+      "relatedPeople": ["uesugi-kenshin", "oda-nobunaga"],
+      "relatedBattles": ["tedorigawa"],
+      "tags": ["手取川の戦い", "上杉謙信", "織田信長", "考察"]
+    }
+  ]
+}

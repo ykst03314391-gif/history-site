@@ -1,0 +1,17 @@
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# エディタ
+.vscode/
+.idea/
+*.swp
+*~
+
+# ログ・一時ファイル
+*.log
+tmp/
+
+# Claude Code ローカル設定
+.claude/settings.local.json

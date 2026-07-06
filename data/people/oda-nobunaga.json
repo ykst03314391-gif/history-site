@@ -1,0 +1,114 @@
+{
+  "id": "oda-nobunaga",
+  "name": "織田信長",
+  "kana": "おだ のぶなが",
+  "summary": "尾張の戦国大名。桶狭間の戦いで今川義元を破り、上洛して天下統一事業を推進したが、本能寺の変に斃れた。三英傑の一人。",
+  "aliases": [
+    { "type": "幼名", "value": "吉法師" },
+    { "type": "通称", "value": "三郎" },
+    { "type": "その他", "value": "上総介", "note": "自称した官途名。のち正式に叙任" }
+  ],
+  "kamon": { "name": "織田木瓜" },
+  "birth": {
+    "year": 1534,
+    "month": 5,
+    "day": 12,
+    "era": "天文3年5月12日",
+    "note": "生誕地・生年月日には諸説あり",
+    "uncertain": true,
+    "sourceId": "shincho-koki"
+  },
+  "death": {
+    "year": 1582,
+    "month": 6,
+    "day": 2,
+    "era": "天正10年6月2日",
+    "note": "本能寺の変により自害",
+    "sourceId": "shincho-koki"
+  },
+  "birthplace": {
+    "name": "尾張国（勝幡城または那古野城とする説がある）",
+    "prefecture": "愛知県",
+    "city": "名古屋市"
+  },
+  "ranks": [
+    { "year": 1568, "title": "正五位下・弾正忠", "note": "上洛後" },
+    { "year": 1575, "title": "権大納言・右近衛大将" },
+    { "year": 1577, "title": "正二位・右大臣" },
+    { "year": 1578, "title": "右大臣・右大将を辞任", "note": "以後、無官のまま" }
+  ],
+  "family": [
+    { "relation": "父", "name": "織田信秀" },
+    { "relation": "母", "name": "土田御前" },
+    { "relation": "弟", "name": "織田信勝（信行）", "note": "家督を争い、のち誅殺" },
+    { "relation": "妻", "name": "濃姫（帰蝶）", "note": "斎藤道三の娘" },
+    { "relation": "子", "person_id": "oda-nobutada", "name": "織田信忠", "note": "嫡男" },
+    { "relation": "子", "name": "織田信雄" },
+    { "relation": "子", "name": "織田信孝" }
+  ],
+  "lords": [],
+  "retainers": [
+    { "person_id": "toyotomi-hideyoshi", "name": "羽柴秀吉", "note": "足軽から出世。信長の死後、天下を統一" },
+    { "person_id": "shibata-katsuie", "name": "柴田勝家", "note": "織田家筆頭家老の一人" },
+    { "person_id": "akechi-mitsuhide", "name": "明智光秀", "to": 1582, "note": "本能寺の変で謀反を起こす" },
+    { "name": "丹羽長秀" },
+    { "name": "滝川一益" }
+  ],
+  "territories": [
+    { "year": 1560, "name": "尾張国", "prefecture": "愛知県", "note": "尾張統一" },
+    { "year": 1567, "name": "美濃国", "prefecture": "岐阜県", "note": "稲葉山城を攻略し岐阜城と改称" },
+    { "year": 1576, "name": "近江国（安土）", "prefecture": "滋賀県", "note": "安土城を築城し本拠とする" }
+  ],
+  "timeline": [
+    { "year": 1551, "title": "家督相続", "description": "父・信秀の死により織田弾正忠家の家督を継ぐ" },
+    { "year": 1560, "month": 5, "title": "桶狭間の戦い", "description": "今川義元を討ち取り、勢力を拡大", "battle_id": "okehazama" },
+    { "year": 1568, "title": "上洛", "description": "足利義昭を奉じて上洛" },
+    { "year": 1570, "title": "姉川の戦い", "description": "浅井・朝倉連合軍を破る", "battle_id": "anegawa" },
+    { "year": 1573, "title": "室町幕府滅亡", "description": "足利義昭を京都から追放" },
+    { "year": 1575, "month": 5, "title": "長篠の戦い", "description": "徳川家康と連合し武田勝頼を破る", "battle_id": "nagashino" },
+    { "year": 1576, "title": "安土城築城", "description": "近江に安土城の築城を開始" },
+    { "year": 1582, "month": 6, "day": 2, "title": "本能寺の変", "description": "家臣・明智光秀の謀反により本能寺で自害", "battle_id": "honnoji-no-hen" }
+  ],
+  "episodes": [
+    {
+      "title": "うつけ者",
+      "body": "若い頃は奇抜な格好で町を歩き回り「尾張の大うつけ」と呼ばれたと伝わる。一方で、この評判は後年の演出という指摘もある。",
+      "uncertain": true,
+      "sourceId": "shincho-koki"
+    },
+    {
+      "title": "楽市・楽座",
+      "body": "城下町の商業を活性化させるため、市場での税や座の特権を廃する政策を進めたとされる。"
+    }
+  ],
+  "achievements": [
+    { "title": "尾張・美濃の統一と上洛", "description": "戦国大名として畿内を制圧し、天下統一事業の礎を築いた" },
+    { "title": "経済・軍制の革新", "description": "楽市楽座、関所の撤廃、鉄砲の大量運用など革新的な政策で知られる" },
+    { "title": "安土城の築城", "description": "壮麗な天主を備えた安土城を築き、新たな権力の象徴とした" }
+  ],
+  "references": [
+    {
+      "title": "信長公記",
+      "author": "太田牛一",
+      "note": "信長の一代記。基礎史料として重要",
+      "affiliateUrl": ""
+    }
+  ],
+  "spots": [
+    { "type": "城跡", "name": "安土城跡", "prefecture": "滋賀県", "city": "近江八幡市", "description": "信長の本拠・安土城の遺構" },
+    { "type": "城跡", "name": "岐阜城", "prefecture": "岐阜県", "city": "岐阜市", "description": "旧・稲葉山城。信長が岐阜と改称" },
+    { "type": "神社仏閣", "name": "建勲神社", "prefecture": "京都府", "city": "京都市", "description": "織田信長を祀る神社" },
+    { "type": "その他", "name": "本能寺跡", "prefecture": "京都府", "city": "京都市", "description": "本能寺の変の地（当時の所在地）" }
+  ],
+  "images": [],
+  "sources": [
+    {
+      "id": "shincho-koki",
+      "title": "信長公記",
+      "author": "太田牛一",
+      "note": "信長の一代記"
+    }
+  ],
+  "tags": ["織田家", "三英傑", "戦国大名"],
+  "updatedAt": "2026-07-06"
+}

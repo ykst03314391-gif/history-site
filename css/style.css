@@ -1,0 +1,202 @@
+/* ===== 戦国時代 情報サイト 共通スタイル（和風） ===== */
+:root {
+  --bg: #f4f1ea;          /* 生成り */
+  --bg-panel: #fbfaf6;
+  --ink: #23201c;         /* 墨 */
+  --ink-soft: #5b554c;
+  --accent: #9b2d20;      /* 朱・臙脂 */
+  --accent-soft: #c66b5f;
+  --gold: #b08d33;
+  --line: #d9d2c5;
+  --shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  --radius: 10px;
+  --serif: "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", "Noto Serif JP", serif;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: var(--serif);
+  color: var(--ink);
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(rgba(0, 0, 0, 0.02) 1px, transparent 1px);
+  background-size: 18px 18px;
+  line-height: 1.8;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ---- ヘッダー ---- */
+.site-header {
+  background: var(--ink);
+  color: var(--bg);
+  border-bottom: 4px solid var(--accent);
+}
+.site-header .inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 18px 20px;
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.site-title { font-size: 1.4rem; font-weight: 700; letter-spacing: 0.15em; margin: 0; }
+.site-title a { color: var(--bg); }
+.site-header nav a { color: #d8d2c6; margin-left: 16px; font-size: 0.95rem; }
+
+/* ---- レイアウト ---- */
+main {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 32px 20px 80px;
+}
+.page-title {
+  font-size: 1.6rem;
+  border-left: 6px solid var(--accent);
+  padding-left: 14px;
+  margin: 0 0 6px;
+}
+.lead { color: var(--ink-soft); margin-top: 0; }
+
+/* ---- 検索 ---- */
+.search-box {
+  width: 100%;
+  max-width: 420px;
+  padding: 10px 14px;
+  font-size: 1rem;
+  font-family: var(--serif);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--bg-panel);
+  margin: 8px 0 24px;
+}
+
+/* ---- 人物カード一覧 ---- */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 18px;
+}
+.card {
+  display: block;
+  background: var(--bg-panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 18px;
+  color: var(--ink);
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+.card:hover { transform: translateY(-3px); box-shadow: 0 6px 18px rgba(0,0,0,0.12); text-decoration: none; }
+.card h3 { margin: 0 0 2px; font-size: 1.2rem; }
+.card .kana { color: var(--ink-soft); font-size: 0.8rem; margin: 0 0 8px; }
+.card .years { color: var(--accent); font-size: 0.85rem; margin: 0 0 8px; }
+.card .card-summary { font-size: 0.9rem; color: var(--ink-soft); margin: 0; }
+.tags { margin-top: 12px; }
+.tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  background: #efe9dc;
+  color: var(--ink-soft);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 2px 10px;
+  margin: 0 4px 4px 0;
+}
+
+/* ---- 人物詳細 ---- */
+.person-head {
+  background: var(--bg-panel);
+  border: 1px solid var(--line);
+  border-top: 5px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 22px 24px;
+  margin-bottom: 26px;
+  box-shadow: var(--shadow);
+}
+.person-head h1 { margin: 0; font-size: 2rem; }
+.person-head .kana { color: var(--ink-soft); margin: 2px 0 10px; }
+.person-head .summary { margin: 10px 0 0; }
+.person-head .years { color: var(--accent); font-weight: 700; }
+
+/* 目次 */
+.toc {
+  background: var(--bg-panel);
+  border: 1px solid var(--line);
+  border-left: 5px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 14px 20px;
+  margin-bottom: 30px;
+  box-shadow: var(--shadow);
+}
+.toc-title {
+  margin: 0 0 8px;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: 0.1em;
+}
+.toc-list {
+  margin: 0;
+  padding-left: 1.4em;
+  columns: 2;
+  column-gap: 28px;
+}
+.toc-list li { margin-bottom: 4px; }
+@media (max-width: 560px) { .toc-list { columns: 1; } }
+
+/* アンカージャンプ時に見出しがヘッダー等に隠れないよう余白 */
+.section { margin-bottom: 34px; scroll-margin-top: 16px; }
+.section h2 {
+  font-size: 1.25rem;
+  border-bottom: 2px solid var(--line);
+  padding-bottom: 6px;
+  margin: 0 0 14px;
+}
+.section h2::before { content: "◆ "; color: var(--accent); font-size: 0.9em; }
+
+/* 定義リスト（基本情報） */
+.facts { display: grid; grid-template-columns: max-content 1fr; gap: 8px 20px; }
+.facts dt { color: var(--ink-soft); font-weight: 700; }
+.facts dd { margin: 0; }
+
+/* 年表 */
+.timeline { list-style: none; padding: 0; margin: 0; }
+.timeline li {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: 14px;
+  padding: 10px 0;
+  border-bottom: 1px dashed var(--line);
+}
+.timeline .t-year { color: var(--accent); font-weight: 700; }
+.timeline .t-title { font-weight: 700; }
+.timeline .t-desc { color: var(--ink-soft); font-size: 0.92rem; }
+
+/* 汎用リスト */
+.list { padding-left: 1.2em; }
+.list li { margin-bottom: 8px; }
+.muted { color: var(--ink-soft); font-size: 0.9rem; }
+.uncertain-badge {
+  font-size: 0.7rem; color: var(--accent);
+  border: 1px solid var(--accent-soft); border-radius: 4px;
+  padding: 0 5px; margin-left: 6px; vertical-align: middle;
+}
+
+/* ゆかりの地・出典 */
+.spot-item, .ref-item { padding: 8px 0; border-bottom: 1px dashed var(--line); }
+.spot-type {
+  font-size: 0.72rem; background: var(--accent); color: #fff;
+  border-radius: 4px; padding: 1px 7px; margin-right: 8px;
+}
+.spot-place { color: var(--ink-soft); font-size: 0.85rem; }
+
+.back-link { display: inline-block; margin-bottom: 20px; }
+footer.site-footer {
+  text-align: center; color: var(--ink-soft); font-size: 0.85rem;
+  padding: 30px 20px; border-top: 1px solid var(--line);
+}
+.error { color: var(--accent); }

@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>戦国時代 情報サイト</title>
-  <meta name="description" content="戦国時代の武将・合戦・史跡をまとめた情報サイト。">
+  <title>地域から探す ｜ 戦国クロニクル</title>
+  <meta name="description" content="都道府県から、ゆかりの戦国武将・城跡・史跡・博物館を逆引きできます。">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -20,18 +20,17 @@
   </header>
 
   <main>
-    <h2 class="page-title">武将一覧</h2>
-    <p class="lead">「これ、誰だっけ？ どんな人だっけ？」に、出典に基づいて答えるサイト。</p>
+    <h2 class="page-title">地域から探す</h2>
+    <p class="lead">「この土地には、どんな武将・史跡があるのか？」——都道府県から逆引きできます。</p>
 
-    <input type="search" id="search" class="search-box" placeholder="名前・かな・タグで検索…">
-
-    <div id="list" class="card-grid" aria-live="polite"></div>
+    <div id="pref-buttons" class="pref-buttons" aria-label="都道府県を選択"></div>
+    <div id="result" aria-live="polite"><p class="muted">読み込み中…</p></div>
   </main>
 
   <footer class="site-footer">
     <p>戦国クロニクル（開発中）／ 掲載情報には諸説あります。</p>
   </footer>
 
-  <script src="js/list.js"></script>
+  <script src="js/regions.js"></script>
 </body>
 </html>

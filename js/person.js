@@ -57,7 +57,7 @@
     </nav>`;
   }
 
-  function render(p) {
+  function render(p, articles) {
     document.title = `${p.name} ｜ 戦国クロニクル`;
     const html = [];
 
@@ -190,6 +190,23 @@
       html.push(section("ゆかりの地・史跡", items));
     }
 
+    // 関連する考察・記事（この人物が relatedPeople に含まれる記事）
+    const relArticles = (articles || [])
+      .filter((a) => !a.draft && (a.relatedPeople || []).includes(p.id))
+      .sort((a, b) => String(b.date || "").localeCompare(String(a.date || "")));
+    if (relArticles.length) {
+      const items = relArticles
+        .map(
+          (a) => `<div class="ref-item">
+            <span class="article-cat">${esc(a.category || "記事")}</span>
+            <a href="article.html?id=${encodeURIComponent(a.id)}">${esc(a.title)}</a>
+            ${a.summary ? `<div class="muted">${esc(a.summary)}</div>` : ""}
+          </div>`
+        )
+        .join("");
+      html.push(section("関連する考察・記事", items));
+    }
+
     // 参考書籍
     if (p.references && p.references.length) {
       const items = p.references
@@ -228,12 +245,17 @@
     contentEl.innerHTML = html.join("");
   }
 
-  fetch(`data/people/${encodeURIComponent(id)}.json`)
-    .then((res) => {
+  Promise.all([
+    fetch(`data/people/${encodeURIComponent(id)}.json`).then((res) => {
       if (!res.ok) throw new Error(res.status);
       return res.json();
-    })
-    .then(render)
+    }),
+    // 記事一覧は補助情報。取得できなくても人物ページは表示する
+    fetch("data/articles/index.json")
+      .then((res) => (res.ok ? res.json() : { articles: [] }))
+      .catch(() => ({ articles: [] })),
+  ])
+    .then(([p, adata]) => render(p, (adata && adata.articles) || []))
     .catch((err) => {
       contentEl.innerHTML = `<p class="error">人物データを読み込めませんでした（ID: ${esc(id)}）。ローカルで開いている場合は簡易サーバー経由で表示してください（README参照）。</p>`;
       console.error(err);

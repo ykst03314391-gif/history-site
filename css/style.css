@@ -62,6 +62,83 @@ main {
 }
 .lead { color: var(--ink-soft); margin-top: 0; }
 
+/* ---- ヒーロー（トップ） ---- */
+.hero {
+  background: var(--ink);
+  color: var(--bg);
+  border-radius: var(--radius);
+  border-bottom: 5px solid var(--accent);
+  padding: 48px 40px;
+  margin-bottom: 40px;
+  background-image:
+    radial-gradient(circle at 85% 15%, rgba(155, 45, 32, 0.35), transparent 45%);
+}
+.hero-eyebrow {
+  letter-spacing: 0.3em;
+  color: var(--accent-soft);
+  font-size: 0.85rem;
+  margin: 0 0 10px;
+}
+.hero-title {
+  font-size: 2.4rem;
+  line-height: 1.4;
+  margin: 0 0 18px;
+  font-weight: 700;
+}
+.hero-title em { color: var(--accent-soft); font-style: normal; }
+.hero-lead { max-width: 640px; color: #ddd6c8; margin: 0 0 26px; }
+.hero-lead strong { color: #fff; }
+.hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+.btn {
+  display: inline-block;
+  font-family: var(--serif);
+  font-size: 1rem;
+  padding: 11px 26px;
+  border-radius: 999px;
+  border: 1px solid var(--bg);
+  color: var(--bg);
+  background: transparent;
+  transition: background 0.12s, color 0.12s;
+}
+.btn:hover { background: var(--bg); color: var(--ink); text-decoration: none; }
+.btn-primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+.btn-primary:hover { background: var(--accent-soft); border-color: var(--accent-soft); color: #fff; }
+
+/* ---- 機能カード（トップ） ---- */
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+}
+.feature-card {
+  background: var(--bg-panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 22px;
+  color: var(--ink);
+  transition: transform 0.12s, box-shadow 0.12s;
+}
+.feature-card:hover { transform: translateY(-3px); box-shadow: 0 6px 18px rgba(0,0,0,0.12); text-decoration: none; }
+.feature-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px; height: 44px;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  margin-bottom: 12px;
+}
+.feature-card h3 { margin: 0 0 6px; font-size: 1.15rem; }
+.feature-card p { margin: 0; color: var(--ink-soft); font-size: 0.9rem; }
+
+@media (max-width: 560px) {
+  .hero { padding: 34px 24px; }
+  .hero-title { font-size: 1.9rem; }
+}
+
 /* ---- 検索 ---- */
 .search-box {
   width: 100%;

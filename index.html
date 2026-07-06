@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>戦国時代 情報サイト</title>
-  <meta name="description" content="戦国時代の武将・合戦・史跡をまとめた情報サイト。">
+  <title>戦国クロニクル ｜ 戦国時代を「巡る・深める」情報サイト</title>
+  <meta name="description" content="戦国武将・史跡・合戦を、出典に基づきつつ管理人の視点でまとめた情報サイト。人物データベース、地域からの逆引き、考察記事。">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -12,7 +12,7 @@
     <div class="inner">
       <h1 class="site-title"><a href="index.html">戦国クロニクル</a></h1>
       <nav>
-        <a href="index.html">人物</a>
+        <a href="people.html">人物</a>
         <a href="regions.html">地域から探す</a>
         <a href="articles.html">考察・記事</a>
       </nav>
@@ -20,18 +20,59 @@
   </header>
 
   <main>
-    <h2 class="page-title">武将一覧</h2>
-    <p class="lead">「これ、誰だっけ？ どんな人だっけ？」に、出典に基づいて答えるサイト。</p>
+    <!-- ヒーロー -->
+    <section class="hero">
+      <p class="hero-eyebrow">戦国時代を「巡る・深める」</p>
+      <h2 class="hero-title">これ、誰だっけ？<br>どんな人だっけ？<br><em>もっと知りたい！</em></h2>
+      <p class="hero-lead">
+        大河ドラマや映画で気になったあの武将を、<strong>出典に基づいて</strong>再学習。
+        人物・史跡・合戦を関連づけて、事典では終わらない「切り口」でお届けします。
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="people.html">武将を調べる</a>
+        <a class="btn" href="articles.html">考察を読む</a>
+      </div>
+    </section>
 
-    <input type="search" id="search" class="search-box" placeholder="名前・かな・タグで検索…">
+    <!-- 3つの入口 -->
+    <section class="section">
+      <h2>できること</h2>
+      <div class="feature-grid">
+        <a class="feature-card" href="people.html">
+          <span class="feature-icon">人</span>
+          <h3>人物データベース</h3>
+          <p>生没年・家系・年表・逸話・ゆかりの地まで。武将を体系的に深掘り。</p>
+        </a>
+        <a class="feature-card" href="regions.html">
+          <span class="feature-icon">地</span>
+          <h3>地域から探す</h3>
+          <p>「この土地には何がある？」都道府県から武将・史跡を逆引き。</p>
+        </a>
+        <a class="feature-card" href="articles.html">
+          <span class="feature-icon">論</span>
+          <h3>考察・記事</h3>
+          <p>通説の紹介で終わらせない。出典を示した管理人の視点。</p>
+        </a>
+      </div>
+    </section>
 
-    <div id="list" class="card-grid" aria-live="polite"></div>
+    <!-- 新着記事 -->
+    <section class="section">
+      <h2>新着の考察・記事</h2>
+      <div id="latest-articles" class="card-grid"><p class="muted">読み込み中…</p></div>
+    </section>
+
+    <!-- 注目の人物 -->
+    <section class="section">
+      <h2>収録している人物</h2>
+      <div id="pickup-people" class="card-grid"><p class="muted">読み込み中…</p></div>
+    </section>
   </main>
 
   <footer class="site-footer">
     <p>戦国クロニクル（開発中）／ 掲載情報には諸説あります。</p>
   </footer>
 
-  <script src="js/list.js"></script>
+  <script src="js/home.js"></script>
 </body>
 </html>

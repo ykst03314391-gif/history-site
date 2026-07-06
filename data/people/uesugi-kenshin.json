@@ -1,0 +1,81 @@
+{
+  "id": "uesugi-kenshin",
+  "name": "上杉謙信",
+  "kana": "うえすぎ けんしん",
+  "summary": "越後の戦国大名。「軍神」と称され、武田信玄と川中島で幾度も争った。晩年は北陸に進出し、手取川の戦いで織田軍を破った。",
+  "aliases": [
+    { "type": "幼名", "value": "虎千代" },
+    { "type": "その他", "value": "長尾景虎", "note": "家督相続当初の名乗り" },
+    { "type": "その他", "value": "上杉政虎", "note": "関東管領・上杉家を継いだのちの名乗り" },
+    { "type": "法名", "value": "謙信" }
+  ],
+  "kamon": { "name": "上杉笹（竹に飛び雀）" },
+  "birth": {
+    "year": 1530,
+    "era": "享禄3年"
+  },
+  "death": {
+    "year": 1578,
+    "month": 4,
+    "day": 19,
+    "era": "天正6年3月13日",
+    "note": "春日山城で急死。脳溢血とも伝わる",
+    "uncertain": true
+  },
+  "birthplace": {
+    "name": "越後国（春日山城）",
+    "prefecture": "新潟県",
+    "city": "上越市"
+  },
+  "ranks": [
+    { "year": 1561, "title": "関東管領", "note": "上杉憲政より職と姓を譲られる" },
+    { "title": "従四位下・弾正少弼" }
+  ],
+  "family": [
+    { "relation": "父", "name": "長尾為景" },
+    { "relation": "養子", "name": "上杉景勝", "note": "謙信の跡を継ぐ" },
+    { "relation": "養子", "name": "上杉景虎", "note": "北条氏から迎えた養子。景勝と家督を争う（御館の乱）" }
+  ],
+  "lords": [],
+  "retainers": [
+    { "name": "直江兼続", "note": "のちに上杉家を支える重臣" }
+  ],
+  "territories": [
+    { "year": 1550, "name": "越後国", "prefecture": "新潟県", "note": "越後を統一" },
+    { "year": 1577, "name": "加賀・能登方面", "prefecture": "石川県", "note": "北陸へ進出" }
+  ],
+  "timeline": [
+    { "year": 1553, "title": "川中島の戦い（第一次）", "description": "武田信玄との北信濃をめぐる戦いが始まる。以後、数度にわたり対陣", "battle_id": "kawanakajima" },
+    { "year": 1561, "title": "関東管領就任", "description": "上杉憲政より関東管領職と上杉姓を継ぐ" },
+    { "year": 1577, "month": 9, "title": "手取川の戦い", "description": "北陸へ侵攻し、柴田勝家らの織田軍を加賀・手取川で破る", "battle_id": "tedorigawa" },
+    { "year": 1578, "title": "急死", "description": "織田方との決戦を前に、春日山城で急死した" }
+  ],
+  "episodes": [
+    {
+      "title": "敵に塩を送る",
+      "body": "宿敵・武田信玄が塩の供給を絶たれて困窮した際、謙信が塩を送ったという逸話。義を重んじる人物像を象徴するが、史実性には議論がある。",
+      "uncertain": true
+    },
+    {
+      "title": "信長からの屏風",
+      "body": "織田信長が上杉謙信に、狩野永徳筆と伝わる洛中洛外図屏風を贈ったとされる。両者が敵対する前の友好の証とされ、上杉家に伝来した屏風が国宝として現存する。",
+      "uncertain": true
+    }
+  ],
+  "achievements": [
+    { "title": "越後統一と関東・北陸への遠征", "description": "越後を統一し、関東管領として関東に、晩年には北陸に軍を進めた" },
+    { "title": "手取川で織田軍を撃破", "description": "勢いに乗る織田軍を正面から破った数少ない大名の一人" }
+  ],
+  "references": [],
+  "spots": [
+    { "type": "城跡", "name": "春日山城跡", "prefecture": "新潟県", "city": "上越市", "description": "謙信の本拠。国の史跡" },
+    { "type": "神社仏閣", "name": "上杉神社", "prefecture": "山形県", "city": "米沢市", "description": "上杉謙信を祀る。米沢は後の上杉家の本拠" },
+    { "type": "その他", "name": "手取川古戦場", "prefecture": "石川県", "description": "織田軍を破った手取川の戦いの地" }
+  ],
+  "images": [],
+  "sources": [
+    { "id": "shincho-koki", "title": "信長公記", "author": "太田牛一" }
+  ],
+  "tags": ["上杉家", "戦国大名", "越後"],
+  "updatedAt": "2026-07-07"
+}

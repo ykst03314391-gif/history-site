@@ -1,0 +1,94 @@
+{
+  "id": "toyotomi-hideyoshi",
+  "name": "豊臣秀吉",
+  "kana": "とよとみ ひでよし",
+  "summary": "尾張の下層民から身を起こして織田信長に仕え、信長の死後に山崎の戦いで明智光秀を破り、天下を統一した。三英傑の一人。",
+  "aliases": [
+    { "type": "通称", "value": "藤吉郎" },
+    { "type": "その他", "value": "木下秀吉", "note": "信長に仕えた当初の名乗り" },
+    { "type": "その他", "value": "羽柴秀吉", "note": "織田家中で用いた名乗り" },
+    { "type": "その他", "value": "太閤", "note": "関白を退いた後の呼称" }
+  ],
+  "kamon": { "name": "五三桐" },
+  "birth": {
+    "year": 1537,
+    "era": "天文6年",
+    "note": "生年には諸説あり",
+    "uncertain": true
+  },
+  "death": {
+    "year": 1598,
+    "month": 9,
+    "day": 18,
+    "era": "慶長3年8月18日",
+    "note": "伏見城で病没"
+  },
+  "birthplace": {
+    "name": "尾張国愛知郡中村",
+    "prefecture": "愛知県",
+    "city": "名古屋市"
+  },
+  "ranks": [
+    { "year": 1585, "title": "関白" },
+    { "year": 1586, "title": "太政大臣", "note": "あわせて「豊臣」姓を賜る" }
+  ],
+  "family": [
+    { "relation": "妻", "name": "ねね（高台院）" },
+    { "relation": "母", "name": "大政所" },
+    { "relation": "弟", "name": "豊臣秀長", "note": "秀吉を支えた補佐役" },
+    { "relation": "養子", "name": "豊臣秀次" },
+    { "relation": "子", "name": "豊臣秀頼" }
+  ],
+  "lords": [
+    { "person_id": "oda-nobunaga", "name": "織田信長", "to": 1582, "note": "足軽から仕え、重臣にまで出世した" }
+  ],
+  "retainers": [
+    { "name": "加藤清正" },
+    { "name": "福島正則" },
+    { "name": "石田三成" }
+  ],
+  "territories": [
+    { "year": 1573, "name": "近江国（長浜）", "prefecture": "滋賀県", "note": "浅井氏旧領を与えられ長浜城主となる" },
+    { "year": 1583, "name": "摂津国（大坂）", "prefecture": "大阪府", "note": "大坂城を築き本拠とする" }
+  ],
+  "timeline": [
+    { "year": 1573, "title": "長浜城主", "description": "近江に所領を得て、羽柴姓を名乗る" },
+    { "year": 1582, "month": 6, "title": "中国大返し", "description": "本能寺の変を受け、備中高松城の陣から驚異的な速さで畿内へ引き返す" },
+    { "year": 1582, "month": 6, "day": 13, "title": "山崎の戦い", "description": "明智光秀を破り、主君・信長の仇を討つ", "battle_id": "yamazaki" },
+    { "year": 1583, "title": "賤ヶ岳の戦い", "description": "柴田勝家を破り、織田家中の主導権を握る", "battle_id": "shizugatake" },
+    { "year": 1585, "title": "関白就任", "description": "関白に任じられ、天下人としての地位を固める" },
+    { "year": 1590, "title": "天下統一", "description": "小田原征伐で北条氏を降し、全国統一を成し遂げる" },
+    { "year": 1598, "title": "死去", "description": "伏見城で病没。幼い秀頼を遺す" }
+  ],
+  "episodes": [
+    {
+      "title": "草履取りの逸話",
+      "body": "寒い日に信長の草履を懐で温めておき、その気配りで見出されたと伝わる。後世の創作という指摘も強い。",
+      "uncertain": true
+    },
+    {
+      "title": "墨俣一夜城",
+      "body": "美濃攻めに際し、短期間で墨俣に城を築いて信長を助けたとされる逸話。史実性には議論がある。",
+      "uncertain": true
+    }
+  ],
+  "achievements": [
+    { "title": "天下統一", "description": "信長の事業を継ぎ、全国の戦国大名を従えて統一を完成させた" },
+    { "title": "太閤検地・刀狩", "description": "全国的な検地と刀狩により、兵農分離と近世的な支配体制の基礎を築いた" }
+  ],
+  "references": [
+    { "title": "太閤記", "author": "小瀬甫庵", "note": "秀吉の伝記。脚色も多いとされる", "affiliateUrl": "" }
+  ],
+  "spots": [
+    { "type": "城跡", "name": "大阪城", "prefecture": "大阪府", "city": "大阪市", "description": "秀吉が築いた本拠。現在の天守は後世の再建" },
+    { "type": "神社仏閣", "name": "豊国神社", "prefecture": "京都府", "city": "京都市", "description": "豊臣秀吉を祀る神社" },
+    { "type": "その他", "name": "中村公園", "prefecture": "愛知県", "city": "名古屋市", "description": "秀吉生誕の地と伝わる一帯" }
+  ],
+  "images": [],
+  "sources": [
+    { "id": "shincho-koki", "title": "信長公記", "author": "太田牛一" },
+    { "id": "taikoki", "title": "太閤記", "author": "小瀬甫庵" }
+  ],
+  "tags": ["豊臣家", "三英傑", "戦国大名"],
+  "updatedAt": "2026-07-07"
+}

@@ -1,0 +1,70 @@
+{
+  "id": "oda-nobutada",
+  "name": "織田信忠",
+  "kana": "おだ のぶただ",
+  "summary": "織田信長の嫡男。織田家の家督を継ぎ、甲州征伐で総大将を務めて武田氏を滅ぼした。本能寺の変の際、二条御所で明智軍と戦い自害した。",
+  "aliases": [
+    { "type": "幼名", "value": "奇妙丸" },
+    { "type": "通称", "value": "勘九郎" }
+  ],
+  "kamon": { "name": "織田木瓜" },
+  "birth": {
+    "year": 1557,
+    "era": "弘治3年",
+    "uncertain": true
+  },
+  "death": {
+    "year": 1582,
+    "month": 6,
+    "day": 2,
+    "era": "天正10年6月2日",
+    "note": "本能寺の変に際し、二条御所で自害",
+    "sourceId": "shincho-koki"
+  },
+  "birthplace": {
+    "name": "尾張国",
+    "prefecture": "愛知県"
+  },
+  "ranks": [
+    { "year": 1575, "title": "秋田城介", "note": "家督相続にあわせて叙任" },
+    { "year": 1577, "title": "従三位・左近衛中将" }
+  ],
+  "family": [
+    { "relation": "父", "person_id": "oda-nobunaga", "name": "織田信長" },
+    { "relation": "弟", "name": "織田信雄" },
+    { "relation": "弟", "name": "織田信孝" },
+    { "relation": "子", "name": "織田秀信（三法師）", "note": "清洲会議で織田家の家督に擁立される" }
+  ],
+  "lords": [],
+  "retainers": [],
+  "territories": [
+    { "year": 1575, "name": "美濃国・尾張国", "prefecture": "岐阜県", "note": "家督相続にともない岐阜城主となる" }
+  ],
+  "timeline": [
+    { "year": 1575, "title": "家督相続", "description": "父・信長より織田家の家督を譲られ、岐阜城主となる" },
+    { "year": 1582, "month": 3, "title": "甲州征伐", "description": "総大将として武田攻めを指揮し、武田勝頼を滅ぼす" },
+    { "year": 1582, "month": 6, "day": 2, "title": "本能寺の変", "description": "明智光秀の謀反により、宿所の二条御所で防戦のすえ自害", "battle_id": "honnoji-no-hen" }
+  ],
+  "episodes": [
+    {
+      "title": "二条御所の最期",
+      "body": "本能寺の変の際、脱出を勧められたが、退路を断たれたと判断して二条御所に籠もり、明智軍を相手に戦って自害したと伝わる。",
+      "uncertain": true,
+      "sourceId": "shincho-koki"
+    }
+  ],
+  "achievements": [
+    { "title": "武田氏の滅亡", "description": "甲州征伐の総大将として、宿敵・武田氏を滅ぼした" }
+  ],
+  "references": [],
+  "spots": [
+    { "type": "城跡", "name": "岐阜城", "prefecture": "岐阜県", "city": "岐阜市", "description": "信忠が家督相続後に居城とした" },
+    { "type": "墓所", "name": "阿弥陀寺", "prefecture": "京都府", "city": "京都市", "description": "信長・信忠の菩提を弔う寺と伝わる" }
+  ],
+  "images": [],
+  "sources": [
+    { "id": "shincho-koki", "title": "信長公記", "author": "太田牛一" }
+  ],
+  "tags": ["織田家", "戦国大名"],
+  "updatedAt": "2026-07-07"
+}

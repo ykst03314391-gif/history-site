@@ -12,26 +12,7 @@
     String(b.date || "").localeCompare(String(a.date || ""));
 
   let topics = [];
-  let peopleName = new Map();
-  let articleTitle = new Map();
   let current = "すべて";
-
-  function relLinks(t) {
-    const parts = [];
-    (t.relatedArticles || []).forEach((id) => {
-      const title = articleTitle.get(id) || "深掘り考察";
-      parts.push(
-        `<a class="topic-to-article" href="article.html?id=${encodeURIComponent(id)}">→ 深掘りを読む：${esc(title)}</a>`
-      );
-    });
-    (t.relatedPeople || []).forEach((id) => {
-      const name = peopleName.get(id) || id;
-      parts.push(
-        `<a class="topic-to-person" href="person.html?id=${encodeURIComponent(id)}">${esc(name)}</a>`
-      );
-    });
-    return parts.join("");
-  }
 
   function metaLine(t) {
     const bits = [];
@@ -47,17 +28,11 @@
       : "";
   }
 
-  function sourceLine(t) {
-    if (!t.source || !t.source.name) return "";
-    const name = t.source.url
-      ? `<a href="${esc(t.source.url)}" target="_blank" rel="noopener">${esc(t.source.name)}</a>`
-      : esc(t.source.name);
-    return `<p class="topic-source">出どころ：${name}</p>`;
-  }
-
+  // 一覧カードはクリックで詳細ページ(topic.html)へ遷移するリンク。
+  // 出どころ・関連リンクは詳細ページ側に置く（カード内でのリンク入れ子を避ける）。
   function card(t) {
     return `
-      <article class="topic-card">
+      <a class="topic-card topic-card--link" href="topic.html?id=${encodeURIComponent(t.id)}">
         <div class="topic-head">
           <span class="topic-stream stream-${esc(t.stream)}">${esc(t.stream || "情報")}</span>
           <span class="topic-date">${esc(t.date || "")}</span>
@@ -66,9 +41,8 @@
         ${t.summary ? `<p class="topic-summary">${esc(t.summary)}</p>` : ""}
         ${metaLine(t)}
         ${t.take ? `<div class="topic-take"><span class="take-label">ひとこと</span>${esc(t.take)}</div>` : ""}
-        ${sourceLine(t)}
-        <div class="topic-links">${relLinks(t)}</div>
-      </article>`;
+        <span class="topic-more">詳しく見る →</span>
+      </a>`;
   }
 
   function render() {
@@ -102,19 +76,9 @@
   }
 
   try {
-    const [tRes, pRes, aRes] = await Promise.all([
-      fetch("data/topics/index.json"),
-      fetch("data/people/index.json").catch(() => null),
-      fetch("data/articles/index.json").catch(() => null),
-    ]);
-    if (!tRes.ok) throw new Error(tRes.status);
-    topics = (await tRes.json()).topics || [];
-    if (pRes && pRes.ok) {
-      for (const p of (await pRes.json()).people || []) peopleName.set(p.id, p.name);
-    }
-    if (aRes && aRes.ok) {
-      for (const a of (await aRes.json()).articles || []) articleTitle.set(a.id, a.title);
-    }
+    const res = await fetch("data/topics/index.json");
+    if (!res.ok) throw new Error(res.status);
+    topics = (await res.json()).topics || [];
     buildFilter();
     render();
   } catch (err) {

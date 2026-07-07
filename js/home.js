@@ -46,22 +46,26 @@
         .slice(0, 3);
       topicsEl.innerHTML = topics.length
         ? topics
-            .map(
-              (t) => `
-        <article class="topic-card">
+            .map((t) => {
+              const meta = [];
+              if (t.period && (t.period.from || t.period.to))
+                meta.push(`会期：${esc(t.period.from || "")}〜${esc(t.period.to || "")}`);
+              if (t.place && (t.place.name || t.place.prefecture))
+                meta.push(`会場：${esc([t.place.prefecture, t.place.name].filter(Boolean).join(" "))}`);
+              if (t.platform) meta.push(`対応：${esc(t.platform)}`);
+              return `
+        <a class="topic-card topic-card--link" href="topic.html?id=${encodeURIComponent(t.id)}">
           <div class="topic-head">
             <span class="topic-stream stream-${esc(t.stream)}">${esc(t.stream || "情報")}</span>
             <span class="topic-date">${esc(t.date || "")}</span>
           </div>
           <h3 class="topic-title">${esc(t.title)}</h3>
+          ${t.summary ? `<p class="topic-summary">${esc(t.summary)}</p>` : ""}
+          ${meta.length ? `<p class="topic-meta">${meta.join("　／　")}</p>` : ""}
           ${t.take ? `<div class="topic-take"><span class="take-label">ひとこと</span>${esc(t.take)}</div>` : ""}
-          <div class="topic-links">${
-            (t.relatedArticles || []).length
-              ? `<a class="topic-to-article" href="article.html?id=${encodeURIComponent(t.relatedArticles[0])}">→ 深掘りを読む</a>`
-              : `<a class="topic-to-article" href="topics.html">→ 最新トピックへ</a>`
-          }</div>
-        </article>`
-            )
+          <span class="topic-more">詳しく見る →</span>
+        </a>`;
+            })
             .join("")
         : `<p class="muted">まだトピックがありません。</p>`;
     } catch (err) {

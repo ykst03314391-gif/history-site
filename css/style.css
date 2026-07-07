@@ -677,6 +677,35 @@ footer.site-footer {
 .topic-to-article { font-weight: 700; }
 .topic-to-person::before { content: "人物："; color: var(--ink-soft); font-weight: 400; }
 
+/* 一覧カードをクリック可能なリンクに */
+.topic-card--link {
+  display: block;
+  color: var(--ink);
+  text-decoration: none;
+  transition: transform 0.12s, box-shadow 0.12s;
+}
+.topic-card--link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+  text-decoration: none;
+}
+.topic-card--link .topic-title { color: var(--ink); }
+.topic-more { display: inline-block; margin-top: 2px; color: var(--accent); font-weight: 700; font-size: 0.9rem; }
+
+/* トピック詳細ページ */
+.topic-detail {
+  background: var(--bg-panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 26px 28px;
+}
+.topic-detail-title { margin: 8px 0 12px; font-size: 1.5rem; }
+.topic-detail-summary { color: var(--ink); line-height: 1.9; margin: 0 0 16px; }
+.topic-detail-links { margin: 14px 0 0; display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; }
+.topic-people { margin: 0; }
+.topic-note { margin: 18px 0 0; font-size: 0.85rem; }
+
 /* リンクではない静的な機能カード（aboutの特集紹介など） */
 .feature-card--static { cursor: default; }
 .feature-card--static:hover { transform: none; box-shadow: var(--shadow); }

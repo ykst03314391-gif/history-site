@@ -10,7 +10,7 @@
 
 ## 収録
 
-すべて Wikisource（新字版）の翻刻を parse API で取得。底本は各 Wikisource ページの凡例を参照。
+大半は Wikisource（新字版）の翻刻を parse API で取得（底本は各ページの凡例参照）。`jozan-kidan` のみ NDL の OCR 全文（後述）。
 
 | ファイル | 原典 | 史料区分 | sourceId | 主な関連 |
 |---|---|---|---|---|
@@ -27,6 +27,7 @@
 | `keicho-kenmonshu.txt` | 三浦浄心『慶長見聞集』 | 二次（江戸初期随筆） | `keicho-kenmonshu` | 江戸初期風俗（戦国は間接） |
 | `kanchiron.txt` | 『官地論』 | 二次（軍記） | `kanchiron` | 加賀富樫氏・加賀一向一揆 |
 | `ihon-odawaraki.txt` | 『異本小田原記』 | 二次（軍記・北条五代記系の異本） | `ihon-odawaraki` | 後北条・小田原 |
+| `jozan-kidan.txt` | 湯浅常山『常山紀談』(上巻) | 二次（逸話集・**NDL OCR/要校正**） | `jozan-kidan` | 信長・秀吉・武田・上杉の逸話 |
 
 > - **一次史料は `shincho-koki` のみ**（`mikawa-monogatari` は当事者覚書で一次寄りだが主観・記憶違いに注意）。残りは**すべて二次史料**（軍記・軍学書・覚書）で、そのまま事実の典拠にはできない。「近世にこう語られた」水準で扱い、一次史料と突き合わせる。
 > - 収録範囲メモ：`shincho-koki` 首巻〜巻之十五（本能寺まで）／`koyo-gunkan` 全60品。

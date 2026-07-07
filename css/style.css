@@ -611,6 +611,71 @@ footer.site-footer {
 .section-more { margin: 16px 0 0; text-align: right; }
 .section-more a { font-weight: 700; }
 
+/* ---- 最新トピック（B＝最新情報） ---- */
+.topic-filter { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 18px; }
+.topic-filter-btn {
+  font-family: var(--serif);
+  font-size: 0.9rem;
+  padding: 5px 14px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--bg-panel);
+  color: var(--ink-soft);
+  cursor: pointer;
+}
+.topic-filter-btn.is-active { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+
+.topic-card {
+  background: var(--bg-panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 18px 20px;
+  margin-bottom: 16px;
+}
+.topic-head { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
+.topic-stream {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #fff;
+  background: var(--ink-soft);
+  border-radius: 5px;
+  padding: 2px 9px;
+}
+.stream-新説 { background: var(--accent); }
+.stream-お出かけ { background: #2f7a52; }
+.stream-ゲーム { background: var(--gold); }
+.topic-date { color: var(--ink-soft); font-size: 0.85rem; }
+.topic-title { margin: 0 0 6px; font-size: 1.12rem; }
+.topic-summary { margin: 0 0 10px; color: var(--ink-soft); font-size: 0.94rem; }
+.topic-meta { margin: 0 0 10px; font-size: 0.86rem; color: var(--ink-soft); }
+
+/* 見立て＝差別化の核。目立たせる */
+.topic-take {
+  margin: 0 0 10px;
+  padding: 10px 14px;
+  background: #f6efe0;
+  border-left: 4px solid var(--accent);
+  border-radius: 0 6px 6px 0;
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+.take-label {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #fff;
+  background: var(--accent);
+  border-radius: 4px;
+  padding: 1px 7px;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+.topic-source { margin: 0 0 8px; font-size: 0.82rem; color: var(--ink-soft); }
+.topic-links { display: flex; flex-wrap: wrap; gap: 8px 16px; }
+.topic-to-article { font-weight: 700; }
+.topic-to-person::before { content: "人物："; color: var(--ink-soft); font-weight: 400; }
+
 /* リンクではない静的な機能カード（aboutの特集紹介など） */
 .feature-card--static { cursor: default; }
 .feature-card--static:hover { transform: none; box-shadow: var(--shadow); }

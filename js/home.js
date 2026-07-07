@@ -2,6 +2,7 @@
 (async function () {
   const artEl = document.getElementById("latest-articles");
   const peopleEl = document.getElementById("pickup-people");
+  const topicsEl = document.getElementById("latest-topics");
 
   const esc = (s) =>
     String(s ?? "").replace(/[&<>"']/g, (c) =>
@@ -32,6 +33,41 @@
   } catch (err) {
     artEl.innerHTML = `<p class="error">記事の読み込みに失敗しました（README参照）。</p>`;
     console.error(err);
+  }
+
+  // 最新トピック（最大3件）
+  if (topicsEl) {
+    try {
+      const res = await fetch("data/topics/index.json");
+      if (!res.ok) throw new Error(res.status);
+      const topics = ((await res.json()).topics || [])
+        .filter((t) => !t.draft)
+        .sort((a, b) => String(b.date || "").localeCompare(String(a.date || "")))
+        .slice(0, 3);
+      topicsEl.innerHTML = topics.length
+        ? topics
+            .map(
+              (t) => `
+        <article class="topic-card">
+          <div class="topic-head">
+            <span class="topic-stream stream-${esc(t.stream)}">${esc(t.stream || "情報")}</span>
+            <span class="topic-date">${esc(t.date || "")}</span>
+          </div>
+          <h3 class="topic-title">${esc(t.title)}</h3>
+          ${t.take ? `<div class="topic-take"><span class="take-label">見立て</span>${esc(t.take)}</div>` : ""}
+          <div class="topic-links">${
+            (t.relatedArticles || []).length
+              ? `<a class="topic-to-article" href="article.html?id=${encodeURIComponent(t.relatedArticles[0])}">→ 深掘りを読む</a>`
+              : `<a class="topic-to-article" href="topics.html">→ 最新トピックへ</a>`
+          }</div>
+        </article>`
+            )
+            .join("")
+        : `<p class="muted">まだトピックがありません。</p>`;
+    } catch (err) {
+      topicsEl.innerHTML = `<p class="error">トピックの読み込みに失敗しました。</p>`;
+      console.error(err);
+    }
   }
 
   // 収録人物（最大6件）

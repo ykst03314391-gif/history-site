@@ -50,7 +50,7 @@
   "timeline": [
     { "year": 1553, "title": "川中島の戦い（第一次）", "description": "武田信玄との北信濃をめぐる戦いが始まる。以後、数度にわたり対陣", "battle_id": "kawanakajima", "sourceId": "koyo-gunkan" },
     { "year": 1561, "title": "関東管領就任", "description": "上杉憲政より関東管領職と上杉姓を継ぐ", "sourceId": "koyo-gunkan" },
-    { "year": 1577, "month": 9, "title": "手取川の戦い", "description": "北陸へ侵攻し、柴田勝家らの織田軍を加賀・手取川で破る", "battle_id": "tedorigawa" },
+    { "year": 1577, "month": 9, "title": "手取川の戦い", "description": "北陸へ侵攻し、柴田勝家らの織田軍を加賀・手取川で破ったとされる。ただし「大勝」の史実性には議論がある（信長公記はこの合戦をほとんど記さない。考察記事参照）", "battle_id": "tedorigawa" },
     { "year": 1578, "title": "急死", "description": "織田方との決戦を前に、春日山城で急死した", "sourceId": "koyo-gunkan" }
   ],
   "episodes": [
@@ -69,7 +69,15 @@
     { "title": "越後統一と関東・北陸への遠征", "description": "越後を統一し、関東管領として関東に、晩年には北陸に軍を進めた" },
     { "title": "手取川で織田軍を撃破", "description": "勢いに乗る織田軍を正面から破った数少ない大名の一人" }
   ],
-  "references": [],
+  "references": [
+    {
+      "title": "本郷歴史サロン（第58回）『手取川の戦い』をめぐる議論",
+      "author": "藤城徹",
+      "publisher": "同友館（『企業診断』72巻9号、114–116頁）",
+      "year": 2025,
+      "note": "本郷和人による手取川の史料批判（信長公記の沈黙を根拠とする大勝への懐疑）を整理した記事"
+    }
+  ],
   "spots": [
     { "type": "城跡", "name": "春日山城跡", "prefecture": "新潟県", "city": "上越市", "description": "謙信の本拠。国の史跡" },
     { "type": "神社仏閣", "name": "上杉神社", "prefecture": "山形県", "city": "米沢市", "description": "上杉謙信を祀る。米沢は後の上杉家の本拠" },

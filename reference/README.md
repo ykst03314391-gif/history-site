@@ -10,14 +10,24 @@
 
 ## 収録
 
-| ファイル | 原典 | 史料区分 | 底本 | 取得元（版） |
-|---|---|---|---|---|
-| `shincho-koki.txt` | 太田牛一『信長公記』 | **一次史料** | 我自刊我書（1881／明治14、町田本系） | [Wikisource 新字版](https://ja.wikisource.org/wiki/信長公記)（revid 218442、2026-07-07） |
-| `koyo-gunkan.txt` | 『甲陽軍鑑』（武田氏） | **二次史料**（軍学書・要史料批判） | 内藤傳右衛門・温故堂 刊本 | [Wikisource](https://ja.wikisource.org/wiki/甲陽軍鑑)（全60品第を結合、2026-07-07） |
+すべて Wikisource（新字版）の翻刻を parse API で取得。底本は各 Wikisource ページの凡例を参照。
 
-> - `shincho-koki.txt`：約15.4万字、首巻＋巻之一〜十五（永禄11年〜天正10年・本能寺の変まで）。
-> - `koyo-gunkan.txt`：約52万字、全60品。武田信玄・勝頼、川中島、上杉謙信の記述を含む。
->   **ただし二次史料**。年次の錯誤が多いとされ、そのまま事実の典拠にはせず「近世にこう語られた」水準で扱い、一次史料と突き合わせる。
+| ファイル | 原典 | 史料区分 | sourceId | 主な関連 |
+|---|---|---|---|---|
+| `shincho-koki.txt` | 太田牛一『信長公記』 | **一次史料** | `shincho-koki` | 信長・信忠・光秀・秀吉（信長期） |
+| `mikawa-monogatari.txt` | 大久保忠教『三河物語』 | 一次寄り（覚書・主観注意） | `mikawa-monogatari` | 家康・松平・戦国全般 |
+| `koyo-gunkan.txt` | 『甲陽軍鑑』 | 二次（軍学書・要批判） | `koyo-gunkan` | 武田・上杉・川中島 |
+| `hoan-taikoki.txt` | 小瀬甫庵『太閤記』 | 二次（脚色多） | `hoan-taikoki` | 秀吉・信長 |
+| `kawasumi-taikoki.txt` | 『川角太閤記』 | 二次（覚書・聞書） | `kawasumi-taikoki` | 秀吉・光秀・本能寺 |
+| `oji-monogatari.txt` | 『祖父物語（朝日物語）』 | 二次（覚書・逸話） | `oji-monogatari` | 信長・秀吉期の逸話 |
+| `azai-sandaiki.txt` | 『浅井三代記』 | 二次（軍記・潤色） | `azai-sandaiki` | 浅井・朝倉・姉川 |
+| `hojo-godaiki.txt` | 三浦浄心『北条五代記』 | 二次（軍記） | `hojo-godaiki` | 後北条氏・小田原 |
+| `sakuma-gunki.txt` | 『佐久間軍記』 | 二次（軍記） | `sakuma-gunki` | 佐久間氏・織田家臣 |
+| `keicho-kenmonshu.txt` | 三浦浄心『慶長見聞集』 | 二次（江戸初期随筆） | `keicho-kenmonshu` | 江戸初期風俗（戦国は間接） |
+
+> - **一次史料は `shincho-koki` のみ**（`mikawa-monogatari` は当事者覚書で一次寄りだが主観・記憶違いに注意）。残りは**すべて二次史料**（軍記・軍学書・覚書）で、そのまま事実の典拠にはできない。「近世にこう語られた」水準で扱い、一次史料と突き合わせる。
+> - 収録範囲メモ：`shincho-koki` 首巻〜巻之十五（本能寺まで）／`koyo-gunkan` 全60品。
+> - 入手できなかった史料（フロイス日本史＝訳が著作権保護中、明智軍記・信長記（甫庵）・徳川実紀・古記録類＝Wikisource未収録 等）は [`../docs/sources.md`](../docs/sources.md) に記録。
 
 ## 使い方（裏取りワークフロー）
 

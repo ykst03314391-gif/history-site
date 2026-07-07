@@ -1,5 +1,44 @@
 {
+  "series": [
+    {
+      "id": "economics",
+      "title": "経済で見る戦国時代",
+      "description": "戦国大名を「経営者」に見立て、知行・恩賞・収入源といった経済の視点から戦国時代を読み解く特集。",
+      "order": 1
+    },
+    {
+      "id": "myth-busting",
+      "title": "社会の通説っておかしくね？",
+      "description": "広く信じられている通説を、資料に基づいて自分なりに問い直す特集。信長の革新性、荒木村重、本能寺の変、秀吉の出自など。",
+      "order": 2
+    }
+  ],
   "articles": [
+    {
+      "id": "araki-murashige-survival",
+      "title": "荒木村重はなぜ生き延びられたのか",
+      "series": "myth-busting",
+      "category": "考察",
+      "summary": "主君を裏切り、妻子を見捨てて逃げた卑怯者——。荒木村重の通説的なイメージを、謀反の動機と「生き延びられた理由」から問い直す。",
+      "date": "2026-07-07",
+      "author": "管理人",
+      "relatedPeople": ["araki-murashige", "oda-nobunaga"],
+      "relatedBattles": ["arioka-siege"],
+      "tags": ["荒木村重", "織田信長", "有岡城の乱", "通説", "考察"]
+    },
+    {
+      "id": "sengoku-economics",
+      "title": "戦国大名は「経営者」だった ― 経済から見る戦国時代",
+      "series": "economics",
+      "group": "総論",
+      "category": "考察",
+      "summary": "合戦や忠義の物語の裏には、給料（知行）と組織の話がある。大名を経営者に見立てると、出奔（転職）も謀反（乗っ取り）も「そりゃ起こるよね」と腑に落ちる。経済の視点で戦国を俯瞰する。",
+      "date": "2026-07-07",
+      "author": "管理人",
+      "relatedPeople": ["oda-nobunaga", "uesugi-kenshin", "toyotomi-hideyoshi"],
+      "relatedBattles": [],
+      "tags": ["経済", "戦国大名", "下剋上", "考察"]
+    },
     {
       "id": "tedorigawa-kenshin",
       "title": "上杉謙信はなぜ手取川で織田軍に勝てたのか",

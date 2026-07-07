@@ -32,8 +32,10 @@
 | `timeline` | Event[] | 個人の年表 |
 | `episodes` | Episode[] | 逸話・エピソード |
 | `achievements` | Achievement[] | 成し遂げたこと |
+| `reputation` | Reputation[] | 後世の評価（同時代・江戸・明治・昭和・現代の時代別） |
 | `references` | Reference[] | 参考書籍（アフィリエイト対象） |
-| `spots` | Spot[] | ゆかりの地（城跡・銅像・刀剣・博物館・名物など） |
+| `spots` | Spot[] | ゆかりの地（城跡・銅像・刀剣・肖像画・博物館・名物など） |
+| `graves` | Graves | 墓所（現存・諸説あり・不明・なしを必ず明示する） |
 | `images` | Image[] | 人物画像 |
 | `sources` | Source[] | 出典の一覧（本文から `sourceId` で参照） |
 | `tags` | string[] | 分類タグ（例：`織田家`, `三英傑`） |
@@ -65,15 +67,17 @@
 Place = { "name": string, "prefecture"?: string, "city"?: string, "lat"?: number, "lng"?: number }
 
 Spot = {
-  "type": "城跡" | "銅像" | "刀剣" | "博物館" | "資料館" | "名物" | "墓所" | "神社仏閣" | "その他",
+  "type": "城跡" | "銅像" | "刀剣" | "肖像画" | "博物館" | "資料館" | "名物" | "神社仏閣" | "その他",
   "name": string,
   "prefecture"?: string, "city"?: string,
   "lat"?: number, "lng"?: number,
-  "description"?: string,
+  "description"?: string,   // 所蔵先の博物館名などもここに記す（例：「福岡市博物館蔵、国宝」）
   "sourceId"?: string
 }
 ```
 > `Spot` に地域を持たせることで「地域から探す」「逆引き（この人物→行くべき場所）」の両方に使える。
+> 刀剣・肖像画は所蔵する博物館の所在地を `prefecture` / `city` に入れると、その地域からも辿れる。
+> **墓所は `graves` フィールドで別管理する**（不明・なしも明示するため）。
 
 ### Rank（官位変遷）
 ```
@@ -136,6 +140,25 @@ Spot = {
 { "src": string, "caption"?: string, "credit"?: string, "license"?: string }
 ```
 
+### Reputation（後世の評価）
+```
+{ "era": "同時代" | "江戸" | "明治" | "昭和" | "現代" | string,
+  "body": string,         // その時代における評価・人物像
+  "sourceId"?: string }
+```
+> 時代ごとに評価がどう変わってきたかを示す。戦国期の同時代評価から、江戸の軍記物、近代の再評価、現代の研究による見直しまで。
+
+### Graves（墓所）
+```
+{ "status": "現存" | "諸説あり" | "不明" | "なし",   // 必ず記す
+  "note"?: string,
+  "places"?: [
+    { "name": string, "prefecture"?: string, "city"?: string,
+      "description"?: string, "sourceId"?: string }
+  ] }
+```
+> 墓所は「わからない」ことも情報。遺骸が見つかっていない・供養塔が各地にある等を `status` と `note` で明示する。
+
 ### Source（出典）
 ```
 { "id": string,          // 本文から sourceId で参照
@@ -144,8 +167,13 @@ Spot = {
   "publisher"?: string,
   "year"?: number,
   "page"?: string,
-  "url"?: string }
+  "url"?: string,
+  "type"?: "史料" | "書籍" | "論文" | "ネット記事" | "その他",  // 出典の種別
+  "primary"?: "一次資料" | "二次資料" }   // 史料・書籍の場合に明記
 ```
+> **一次資料**：当事者・同時代に近い立場が残した記録（例：『信長公記』）。
+> **二次資料**：後世に編纂・研究された著作（軍記物、研究書など）。
+> 論文・ネット記事は `type` で分類し、`primary` は付けなくてよい。
 
 ## 今後の拡張予定
 

@@ -140,20 +140,47 @@
       html.push(section("領地の変遷", `<ul class="list">${items}</ul>`));
     }
 
+    // 年表イベントに紐付けて表示した記事は、末尾の関連記事から除外する
+    const usedArticleIds = new Set();
+
+    // 指定の合戦に関連する記事（この人物に関連するもの）を探す
+    function articlesForBattle(battleId) {
+      if (!battleId) return [];
+      return (articles || []).filter(
+        (a) =>
+          !a.draft &&
+          (a.relatedPeople || []).includes(p.id) &&
+          (a.relatedBattles || []).includes(battleId)
+      );
+    }
+    function inlineArticleHTML(list) {
+      if (!list.length) return "";
+      return list
+        .map((a) => {
+          usedArticleIds.add(a.id);
+          return `<a class="inline-article" href="article.html?id=${encodeURIComponent(a.id)}">
+              <span class="inline-article-label">考察</span>${esc(a.title)}
+            </a>`;
+        })
+        .join("");
+    }
+
     // 年表
     if (p.timeline && p.timeline.length) {
       const items = p.timeline
         .slice()
         .sort((a, b) => (a.year - b.year) || ((a.month || 0) - (b.month || 0)))
-        .map(
-          (e) => `<li>
+        .map((e) => {
+          const related = inlineArticleHTML(articlesForBattle(e.battle_id));
+          return `<li>
             <span class="t-year">${esc(e.year)}${e.month ? "." + e.month : ""}</span>
             <span>
               <span class="t-title">${esc(e.title)}</span>
               ${e.description ? `<br><span class="t-desc">${esc(e.description)}</span>` : ""}
+              ${related ? `<br>${related}` : ""}
             </span>
-          </li>`
-        )
+          </li>`;
+        })
         .join("");
       html.push(section("年表", `<ul class="timeline">${items}</ul>`));
     }
@@ -164,6 +191,19 @@
         .map((a) => `<li><b>${esc(a.title)}</b>${a.description ? `<br><span class="muted">${esc(a.description)}</span>` : ""}</li>`)
         .join("");
       html.push(section("成し遂げたこと", `<ul class="list">${items}</ul>`));
+    }
+
+    // 後世の評価（時代別）
+    if (p.reputation && p.reputation.length) {
+      const items = p.reputation
+        .map(
+          (r) => `<div class="rep-item">
+            <span class="rep-era">${esc(r.era)}</span>
+            <div class="rep-body">${esc(r.body)}</div>
+          </div>`
+        )
+        .join("");
+      html.push(section("後世の評価", `<div class="rep-list">${items}</div>`));
     }
 
     // 逸話
@@ -190,9 +230,34 @@
       html.push(section("ゆかりの地・史跡", items));
     }
 
-    // 関連する考察・記事（この人物が relatedPeople に含まれる記事）
+    // 墓所（状態は不明・なしも必ず明示）
+    if (p.graves) {
+      const g = p.graves;
+      const places = (g.places || [])
+        .map((pl) => {
+          const place = [pl.prefecture, pl.city].filter(Boolean).map(esc).join(" ");
+          return `<div class="spot-item">
+              <span class="spot-type">墓所</span>
+              <b>${esc(pl.name)}</b>
+              ${place ? `<span class="spot-place">／ ${place}</span>` : ""}
+              ${pl.description ? `<div class="muted">${esc(pl.description)}</div>` : ""}
+            </div>`;
+        })
+        .join("");
+      const status = `<p class="grave-status">状態：<b>${esc(g.status || "不明")}</b>${
+        g.note ? ` <span class="muted">${esc(g.note)}</span>` : ""
+      }</p>`;
+      html.push(section("墓所", status + places));
+    }
+
+    // 関連する考察・記事（年表イベントに紐付け済みのものは除外）
     const relArticles = (articles || [])
-      .filter((a) => !a.draft && (a.relatedPeople || []).includes(p.id))
+      .filter(
+        (a) =>
+          !a.draft &&
+          (a.relatedPeople || []).includes(p.id) &&
+          !usedArticleIds.has(a.id)
+      )
       .sort((a, b) => String(b.date || "").localeCompare(String(a.date || "")));
     if (relArticles.length) {
       const items = relArticles
@@ -221,7 +286,7 @@
       html.push(section("参考書籍", items));
     }
 
-    // 出典
+    // 出典（種別・一次/二次を明示）
     if (p.sources && p.sources.length) {
       const items = p.sources
         .map((s) => {
@@ -229,10 +294,17 @@
           const title = s.url
             ? `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title)}</a>`
             : esc(s.title);
-          return `<li>${title}${meta ? ` <span class="muted">（${meta}）</span>` : ""}</li>`;
+          const badges =
+            (s.type ? `<span class="src-type">${esc(s.type)}</span>` : "") +
+            (s.primary
+              ? `<span class="src-primary src-${s.primary === "一次資料" ? "primary1" : "primary2"}">${esc(s.primary)}</span>`
+              : "");
+          return `<li>${badges ? badges + " " : ""}${title}${
+            meta ? ` <span class="muted">（${meta}）</span>` : ""
+          }</li>`;
         })
         .join("");
-      html.push(section("出典", `<ul class="list">${items}</ul>`));
+      html.push(section("出典", `<ul class="list src-list">${items}</ul>`));
     }
 
     if (p.updatedAt) {

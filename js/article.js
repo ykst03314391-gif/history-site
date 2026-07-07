@@ -22,7 +22,12 @@
     ]);
     if (!artRes.ok || !mdRes.ok) throw new Error("not found");
 
-    const meta = ((await artRes.json()).articles || []).find((a) => a.id === id);
+    const artData = await artRes.json();
+    const meta = (artData.articles || []).find((a) => a.id === id);
+    const series =
+      meta && meta.series
+        ? (artData.series || []).find((s) => s.id === meta.series)
+        : null;
     const md = await mdRes.text();
     const people = peopleRes.ok ? (await peopleRes.json()).people || [] : [];
     const nameOf = (pid) => (people.find((p) => p.id === pid) || {}).name || pid;
@@ -32,6 +37,7 @@
     // ヘッダー（カテゴリ・日付）。タイトルは本文 Markdown の見出しに任せる
     const head = meta
       ? `<div class="article-head">
+           ${series ? `<a class="series-badge" href="articles.html">特集：${esc(series.title)}</a>` : ""}
            <span class="article-cat">${esc(meta.category || "記事")}</span>
            <span class="article-date">${esc(meta.date || "")}</span>
            ${meta.author ? `<span class="article-author">${esc(meta.author)}</span>` : ""}

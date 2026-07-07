@@ -73,9 +73,7 @@
     { "type": "その他", "name": "手取川古戦場", "prefecture": "石川県", "description": "織田軍を破った手取川の戦いの地" }
   ],
   "images": [],
-  "sources": [
-    { "id": "shincho-koki", "title": "信長公記", "author": "太田牛一" }
-  ],
+  "sources": [],
   "tags": ["上杉家", "戦国大名", "越後"],
   "history": [
     { "date": "2026-07-07", "note": "新規作成" }

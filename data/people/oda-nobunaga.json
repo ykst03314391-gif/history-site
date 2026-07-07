@@ -14,9 +14,8 @@
     "month": 5,
     "day": 12,
     "era": "天文3年5月12日",
-    "note": "生誕地・生年月日には諸説あり",
-    "uncertain": true,
-    "sourceId": "shincho-koki"
+    "note": "生年月日・生誕地には諸説あり。信長公記は信長の生年を記していない（＝要一次資料の別典拠）",
+    "uncertain": true
   },
   "death": {
     "year": 1582,
@@ -33,7 +32,7 @@
   },
   "ranks": [
     { "year": 1568, "title": "正五位下・弾正忠", "note": "上洛後" },
-    { "year": 1575, "title": "権大納言・右近衛大将" },
+    { "year": 1575, "title": "権大納言・右近衛大将", "note": "右近衛大将は信長公記（巻八）に見える", "sourceId": "shincho-koki" },
     { "year": 1577, "title": "正二位・右大臣" },
     { "year": 1578, "title": "右大臣・右大将を辞任", "note": "以後、無官のまま" }
   ],
@@ -57,18 +56,18 @@
   ],
   "territories": [
     { "year": 1560, "name": "尾張国", "prefecture": "愛知県", "note": "尾張統一" },
-    { "year": 1567, "name": "美濃国", "prefecture": "岐阜県", "note": "稲葉山城を攻略し岐阜城と改称" },
-    { "year": 1576, "name": "近江国（安土）", "prefecture": "滋賀県", "note": "安土城を築城し本拠とする" }
+    { "year": 1567, "name": "美濃国", "prefecture": "岐阜県", "note": "稲葉山城を攻略し岐阜城と改称（信長公記 首巻：井口を岐阜と改名）", "sourceId": "shincho-koki" },
+    { "year": 1576, "name": "近江国（安土）", "prefecture": "滋賀県", "note": "安土城を築城し本拠とする（信長公記 巻九：安土御普請）", "sourceId": "shincho-koki" }
   ],
   "timeline": [
-    { "year": 1551, "title": "家督相続", "description": "父・信秀の死により織田弾正忠家の家督を継ぐ" },
-    { "year": 1560, "month": 5, "title": "桶狭間の戦い", "description": "今川義元を討ち取り、勢力を拡大", "battle_id": "okehazama" },
-    { "year": 1568, "title": "上洛", "description": "足利義昭を奉じて上洛" },
-    { "year": 1570, "title": "姉川の戦い", "description": "浅井・朝倉連合軍を破る", "battle_id": "anegawa" },
+    { "year": 1551, "title": "家督相続", "description": "父・信秀の死により織田弾正忠家の家督を継ぐ", "sourceId": "shincho-koki" },
+    { "year": 1560, "month": 5, "title": "桶狭間の戦い", "description": "今川義元を討ち取り、勢力を拡大", "battle_id": "okehazama", "sourceId": "shincho-koki" },
+    { "year": 1568, "title": "上洛", "description": "足利義昭を奉じて上洛", "sourceId": "shincho-koki" },
+    { "year": 1570, "title": "姉川の戦い", "description": "浅井・朝倉連合軍を破る", "battle_id": "anegawa", "sourceId": "shincho-koki" },
     { "year": 1573, "title": "室町幕府滅亡", "description": "足利義昭を京都から追放" },
-    { "year": 1575, "month": 5, "title": "長篠の戦い", "description": "徳川家康と連合し武田勝頼を破る", "battle_id": "nagashino" },
-    { "year": 1576, "title": "安土城築城", "description": "近江に安土城の築城を開始" },
-    { "year": 1582, "month": 6, "day": 2, "title": "本能寺の変", "description": "家臣・明智光秀の謀反により本能寺で自害", "battle_id": "honnoji-no-hen" }
+    { "year": 1575, "month": 5, "title": "長篠の戦い", "description": "徳川家康と連合し武田勝頼を破る", "battle_id": "nagashino", "sourceId": "shincho-koki" },
+    { "year": 1576, "title": "安土城築城", "description": "近江に安土城の築城を開始", "sourceId": "shincho-koki" },
+    { "year": 1582, "month": 6, "day": 2, "title": "本能寺の変", "description": "家臣・明智光秀の謀反により本能寺で自害", "battle_id": "honnoji-no-hen", "sourceId": "shincho-koki" }
   ],
   "episodes": [
     {

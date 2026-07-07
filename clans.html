@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>地域から探す ｜ 戦国クロニクル</title>
-  <meta name="description" content="都道府県から、ゆかりの戦国武将・城跡・史跡・博物館を逆引きできます。">
+  <title>大名家から探す ｜ 戦国クロニクル</title>
+  <meta name="description" content="織田家・上杉家など、大名家ごとに人物と歴史をたどれます。">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -21,17 +21,18 @@
   </header>
 
   <main>
-    <h2 class="page-title">地域から探す</h2>
-    <p class="lead">「この土地には、どんな武将・史跡があるのか？」——都道府県から逆引きできます。</p>
+    <h2 class="page-title">大名家から探す</h2>
+    <p class="lead">家を選ぶと、その大名家の歩みと、ゆかりの人物をたどれます。</p>
 
-    <div id="pref-buttons" class="pref-buttons" aria-label="都道府県を選択"></div>
-    <div id="result" aria-live="polite"><p class="muted">読み込み中…</p></div>
+    <input type="search" id="search" class="search-box" placeholder="家名・かなで検索…">
+
+    <div id="list" class="card-grid" aria-live="polite"></div>
   </main>
 
   <footer class="site-footer">
     <p>戦国クロニクル（開発中）／ 掲載情報には諸説あります。</p>
   </footer>
 
-  <script src="js/regions.js"></script>
+  <script src="js/clans.js"></script>
 </body>
 </html>

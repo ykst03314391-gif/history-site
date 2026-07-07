@@ -234,6 +234,7 @@ main {
   margin: 0 0 14px;
 }
 .section h2::before { content: "◆ "; color: var(--accent); font-size: 0.9em; }
+.head-note { font-size: 0.8rem; color: var(--ink-soft); font-weight: normal; margin-left: 6px; }
 
 /* 定義リスト（基本情報） */
 .facts { display: grid; grid-template-columns: max-content 1fr; gap: 8px 20px; }

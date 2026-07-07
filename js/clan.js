@@ -44,17 +44,39 @@
       html.push(`<section class="section"><h2>この家について</h2>${body}</section>`);
     }
 
-    // 所属人物
-    if (c.members && c.members.length) {
-      const items = c.members
-        .map(
-          (m) => `<div class="spot-item">
-            <b>${memberLink(m)}</b>
-            ${m.role ? `<span class="muted">／ ${esc(m.role)}</span>` : ""}
-          </div>`
-        )
-        .join("");
-      html.push(`<section class="section"><h2>ゆかりの人物</h2>${items}</section>`);
+    // 所属人物：一門 と ゆかりの人物（家臣／その他）に分ける
+    const members = c.members || [];
+    const memberItem = (m) => `<div class="spot-item">
+        <b>${memberLink(m)}</b>
+        ${m.role ? `<span class="muted">／ ${esc(m.role)}</span>` : ""}
+      </div>`;
+    const memberList = (list) => list.map(memberItem).join("");
+
+    // type 未設定は「一門」扱い
+    const ichimon = members.filter((m) => !m.type || m.type === "一門");
+    const kashin = members.filter((m) => m.type === "家臣");
+    const other = members.filter((m) => m.type === "その他");
+
+    if (ichimon.length) {
+      const headName = c.head && c.head.name ? esc(c.head.name) : "";
+      const headLabel =
+        c.head && c.head.person_id
+          ? `<a href="person.html?id=${encodeURIComponent(c.head.person_id)}">${headName}</a>`
+          : headName;
+      const headNote = headName
+        ? `<span class="head-note">主：${headLabel}（この人から見た続柄）</span>`
+        : "";
+      html.push(`<section class="section"><h2>一門${headNote}</h2>${memberList(ichimon)}</section>`);
+    }
+    if (kashin.length || other.length) {
+      let inner = "";
+      if (kashin.length) {
+        inner += `<h3 class="series-group">家臣</h3>${memberList(kashin)}`;
+      }
+      if (other.length) {
+        inner += `<h3 class="series-group">その他（親交のあった人物など）</h3>${memberList(other)}`;
+      }
+      html.push(`<section class="section"><h2>ゆかりの人物</h2>${inner}</section>`);
     }
 
     if (c.updatedAt) {

@@ -13,11 +13,12 @@
     <div class="inner">
       <h1 class="site-title"><a href="index.html">戦国クロニクル</a></h1>
       <nav>
+        <a href="articles.html">考察・記事</a>
         <a href="people.html">人物</a>
         <a href="regions.html">地域から探す</a>
         <a href="clans.html">大名家から探す</a>
         <a href="battles.html">合戦名から探す</a>
-        <a href="articles.html">考察・記事</a>
+        <a href="about.html">このサイトについて</a>
       </nav>
     </div>
   </header>
@@ -25,26 +26,58 @@
   <main>
     <!-- ヒーロー -->
     <section class="hero">
-      <p class="hero-eyebrow">戦国時代を「巡る・深める」</p>
-      <h2 class="hero-title">これ、誰だっけ？<br>どんな人だっけ？<br><em>もっと知りたい！</em></h2>
+      <p class="hero-eyebrow">戦国時代を、自分の視点で捉え直す個人メディア</p>
+      <h2 class="hero-title">通説を、<br><em>もう一度</em>疑ってみる。</h2>
       <p class="hero-lead">
-        大河ドラマや映画で気になったあの武将を、<strong>出典に基づいて</strong>再学習。
-        人物・史跡・合戦を関連づけて、事典では終わらない「切り口」でお届けします。
+        教科書やドラマの物語をなぞるのではなく、<strong>「本当にそうか？」</strong>と問い直す。
+        経済・通説・旅——切り口は違っても、やっていることは一つ。<strong>戦国を、自分の目で捉え直す</strong>。
       </p>
       <div class="hero-actions">
-        <a class="btn btn-primary" href="people.html">武将を調べる</a>
-        <a class="btn" href="articles.html">考察を読む</a>
+        <a class="btn btn-primary" href="articles.html">考察を読む</a>
+        <a class="btn" href="about.html">このサイトのスタンス</a>
       </div>
     </section>
 
-    <!-- 3つの入口 -->
+    <!-- 新着記事（主役） -->
     <section class="section">
-      <h2>できること</h2>
+      <h2>新着の考察・記事</h2>
+      <p class="lead">このサイトの主役。出典を示したうえで「自分はこう考える」を書きます。</p>
+      <div id="latest-articles" class="card-grid"><p class="muted">読み込み中…</p></div>
+      <p class="section-more"><a href="articles.html">考察・記事をすべて見る →</a></p>
+    </section>
+
+    <!-- 3つの角度（特集） -->
+    <section class="section">
+      <h2>3つの角度から捉え直す（特集）</h2>
+      <p class="lead">別テーマではありません。同じ「捉え直す」態度を、違う角度から当てているだけ。</p>
+      <div class="feature-grid">
+        <a class="feature-card" href="articles.html">
+          <span class="feature-icon">経</span>
+          <h3>経済で見る戦国時代</h3>
+          <p>大名を「経営者」に見立て、知行・恩賞・収入という<strong>カネの角度</strong>から。</p>
+        </a>
+        <a class="feature-card" href="articles.html">
+          <span class="feature-icon">説</span>
+          <h3>社会の通説っておかしくね？</h3>
+          <p>広まった通説を、資料に基づいて<strong>疑いの角度</strong>から問い直す。</p>
+        </a>
+        <a class="feature-card" href="articles.html">
+          <span class="feature-icon">旅</span>
+          <h3>戦国ゆかりの地めぐり</h3>
+          <p>机上の知識を、実際に立つ<strong>現地の角度</strong>から捉え直す。</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- 資料から引く（脚注） -->
+    <section class="section">
+      <h2>資料から引く（考察を支える脚注）</h2>
+      <p class="lead">主役は考察。人物・地域・大名家・合戦のデータは、読みながらすぐ引ける「足場」です。</p>
       <div class="feature-grid">
         <a class="feature-card" href="people.html">
           <span class="feature-icon">人</span>
-          <h3>人物データベース</h3>
-          <p>生没年・家系・年表・逸話・ゆかりの地まで。武将を体系的に深掘り。</p>
+          <h3>人物</h3>
+          <p>生没年・家系・年表・逸話・ゆかりの地。「この人、誰だっけ？」の足場。</p>
         </a>
         <a class="feature-card" href="regions.html">
           <span class="feature-icon">地</span>
@@ -61,21 +94,10 @@
           <h3>合戦名から探す</h3>
           <p>桶狭間・本能寺の変など、合戦や政変を年代順にたどる。</p>
         </a>
-        <a class="feature-card" href="articles.html">
-          <span class="feature-icon">論</span>
-          <h3>考察・記事</h3>
-          <p>通説の紹介で終わらせない。出典を示した管理人の視点。</p>
-        </a>
       </div>
     </section>
 
-    <!-- 新着記事 -->
-    <section class="section">
-      <h2>新着の考察・記事</h2>
-      <div id="latest-articles" class="card-grid"><p class="muted">読み込み中…</p></div>
-    </section>
-
-    <!-- 注目の人物 -->
+    <!-- 収録の人物（脚注の一部） -->
     <section class="section">
       <h2>収録している人物</h2>
       <div id="pickup-people" class="card-grid"><p class="muted">読み込み中…</p></div>

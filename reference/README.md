@@ -16,6 +16,7 @@
 |---|---|---|---|---|
 | `shincho-koki.txt` | 太田牛一『信長公記』 | **一次史料** | `shincho-koki` | 信長・信忠・光秀・秀吉（信長期） |
 | `mikawa-monogatari.txt` | 大久保忠教『三河物語』 | 一次寄り（覚書・主観注意） | `mikawa-monogatari` | 家康・松平・戦国全般 |
+| `tensho-ki.txt` | 大村由己『天正記』（6記） | 一次寄り（同時代・秀吉方の顕彰） | `tensho-ki` | 秀吉・光秀（山崎）・勝家（賤ヶ岳）・別所 |
 | `koyo-gunkan.txt` | 『甲陽軍鑑』 | 二次（軍学書・要批判） | `koyo-gunkan` | 武田・上杉・川中島 |
 | `hoan-taikoki.txt` | 小瀬甫庵『太閤記』 | 二次（脚色多） | `hoan-taikoki` | 秀吉・信長 |
 | `kawasumi-taikoki.txt` | 『川角太閤記』 | 二次（覚書・聞書） | `kawasumi-taikoki` | 秀吉・光秀・本能寺 |
@@ -24,6 +25,8 @@
 | `hojo-godaiki.txt` | 三浦浄心『北条五代記』 | 二次（軍記） | `hojo-godaiki` | 後北条氏・小田原 |
 | `sakuma-gunki.txt` | 『佐久間軍記』 | 二次（軍記） | `sakuma-gunki` | 佐久間氏・織田家臣 |
 | `keicho-kenmonshu.txt` | 三浦浄心『慶長見聞集』 | 二次（江戸初期随筆） | `keicho-kenmonshu` | 江戸初期風俗（戦国は間接） |
+| `kanchiron.txt` | 『官地論』 | 二次（軍記） | `kanchiron` | 加賀富樫氏・加賀一向一揆 |
+| `ihon-odawaraki.txt` | 『異本小田原記』 | 二次（軍記・北条五代記系の異本） | `ihon-odawaraki` | 後北条・小田原 |
 
 > - **一次史料は `shincho-koki` のみ**（`mikawa-monogatari` は当事者覚書で一次寄りだが主観・記憶違いに注意）。残りは**すべて二次史料**（軍記・軍学書・覚書）で、そのまま事実の典拠にはできない。「近世にこう語られた」水準で扱い、一次史料と突き合わせる。
 > - 収録範囲メモ：`shincho-koki` 首巻〜巻之十五（本能寺まで）／`koyo-gunkan` 全60品。

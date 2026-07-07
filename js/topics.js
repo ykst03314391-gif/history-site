@@ -65,7 +65,7 @@
         <h3 class="topic-title">${esc(t.title)}</h3>
         ${t.summary ? `<p class="topic-summary">${esc(t.summary)}</p>` : ""}
         ${metaLine(t)}
-        ${t.take ? `<div class="topic-take"><span class="take-label">見立て</span>${esc(t.take)}</div>` : ""}
+        ${t.take ? `<div class="topic-take"><span class="take-label">ひとこと</span>${esc(t.take)}</div>` : ""}
         ${sourceLine(t)}
         <div class="topic-links">${relLinks(t)}</div>
       </article>`;

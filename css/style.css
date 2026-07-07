@@ -650,22 +650,23 @@ footer.site-footer {
 .topic-summary { margin: 0 0 10px; color: var(--ink-soft); font-size: 0.94rem; }
 .topic-meta { margin: 0 0 10px; font-size: 0.86rem; color: var(--ink-soft); }
 
-/* 見立て＝差別化の核。目立たせる */
+/* ひとこと＝任意の軽い補足（考察はA記事で。ここは控えめに） */
 .topic-take {
   margin: 0 0 10px;
-  padding: 10px 14px;
-  background: #f6efe0;
-  border-left: 4px solid var(--accent);
+  padding: 8px 12px;
+  background: #f3eee3;
+  border-left: 3px solid var(--gold);
   border-radius: 0 6px 6px 0;
-  font-size: 0.95rem;
-  line-height: 1.7;
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: var(--ink-soft);
 }
 .take-label {
   display: inline-block;
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   font-weight: 700;
   color: #fff;
-  background: var(--accent);
+  background: var(--ink-soft);
   border-radius: 4px;
   padding: 1px 7px;
   margin-right: 8px;

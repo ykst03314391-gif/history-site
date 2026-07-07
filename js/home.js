@@ -54,7 +54,7 @@
             <span class="topic-date">${esc(t.date || "")}</span>
           </div>
           <h3 class="topic-title">${esc(t.title)}</h3>
-          ${t.take ? `<div class="topic-take"><span class="take-label">見立て</span>${esc(t.take)}</div>` : ""}
+          ${t.take ? `<div class="topic-take"><span class="take-label">ひとこと</span>${esc(t.take)}</div>` : ""}
           <div class="topic-links">${
             (t.relatedArticles || []).length
               ? `<a class="topic-to-article" href="article.html?id=${encodeURIComponent(t.relatedArticles[0])}">→ 深掘りを読む</a>`

@@ -12,15 +12,18 @@
   "kamon": { "name": "上杉笹（竹に飛び雀）" },
   "birth": {
     "year": 1530,
-    "era": "享禄3年"
+    "era": "享禄3年",
+    "note": "甲陽軍鑑は享禄3年（庚寅）の誕生とする（二次史料）",
+    "sourceId": "koyo-gunkan"
   },
   "death": {
     "year": 1578,
     "month": 4,
     "day": 19,
     "era": "天正6年3月13日",
-    "note": "春日山城で急死。脳溢血とも伝わる",
-    "uncertain": true
+    "note": "春日山城で急死。脳溢血とも伝わる。甲陽軍鑑は「戊寅（天正6年）三月十三日に他界」と記す",
+    "uncertain": true,
+    "sourceId": "koyo-gunkan"
   },
   "birthplace": {
     "name": "越後国（春日山城）",
@@ -28,7 +31,7 @@
     "city": "上越市"
   },
   "ranks": [
-    { "year": 1561, "title": "関東管領", "note": "上杉憲政より職と姓を譲られる" },
+    { "year": 1561, "title": "関東管領", "note": "上杉憲政より職と姓を譲られる", "sourceId": "koyo-gunkan" },
     { "title": "従四位下・弾正少弼" }
   ],
   "family": [
@@ -45,10 +48,10 @@
     { "year": 1577, "name": "加賀・能登方面", "prefecture": "石川県", "note": "北陸へ進出" }
   ],
   "timeline": [
-    { "year": 1553, "title": "川中島の戦い（第一次）", "description": "武田信玄との北信濃をめぐる戦いが始まる。以後、数度にわたり対陣", "battle_id": "kawanakajima" },
-    { "year": 1561, "title": "関東管領就任", "description": "上杉憲政より関東管領職と上杉姓を継ぐ" },
+    { "year": 1553, "title": "川中島の戦い（第一次）", "description": "武田信玄との北信濃をめぐる戦いが始まる。以後、数度にわたり対陣", "battle_id": "kawanakajima", "sourceId": "koyo-gunkan" },
+    { "year": 1561, "title": "関東管領就任", "description": "上杉憲政より関東管領職と上杉姓を継ぐ", "sourceId": "koyo-gunkan" },
     { "year": 1577, "month": 9, "title": "手取川の戦い", "description": "北陸へ侵攻し、柴田勝家らの織田軍を加賀・手取川で破る", "battle_id": "tedorigawa" },
-    { "year": 1578, "title": "急死", "description": "織田方との決戦を前に、春日山城で急死した" }
+    { "year": 1578, "title": "急死", "description": "織田方との決戦を前に、春日山城で急死した", "sourceId": "koyo-gunkan" }
   ],
   "episodes": [
     {
@@ -73,7 +76,15 @@
     { "type": "その他", "name": "手取川古戦場", "prefecture": "石川県", "description": "織田軍を破った手取川の戦いの地" }
   ],
   "images": [],
-  "sources": [],
+  "sources": [
+    {
+      "id": "koyo-gunkan",
+      "title": "甲陽軍鑑",
+      "note": "武田氏の軍学書。上杉方の事績も含むが二次史料であり、年次の錯誤が多く史実性には史料批判を要する",
+      "type": "史料",
+      "primary": "二次資料"
+    }
+  ],
   "tags": ["上杉家", "戦国大名", "越後"],
   "history": [
     { "date": "2026-07-07", "note": "新規作成" }

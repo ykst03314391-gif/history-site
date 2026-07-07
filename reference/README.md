@@ -27,7 +27,9 @@
 | `keicho-kenmonshu.txt` | 三浦浄心『慶長見聞集』 | 二次（江戸初期随筆） | `keicho-kenmonshu` | 江戸初期風俗（戦国は間接） |
 | `kanchiron.txt` | 『官地論』 | 二次（軍記） | `kanchiron` | 加賀富樫氏・加賀一向一揆 |
 | `ihon-odawaraki.txt` | 『異本小田原記』 | 二次（軍記・北条五代記系の異本） | `ihon-odawaraki` | 後北条・小田原 |
-| `jozan-kidan.txt` | 湯浅常山『常山紀談』(上巻) | 二次（逸話集・**NDL OCR/要校正**） | `jozan-kidan` | 信長・秀吉・武田・上杉の逸話 |
+| `jozan-kidan.txt` | 湯浅常山『常山紀談』(全3巻) | 二次（逸話集・**NDL OCR/要校正**） | `jozan-kidan` | 信長・秀吉・武田・上杉の逸話 |
+| `intoku-taiheiki.txt` | 香川正矩『陰徳太平記』(全81巻) | 二次（軍記・**NDL OCR/要校正**） | `intoku-taiheiki` | 毛利・尼子・中国地方 |
+| `meisho-genkoroku.txt` | 岡谷繁実『名将言行録』(前編上欠) | 二次（言行録・**NDL OCR/要校正**） | `meisho-genkoroku` | 武将全般の言行・逸話 |
 
 > - **一次史料は `shincho-koki` のみ**（`mikawa-monogatari` は当事者覚書で一次寄りだが主観・記憶違いに注意）。残りは**すべて二次史料**（軍記・軍学書・覚書）で、そのまま事実の典拠にはできない。「近世にこう語られた」水準で扱い、一次史料と突き合わせる。
 > - 収録範囲メモ：`shincho-koki` 首巻〜巻之十五（本能寺まで）／`koyo-gunkan` 全60品。

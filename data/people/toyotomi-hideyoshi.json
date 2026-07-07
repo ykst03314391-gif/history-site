@@ -29,8 +29,8 @@
     "city": "名古屋市"
   },
   "ranks": [
-    { "year": 1585, "title": "関白" },
-    { "year": 1586, "title": "太政大臣", "note": "あわせて「豊臣」姓を賜る" }
+    { "year": 1585, "title": "関白", "sourceId": "hoan-taikoki" },
+    { "year": 1586, "title": "太政大臣", "note": "あわせて「豊臣」姓を賜る", "sourceId": "hoan-taikoki" }
   ],
   "family": [
     { "relation": "妻", "name": "ねね（高台院）" },
@@ -48,17 +48,17 @@
     { "name": "石田三成" }
   ],
   "territories": [
-    { "year": 1573, "name": "近江国（長浜）", "prefecture": "滋賀県", "note": "浅井氏旧領を与えられ長浜城主となる" },
-    { "year": 1583, "name": "摂津国（大坂）", "prefecture": "大阪府", "note": "大坂城を築き本拠とする" }
+    { "year": 1573, "name": "近江国（長浜）", "prefecture": "滋賀県", "note": "浅井氏旧領を与えられ長浜城主となる", "sourceId": "shincho-koki" },
+    { "year": 1583, "name": "摂津国（大坂）", "prefecture": "大阪府", "note": "大坂城を築き本拠とする", "sourceId": "hoan-taikoki" }
   ],
   "timeline": [
-    { "year": 1573, "title": "長浜城主", "description": "近江に所領を得て、羽柴姓を名乗る" },
-    { "year": 1582, "month": 6, "title": "中国大返し", "description": "本能寺の変を受け、備中高松城の陣から驚異的な速さで畿内へ引き返す" },
-    { "year": 1582, "month": 6, "day": 13, "title": "山崎の戦い", "description": "明智光秀を破り、主君・信長の仇を討つ", "battle_id": "yamazaki" },
-    { "year": 1583, "title": "賤ヶ岳の戦い", "description": "柴田勝家を破り、織田家中の主導権を握る", "battle_id": "shizugatake" },
-    { "year": 1585, "title": "関白就任", "description": "関白に任じられ、天下人としての地位を固める" },
-    { "year": 1590, "title": "天下統一", "description": "小田原征伐で北条氏を降し、全国統一を成し遂げる" },
-    { "year": 1598, "title": "死去", "description": "伏見城で病没。幼い秀頼を遺す" }
+    { "year": 1573, "title": "長浜城主", "description": "近江に所領を得て、羽柴姓を名乗る", "sourceId": "shincho-koki" },
+    { "year": 1582, "month": 6, "title": "中国大返し", "description": "本能寺の変を受け、備中高松城の陣から驚異的な速さで畿内へ引き返す", "sourceId": "hoan-taikoki" },
+    { "year": 1582, "month": 6, "day": 13, "title": "山崎の戦い", "description": "明智光秀を破り、主君・信長の仇を討つ", "battle_id": "yamazaki", "sourceId": "hoan-taikoki" },
+    { "year": 1583, "title": "賤ヶ岳の戦い", "description": "柴田勝家を破り、織田家中の主導権を握る", "battle_id": "shizugatake", "sourceId": "hoan-taikoki" },
+    { "year": 1585, "title": "関白就任", "description": "関白に任じられ、天下人としての地位を固める", "sourceId": "hoan-taikoki" },
+    { "year": 1590, "title": "天下統一", "description": "小田原征伐で北条氏を降し、全国統一を成し遂げる", "sourceId": "hoan-taikoki" },
+    { "year": 1598, "title": "死去", "description": "伏見城で病没。幼い秀頼を遺す", "sourceId": "hoan-taikoki" }
   ],
   "episodes": [
     {
@@ -86,8 +86,8 @@
   ],
   "images": [],
   "sources": [
-    { "id": "shincho-koki", "title": "信長公記", "author": "太田牛一" },
-    { "id": "taikoki", "title": "太閤記", "author": "小瀬甫庵" }
+    { "id": "shincho-koki", "title": "信長公記", "author": "太田牛一", "note": "秀吉の信長期（藤吉郎・羽柴期）を伝える一次史料", "type": "史料", "primary": "一次資料" },
+    { "id": "hoan-taikoki", "title": "太閤記", "author": "小瀬甫庵", "note": "秀吉の一代記。脚色が多い二次史料で史料批判を要する", "type": "史料", "primary": "二次資料" }
   ],
   "tags": ["豊臣家", "三英傑", "戦国大名"],
   "history": [

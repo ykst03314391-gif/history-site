@@ -43,15 +43,15 @@
     { "name": "斎藤利三", "note": "重臣。春日局の父" }
   ],
   "territories": [
-    { "year": 1571, "name": "近江国（坂本）", "prefecture": "滋賀県", "note": "比叡山焼き討ち後、志賀郡を与えられ坂本城を築く" },
-    { "year": 1579, "name": "丹波国（亀山）", "prefecture": "京都府", "note": "丹波を平定し、亀山城を拠点とする" }
+    { "year": 1571, "name": "近江国（坂本）", "prefecture": "滋賀県", "note": "比叡山焼き討ち後、志賀郡を与えられ坂本城を築く", "sourceId": "shincho-koki" },
+    { "year": 1579, "name": "丹波国（亀山）", "prefecture": "京都府", "note": "丹波を平定し、亀山城を拠点とする", "sourceId": "shincho-koki" }
   ],
   "timeline": [
     { "year": 1568, "title": "信長の上洛に従う", "description": "足利義昭と織田信長の双方に関わりつつ、信長の家臣となっていく" },
     { "year": 1571, "title": "坂本城主", "description": "近江志賀郡を与えられ、坂本城を築いて本拠とする" },
-    { "year": 1575, "title": "丹波攻略の開始", "description": "惟任日向守を称し、丹波攻めを任される" },
-    { "year": 1579, "title": "丹波平定", "description": "苦戦の末に丹波を平定し、有力な織田家臣となる" },
-    { "year": 1582, "month": 6, "day": 2, "title": "本能寺の変", "description": "京・本能寺に信長を急襲し、これを討つ", "battle_id": "honnoji-no-hen" },
+    { "year": 1575, "title": "丹波攻略の開始", "description": "惟任日向守を称し、丹波攻めを任される", "sourceId": "shincho-koki" },
+    { "year": 1579, "title": "丹波平定", "description": "苦戦の末に丹波を平定し、有力な織田家臣となる", "sourceId": "shincho-koki" },
+    { "year": 1582, "month": 6, "day": 2, "title": "本能寺の変", "description": "京・本能寺に信長を急襲し、これを討つ", "battle_id": "honnoji-no-hen", "sourceId": "shincho-koki" },
     { "year": 1582, "month": 6, "day": 13, "title": "山崎の戦い", "description": "中国大返しで戻った羽柴秀吉に敗れ、敗走中に落命する", "battle_id": "yamazaki" }
   ],
   "episodes": [

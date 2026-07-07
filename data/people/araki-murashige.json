@@ -35,12 +35,12 @@
   ],
   "retainers": [],
   "territories": [
-    { "year": 1578, "name": "摂津国（有岡城）", "prefecture": "兵庫県", "note": "伊丹城を有岡城と改め本拠とした" }
+    { "year": 1578, "name": "摂津国（有岡城）", "prefecture": "兵庫県", "note": "伊丹城を有岡城と改め本拠とした（信長公記は「伊丹城」と記す）", "sourceId": "shincho-koki" }
   ],
   "timeline": [
     { "year": 1573, "title": "織田信長に臣従", "description": "池田氏のもとを離れ、信長に仕えて摂津の支配を委ねられる" },
-    { "year": 1578, "title": "有岡城の乱", "description": "突如、信長に反旗を翻し、有岡城に籠もる", "battle_id": "arioka-siege" },
-    { "year": 1579, "title": "有岡城落城", "description": "落城の前に単身で城を脱出。残された一族・家臣の多くが処刑された" },
+    { "year": 1578, "title": "有岡城の乱", "description": "突如、信長に反旗を翻し、有岡城に籠もる", "battle_id": "arioka-siege", "sourceId": "shincho-koki" },
+    { "year": 1579, "title": "有岡城落城", "description": "落城の前に単身で城を脱出。残された一族・家臣の多くが処刑された", "sourceId": "shincho-koki" },
     { "year": 1582, "title": "茶人として復帰", "description": "本能寺の変で信長が没した後、堺・京に戻り、茶の湯の世界で活動する" },
     { "year": 1586, "title": "死去", "description": "茶人「荒木道薫」として晩年を過ごし、堺で没したと伝わる" }
   ],
@@ -48,7 +48,8 @@
     {
       "title": "妻子を残しての脱出",
       "body": "有岡城が落ちる前に村重は単身で脱出し、残された妻・だしをはじめとする一族や家臣は処刑されたと伝わる。この一件から、後世は村重を「妻子を見捨てた卑怯者」として語ることが多い。",
-      "uncertain": true
+      "uncertain": true,
+      "sourceId": "shincho-koki"
     },
     {
       "title": "利休七哲の茶人",

@@ -7,6 +7,23 @@
       ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c])
     );
 
+  // 更新履歴セクション（history 優先、無ければ updatedAt/date を1件表示）
+  function historyHTML(o) {
+    let hist = Array.isArray(o.history) ? o.history.slice() : [];
+    if (!hist.length && (o.updatedAt || o.date)) {
+      hist = [{ date: o.updatedAt || o.date, note: "" }];
+    }
+    if (!hist.length) return "";
+    hist.sort((a, b) => String(b.date || "").localeCompare(String(a.date || "")));
+    const items = hist
+      .map(
+        (h) =>
+          `<li><span class="hist-date">${esc(h.date || "")}</span>${esc(h.note || "")}</li>`
+      )
+      .join("");
+    return `<section class="section"><h2>更新履歴</h2><ul class="history-list">${items}</ul></section>`;
+  }
+
   const id = new URLSearchParams(location.search).get("id");
   if (!id || !/^[a-z0-9-]+$/.test(id)) {
     contentEl.innerHTML = `<p class="error">人物IDが指定されていません。</p>`;
@@ -172,10 +189,14 @@
         .sort((a, b) => (a.year - b.year) || ((a.month || 0) - (b.month || 0)))
         .map((e) => {
           const related = inlineArticleHTML(articlesForBattle(e.battle_id));
+          // battle_id があれば見出しを合戦ページへのリンクにする
+          const title = e.battle_id
+            ? `<a class="t-battle-link" href="battle.html?id=${encodeURIComponent(e.battle_id)}">${esc(e.title)}</a>`
+            : esc(e.title);
           return `<li>
             <span class="t-year">${esc(e.year)}${e.month ? "." + e.month : ""}</span>
             <span>
-              <span class="t-title">${esc(e.title)}</span>
+              <span class="t-title">${title}</span>
               ${e.description ? `<br><span class="t-desc">${esc(e.description)}</span>` : ""}
               ${related ? `<br>${related}` : ""}
             </span>
@@ -307,9 +328,8 @@
       html.push(section("出典", `<ul class="list src-list">${items}</ul>`));
     }
 
-    if (p.updatedAt) {
-      html.push(`<p class="muted">最終更新：${esc(p.updatedAt)}</p>`);
-    }
+    const histSection = historyHTML(p);
+    if (histSection) html.push(histSection);
 
     // 目次をヘッダー（html[0]）の直後に挿入
     html.splice(1, 0, tocHTML());

@@ -77,5 +77,8 @@
     { "id": "shincho-koki", "title": "信長公記", "author": "太田牛一" }
   ],
   "tags": ["上杉家", "戦国大名", "越後"],
+  "history": [
+    { "date": "2026-07-07", "note": "新規作成" }
+  ],
   "updatedAt": "2026-07-07"
 }

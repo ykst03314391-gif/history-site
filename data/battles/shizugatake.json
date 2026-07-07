@@ -1,0 +1,27 @@
+{
+  "id": "shizugatake",
+  "name": "賤ヶ岳の戦い",
+  "kana": "しずがたけのたたかい",
+  "summary": "羽柴秀吉が柴田勝家を破り、織田家中の主導権を確立した戦い。",
+  "date": { "year": 1583, "month": 4, "era": "天正11年4月" },
+  "place": { "name": "近江国・賤ヶ岳", "prefecture": "滋賀県", "city": "長浜市" },
+  "description": [
+    "信長の死後、後継体制をめぐって羽柴秀吉と柴田勝家の対立が深まった。両者は近江北部の賤ヶ岳周辺で対戦した。",
+    "戦いは秀吉方が勝利し、勝家は本拠・越前北ノ庄に退いて自害した。秀吉配下で活躍した若武者たちは「賤ヶ岳の七本槍」として名を残した。",
+    "この勝利により、秀吉は織田家中における主導権を決定的なものとし、天下人への道を大きく進めた。"
+  ],
+  "sides": [
+    { "name": "羽柴軍", "outcome": "勝利", "commanders": [{ "person_id": "toyotomi-hideyoshi", "name": "羽柴秀吉" }], "participants": [{ "name": "加藤清正" }, { "name": "福島正則" }], "note": "加藤清正・福島正則らは「賤ヶ岳の七本槍」と称された" },
+    { "name": "柴田軍", "outcome": "敗北", "commanders": [{ "name": "柴田勝家" }], "participants": [{ "name": "佐久間盛政" }, { "name": "前田利家" }], "note": "前田利家は戦の途中で戦線を離脱した" }
+  ],
+  "result": "羽柴秀吉が柴田勝家を破った",
+  "relatedPeople": ["toyotomi-hideyoshi"],
+  "sources": [
+    { "id": "shincho-koki", "title": "信長公記", "author": "太田牛一", "type": "史料", "primary": "一次資料" }
+  ],
+  "tags": ["羽柴秀吉", "柴田勝家", "賤ヶ岳の七本槍"],
+  "history": [
+    { "date": "2026-07-07", "note": "新規作成" }
+  ],
+  "updatedAt": "2026-07-07"
+}

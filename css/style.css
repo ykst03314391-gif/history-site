@@ -494,6 +494,78 @@ main {
 }
 .tag-link:hover { background: var(--accent); color: #fff; text-decoration: none; }
 
+/* ---- 合戦 ---- */
+.t-battle-link { border-bottom: 1px dotted var(--accent-soft); }
+.sides {
+  display: flex;
+  align-items: stretch;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.side-card {
+  flex: 1 1 240px;
+  background: var(--bg-panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  box-shadow: var(--shadow);
+}
+.side-card.side-win { border-top: 4px solid var(--accent); }
+.side-card.side-lose { border-top: 4px solid var(--ink-soft); }
+.side-card.side-draw { border-top: 4px solid var(--gold); }
+.side-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
+.side-name { font-size: 1.1rem; font-weight: 700; }
+.side-outcome {
+  font-size: 0.72rem;
+  border-radius: 4px;
+  padding: 1px 9px;
+  color: #fff;
+  background: var(--ink-soft);
+}
+.side-win .side-outcome { background: var(--accent); }
+.side-draw .side-outcome { background: var(--gold); }
+.side-cmd { font-size: 0.95rem; margin-top: 4px; }
+.side-label {
+  display: inline-block;
+  font-size: 0.68rem;
+  color: var(--ink-soft);
+  background: #efe9dc;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 0 6px;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+.side-vs {
+  align-self: center;
+  color: var(--ink-soft);
+  font-weight: 700;
+  padding: 0 2px;
+}
+.battle-timeline { list-style: none; padding: 0; margin: 0; }
+.battle-timeline li { padding: 10px 0; border-bottom: 1px dashed var(--line); }
+.bt-title { font-weight: 700; }
+.bt-title::before { content: "▸ "; color: var(--accent); }
+.bt-desc { color: var(--ink-soft); font-size: 0.92rem; }
+.battle-result {
+  margin: 14px 0 0;
+  padding: 10px 16px;
+  background: #f3eee3;
+  border-left: 4px solid var(--accent);
+  border-radius: 0 6px 6px 0;
+  font-weight: 700;
+}
+
+/* 更新履歴 */
+.history-list { list-style: none; padding: 0; margin: 0; }
+.history-list li {
+  padding: 7px 0;
+  border-bottom: 1px dashed var(--line);
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+.hist-date { color: var(--accent); font-weight: 700; margin-right: 14px; }
+
 .back-link { display: inline-block; margin-bottom: 20px; }
 footer.site-footer {
   text-align: center; color: var(--ink-soft); font-size: 0.85rem;

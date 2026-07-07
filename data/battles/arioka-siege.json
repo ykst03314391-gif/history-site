@@ -1,0 +1,27 @@
+{
+  "id": "arioka-siege",
+  "name": "有岡城の乱",
+  "kana": "ありおかじょうのらん",
+  "summary": "摂津を任されていた荒木村重が織田信長に反旗を翻し、有岡城に籠城した一件。",
+  "date": { "year": 1578, "era": "天正6年", "note": "翌1579年に有岡城が落城" },
+  "place": { "name": "摂津国・有岡城", "prefecture": "兵庫県", "city": "伊丹市" },
+  "description": [
+    "織田信長から摂津一国を任されていた荒木村重が、天正6年（1578年）に突如として信長に反旗を翻し、有岡城に籠城した。毛利氏や本願寺との連携があったとも、信長への不信や恐怖からともいわれるが、動機ははっきりしない。",
+    "信長は大軍で有岡城を包囲した。村重は説得にも応じず籠城を続けたが、やがて単身で城を脱出。翌年、有岡城は落城し、城に残された村重の一族や家臣の多くが処刑された。",
+    "村重自身は毛利領へ逃れて生き延び、後年は茶人「荒木道薫」として名を残した。この経緯は考察記事で扱う。"
+  ],
+  "sides": [
+    { "name": "織田軍", "outcome": "勝利", "commanders": [{ "person_id": "oda-nobunaga", "name": "織田信長" }], "participants": [{ "person_id": "toyotomi-hideyoshi", "name": "羽柴秀吉" }, { "person_id": "akechi-mitsuhide", "name": "明智光秀" }, { "name": "滝川一益" }] },
+    { "name": "荒木方", "outcome": "敗北", "commanders": [{ "person_id": "araki-murashige", "name": "荒木村重" }], "participants": [{ "name": "荒木村次" }, { "name": "高山右近" }, { "name": "中川清秀" }], "note": "高山右近・中川清秀は早期に織田方へ降った" }
+  ],
+  "result": "織田軍が有岡城を落とし、荒木村重は逃亡した",
+  "relatedPeople": ["araki-murashige", "oda-nobunaga"],
+  "sources": [
+    { "id": "shincho-koki", "title": "信長公記", "author": "太田牛一", "type": "史料", "primary": "一次資料" }
+  ],
+  "tags": ["荒木村重", "織田信長", "摂津", "籠城"],
+  "history": [
+    { "date": "2026-07-07", "note": "新規作成" }
+  ],
+  "updatedAt": "2026-07-07"
+}

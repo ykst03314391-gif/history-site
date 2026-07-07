@@ -24,7 +24,8 @@
       "author": "管理人",
       "relatedPeople": ["araki-murashige", "oda-nobunaga"],
       "relatedBattles": ["arioka-siege"],
-      "tags": ["荒木村重", "織田信長", "有岡城の乱", "通説", "考察"]
+      "tags": ["荒木村重", "織田信長", "有岡城の乱", "通説", "考察"],
+      "history": [{ "date": "2026-07-07", "note": "新規作成" }]
     },
     {
       "id": "sengoku-economics",

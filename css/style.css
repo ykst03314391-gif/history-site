@@ -573,6 +573,23 @@ footer.site-footer {
 }
 .error { color: var(--accent); }
 
+/* ---- 仮置きデータ注記（DB系ページ） ---- */
+.provisional-notice {
+  margin: 0 0 22px;
+  padding: 12px 16px;
+  background: #fbf3df;
+  border: 1px solid var(--gold);
+  border-left: 5px solid var(--gold);
+  border-radius: 0 8px 8px 0;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+  line-height: 1.75;
+}
+.provisional-notice strong { color: #8a6a1e; }
+/* 収録人物セクション等に添える小さめの但し書き */
+.provisional-inline { font-size: 0.85rem; color: var(--ink-soft); margin: 4px 0 14px; }
+.provisional-inline strong { color: #8a6a1e; }
+
 /* ---- 「すべて見る」リンク（トップの各セクション末尾） ---- */
 .section-more { margin: 16px 0 0; text-align: right; }
 .section-more a { font-weight: 700; }

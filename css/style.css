@@ -566,6 +566,23 @@ main {
 }
 .hist-date { color: var(--accent); font-weight: 700; margin-right: 14px; }
 
+/* 出典マーカー（各記述の典拠を末尾に小さく表示） */
+.src-mark {
+  display: inline-block;
+  font-size: 0.72rem;
+  line-height: 1.4;
+  color: var(--ink-soft);
+  background: #efe9dc;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 0 6px;
+  margin-left: 4px;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: help;
+}
+.src-mark::before { content: "▪"; color: var(--gold); margin-right: 3px; }
+
 .back-link { display: inline-block; margin-bottom: 20px; }
 footer.site-footer {
   text-align: center; color: var(--ink-soft); font-size: 0.85rem;

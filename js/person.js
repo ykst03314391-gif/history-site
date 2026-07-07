@@ -78,6 +78,16 @@
     document.title = `${p.name} ｜ 戦国クロニクル`;
     const html = [];
 
+    // 出典マーカー：項目の sourceId を、末尾「出典」欄の該当典拠に対応づけて小さく表示
+    const srcMap = new Map((p.sources || []).map((s) => [s.id, s]));
+    function srcMark(sourceId) {
+      if (!sourceId) return "";
+      const s = srcMap.get(sourceId);
+      const label = s ? s.title || sourceId : sourceId;
+      const prim = s && s.primary ? `（${s.primary}）` : "";
+      return ` <span class="src-mark" title="出典${prim}：${esc(label)}">出典: ${esc(label)}</span>`;
+    }
+
     // ヘッダー
     const birth = fmtDate(p.birth);
     const death = fmtDate(p.death);
@@ -117,7 +127,7 @@
     // 官位変遷
     if (p.ranks && p.ranks.length) {
       const items = p.ranks
-        .map((r) => `<li><b>${r.year ? esc(r.year) + "年 " : ""}</b>${esc(r.title)}${r.note ? ` <span class="muted">${esc(r.note)}</span>` : ""}</li>`)
+        .map((r) => `<li><b>${r.year ? esc(r.year) + "年 " : ""}</b>${esc(r.title)}${r.note ? ` <span class="muted">${esc(r.note)}</span>` : ""}${srcMark(r.sourceId)}</li>`)
         .join("");
       html.push(section("官位", `<ul class="list">${items}</ul>`));
     }
@@ -152,7 +162,7 @@
     // 領地変遷
     if (p.territories && p.territories.length) {
       const items = p.territories
-        .map((t) => `<li><b>${t.year ? esc(t.year) + "年 " : ""}</b>${esc(t.name)}${t.prefecture ? `<span class="muted">（${esc(t.prefecture)}）</span>` : ""}${t.note ? ` — <span class="muted">${esc(t.note)}</span>` : ""}</li>`)
+        .map((t) => `<li><b>${t.year ? esc(t.year) + "年 " : ""}</b>${esc(t.name)}${t.prefecture ? `<span class="muted">（${esc(t.prefecture)}）</span>` : ""}${t.note ? ` — <span class="muted">${esc(t.note)}</span>` : ""}${srcMark(t.sourceId)}</li>`)
         .join("");
       html.push(section("領地の変遷", `<ul class="list">${items}</ul>`));
     }
@@ -198,6 +208,7 @@
             <span>
               <span class="t-title">${title}</span>
               ${e.description ? `<br><span class="t-desc">${esc(e.description)}</span>` : ""}
+              ${e.sourceId ? `<br>${srcMark(e.sourceId)}` : ""}
               ${related ? `<br>${related}` : ""}
             </span>
           </li>`;
@@ -209,7 +220,7 @@
     // 成し遂げたこと
     if (p.achievements && p.achievements.length) {
       const items = p.achievements
-        .map((a) => `<li><b>${esc(a.title)}</b>${a.description ? `<br><span class="muted">${esc(a.description)}</span>` : ""}</li>`)
+        .map((a) => `<li><b>${esc(a.title)}</b>${a.description ? `<br><span class="muted">${esc(a.description)}</span>` : ""}${srcMark(a.sourceId)}</li>`)
         .join("");
       html.push(section("成し遂げたこと", `<ul class="list">${items}</ul>`));
     }
@@ -220,7 +231,7 @@
         .map(
           (r) => `<div class="rep-item">
             <span class="rep-era">${esc(r.era)}</span>
-            <div class="rep-body">${esc(r.body)}</div>
+            <div class="rep-body">${esc(r.body)}${srcMark(r.sourceId)}</div>
           </div>`
         )
         .join("");
@@ -230,7 +241,7 @@
     // 逸話
     if (p.episodes && p.episodes.length) {
       const items = p.episodes
-        .map((e) => `<li><b>${esc(e.title)}</b>${uncertain(e.uncertain)}<br><span class="muted">${esc(e.body)}</span></li>`)
+        .map((e) => `<li><b>${esc(e.title)}</b>${uncertain(e.uncertain)}<br><span class="muted">${esc(e.body)}</span>${srcMark(e.sourceId)}</li>`)
         .join("");
       html.push(section("逸話・エピソード", `<ul class="list">${items}</ul>`));
     }

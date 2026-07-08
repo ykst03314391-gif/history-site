@@ -4,7 +4,7 @@
   "kana": "ほんのうじのへん",
   "summary": "明智光秀が京・本能寺に主君・織田信長を急襲し、これを討った政変。天下統一目前の信長が斃れた。",
   "date": { "year": 1582, "month": 6, "day": 2, "era": "天正10年6月2日" },
-  "place": { "name": "山城国・本能寺", "prefecture": "京都府", "city": "京都市" },
+  "place": { "name": "山城国・本能寺", "prefecture": "京都府", "city": "京都市", "address": "京都府京都市中京区（本能寺跡）", "lat": 35.006, "lng": 135.7537 },
   "description": [
     "中国攻めの応援に向かうはずだった明智光秀は、軍を反転させて京の本能寺に滞在していた織田信長を急襲した。信長はわずかな供回りしかおらず、防ぎきれずに自害した。",
     "同じころ、二条御所にいた嫡男・織田信忠も明智勢に攻められ、防戦のすえに自害した。織田家の当主父子が同時に失われる衝撃的な政変だった。",
@@ -16,6 +16,11 @@
   ],
   "result": "明智光秀が織田信長・信忠父子を討った",
   "relatedPeople": ["akechi-mitsuhide", "oda-nobunaga", "oda-nobutada"],
+  "spots": [
+    {"type": "史跡", "name": "本能寺跡", "prefecture": "京都府", "city": "京都市中京区", "description": "変の当時に本能寺があった場所。石碑が立つ。"},
+    {"type": "神社仏閣", "name": "本能寺", "prefecture": "京都府", "city": "京都市中京区", "description": "現在の寺町の所在地。信長公廟がある。", "url": "https://kyoto-honnouji.jp/", "urlName": "本能寺（法華宗大本山）"},
+    {"type": "史跡", "name": "二条殿跡（二条御所）", "prefecture": "京都府", "city": "京都市中京区", "description": "織田信忠が明智軍と戦い自刃した地。"}
+  ],
   "sources": [
     { "id": "shincho-koki", "title": "信長公記", "author": "太田牛一", "type": "史料", "primary": "一次資料" }
   ],

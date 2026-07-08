@@ -4,7 +4,7 @@
   "kana": "しずがたけのたたかい",
   "summary": "羽柴秀吉が柴田勝家を破り、織田家中の主導権を確立した戦い。",
   "date": { "year": 1583, "month": 4, "era": "天正11年4月" },
-  "place": { "name": "近江国・賤ヶ岳", "prefecture": "滋賀県", "city": "長浜市" },
+  "place": { "name": "近江国・賤ヶ岳", "prefecture": "滋賀県", "city": "長浜市", "address": "滋賀県長浜市木之本町（賤ヶ岳古戦場）", "lat": 35.5061, "lng": 136.1931 },
   "description": [
     "信長の死後、後継体制をめぐって羽柴秀吉と柴田勝家の対立が深まった。両者は近江北部の賤ヶ岳周辺で対戦した。",
     "戦いは秀吉方が勝利し、勝家は本拠・越前北ノ庄に退いて自害した。秀吉配下で活躍した若武者たちは「賤ヶ岳の七本槍」として名を残した。",
@@ -16,6 +16,11 @@
   ],
   "result": "羽柴秀吉が柴田勝家を破った",
   "relatedPeople": ["toyotomi-hideyoshi"],
+  "spots": [
+    {"type": "古戦場", "name": "賤ヶ岳", "prefecture": "滋賀県", "city": "長浜市", "description": "賤ヶ岳の七本槍で知られる古戦場。山頂へリフト。"},
+    {"type": "その他", "name": "余呉湖", "prefecture": "滋賀県", "city": "長浜市", "description": "古戦場に隣接する湖。"},
+    {"type": "城跡", "name": "玄蕃尾城跡", "prefecture": "福井県・滋賀県", "city": "敦賀市・長浜市", "description": "柴田勝家方の本陣。国指定史跡。"}
+  ],
   "sources": [
     { "id": "shincho-koki", "title": "信長公記", "author": "太田牛一", "type": "史料", "primary": "一次資料" }
   ],

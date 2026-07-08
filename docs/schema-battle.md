@@ -29,10 +29,11 @@
 | `name` / `kana` | string | 合戦名・読み |
 | `summary` | string | 一言紹介 |
 | `date` | DateInfo | 発生時期（`year` / `month` / `day` / `era` / `note`） |
-| `place` | Place | 場所（`name` / `prefecture` / `city`） |
+| `place` | Place | 場所（`name` / `prefecture` / `city` / `address`? / `lat`? / `lng`?）。`address`＝古戦場の現代の住所、`lat`/`lng`＝座標。あれば詳細ページに「古戦場（現在地）」として住所＋地図（OpenStreetMap 埋め込み・APIキー不要）を表示 |
 | `description` | string[] | 解説本文（段落の配列） |
 | `sides` | Side[] | 対戦した陣営 |
 | `result` | string | 結果の要約 |
+| `spots` | Spot[] | 関連する史跡（`type` / `name` / `prefecture` / `city` / `description` / `url`? / `urlName`?）。`url` があれば「公式：〈`urlName`〉 ↗」の形で**公式サイト名つき**リンクを表示（史跡・資料館の**実在する公式ページ**のみ。URLは捏造しない）。詳細ページに「関連する史跡」として表示 |
 | `relatedPeople` | string[] | 関連人物の `person_id`（補助） |
 | `sources` | Source[] | 出典（人物スキーマと同形式） |
 | `tags` | string[] | タグ |

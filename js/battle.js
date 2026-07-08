@@ -104,6 +104,41 @@
       html.push(`<section class="section"><h2>解説</h2>${body}</section>`);
     }
 
+    // 古戦場（現在地・地図）
+    if (b.place && (b.place.address || (b.place.lat != null && b.place.lng != null))) {
+      let inner = b.place.address
+        ? `<p class="battle-place-addr">現在地：${esc(b.place.address)}</p>`
+        : "";
+      const lat = Number(b.place.lat);
+      const lng = Number(b.place.lng);
+      if (isFinite(lat) && isFinite(lng)) {
+        const bbox = `${lng - 0.02},${lat - 0.014},${lng + 0.02},${lat + 0.014}`;
+        const osm = `https://www.openstreetmap.org/export/embed.html?bbox=${encodeURIComponent(bbox)}&layer=mapnik&marker=${encodeURIComponent(lat + "," + lng)}`;
+        const osmFull = `https://www.openstreetmap.org/?mlat=${lat}&mlon=${lng}#map=15/${lat}/${lng}`;
+        const gmap = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(lat + "," + lng)}`;
+        inner += `<div class="topic-map"><iframe title="古戦場の地図" src="${esc(osm)}" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+          <p class="topic-map-links"><a href="${esc(osmFull)}" target="_blank" rel="noopener">大きな地図（OpenStreetMap）</a>　/　<a href="${esc(gmap)}" target="_blank" rel="noopener">Googleマップで開く</a></p>`;
+      }
+      html.push(`<section class="section"><h2>古戦場（現在地）</h2>${inner}</section>`);
+    }
+
+    // 関連する史跡
+    if (b.spots && b.spots.length) {
+      const items = b.spots
+        .map((s) => {
+          const place = [s.prefecture, s.city].filter(Boolean).map(esc).join(" ");
+          return `<div class="spot-item">
+              <span class="spot-type">${esc(s.type)}</span>
+              <b>${esc(s.name)}</b>
+              ${place ? `<span class="spot-place">／ ${place}</span>` : ""}
+              ${s.description ? `<div class="muted">${esc(s.description)}</div>` : ""}
+              ${s.url ? `<div class="spot-link">公式：<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.urlName || "公式サイト")} ↗</a></div>` : ""}
+            </div>`;
+        })
+        .join("");
+      html.push(`<section class="section"><h2>関連する史跡</h2>${items}</section>`);
+    }
+
     // 時系列（合戦の経過）
     if (b.timeline && b.timeline.length) {
       const items = b.timeline

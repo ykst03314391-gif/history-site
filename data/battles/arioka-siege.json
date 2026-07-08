@@ -4,7 +4,7 @@
   "kana": "ありおかじょうのらん",
   "summary": "摂津を任されていた荒木村重が織田信長に反旗を翻し、有岡城に籠城した一件。",
   "date": { "year": 1578, "era": "天正6年", "note": "翌1579年に有岡城が落城" },
-  "place": { "name": "摂津国・有岡城", "prefecture": "兵庫県", "city": "伊丹市" },
+  "place": { "name": "摂津国・有岡城", "prefecture": "兵庫県", "city": "伊丹市", "address": "兵庫県伊丹市伊丹（有岡城跡・JR伊丹駅前）", "lat": 34.7838, "lng": 135.4206 },
   "description": [
     "織田信長から摂津一国を任されていた荒木村重が、天正6年（1578年）に突如として信長に反旗を翻し、有岡城に籠城した。毛利氏や本願寺との連携があったとも、信長への不信や恐怖からともいわれるが、動機ははっきりしない。",
     "信長は大軍で有岡城を包囲した。村重は説得にも応じず籠城を続けたが、やがて単身で城を脱出。翌年、有岡城は落城し、城に残された村重の一族や家臣の多くが処刑された。",
@@ -16,6 +16,10 @@
   ],
   "result": "織田軍が有岡城を落とし、荒木村重は逃亡した",
   "relatedPeople": ["araki-murashige", "oda-nobunaga"],
+  "spots": [
+    {"type": "城跡", "name": "有岡城跡", "prefecture": "兵庫県", "city": "伊丹市", "description": "荒木村重の居城。国指定史跡。JR伊丹駅前に石垣。", "url": "https://www.city.itami.lg.jp/SOSIKI/TOSHIKATSURYOKU/BUNKA/bunnkazai/SINAI_BUNKAZAI/KUNI_SITEI/1386843388423.html", "urlName": "有岡城跡（伊丹市）"},
+    {"type": "史跡", "name": "惣構の砦跡（上臈塚砦ほか）", "prefecture": "兵庫県", "city": "伊丹市", "description": "有岡城の惣構を守った砦跡。"}
+  ],
   "sources": [
     { "id": "shincho-koki", "title": "信長公記", "author": "太田牛一", "type": "史料", "primary": "一次資料" }
   ],

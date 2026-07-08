@@ -4,7 +4,7 @@
   "kana": "ながしののたたかい",
   "summary": "織田・徳川連合軍が鉄砲を活用し、武田勝頼の軍を破った戦い。武田家衰退の転機となった。",
   "date": { "year": 1575, "month": 5, "day": 21, "era": "天正3年5月21日" },
-  "place": { "name": "三河国長篠・設楽原", "prefecture": "愛知県", "city": "新城市" },
+  "place": { "name": "三河国長篠・設楽原", "prefecture": "愛知県", "city": "新城市", "address": "愛知県新城市長篠（長篠城跡・設楽原）", "lat": 34.9227, "lng": 137.5619 },
   "description": [
     "武田勝頼が三河の長篠城を包囲すると、織田信長は徳川家康と連合して救援に向かった。両軍は設楽原で対峙した。",
     "織田・徳川連合軍は馬防柵を設けて武田の騎馬隊を防ぎ、多数の鉄砲を用いて武田勢に大きな損害を与えたと伝わる。武田軍は有力な家臣を数多く失い、大敗した。",
@@ -16,6 +16,11 @@
   ],
   "result": "織田・徳川連合軍が武田勝頼の軍を破った",
   "relatedPeople": ["oda-nobunaga"],
+  "spots": [
+    {"type": "城跡", "name": "長篠城跡", "prefecture": "愛知県", "city": "新城市", "description": "国指定史跡。長篠城址史跡保存館。", "url": "https://www.city.shinshiro.lg.jp/mokuteki/shisetu/shiryokan/nagashinojyoshi/index.html", "urlName": "長篠城址史跡保存館（新城市）"},
+    {"type": "古戦場", "name": "設楽原古戦場", "prefecture": "愛知県", "city": "新城市", "description": "馬防柵の復元、設楽原歴史資料館。", "url": "https://www.city.shinshiro.lg.jp/mokuteki/shisetu/shiryokan/shitaragahara/index.html", "urlName": "設楽原歴史資料館（新城市）"},
+    {"type": "神社仏閣", "name": "医王寺", "prefecture": "愛知県", "city": "新城市", "description": "武田勝頼の本陣跡と伝わる。"}
+  ],
   "sources": [
     { "id": "shincho-koki", "title": "信長公記", "author": "太田牛一", "type": "史料", "primary": "一次資料" }
   ],

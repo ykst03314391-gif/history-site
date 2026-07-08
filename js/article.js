@@ -85,7 +85,20 @@
         </section>`;
     }
 
-    el.innerHTML = `${head}<div class="article-body">${bodyHTML}</div>${related}${books}`;
+    // 冒頭画像（タイトル直下に差し込む）
+    let bodyOut = bodyHTML;
+    if (meta && meta.image && meta.image.src) {
+      const im = meta.image;
+      const credit = [im.credit, im.license].filter(Boolean).map(esc).join("／");
+      const cap =
+        im.caption || credit
+          ? `<figcaption>${esc(im.caption || "")}${credit ? ` <span class="img-credit">（${credit}）</span>` : ""}</figcaption>`
+          : "";
+      const fig = `<figure class="article-hero"><img src="${esc(im.src)}" alt="${esc(im.caption || meta.title || "")}" loading="lazy">${cap}</figure>`;
+      bodyOut = /<\/h1>/.test(bodyHTML) ? bodyHTML.replace("</h1>", "</h1>" + fig) : fig + bodyHTML;
+    }
+
+    el.innerHTML = `${head}<div class="article-body">${bodyOut}</div>${related}${books}`;
   } catch (err) {
     el.innerHTML = `<p class="error">記事を読み込めませんでした（ID: ${esc(id)}）。ローカルで開いている場合は簡易サーバー経由で表示してください（README参照）。</p>`;
     console.error(err);

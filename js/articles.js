@@ -18,13 +18,20 @@
     const tags = (a.tags || [])
       .map((t) => `<span class="tag">${esc(t)}</span>`)
       .join("");
+    const thumb =
+      a.image && a.image.src
+        ? `<img class="card-thumb" src="${esc(a.image.src)}" alt="" loading="lazy">`
+        : "";
     return `
-      <a class="card" href="article.html?id=${encodeURIComponent(a.id)}">
-        <p class="article-cat">${esc(a.category || "記事")}</p>
-        <h3>${esc(a.title)}</h3>
-        <p class="years">${esc(a.date || "")}</p>
-        <p class="card-summary">${esc(a.summary || "")}</p>
-        <div class="tags">${tags}</div>
+      <a class="card${thumb ? " card--thumb" : ""}" href="article.html?id=${encodeURIComponent(a.id)}">
+        ${thumb}
+        <div class="card-main">
+          <p class="article-cat">${esc(a.category || "記事")}</p>
+          <h3>${esc(a.title)}</h3>
+          <p class="years">${esc(a.date || "")}</p>
+          <p class="card-summary">${esc(a.summary || "")}</p>
+          <div class="tags">${tags}</div>
+        </div>
       </a>`;
   }
 

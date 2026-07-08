@@ -18,15 +18,22 @@
       .slice(0, 3);
     artEl.innerHTML = articles.length
       ? articles
-          .map(
-            (a) => `
-        <a class="card" href="article.html?id=${encodeURIComponent(a.id)}">
-          <p class="article-cat">${esc(a.category || "記事")}</p>
-          <h3>${esc(a.title)}</h3>
-          <p class="years">${esc(a.date || "")}</p>
-          <p class="card-summary">${esc(a.summary || "")}</p>
-        </a>`
-          )
+          .map((a) => {
+            const thumb =
+              a.image && a.image.src
+                ? `<img class="card-thumb" src="${esc(a.image.src)}" alt="" loading="lazy">`
+                : "";
+            return `
+        <a class="card${thumb ? " card--thumb" : ""}" href="article.html?id=${encodeURIComponent(a.id)}">
+          ${thumb}
+          <div class="card-main">
+            <p class="article-cat">${esc(a.category || "記事")}</p>
+            <h3>${esc(a.title)}</h3>
+            <p class="years">${esc(a.date || "")}</p>
+            <p class="card-summary">${esc(a.summary || "")}</p>
+          </div>
+        </a>`;
+          })
           .join("")
       : `<p class="muted">まだ記事がありません。</p>`;
   } catch (err) {
@@ -52,17 +59,24 @@
               if (t.place && (t.place.name || t.place.prefecture))
                 meta.push(`会場：${esc([t.place.prefecture, t.place.name].filter(Boolean).join(" "))}`);
               if (t.platform) meta.push(`対応：${esc(t.platform)}`);
+              const timg =
+                t.images && t.images.length && t.images[0].src
+                  ? `<img class="card-thumb" src="${esc(t.images[0].src)}" alt="" loading="lazy">`
+                  : "";
               return `
-        <a class="topic-card topic-card--link" href="topic.html?id=${encodeURIComponent(t.id)}">
-          <div class="topic-head">
-            <span class="topic-stream stream-${esc(t.stream)}">${esc(t.stream || "情報")}</span>
-            <span class="topic-date">${esc(t.date || "")}</span>
+        <a class="topic-card topic-card--link${timg ? " topic-card--thumb" : ""}" href="topic.html?id=${encodeURIComponent(t.id)}">
+          ${timg}
+          <div class="topic-card-body">
+            <div class="topic-head">
+              <span class="topic-stream stream-${esc(t.stream)}">${esc(t.stream || "情報")}</span>
+              <span class="topic-date">${esc(t.date || "")}</span>
+            </div>
+            <h3 class="topic-title">${esc(t.title)}</h3>
+            ${t.summary ? `<p class="topic-summary">${esc(t.summary)}</p>` : ""}
+            ${meta.length ? `<p class="topic-meta">${meta.join("　／　")}</p>` : ""}
+            ${t.take ? `<div class="topic-take"><span class="take-label">ひとこと</span>${esc(t.take)}</div>` : ""}
+            <span class="topic-more">詳しく見る →</span>
           </div>
-          <h3 class="topic-title">${esc(t.title)}</h3>
-          ${t.summary ? `<p class="topic-summary">${esc(t.summary)}</p>` : ""}
-          ${meta.length ? `<p class="topic-meta">${meta.join("　／　")}</p>` : ""}
-          ${t.take ? `<div class="topic-take"><span class="take-label">ひとこと</span>${esc(t.take)}</div>` : ""}
-          <span class="topic-more">詳しく見る →</span>
         </a>`;
             })
             .join("")

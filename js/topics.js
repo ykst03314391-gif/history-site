@@ -31,17 +31,24 @@
   // 一覧カードはクリックで詳細ページ(topic.html)へ遷移するリンク。
   // 出どころ・関連リンクは詳細ページ側に置く（カード内でのリンク入れ子を避ける）。
   function card(t) {
+    const thumb =
+      t.images && t.images.length && t.images[0].src
+        ? `<img class="card-thumb" src="${esc(t.images[0].src)}" alt="" loading="lazy">`
+        : "";
     return `
-      <a class="topic-card topic-card--link" href="topic.html?id=${encodeURIComponent(t.id)}">
-        <div class="topic-head">
-          <span class="topic-stream stream-${esc(t.stream)}">${esc(t.stream || "情報")}</span>
-          <span class="topic-date">${esc(t.date || "")}</span>
+      <a class="topic-card topic-card--link${thumb ? " topic-card--thumb" : ""}" href="topic.html?id=${encodeURIComponent(t.id)}">
+        ${thumb}
+        <div class="topic-card-body">
+          <div class="topic-head">
+            <span class="topic-stream stream-${esc(t.stream)}">${esc(t.stream || "情報")}</span>
+            <span class="topic-date">${esc(t.date || "")}</span>
+          </div>
+          <h3 class="topic-title">${esc(t.title)}</h3>
+          ${t.summary ? `<p class="topic-summary">${esc(t.summary)}</p>` : ""}
+          ${metaLine(t)}
+          ${t.take ? `<div class="topic-take"><span class="take-label">ひとこと</span>${esc(t.take)}</div>` : ""}
+          <span class="topic-more">詳しく見る →</span>
         </div>
-        <h3 class="topic-title">${esc(t.title)}</h3>
-        ${t.summary ? `<p class="topic-summary">${esc(t.summary)}</p>` : ""}
-        ${metaLine(t)}
-        ${t.take ? `<div class="topic-take"><span class="take-label">ひとこと</span>${esc(t.take)}</div>` : ""}
-        <span class="topic-more">詳しく見る →</span>
       </a>`;
   }
 

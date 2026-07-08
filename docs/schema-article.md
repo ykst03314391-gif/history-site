@@ -54,6 +54,8 @@
 | `date` | string | 公開日（YYYY-MM-DD） |
 | `updatedAt` | string | 更新日（YYYY-MM-DD、任意） |
 | `author` | string | 執筆者（任意） |
+| `image` | Image | 冒頭画像 `{ "src", "caption"?, "credit"?, "license"? }`（任意）。詳細ページで**タイトル直下**に表示。**権利注意**：パブリックドメイン画像（Wikimedia Commons の肖像画等）を `credit`/`license` 明記で、または自作画像を使う。参考イメージは caption に明記 |
+| `references` | Reference[] | 関連書籍（アフィリエイト）`{ "title", "author"?, "affiliateUrl"?, "note"? }`（任意）。記事**末尾**に「関連書籍」として表示。開示文つき・`rel="sponsored"`。可読性のため本文には挟まない |
 | `relatedPeople` | string[] | 関連する人物の `person_id`（DB連携。詳細ページで相互リンク） |
 | `relatedBattles` | string[] | 関連する合戦の `battle_id`（任意、将来用） |
 | `tags` | string[] | タグ（任意） |

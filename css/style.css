@@ -162,6 +162,21 @@ main {
 .article-list { display: block; }
 .article-list .card { margin-bottom: 16px; }
 .article-list .card:last-child { margin-bottom: 0; }
+
+/* 一覧カードのサムネイル（記事・トピック共通、サムネ左＋本文右） */
+.card--thumb, .topic-card--thumb { display: flex; gap: 14px; align-items: flex-start; }
+.card-thumb {
+  width: 96px;
+  height: 96px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  flex-shrink: 0;
+}
+.card-main, .topic-card-body { flex: 1; min-width: 0; }
+@media (max-width: 480px) {
+  .card-thumb { width: 72px; height: 72px; }
+}
 .card {
   display: block;
   background: var(--bg-panel);
@@ -760,6 +775,17 @@ footer.site-footer {
   border-radius: 0 6px 6px 0;
   line-height: 1.85;
 }
+
+/* 記事冒頭（タイトル直下）の画像 */
+.article-hero { margin: 6px 0 20px; }
+.article-hero img {
+  display: block;
+  max-width: min(100%, 460px);
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+.article-hero figcaption { font-size: 0.82rem; color: var(--ink-soft); margin-top: 6px; }
 
 /* 記事末尾の関連書籍（アフィリエイト・可読性のため本文とは区切る） */
 .article-books { margin-top: 30px; padding-top: 18px; border-top: 1px solid var(--line); }

@@ -14,12 +14,14 @@
 reference/
 ├─ wikisource/  … Wikisource（新字版）翻刻を parse API で取得（13本）
 ├─ ndl/         … NDL 次世代デジタルライブラリーの OCR 全文（3本・要校正）
-├─ jstage/      … J-STAGE 由来（現状なし）
-├─ cinii/       … CiNii の書誌メモ（現状なし）
-└─ other/       … 機関リポジトリ/青空文庫/市販刊本 等（現状なし）
+├─ jstage/      … J-STAGE 由来の論文（現状なし）      ┐
+├─ cinii/       … CiNii の論文書誌メモ（2本）          ├ 論文系は発行年でさらに分ける（例 cinii/2025/）
+└─ other/       … 機関リポジトリ/青空文庫/刊本 等      ┘
 ```
 
-各サブフォルダに用途 README あり。空フォルダは将来用。
+- **史料（wikisource/・ndl/）** は原典テキストを直下に置く。
+- **論文系（jstage/・cinii/・other/）** は **発行年のサブフォルダ**（`<年>/<著者-短題>.md`）に分ける。
+- 各サブフォルダに用途・置き方の README あり。空フォルダは将来用。
 
 ## 収録
 

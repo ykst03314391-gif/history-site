@@ -29,7 +29,7 @@
   }
 
   function grid(items) {
-    return `<div class="card-grid">${items.map(cardHTML).join("")}</div>`;
+    return `<div class="article-list">${items.map(cardHTML).join("")}</div>`;
   }
 
   // 一般記事など、グループ分けなしのブロック

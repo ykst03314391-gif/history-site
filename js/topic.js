@@ -14,22 +14,31 @@
     return;
   }
 
-  function metaRows(t) {
+  function infoTable(t) {
     const rows = [];
     if (t.period && (t.period.from || t.period.to)) {
       rows.push(["会期", `${esc(t.period.from || "")} 〜 ${esc(t.period.to || "")}`]);
     }
     if (t.place && (t.place.name || t.place.prefecture)) {
-      rows.push([
-        "会場",
-        esc([t.place.prefecture, t.place.city, t.place.name].filter(Boolean).join(" ")),
-      ]);
+      let loc = esc([t.place.prefecture, t.place.city, t.place.name].filter(Boolean).join(" "));
+      if (t.place.address) loc += `<br><span class="muted">${esc(t.place.address)}</span>`;
+      rows.push(["会場", loc]);
     }
     if (t.platform) rows.push(["対応", esc(t.platform)]);
+    (t.info || []).forEach((r) => {
+      if (r && r.label) rows.push([r.label, esc(r.value)]);
+    });
     if (!rows.length) return "";
     return `<dl class="facts">${rows
       .map(([k, v]) => `<dt>${esc(k)}</dt><dd>${v}</dd>`)
       .join("")}</dl>`;
+  }
+
+  function listSection(title, items, li) {
+    if (!items || !items.length) return "";
+    return `<section class="topic-section"><h2>${esc(title)}</h2><ul class="list">${items
+      .map(li)
+      .join("")}</ul></section>`;
   }
 
   function render(t, peopleName, articleTitle) {
@@ -59,6 +68,46 @@
       .map((x) => `<span class="tag">${esc(x)}</span>`)
       .join("");
 
+    const imagesHtml =
+      t.images && t.images.length
+        ? `<div class="topic-images">${t.images
+            .map((im) => {
+              const cap = [im.caption, [im.credit, im.license].filter(Boolean).join("／")]
+                .filter(Boolean)
+                .map((x, i) => (i === 0 ? esc(x) : `<span class="img-credit">（${esc(x)}）</span>`))
+                .join(" ");
+              return `<figure class="topic-figure">
+                <img src="${esc(im.src)}" alt="${esc(im.caption || t.title)}" loading="lazy">
+                ${cap ? `<figcaption>${cap}</figcaption>` : ""}
+              </figure>`;
+            })
+            .join("")}</div>`
+        : "";
+
+    let mapHtml = "";
+    if (t.place && t.place.lat != null && t.place.lng != null) {
+      const lat = Number(t.place.lat);
+      const lng = Number(t.place.lng);
+      if (isFinite(lat) && isFinite(lng)) {
+        const bbox = `${lng - 0.006},${lat - 0.004},${lng + 0.006},${lat + 0.004}`;
+        const osmEmbed = `https://www.openstreetmap.org/export/embed.html?bbox=${encodeURIComponent(bbox)}&layer=mapnik&marker=${encodeURIComponent(lat + "," + lng)}`;
+        const osmFull = `https://www.openstreetmap.org/?mlat=${lat}&mlon=${lng}#map=17/${lat}/${lng}`;
+        const gmap = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(lat + "," + lng)}`;
+        mapHtml = `<section class="topic-section"><h2>会場の地図</h2>
+          <div class="topic-map"><iframe title="会場の地図" src="${esc(osmEmbed)}" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+          <p class="topic-map-links"><a href="${esc(osmFull)}" target="_blank" rel="noopener">大きな地図（OpenStreetMap）</a>　/　<a href="${esc(gmap)}" target="_blank" rel="noopener">Googleマップで開く</a></p>
+        </section>`;
+      }
+    }
+
+    const highlightsHtml = listSection("見どころ", t.highlights, (h) => `<li>${esc(h)}</li>`);
+    const eventsHtml = listSection(
+      "関連イベント",
+      t.events,
+      (e) =>
+        `<li><b>${esc(e.name)}</b>${e.schedule ? `<br><span class="muted">${esc(e.schedule)}</span>` : ""}${e.note ? `<br><span class="muted">${esc(e.note)}</span>` : ""}</li>`
+    );
+
     el.innerHTML = `
       <article class="topic-detail">
         <div class="topic-head">
@@ -67,7 +116,12 @@
         </div>
         <h1 class="topic-detail-title">${esc(t.title)}</h1>
         ${t.summary ? `<p class="topic-detail-summary">${esc(t.summary)}</p>` : ""}
-        ${metaRows(t)}
+        ${imagesHtml}
+        ${t.body ? `<p class="topic-detail-body">${esc(t.body)}</p>` : ""}
+        ${infoTable(t)}
+        ${mapHtml}
+        ${highlightsHtml}
+        ${eventsHtml}
         ${t.take ? `<div class="topic-take"><span class="take-label">ひとこと</span>${esc(t.take)}</div>` : ""}
         ${source ? `<p class="topic-source">出どころ：${source}</p>` : ""}
         ${

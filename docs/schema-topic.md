@@ -31,14 +31,19 @@
 | `title` | string | 速報の見出し |
 | `stream` | string | `新説` / `お出かけ` / `ゲーム`（B の3ストリーム） |
 | `date` | string | 掲載・収集日（YYYY-MM-DD） |
-| `summary` | string | **お知らせ本文**：何が起きた／何が新しいか（事実ベース） |
+| `summary` | string | **お知らせ本文**：何が起きた／何が新しいか（事実ベース。一覧カードにも出る短め） |
+| `body` | string | 詳しい紹介文（任意。詳細ページで `summary` の下に表示）。事実の紹介にとどめ考察はしない |
+| `images` | Image[] | 画像 `{ "src", "caption"?, "credit"?, "license"? }`（任意）。**権利に注意**：美術館・主催の展示写真やチラシは著作権があるため転載しない。パブリックドメイン画像（例：Wikimedia Commons の肖像画）を `credit`/`license` 明記で使うか、自分で撮影・作成したものを使う。参考イメージは caption にその旨を書く |
+| `highlights` | string[] | 見どころ・扱う対象の箇条書き（任意。お出かけ向け） |
+| `info` | Info[] | 追加情報の行 `{ "label": string, "value": string }`（任意。開館時間・休館日・観覧料・主催・問合先など）。会期は `period`、会場は `place` を使う |
+| `events` | Event[] | 関連イベント `{ "name": string, "schedule"?: string, "note"?: string }`（任意。講演会・見学会など） |
 | `take` | string | **ひとこと（任意）**：軽い補足のみ。本格的な考察は書かない（→ A）。空でよい |
 | `source` | Source | 一次情報源 `{ "name": string, "url": string }` |
 | `relatedArticles` | string[] | 深掘り考察記事の `id`（→ A への動線） |
 | `relatedPeople` | string[] | 関連人物の `person_id`（→ DB への動線） |
 | `relatedBattles` | string[] | 関連合戦の `battle_id`（任意） |
 | `period` | Period | お出かけの会期 `{ "from": string, "to": string }`（任意） |
-| `place` | Place | お出かけの場所 `{ "name", "prefecture", "city" }`（任意） |
+| `place` | Place | お出かけの場所 `{ "name", "prefecture", "city", "address"?, "lat"?, "lng"? }`（任意）。`address` は会場の下に表示。`lat`/`lng`（緯度・経度）があれば詳細ページに**地図（OpenStreetMap 埋め込み、APIキー不要）**と Google マップへのリンクを表示。座標は Nominatim 等で会場名から取得できる |
 | `platform` | string | ゲームのプラットフォーム（任意） |
 | `tags` | string[] | タグ（任意） |
 | `draft` | boolean | 下書き（true は一覧に出さない、任意） |

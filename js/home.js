@@ -1,7 +1,6 @@
 // トップページ：新着記事・収録人物をピックアップ表示
 (async function () {
   const artEl = document.getElementById("latest-articles");
-  const peopleEl = document.getElementById("pickup-people");
   const topicsEl = document.getElementById("latest-topics");
 
   const esc = (s) =>
@@ -72,34 +71,5 @@
       topicsEl.innerHTML = `<p class="error">トピックの読み込みに失敗しました。</p>`;
       console.error(err);
     }
-  }
-
-  // 収録人物（最大6件）
-  try {
-    const res = await fetch("data/people/index.json");
-    if (!res.ok) throw new Error(res.status);
-    const people = ((await res.json()).people || []).slice(0, 6);
-    peopleEl.innerHTML = people.length
-      ? people
-          .map((p) => {
-            const b = p.birthYear ?? "?";
-            const d = p.deathYear ?? "?";
-            const tags = (p.tags || [])
-              .map((t) => `<span class="tag">${esc(t)}</span>`)
-              .join("");
-            return `
-        <a class="card" href="person.html?id=${encodeURIComponent(p.id)}">
-          <h3>${esc(p.name)}</h3>
-          <p class="kana">${esc(p.kana || "")}</p>
-          <p class="years">${b} 〜 ${d}</p>
-          <p class="card-summary">${esc(p.summary || "")}</p>
-          <div class="tags">${tags}</div>
-        </a>`;
-          })
-          .join("")
-      : `<p class="muted">まだ人物がいません。</p>`;
-  } catch (err) {
-    peopleEl.innerHTML = `<p class="error">人物の読み込みに失敗しました（README参照）。</p>`;
-    console.error(err);
   }
 })();

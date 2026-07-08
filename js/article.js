@@ -65,7 +65,27 @@
         </div>`;
     }
 
-    el.innerHTML = `${head}<div class="article-body">${bodyHTML}</div>${related}`;
+    // 関連書籍（アフィリエイト）。可読性のため本文には挟まず、記事の末尾にだけ置く
+    let books = "";
+    if (meta && meta.references && meta.references.length) {
+      const items = meta.references
+        .map((r) => {
+          const label =
+            esc(r.title) + (r.author ? ` <span class="muted">${esc(r.author)}</span>` : "");
+          const body = r.affiliateUrl
+            ? `<a href="${esc(r.affiliateUrl)}" target="_blank" rel="noopener sponsored nofollow">${label}</a>`
+            : label;
+          return `<li>${body}${r.note ? ` <span class="muted">（${esc(r.note)}）</span>` : ""}</li>`;
+        })
+        .join("");
+      books = `<section class="article-books">
+          <h3>関連書籍</h3>
+          <ul class="list">${items}</ul>
+          <p class="affiliate-disclosure">※ 関連書籍のリンクにはアフィリエイトを含みます。Amazonのアソシエイトとして、当サイトは適格販売により収入を得ています。</p>
+        </section>`;
+    }
+
+    el.innerHTML = `${head}<div class="article-body">${bodyHTML}</div>${related}${books}`;
   } catch (err) {
     el.innerHTML = `<p class="error">記事を読み込めませんでした（ID: ${esc(id)}）。ローカルで開いている場合は簡易サーバー経由で表示してください（README参照）。</p>`;
     console.error(err);

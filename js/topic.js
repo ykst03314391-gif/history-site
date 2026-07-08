@@ -142,19 +142,34 @@
       `;
     }
 
-    const buyHtml =
-      t.buy && t.buy.length
-        ? `<section class="topic-section topic-buy">
-             <h2>購入・予約</h2>
-             <div class="buy-links">${t.buy
-               .map(
-                 (b) =>
-                   `<a class="btn btn-primary buy-btn" href="${esc(b.url)}" target="_blank" rel="noopener sponsored nofollow">${esc(b.shop || "ショップ")}で見る${b.note ? ` <span class="buy-note">（${esc(b.note)}）</span>` : ""}</a>`
-               )
-               .join("")}</div>
-             <p class="affiliate-disclosure">※ 上記リンクにはアフィリエイトを含みます。Amazonのアソシエイトとして、当サイトは適格販売により収入を得ています。</p>
-           </section>`
-        : "";
+    let buyHtml = "";
+    if (t.buy && t.buy.length) {
+      // 見出し・ボタン文言はストリームに合わせる（buyLabel で個別上書きも可）
+      const buyLabel =
+        t.buyLabel ||
+        (t.stream === "お出かけ"
+          ? "宿・チケットを予約する"
+          : t.stream === "ゲーム"
+            ? "購入・予約"
+            : "関連書籍");
+      const verb = t.stream === "お出かけ" ? "で予約・確認" : "で見る";
+      const hasAmazon = t.buy.some(
+        (b) => /amazon/i.test(b.shop || "") || /amazon\./i.test(b.url || "")
+      );
+      const disclosure =
+        "※ 上記リンクにはアフィリエイト（提携先の広告）を含み、リンク経由の予約・購入で当サイトに収入が入ることがあります。" +
+        (hasAmazon ? "Amazonのアソシエイトとして、当サイトは適格販売により収入を得ています。" : "");
+      buyHtml = `<section class="topic-section topic-buy">
+          <h2>${esc(buyLabel)}</h2>
+          <div class="buy-links">${t.buy
+            .map(
+              (b) =>
+                `<a class="btn btn-primary buy-btn" href="${esc(b.url)}" target="_blank" rel="noopener sponsored nofollow">${esc(b.shop || "ショップ")}${verb}${b.note ? ` <span class="buy-note">（${esc(b.note)}）</span>` : ""}</a>`
+            )
+            .join("")}</div>
+          <p class="affiliate-disclosure">${esc(disclosure)}</p>
+        </section>`;
+    }
 
     el.innerHTML = `
       <article class="topic-detail">

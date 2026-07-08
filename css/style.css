@@ -759,6 +759,10 @@ footer.site-footer {
   line-height: 1.85;
 }
 
+/* 記事末尾の関連書籍（アフィリエイト・可読性のため本文とは区切る） */
+.article-books { margin-top: 30px; padding-top: 18px; border-top: 1px solid var(--line); }
+.article-books h3 { margin: 0 0 10px; }
+
 /* 購入・予約（アフィリエイト） */
 .topic-buy .buy-links { display: flex; flex-wrap: wrap; gap: 10px; }
 .buy-btn { text-decoration: none; }

@@ -32,6 +32,9 @@
       "relatedPeople": [],
       "relatedBattles": [],
       "tags": ["千葉県", "里見氏", "後北条氏", "千葉氏", "国府台合戦", "城めぐり", "旅・史跡"],
+      "references": [
+        { "title": "南総里見八犬伝", "author": "曲亭馬琴", "affiliateUrl": "https://www.amazon.co.jp/dp/XXXXXXXXXX?tag=YOUR_ASSOCIATE_TAG-22", "note": "※リンクは仮。登録後に実商品URL＋タグへ差し替え" }
+      ],
       "history": [{ "date": "2026-07-07", "note": "新規作成" }]
     },
     {
@@ -45,6 +48,9 @@
       "relatedPeople": ["araki-murashige", "oda-nobunaga"],
       "relatedBattles": ["arioka-siege"],
       "tags": ["荒木村重", "織田信長", "有岡城の乱", "通説", "考察"],
+      "references": [
+        { "title": "荒木村重（中世武士選書）", "author": "天野忠幸", "affiliateUrl": "https://www.amazon.co.jp/dp/XXXXXXXXXX?tag=YOUR_ASSOCIATE_TAG-22", "note": "※リンクは仮。登録後に実商品URL＋タグへ差し替え" }
+      ],
       "history": [{ "date": "2026-07-07", "note": "新規作成" }]
     },
     {
@@ -58,7 +64,10 @@
       "author": "管理人",
       "relatedPeople": ["oda-nobunaga", "uesugi-kenshin", "toyotomi-hideyoshi"],
       "relatedBattles": [],
-      "tags": ["経済", "戦国大名", "下剋上", "考察"]
+      "tags": ["経済", "戦国大名", "下剋上", "考察"],
+      "references": [
+        { "title": "戦国大名の経済学（講談社現代新書）", "author": "川戸貴史", "affiliateUrl": "https://www.amazon.co.jp/dp/XXXXXXXXXX?tag=YOUR_ASSOCIATE_TAG-22", "note": "※リンクは仮。登録後に実商品URL＋タグへ差し替え" }
+      ]
     },
     {
       "id": "tedorigawa-kenshin",
@@ -69,7 +78,10 @@
       "author": "管理人",
       "relatedPeople": ["uesugi-kenshin", "oda-nobunaga"],
       "relatedBattles": ["tedorigawa"],
-      "tags": ["手取川の戦い", "上杉謙信", "織田信長", "考察"]
+      "tags": ["手取川の戦い", "上杉謙信", "織田信長", "考察"],
+      "references": [
+        { "title": "戦国武将の選択（産経セレクト）", "author": "本郷和人", "affiliateUrl": "https://www.amazon.co.jp/dp/XXXXXXXXXX?tag=YOUR_ASSOCIATE_TAG-22", "note": "※リンクは仮。登録後に実商品URL＋タグへ差し替え。手取川の史料批判に関連" }
+      ]
     }
   ]
 }

@@ -730,6 +730,34 @@ footer.site-footer {
 .topic-map iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 .topic-map-links { font-size: 0.85rem; margin: 8px 0 0; }
 .topic-section { margin: 20px 0 0; }
+
+/* 新説：従来↔新説の対比 */
+.revision-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.rc-col { padding: 14px 16px; border-radius: 8px; border: 1px solid var(--line); }
+.rc-old { background: #f1ede4; }
+.rc-new { background: #fbeeec; border-color: var(--accent-soft); }
+.rc-label {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #fff;
+  border-radius: 4px;
+  padding: 1px 9px;
+  margin-bottom: 8px;
+}
+.rc-old .rc-label { background: var(--ink-soft); }
+.rc-new .rc-label { background: var(--accent); }
+.rc-col p { margin: 0; font-size: 0.94rem; line-height: 1.8; }
+@media (max-width: 560px) { .revision-compare { grid-template-columns: 1fr; } }
+
+/* 新説：管理人のコメント */
+.topic-comment {
+  padding: 12px 16px;
+  background: #f6efe0;
+  border-left: 4px solid var(--gold);
+  border-radius: 0 6px 6px 0;
+  line-height: 1.85;
+}
 .topic-section h2 {
   font-size: 1.12rem;
   border-left: 5px solid var(--accent);

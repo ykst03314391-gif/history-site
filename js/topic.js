@@ -41,6 +41,11 @@
       .join("")}</ul></section>`;
   }
 
+  function textSection(title, text) {
+    if (!text) return "";
+    return `<section class="topic-section"><h2>${esc(title)}</h2><p class="topic-detail-body">${esc(text)}</p></section>`;
+  }
+
   function render(t, peopleName, articleTitle) {
     if (t.title) document.title = `${t.title} ｜ 戦国クロニクル`;
 
@@ -108,6 +113,35 @@
         `<li><b>${esc(e.name)}</b>${e.schedule ? `<br><span class="muted">${esc(e.schedule)}</span>` : ""}${e.note ? `<br><span class="muted">${esc(e.note)}</span>` : ""}</li>`
     );
 
+    // ストリームで中身のレイアウトを変える（新説は専用の4部構成）
+    let middleHtml;
+    if (t.stream === "新説") {
+      const compareHtml =
+        t.conventional || t.revision
+          ? `<section class="topic-section"><h2>従来と何が違うか</h2>
+               <div class="revision-compare">
+                 <div class="rc-col rc-old"><span class="rc-label">従来（通説）</span><p>${esc(t.conventional || "")}</p></div>
+                 <div class="rc-col rc-new"><span class="rc-label">新説</span><p>${esc(t.revision || "")}</p></div>
+               </div>
+             </section>`
+          : "";
+      middleHtml = `
+        ${textSection("情報元の概要", t.sourceOverview)}
+        ${textSection("内容の詳細", t.detail || t.body)}
+        ${compareHtml}
+        ${t.comment ? `<section class="topic-section"><h2>管理人のコメント</h2><div class="topic-comment">${esc(t.comment)}</div></section>` : ""}
+      `;
+    } else {
+      middleHtml = `
+        ${t.body ? `<p class="topic-detail-body">${esc(t.body)}</p>` : ""}
+        ${infoTable(t)}
+        ${mapHtml}
+        ${highlightsHtml}
+        ${eventsHtml}
+        ${t.take ? `<div class="topic-take"><span class="take-label">ひとこと</span>${esc(t.take)}</div>` : ""}
+      `;
+    }
+
     el.innerHTML = `
       <article class="topic-detail">
         <div class="topic-head">
@@ -117,12 +151,7 @@
         <h1 class="topic-detail-title">${esc(t.title)}</h1>
         ${t.summary ? `<p class="topic-detail-summary">${esc(t.summary)}</p>` : ""}
         ${imagesHtml}
-        ${t.body ? `<p class="topic-detail-body">${esc(t.body)}</p>` : ""}
-        ${infoTable(t)}
-        ${mapHtml}
-        ${highlightsHtml}
-        ${eventsHtml}
-        ${t.take ? `<div class="topic-take"><span class="take-label">ひとこと</span>${esc(t.take)}</div>` : ""}
+        ${middleHtml}
         ${source ? `<p class="topic-source">出どころ：${source}</p>` : ""}
         ${
           relArticles || relPeople
@@ -133,7 +162,11 @@
             : ""
         }
         ${tags ? `<div class="tags">${tags}</div>` : ""}
-        <p class="topic-note muted">※ ここは「お知らせ」です。踏み込んだ考察は<a href="articles.html">考察・記事</a>で発信します。</p>
+        <p class="topic-note muted">${
+          t.stream === "新説"
+            ? `※ 新説の紹介です。より詳しい考察は<a href="articles.html">考察・記事</a>で発信します。`
+            : `※ ここは「お知らせ」です。踏み込んだ考察は<a href="articles.html">考察・記事</a>で発信します。`
+        }</p>
       </article>`;
   }
 

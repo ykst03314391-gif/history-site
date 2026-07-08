@@ -38,6 +38,20 @@
 | `info` | Info[] | 追加情報の行 `{ "label": string, "value": string }`（任意。開館時間・休館日・観覧料・主催・問合先など）。会期は `period`、会場は `place` を使う |
 | `events` | Event[] | 関連イベント `{ "name": string, "schedule"?: string, "note"?: string }`（任意。講演会・見学会など） |
 | `take` | string | **ひとこと（任意）**：軽い補足のみ。本格的な考察は書かない（→ A）。空でよい |
+
+### 新説ストリーム専用フィールド（`stream: "新説"` のとき詳細を別レイアウトで表示）
+
+新説の詳細ページは、お出かけ・ゲームとは別の4部構成で表示する（`topic.js` が `stream === "新説"` で分岐）。
+
+| フィールド | 型 | 説明 |
+|---|---|---|
+| `sourceOverview` | string | **① 情報元の概要**：誰が・どこで・どんな形で出した説か |
+| `detail` | string | **② 内容の詳細**：新説の中身（`detail` が無ければ `body` で代用） |
+| `conventional` | string | **③ 従来（通説）** の見方（対比の左） |
+| `revision` | string | **③ 新説** の見方（対比の右）。`conventional` と並べて「従来と何が違うか」を表示 |
+| `comment` | string | **④ 管理人のコメント**：短い意見（新説だけは意見を添える。深い考察は関連考察記事＝Aへ） |
+
+> 新説は「事実の報告＋短いコメント」まで。お出かけ・ゲームは純粋なお知らせ（`take` は軽い一言のみ）。
 | `source` | Source | 一次情報源 `{ "name": string, "url": string }` |
 | `relatedArticles` | string[] | 深掘り考察記事の `id`（→ A への動線） |
 | `relatedPeople` | string[] | 関連人物の `person_id`（→ DB への動線） |

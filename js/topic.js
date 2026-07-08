@@ -142,6 +142,20 @@
       `;
     }
 
+    const buyHtml =
+      t.buy && t.buy.length
+        ? `<section class="topic-section topic-buy">
+             <h2>購入・予約</h2>
+             <div class="buy-links">${t.buy
+               .map(
+                 (b) =>
+                   `<a class="btn btn-primary buy-btn" href="${esc(b.url)}" target="_blank" rel="noopener sponsored nofollow">${esc(b.shop || "ショップ")}で見る${b.note ? ` <span class="buy-note">（${esc(b.note)}）</span>` : ""}</a>`
+               )
+               .join("")}</div>
+             <p class="affiliate-disclosure">※ 上記リンクにはアフィリエイトを含みます。Amazonのアソシエイトとして、当サイトは適格販売により収入を得ています。</p>
+           </section>`
+        : "";
+
     el.innerHTML = `
       <article class="topic-detail">
         <div class="topic-head">
@@ -152,6 +166,7 @@
         ${t.summary ? `<p class="topic-detail-summary">${esc(t.summary)}</p>` : ""}
         ${imagesHtml}
         ${middleHtml}
+        ${buyHtml}
         ${source ? `<p class="topic-source">出どころ：${source}</p>` : ""}
         ${
           relArticles || relPeople

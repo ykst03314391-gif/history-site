@@ -94,6 +94,9 @@
         { "label": "プラットフォーム", "value": "公式サイトに記載なし（未発表）" },
         { "label": "開発・発売", "value": "コーエーテクモゲームス（シブサワ・コウ 45周年作品）" }
       ],
+      "buy": [
+        { "shop": "Amazon", "url": "https://www.amazon.co.jp/s?k=%E4%BF%A1%E9%95%B7%E3%81%AE%E9%87%8E%E6%9C%9B%20%E9%A3%9B%E7%BF%94&tag=YOUR_ASSOCIATE_TAG-22", "note": "※タグ・商品URLは仮。アソシエイト登録後に差し替え" }
+      ],
       "take": "初心者が信長の生涯から入れる「ストーリーモード」が気になる。ゲームの武将評価が実像とどう違うかは、いずれ企画『信長の野望、実は間違ってる？』で。",
       "source": { "name": "コーエーテクモゲームス GAMECITY（公式サイト）", "url": "https://www.gamecity.ne.jp/hishou/jp/" },
       "relatedPeople": ["oda-nobunaga"],

@@ -54,6 +54,31 @@ main {
   margin: 0 auto;
   padding: 32px 20px 80px;
 }
+/* 読み物ページ（記事）は行長をやや抑えて可読性を上げる（広すぎ・狭すぎの中間） */
+main.reading { max-width: 880px; }
+
+/* 記事の目次：ワイド画面でだけ左の余白に固定表示（余白を有効活用） */
+.article-toc { display: none; }
+.article-toc .toc-title { font-weight: 700; margin: 0 0 8px; font-size: 0.9rem; color: var(--ink-soft); }
+.article-toc ol { list-style: none; margin: 0; padding: 0; }
+.article-toc li { margin: 0 0 8px; line-height: 1.5; }
+.article-toc a { color: var(--ink-soft); border-bottom: none; }
+.article-toc a:hover { color: var(--accent); }
+@media (min-width: 1340px) {
+  .article-toc {
+    display: block;
+    position: fixed;
+    top: 120px;
+    width: 190px;
+    left: calc((100vw - 880px) / 2 - 210px);
+    max-height: 72vh;
+    overflow: auto;
+    padding-right: 10px;
+    border-right: 2px solid var(--line);
+  }
+}
+html { scroll-behavior: smooth; }
+.article-body h2 { scroll-margin-top: 18px; }
 .page-title {
   font-size: 1.6rem;
   border-left: 6px solid var(--accent);
@@ -467,8 +492,11 @@ main {
   border: 1px solid var(--line);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
-  padding: 8px 32px 28px;
+  padding: 8px 34px 30px;
   margin-top: 12px;
+  font-size: 1.05rem;
+  line-height: 2;
+  letter-spacing: 0.01em;
 }
 .article-body h1 {
   font-size: 1.9rem;
@@ -484,7 +512,7 @@ main {
 }
 .article-body h2::before { content: "◆ "; color: var(--accent); font-size: 0.9em; }
 .article-body h3 { font-size: 1.1rem; margin: 24px 0 10px; }
-.article-body p { margin: 0 0 16px; }
+.article-body p { margin: 0 0 20px; }
 .article-body blockquote {
   margin: 18px 0;
   padding: 8px 18px;

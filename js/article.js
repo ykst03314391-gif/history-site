@@ -85,8 +85,11 @@
         </section>`;
     }
 
-    // 冒頭画像（タイトル直下に差し込む）
-    let bodyOut = bodyHTML;
+    // 本文をDOM化して、冒頭画像の挿入と目次(TOC)生成を行う
+    const tmp = document.createElement("div");
+    tmp.innerHTML = bodyHTML;
+
+    // 冒頭画像（最初の見出しの直後に差し込む）
     if (meta && meta.image && meta.image.src) {
       const im = meta.image;
       const credit = [im.credit, im.license].filter(Boolean).map(esc).join("／");
@@ -94,11 +97,29 @@
         im.caption || credit
           ? `<figcaption>${esc(im.caption || "")}${credit ? ` <span class="img-credit">（${credit}）</span>` : ""}</figcaption>`
           : "";
-      const fig = `<figure class="article-hero"><img src="${esc(im.src)}" alt="${esc(im.caption || meta.title || "")}" loading="lazy">${cap}</figure>`;
-      bodyOut = /<\/h1>/.test(bodyHTML) ? bodyHTML.replace("</h1>", "</h1>" + fig) : fig + bodyHTML;
+      const fig = document.createElement("figure");
+      fig.className = "article-hero";
+      fig.innerHTML = `<img src="${esc(im.src)}" alt="${esc(im.caption || meta.title || "")}" loading="lazy">${cap}`;
+      const h1 = tmp.querySelector("h1");
+      if (h1) h1.after(fig);
+      else tmp.prepend(fig);
     }
 
-    el.innerHTML = `${head}<div class="article-body">${bodyOut}</div>${related}${books}`;
+    // 目次（h2 見出しから生成。2個以上あるときだけ。ワイド画面で左余白に表示）
+    let toc = "";
+    const heads = Array.from(tmp.querySelectorAll("h2"));
+    if (heads.length >= 2) {
+      const items = heads
+        .map((h, i) => {
+          const secId = "sec-" + (i + 1);
+          h.id = secId;
+          return `<li><a href="#${secId}">${esc(h.textContent || "")}</a></li>`;
+        })
+        .join("");
+      toc = `<nav class="article-toc" aria-label="目次"><p class="toc-title">目次</p><ol>${items}</ol></nav>`;
+    }
+
+    el.innerHTML = `${head}${toc}<div class="article-body">${tmp.innerHTML}</div>${related}${books}`;
   } catch (err) {
     el.innerHTML = `<p class="error">記事を読み込めませんでした（ID: ${esc(id)}）。ローカルで開いている場合は簡易サーバー経由で表示してください（README参照）。</p>`;
     console.error(err);

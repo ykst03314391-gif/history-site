@@ -68,9 +68,9 @@
     const items = toc
       .map((t) => `<li><a href="#${t.id}">${esc(t.title)}</a></li>`)
       .join("");
-    return `<nav class="toc" aria-label="目次">
+    return `<nav class="side-toc" aria-label="目次">
       <p class="toc-title">目次</p>
-      <ol class="toc-list">${items}</ol>
+      <ol>${items}</ol>
     </nav>`;
   }
 

@@ -84,6 +84,35 @@
     }
 
     contentEl.innerHTML = html.join("");
+    buildSideToc(contentEl);
+  }
+
+  // ワイド画面用のサイド目次（左の余白に固定表示）。section.section の h2 から生成
+  function buildSideToc(root) {
+    const secs = Array.from(root.querySelectorAll("section.section"));
+    if (secs.length < 2) return;
+    const items = secs
+      .map((s, i) => {
+        const h = s.querySelector("h2");
+        if (!h) return "";
+        const sid = s.id || "sec-" + (i + 1);
+        s.id = sid;
+        // h2 直下のテキストノードだけを見出しに使う（補足の span 等は除外）
+        let label = "";
+        h.childNodes.forEach((n) => {
+          if (n.nodeType === 3) label += n.textContent;
+        });
+        label = (label.trim() || h.textContent || "").trim();
+        return `<li><a href="#${sid}">${esc(label)}</a></li>`;
+      })
+      .filter(Boolean)
+      .join("");
+    if (!items) return;
+    const nav = document.createElement("nav");
+    nav.className = "side-toc";
+    nav.setAttribute("aria-label", "目次");
+    nav.innerHTML = `<p class="toc-title">目次</p><ol>${items}</ol>`;
+    root.prepend(nav);
   }
 
   fetch(`data/clans/${encodeURIComponent(id)}.json`)

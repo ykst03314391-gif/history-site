@@ -57,15 +57,16 @@ main {
 /* 読み物ページ（記事）は行長をやや抑えて可読性を上げる（広すぎ・狭すぎの中間） */
 main.reading { max-width: 880px; }
 
-/* 記事の目次：ワイド画面でだけ左の余白に固定表示（余白を有効活用） */
-.article-toc { display: none; }
-.article-toc .toc-title { font-weight: 700; margin: 0 0 8px; font-size: 0.9rem; color: var(--ink-soft); }
-.article-toc ol { list-style: none; margin: 0; padding: 0; }
-.article-toc li { margin: 0 0 8px; line-height: 1.5; }
-.article-toc a { color: var(--ink-soft); border-bottom: none; }
-.article-toc a:hover { color: var(--accent); }
+/* 目次サイドレール：ワイド画面でだけ左の余白に固定表示（記事・人物・大名家・合戦で共通）。
+   記事(main.reading=880px)は 1340px から、DB詳細(1000px)はレール分の余白が要るので 1460px から出す。 */
+.side-toc { display: none; }
+.side-toc .toc-title { font-weight: 700; margin: 0 0 8px; font-size: 0.9rem; color: var(--ink-soft); }
+.side-toc ol { list-style: none; margin: 0; padding: 0; }
+.side-toc li { margin: 0 0 8px; line-height: 1.5; }
+.side-toc a { color: var(--ink-soft); border-bottom: none; font-size: 0.9rem; }
+.side-toc a:hover { color: var(--accent); }
 @media (min-width: 1340px) {
-  .article-toc {
+  main.reading .side-toc {
     display: block;
     position: fixed;
     top: 120px;
@@ -77,8 +78,23 @@ main.reading { max-width: 880px; }
     border-right: 2px solid var(--line);
   }
 }
+@media (min-width: 1460px) {
+  main:not(.reading) .side-toc {
+    display: block;
+    position: fixed;
+    top: 120px;
+    width: 190px;
+    left: calc((100vw - 1000px) / 2 - 210px);
+    max-height: 72vh;
+    overflow: auto;
+    padding-right: 10px;
+    border-right: 2px solid var(--line);
+  }
+}
 html { scroll-behavior: smooth; }
 .article-body h2 { scroll-margin-top: 18px; }
+/* DB詳細（人物・大名家・合戦）はセクション自体にidを振るので、その位置合わせ */
+#content section.section { scroll-margin-top: 18px; }
 .page-title {
   font-size: 1.6rem;
   border-left: 6px solid var(--accent);
@@ -245,29 +261,7 @@ html { scroll-behavior: smooth; }
 .person-head .years { color: var(--accent); font-weight: 700; }
 
 /* 目次 */
-.toc {
-  background: var(--bg-panel);
-  border: 1px solid var(--line);
-  border-left: 5px solid var(--accent);
-  border-radius: var(--radius);
-  padding: 14px 20px;
-  margin-bottom: 30px;
-  box-shadow: var(--shadow);
-}
-.toc-title {
-  margin: 0 0 8px;
-  font-weight: 700;
-  color: var(--ink);
-  letter-spacing: 0.1em;
-}
-.toc-list {
-  margin: 0;
-  padding-left: 1.4em;
-  columns: 2;
-  column-gap: 28px;
-}
-.toc-list li { margin-bottom: 4px; }
-@media (max-width: 560px) { .toc-list { columns: 1; } }
+/* （旧・人物ページのインライン目次 .toc / .toc-list は側面レール .side-toc へ統合。削除済み） */
 
 /* アンカージャンプ時に見出しがヘッダー等に隠れないよう余白 */
 .section { margin-bottom: 34px; scroll-margin-top: 16px; }

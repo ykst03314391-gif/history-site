@@ -116,7 +116,7 @@
           return `<li><a href="#${secId}">${esc(h.textContent || "")}</a></li>`;
         })
         .join("");
-      toc = `<nav class="article-toc" aria-label="目次"><p class="toc-title">目次</p><ol>${items}</ol></nav>`;
+      toc = `<nav class="side-toc" aria-label="目次"><p class="toc-title">目次</p><ol>${items}</ol></nav>`;
     }
 
     el.innerHTML = `${head}${toc}<div class="article-body">${tmp.innerHTML}</div>${related}${books}`;

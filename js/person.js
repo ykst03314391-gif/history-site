@@ -205,12 +205,12 @@
       // 座標（lat/lng）か令制国名（province）のある領地は地図にも番号付きで示す
       const hasMap = p.territories.some(onMap);
       const items = p.territories
-        .map((t, i) => `<li>${hasMap && onMap(t) ? `<span class="terr-num">${i + 1}</span>` : ""}<b>${t.year ? esc(t.year) + "年 " : ""}</b>${esc(t.name)}${t.prefecture ? `<span class="muted">（${esc(t.prefecture)}）</span>` : ""}${t.note ? ` — <span class="muted">${esc(t.note)}</span>` : ""}${srcMark(t.sourceId)}</li>`)
+        .map((t, i) => `<li>${hasMap && onMap(t) ? `<span class="terr-num" style="background:${terrColor(i)}">${i + 1}</span>` : ""}<b>${terrYears(t)}</b>${esc(t.name)}${t.prefecture ? `<span class="muted">（${[].concat(t.prefecture).map(esc).join("・")}）</span>` : ""}${t.note ? ` — <span class="muted">${esc(t.note)}</span>` : ""}${t.untilNote ? `<span class="muted terr-until">→ ${t.until ? esc(t.until) + "年 " : ""}${esc(t.untilNote)}</span>` : ""}${srcMark(t.sourceId)}${hasMap && onMap(t) ? `<div class="terr-snap" data-i="${i}" role="img" aria-label="${esc(terrYears(t) + t.name)}の時点の領地"></div><p class="terr-snap-caption muted" data-i="${i}"></p>` : ""}</li>`)
         .join("");
       const mapHTML = hasMap
         ? `<div id="territory-map" class="territory-map" role="img" aria-label="領地の変遷の地図"></div>
            <div id="territory-legend" class="territory-legend"></div>
-           <p class="territory-map-note muted">色は領地の範囲で、国の一部だけを領したときは郡の範囲を塗っています。番号は下の一覧と対応します。線は年代順につないだもの、ピンは城など代表地点です。国界は1868年時点、郡界は1920年時点の境界による近似で、戦国期の境界とは細部で違います。</p>`
+           <p class="territory-map-note muted">色は領地の範囲で、国の一部だけを領したときは郡の範囲を塗っています。色と番号は下の一覧と対応し、淡く点線で囲んだ範囲はのちに手放した領地です。一覧の各項目の下の地図は、その時点で持っていた領地だけを示します。線は年代順につないだもの、ピンは城など代表地点です。国界は1868年時点、郡界は1920年時点の境界による近似で、戦国期の境界とは細部で違います。</p>`
         : "";
       html.push(section("領地の変遷", `${mapHTML}<ul class="list terr-list">${items}</ul>`));
     }
@@ -435,7 +435,8 @@
 
   const asList = (v) => (!v ? [] : Array.isArray(v) ? v : [v]);
 
-  // 塗る範囲。国の一部だけなら district（"但馬国朝来郡" か配列）で郡を、国全体なら province（"大和国" か配列）で国を塗る
+  // 塗る範囲。国の一部だけなら district（"但馬国朝来郡" か配列）で郡を、国全体なら province（"大和国" か配列）で国を塗る。
+  // 郡と国全体が混じるときは district に国名も並べる（例 ["伊勢国安濃郡", "伊賀国"]）
   function areasOf(t) {
     if (!t) return [];
     const d = asList(t.district);
@@ -460,8 +461,103 @@
     }));
   }
 
-  // 手に入れた年が早い国ほど淡く、遅い国ほど濃く塗る
-  const TERR_COLORS = ["#e0b24a", "#d4853a", "#c0562e", "#9b2d20", "#6b1d15"];
+  // 領地の項目ごとに色を変える（一覧の番号・ピン・塗りを同じ色にして対応を分かりやすくする）
+  const TERR_COLORS = ["#d64545", "#2f7fc1", "#e38b1d", "#3a9a4f", "#8a52b0", "#0f9a9a", "#c2477f", "#7a5a3a"];
+  const terrColor = (i) => TERR_COLORS[i % TERR_COLORS.length];
+
+  // 「1580〜1585年 」。until（手放した・移った年）が無ければ「1585年 」
+  function terrYears(t) {
+    if (!t.year) return t.until ? `〜${esc(t.until)}年 ` : "";
+    return t.until ? `${esc(t.year)}〜${esc(t.until)}年 ` : `${esc(t.year)}年 `;
+  }
+
+  // その項目の年に持っていた領地の項目番号。年より前に得て、まだ手放していない（until がその年より後）もの
+  function heldAt(territories, i) {
+    const y = territories[i].year;
+    if (!y) return [i];
+    return territories
+      .map((t, j) => j)
+      .filter((j) => {
+        const t = territories[j];
+        return j === i || (onMap(t) && t.year && t.year <= y && (!t.until || t.until > y));
+      });
+  }
+
+  const SNAP_MAX_ZOOM = 8;
+
+  // 一覧の各項目の下に置く、その時点の領地だけの地図。その項目の範囲は濃く、同時に持っていた他の領地は淡く塗る
+  function initSnapshotMap(L, geo, territories, i, el) {
+    const held = heldAt(territories, i);
+    const map = L.map(el, { scrollWheelZoom: false, dragging: !L.Browser.mobile, zoomControl: false }).setView([35, 136], 6);
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      maxZoom: 18,
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+    }).addTo(map);
+
+    // 国・郡ごとに、塗る色を決める項目（この項目を優先、無ければ最初に挙げた項目）
+    const areas = new Map();
+    for (const j of held) {
+      for (const name of areasOf(territories[j])) {
+        if (!areas.has(name) || j === i) areas.set(name, j);
+      }
+    }
+    const layers = [];
+    const order = [...areas].sort(([a], [b]) => isDistrict(a) - isDistrict(b));
+    for (const [name, j] of order) {
+      const f = geo.features.find((x) => x.properties.name === name);
+      if (!f) continue;
+      const color = terrColor(j);
+      const style = j === i
+        ? { color, weight: 2, opacity: 1, fillColor: color, fillOpacity: 0.45 }
+        : { color, weight: 1, opacity: 0.7, fillColor: color, fillOpacity: 0.18 };
+      layers.push(L.geoJSON(f, { style }).bindPopup(`<div class="terr-popup"><b>${esc(name)}</b></div>`).addTo(map));
+    }
+
+    const pts = [];
+    for (const j of held) {
+      const t = territories[j];
+      if (!hasCoords(t)) continue;
+      const ll = [Number(t.lat), Number(t.lng)];
+      if (pts.some((p) => p[0] === ll[0] && p[1] === ll[1])) continue;
+      pts.push(ll);
+      const icon = L.divIcon({
+        className: "terr-marker" + (j === i ? "" : " is-sub"),
+        html: `<span style="background:${terrColor(j)}">${j + 1}</span>`,
+        iconSize: null,
+      });
+      L.marker(ll, { icon, title: t.place || t.name }).addTo(map);
+    }
+
+    const caption = document.querySelector(`.terr-snap-caption[data-i="${i}"]`);
+    if (caption) {
+      const names = [...areas.keys()].filter((n) => !isDistrict(n) || ![...areas.keys()].some((m) => !isDistrict(m) && n.startsWith(m)));
+      caption.textContent = `${territories[i].year ? territories[i].year + "年の時点の領地" : "この時点の領地"}：${names.join("・") || territories[i].name}${territories[i].mapNote ? `（${territories[i].mapNote}）` : ""}`;
+    }
+
+    map.invalidateSize();
+    const bounds = L.latLngBounds(pts);
+    for (const layer of layers) bounds.extend(layer.getBounds());
+    return { map, bounds };
+  }
+
+  // その時点の地図を並べたとき、続く項目の範囲が重なるあいだは同じ表示範囲にして、移り変わりを見比べやすくする
+  function fitSnapshotMaps(snaps) {
+    const groups = [];
+    for (const snap of snaps) {
+      if (!snap.bounds.isValid()) continue;
+      const last = groups[groups.length - 1];
+      if (last && last.bounds.intersects(snap.bounds)) {
+        last.bounds.extend(snap.bounds);
+        last.snaps.push(snap);
+      } else {
+        groups.push({ bounds: L.latLngBounds(snap.bounds.getSouthWest(), snap.bounds.getNorthEast()), snaps: [snap] });
+      }
+    }
+    // 郡ひとつなどの小さな範囲でも、どの地方かが分かる程度より寄せない
+    for (const g of groups) {
+      for (const { map } of g.snaps) map.fitBounds(g.bounds, { padding: [24, 24], maxZoom: SNAP_MAX_ZOOM });
+    }
+  }
 
   // 領地の変遷の地図：国の塗りつぶし＋番号付きピン＋年代順の線
   function initTerritoryMap(territories) {
@@ -482,13 +578,10 @@
         const provs = new Map();
         territories.forEach((t, i) => {
           for (const name of areasOf(t)) {
-            if (!provs.has(name)) provs.set(name, { year: t.year, items: [] });
+            if (!provs.has(name)) provs.set(name, { first: i, items: [] });
             provs.get(name).items.push({ t, n: i + 1 });
           }
         });
-        const years = [...new Set([...provs.values()].map((v) => v.year))].sort((a, b) => a - b);
-        const colorOf = (year) =>
-          TERR_COLORS[Math.round((years.indexOf(year) / Math.max(years.length - 1, 1)) * (TERR_COLORS.length - 1))];
 
         const provLayers = new Map();
         // 国を先に、郡を後に描いて、国の中の郡が隠れないようにする
@@ -496,26 +589,31 @@
         for (const [name, info] of order) {
           const f = geo.features.find((x) => x.properties.name === name);
           if (!f) continue;
-          const color = colorOf(info.year);
+          const color = terrColor(info.first);
+          // その国・郡を挙げた項目がすべて until 付きなら、のちに手放した領地として淡く点線で描く
+          const lost = info.items.every(({ t }) => t.until);
           const popup = `<div class="terr-popup"><b>${esc(name)}</b>${info.items
-            .map(({ t, n }) => `<div>${n}. ${t.year ? esc(t.year) + "年 " : ""}${esc(t.name)}</div>`)
+            .map(({ t, n }) => `<div>${n}. ${terrYears(t)}${esc(t.name)}</div>`)
             .join("")}</div>`;
           const layer = L.geoJSON(f, {
-            style: { color, weight: 1.5, opacity: 0.9, fillColor: color, fillOpacity: 0.38 },
+            style: lost
+              ? { color, weight: 1.5, opacity: 0.9, dashArray: "5 4", fillColor: color, fillOpacity: 0.14 }
+              : { color, weight: 1.5, opacity: 0.9, fillColor: color, fillOpacity: 0.38 },
           })
             .bindPopup(popup)
             .addTo(map);
           provLayers.set(name, layer);
         }
 
-        // 凡例：年ごとに国をまとめる
+        // 凡例：項目ごとに、その項目で初めて塗った国・郡をまとめる
         const legendEl = document.getElementById("territory-legend");
         if (legendEl && provLayers.size) {
-          legendEl.innerHTML = years
-            .map((y) => {
-              const names = [...provs].filter(([n, v]) => v.year === y && provLayers.has(n)).map(([n]) => n);
+          legendEl.innerHTML = territories
+            .map((t, i) => {
+              const names = [...provs].filter(([n, v]) => v.first === i && provLayers.has(n)).map(([n]) => n);
               if (!names.length) return "";
-              return `<span class="terr-legend-item"><i style="background:${colorOf(y)}"></i>${y ? esc(y) + "年〜 " : ""}${names.map(esc).join("・")}</span>`;
+              const lost = names.every((n) => provs.get(n).items.every(({ t }) => t.until));
+              return `<span class="terr-legend-item${lost ? " is-lost" : ""}"><i style="background:${terrColor(i)}"></i>${i + 1}. ${t.year && !t.until ? esc(t.year) + "年〜 " : terrYears(t)}${names.map(esc).join("・")}</span>`;
             })
             .join("");
         }
@@ -544,13 +642,13 @@
           const label = list.map((x) => x.n).join("・");
           const icon = L.divIcon({
             className: "terr-marker",
-            html: `<span>${esc(label)}</span>`,
+            html: `<span style="background:${terrColor(list[0].n - 1)}">${esc(label)}</span>`,
             iconSize: null,
           });
           const popup = list
             .map(({ t, n }) => {
               const where = t.place ? `地図の位置：${esc(t.place)}${t.approx ? "（おおよそ）" : ""}` : t.approx ? "位置はおおよそ" : "";
-              return `<div class="terr-popup"><b>${n}. ${t.year ? esc(t.year) + "年 " : ""}${esc(t.name)}</b>${t.note ? `<div>${esc(t.note)}</div>` : ""}${where ? `<div class="muted">${where}</div>` : ""}</div>`;
+              return `<div class="terr-popup"><b>${n}. ${terrYears(t)}${esc(t.name)}</b>${t.note ? `<div>${esc(t.note)}</div>` : ""}${where ? `<div class="muted">${where}</div>` : ""}</div>`;
             })
             .join("");
           L.marker(list[0].ll, { icon, title: label }).bindPopup(popup).addTo(map);
@@ -561,6 +659,10 @@
         for (const layer of provLayers.values()) bounds.extend(layer.getBounds());
         if (pts.length === 1 && !provLayers.size) map.setView(pts[0].ll, 10);
         else if (bounds.isValid()) map.fitBounds(bounds, { padding: [16, 16] });
+
+        fitSnapshotMaps(
+          [...document.querySelectorAll(".terr-snap")].map((snapEl) => initSnapshotMap(L, geo, territories, Number(snapEl.dataset.i), snapEl))
+        );
       })
       .catch((err) => {
         console.error(err);

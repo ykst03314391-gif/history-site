@@ -139,11 +139,16 @@ Spot = {
 
 ### Territory（領地変遷）
 ```
-{ "year"?: number, "name": string, "prefecture"?: string, "note"?: string, "sourceId"?: string,
+{ "year"?: number, "name": string, "prefecture"?: string | string[], "note"?: string, "sourceId"?: string,
   "province"?: string | string[],   // 地図で塗る国（例 "大和国"）。国全体を領したとき
   "district"?: string | string[],   // 地図で塗る郡（例 "但馬国朝来郡"）。国の一部だけのときは province より優先して郡だけを塗る
+                                    // 郡と国全体が混じるときは国名も並べる（例 ["伊勢国安濃郡", "伊賀国"]）
+  "until"?: number,                 // 手放した・移った年。地図では淡く点線で描き、一覧は「1580〜1585年」と出す（死去まで持っていたなら書かない）
+  "untilNote"?: string,             // 手放した事情（国替え・改易など）と根拠
+  "mapNote"?: string,               // 地図の補足（塗らなかった範囲とその理由など）。その時点の地図の説明に添える
   "place"?: string, "lat"?: number, "lng"?: number, "approx"?: boolean }   // ピンの地点
 ```
+> 同じ時に一緒に与えられた国・郡は、項目を分けずに1つの項目にまとめる（地図で同じ番号・同じ色になる）。
 > 国の一部しか領していない（城代・数郡の拝領など）のに province だけを入れると国全体が塗られてしまう。その場合は district で郡を指定する。郡名は `assets/geo/districts.geojson` の name（1920年の郡名）に合わせる。
 
 ### Event（年表項目）

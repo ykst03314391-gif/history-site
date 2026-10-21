@@ -54,7 +54,7 @@
       }
       // 領地
       for (const t of p.territories || []) {
-        if (t.prefecture) addPerson(t.prefecture, p.id, p.name, "領地：" + (t.name || ""));
+        for (const pf of [].concat(t.prefecture || [])) addPerson(pf, p.id, p.name, "領地：" + (t.name || ""));
       }
       // 史跡・スポット
       for (const s of p.spots || []) {

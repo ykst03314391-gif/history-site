@@ -40,7 +40,7 @@
     {"name": "徳川家康", "from": 1600, "note": "関ヶ原で東軍につく"}
   ],
   "territories": [
-    {"year": 1583, "name": "但馬国（竹田城）", "prefecture": "兵庫県", "note": "天正記（柴田退治記）は賤ヶ岳の後の配置として「但馬竹田桑山修理進」と書く。城主とも城代ともいわれる", "sourceId": "tensho-ki", "province": "但馬国", "district": "但馬国朝来郡", "place": "竹田城跡", "lat": 35.3006, "lng": 134.8292},
+    {"year": 1583, "name": "但馬国（竹田城）", "prefecture": "兵庫県", "note": "天正記（柴田退治記）は賤ヶ岳の後の配置として「但馬竹田桑山修理進」と書く。城主とも城代ともいわれる", "sourceId": "tensho-ki", "province": "但馬国", "district": "但馬国朝来郡", "until": 1585, "untilNote": "紀州攻めの後、和歌山へ移る", "place": "竹田城跡", "lat": 35.3006, "lng": 134.8292},
     {"year": 1585, "name": "紀伊国（和歌山）", "prefecture": "和歌山県", "note": "紀州攻めの後、和歌山に入る。城代として3万石とも、城主として2万石加増ともいう", "sourceId": "kawasumi-taikoki", "province": "紀伊国", "district": "紀伊国海草郡", "place": "和歌山城", "lat": 34.2277, "lng": 135.1713},
     {"year": 1595, "name": "和泉国（谷川）", "prefecture": "大阪府", "note": "1万石を加えられ計4万石とされる。隠居後もここを保ち、谷川藩の初代とされる（原典未確認）", "province": "和泉国", "district": "和泉国泉南郡", "place": "谷川", "lat": 34.3218, "lng": 135.1263}
   ],

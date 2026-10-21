@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>城一覧 ｜ 戦国クロニクル</title>
+  <meta name="description" content="戦国時代の城のデータ。所在地・築城年・ゆかりの武将や合戦をまとめています。">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="dev-banner"><strong>【開発中】</strong>このサイトは制作途中です。内容・デザインは随時追加・変更されます。</div>
+  <header class="site-header">
+    <div class="inner">
+      <h1 class="site-title"><a href="index.html">戦国クロニクル</a></h1>
+      <nav>
+        <a href="articles.html">考察・記事</a>
+        <a href="topics.html">最新</a>
+        <a href="people.html">人物</a>
+        <a href="castles.html">城</a>
+        <a href="regions.html">地域から探す</a>
+        <a href="clans.html">大名家から探す</a>
+        <a href="battles.html">合戦名から探す</a>
+        <a href="about.html">このサイトについて</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <h2 class="page-title">城一覧</h2>
+    <p class="lead">「この城、誰の城だっけ？ 何があった城だっけ？」を、ゆかりの人物・合戦とあわせて引けます。</p>
+
+    <div class="provisional-notice" role="note">
+      <strong>⚠ 仮置きデータ</strong>：ここに掲載しているデータベース情報（人物・合戦・大名家など）は<strong>すべて暫定（仮置き）</strong>です。出典の裏取りが済んでおらず、記載中の出典（信長公記など）も未検証。内容は今後、一次資料に当たって順次修正します。現時点で正確性は保証しません。
+    </div>
+    <input type="search" id="search" class="search-box" placeholder="城名・かな・所在地・人物・タグで検索…">
+
+    <div id="list" class="card-grid" aria-live="polite"></div>
+  </main>
+
+  <footer class="site-footer">
+    <p>戦国クロニクル（開発中）／ 掲載情報には諸説あります。</p>
+  </footer>
+
+  <script src="js/castles.js"></script>
+</body>
+</html>

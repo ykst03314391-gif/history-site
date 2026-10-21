@@ -944,3 +944,9 @@ footer.site-footer {
 .territory-legend { display: flex; flex-wrap: wrap; gap: 4px 16px; margin: 8px 0 0; font-size: 0.85rem; }
 .terr-legend-item { display: inline-flex; align-items: center; gap: 6px; }
 .terr-legend-item i { display: inline-block; width: 14px; height: 14px; border-radius: 3px; opacity: 0.75; }
+
+/* ---- 城一覧（カード自体はリンクではないので浮き上がらせない） ---- */
+.castle-card:hover { transform: none; box-shadow: var(--shadow); }
+.castle-related { margin-top: 10px; font-size: 0.82rem; }
+.castle-related p { margin: 0 0 4px; }
+.castle-related-label { color: var(--ink-soft); margin-right: 6px; }

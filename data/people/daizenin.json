@@ -23,7 +23,7 @@
   },
   "family": [
     {"relation": "父", "person_id": "toyotomi-hidenaga", "name": "豊臣秀長"},
-    {"relation": "母", "name": "不明", "note": "興俊尼（光秀尼）とする説などがある"},
+    {"relation": "母", "name": "不明", "note": "興俊尼（光秀尼）とする説などがある。奈良名所八重桜は、興俊尼が産んだ秀長の娘が「安芸の毛利家の室」になったと書く"},
     {"relation": "養母", "person_id": "jiunin", "name": "慈雲院", "note": "父の正室。養母だったとする見方がある（諸説）"},
     {"relation": "養父", "person_id": "toyotomi-hideyoshi", "name": "豊臣秀吉", "note": "養女となって嫁いだ"},
     {"relation": "夫", "name": "毛利秀元"}
@@ -35,7 +35,7 @@
     {"year": 1609, "month": 11, "day": 29, "title": "死去", "description": "22歳で没した"}
   ],
   "episodes": [
-    {"title": "文禄3年の祝言は誰のものか", "body": "興福寺の僧の日記（多聞院日記）の文禄3年3月2日の条に、秀長の娘の祝言の記事がある。これを秀保と姉の婚礼とみる研究者と、大善院と秀俊（のちの小早川秀秋）の婚礼とみる研究者とで解釈が分かれている（原典未確認）。", "uncertain": true}
+    {"title": "文禄3年の祝言は誰のものか", "body": "興福寺の僧の日記（多聞院日記）の文禄3年3月2日の条に「於郡山金吾殿へ祝言ノ儀式在之、大納言殿ノソハムスメ也、秋篠ノ沙弥ノ子也」とある。相手は金吾殿（秀俊、のちの小早川秀秋）で、花嫁は秀長の側室の娘、秋篠氏につながる人と書かれている。この娘が大善院なのかどうか、のちの毛利秀元との縁組とどうつながるのかは、はっきりしない。", "sourceId": "tamonin-nikki", "uncertain": true}
   ],
   "spots": [
     {"type": "神社仏閣", "name": "功山寺", "prefecture": "山口県", "city": "下関市", "description": "長府毛利家ゆかりの寺。位牌が祀られているとされる"}
@@ -52,11 +52,14 @@
     ]
   },
   "sources": [
-    {"id": "wikipedia", "title": "大善院 (毛利秀元室)（Wikipedia）", "url": "https://ja.wikipedia.org/wiki/大善院_(毛利秀元室)", "note": "名・生没年・婚姻・墓所などの概要。手元の原典には記述が見つからず、原典は未確認", "type": "ネット記事"}
+    {"id": "wikipedia", "title": "大善院 (毛利秀元室)（Wikipedia）", "url": "https://ja.wikipedia.org/wiki/大善院_(毛利秀元室)", "note": "名・生没年・婚姻・墓所などの概要。原典は未確認", "type": "ネット記事"},
+    {"id": "tamonin-nikki", "title": "多聞院日記", "author": "英俊ほか", "note": "興福寺多聞院の僧の日記。文禄3年3月2日の金吾殿の祝言。reference/ndl/tamonin-nikki.txt（三教書院版のOCR）と照合", "type": "史料", "primary": "一次資料"},
+    {"id": "nara-meisho-yaezakura", "title": "奈良名所八重桜", "author": "大久保秀興・本林伊祐", "note": "延宝6年刊の奈良の名所案内。巻12の興福院の項に、興俊尼の娘が毛利家に嫁いだとある。reference/ndl/nara-meisho-yaezakura.txt（版本のOCR）と照合", "type": "史料", "primary": "二次資料"}
   ],
   "tags": ["豊臣家", "秀長の娘", "毛利家"],
   "history": [
-    {"date": "2026-10-21", "note": "新規作成"}
+    {"date": "2026-10-21", "note": "新規作成"},
+    {"date": "2026-10-21", "note": "文禄3年の祝言を多聞院日記の原文と照合（相手は金吾殿）。生母について奈良名所八重桜の記述を追加"}
   ],
   "updatedAt": "2026-10-21"
 }

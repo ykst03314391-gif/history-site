@@ -25,7 +25,7 @@
     {"relation": "養女", "person_id": "daizenin", "name": "大善院", "note": "養女として育てたとする見方がある（諸説）"}
   ],
   "timeline": [
-    {"year": 1585, "title": "郡山に入る", "description": "秀長の大和入国にともない郡山に入ったとされる（多聞院日記によるとされるが原典未確認）"},
+    {"year": 1585, "month": 9, "title": "郡山に入る", "description": "多聞院日記の天正13年9月20日の条に「一昨日濃州女中郡山へ被来了」とある。濃州は当時美濃守だった秀長のことで、その妻が9月18日に郡山に入ったと読める", "sourceId": "tamonin-nikki"},
     {"year": 1591, "month": 1, "title": "夫秀長の死", "description": "秀長が郡山城で病没し、養子の秀保が跡を継ぐ"},
     {"year": 1591, "month": 2, "title": "大徳寺の僧をとりなす", "description": "千利休の事件に連座した大徳寺の僧について、大政所とともに秀吉にとりなし、処罰を免れさせたとされる（原典未確認）"},
     {"year": 1595, "title": "秀長家の断絶", "description": "秀保が没して秀長家は絶え、郡山を去ったとみられる"},
@@ -40,11 +40,13 @@
     "note": "墓所ははっきりしない。高野山奥之院に生前供養の石塔があるとされる。"
   },
   "sources": [
-    {"id": "wikipedia", "title": "慈雲院 (豊臣秀長室)（Wikipedia）", "url": "https://ja.wikipedia.org/wiki/慈雲院_(豊臣秀長室)", "note": "法名・没年・出自の諸説などの概要。手元の原典には記述が見つからず、原典は未確認", "type": "ネット記事"}
+    {"id": "wikipedia", "title": "慈雲院 (豊臣秀長室)（Wikipedia）", "url": "https://ja.wikipedia.org/wiki/慈雲院_(豊臣秀長室)", "note": "法名・没年・出自の諸説などの概要。郡山入り以外は原典未確認", "type": "ネット記事"},
+    {"id": "tamonin-nikki", "title": "多聞院日記", "author": "英俊ほか", "note": "興福寺多聞院の僧の日記。天正13年9月、「濃州女中」が郡山に来たと記す。reference/ndl/tamonin-nikki.txt（三教書院版のOCR）と照合", "type": "史料", "primary": "一次資料"}
   ],
   "tags": ["豊臣家", "秀長の妻"],
   "history": [
-    {"date": "2026-10-21", "note": "新規作成"}
+    {"date": "2026-10-21", "note": "新規作成"},
+    {"date": "2026-10-21", "note": "郡山入りを多聞院日記の原文と照合"}
   ],
   "updatedAt": "2026-10-21"
 }

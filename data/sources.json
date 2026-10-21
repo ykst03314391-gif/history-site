@@ -257,11 +257,74 @@
       "author": "土屋知貞",
       "kind": "史料",
       "era": "江戸前期成立",
-      "note": "秀吉の出自を記した記録。大政所の実名「なか」や御器所村出身の説はこれによる。",
+      "note": "秀吉の出自を記した記録。大政所の御器所村出身や竹阿弥との再婚の説はこれによる（実名「なか」はこの本には見えない）。近藤瓶城編『改定史籍集覧』第13冊所収本を使用。",
+      "url": "https://dl.ndl.go.jp/pid/1920348",
       "usedIn": [
         {
           "type": "person",
           "id": "omandokoro"
+        },
+        {
+          "type": "person",
+          "id": "toyotomi-hideyasu"
+        }
+      ]
+    },
+    {
+      "id": "tamonin-nikki",
+      "level": 1,
+      "title": "多聞院日記",
+      "yomi": "たもんいんにっき",
+      "author": "英俊ほか",
+      "kind": "史料",
+      "era": "文明10年〜元和4年の記事",
+      "note": "奈良・興福寺多聞院の僧たちが書き継いだ日記。大和から見た織豊期の動きを伝える同時代の記録だが、伝聞も多い。辻善之助編・三教書院版（1935〜39年）を使用。",
+      "url": "https://dl.ndl.go.jp/pid/1920656",
+      "usedIn": [
+        {
+          "type": "person",
+          "id": "toyotomi-hidenaga"
+        },
+        {
+          "type": "person",
+          "id": "toyotomi-hideyasu"
+        },
+        {
+          "type": "person",
+          "id": "jiunin"
+        },
+        {
+          "type": "person",
+          "id": "daizenin"
+        },
+        {
+          "type": "person",
+          "id": "koshunni"
+        },
+        {
+          "type": "castle",
+          "id": "yamato-koriyama"
+        }
+      ]
+    },
+    {
+      "id": "nara-meisho-yaezakura",
+      "level": 2,
+      "title": "奈良名所八重桜",
+      "yomi": "ならめいしょやえざくら",
+      "author": "大久保秀興・本林伊祐",
+      "kind": "史料",
+      "era": "延宝6年（1678）刊",
+      "note": "江戸時代前期の奈良の名所案内。寺社の縁起や言い伝えを載せる。興俊尼と秀長の話はこれによる。",
+      "url": "https://dl.ndl.go.jp/pid/2574961",
+      "usedIn": [
+        {
+          "type": "person",
+          "id": "koshunni"
+        },
+        {
+          "type": "person",
+          "id": "daizenin"
         }
       ]
     }

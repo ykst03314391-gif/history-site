@@ -13,7 +13,7 @@
 ```
 reference/
 ├─ wikisource/  … Wikisource（新字版）翻刻を parse API で取得（13本）
-├─ ndl/         … NDL 次世代デジタルライブラリーの OCR 全文（3本・要校正）
+├─ ndl/         … NDL 次世代デジタルライブラリーの OCR 全文（6本・要校正）
 ├─ jstage/      … J-STAGE 由来の論文（現状なし）      ┐
 ├─ cinii/       … CiNii の論文書誌メモ（2本）          ├ 論文系は発行年でさらに分ける（例 cinii/2025/）
 └─ other/       … 機関リポジトリ/青空文庫/刊本 等      ┘
@@ -43,15 +43,20 @@ reference/
 | `wikisource/kanchiron.txt` | 『官地論』 | 二次（軍記） | `kanchiron` | 加賀富樫氏・加賀一向一揆 |
 | `wikisource/ihon-odawaraki.txt` | 『異本小田原記』 | 二次（軍記・北条五代記系の異本） | `ihon-odawaraki` | 後北条・小田原 |
 
-### `ndl/`（NDL 次世代デジタルライブラリー OCR・3本／要校正）
+### `ndl/`（NDL 次世代デジタルライブラリー OCR・6本／要校正）
 
 | ファイル | 原典 | 史料区分 | sourceId | 主な関連 |
 |---|---|---|---|---|
 | `ndl/jozan-kidan.txt` | 湯浅常山『常山紀談』(全3巻) | 二次（逸話集・**OCR/要校正**） | `jozan-kidan` | 信長・秀吉・武田・上杉の逸話 |
 | `ndl/intoku-taiheiki.txt` | 香川正矩『陰徳太平記』(全81巻) | 二次（軍記・**OCR/要校正**） | `intoku-taiheiki` | 毛利・尼子・中国地方 |
 | `ndl/meisho-genkoroku.txt` | 岡谷繁実『名将言行録』(前編上欠) | 二次（言行録・**OCR/要校正**） | `meisho-genkoroku` | 武将全般の言行・逸話 |
+| `ndl/tamonin-nikki.txt` | 英俊ほか『多聞院日記』(全5巻・三教書院版) | **一次**（興福寺僧の日記・**OCR/要校正**） | `tamonin-nikki`（未登録） | 秀長・大和郡山・筒井・松永・奈良 |
+| `ndl/taiko-soseiki.txt` | 土屋知貞『太閤素生記』(改定史籍集覧 第13冊) | 二次（聞書・**OCR/要校正**） | `taiko-soseiki` | 秀吉の出自・大政所・朝日姫 |
+| `ndl/nara-meisho-yaezakura.txt` | 『奈良名所八重桜』(延宝6年刊・全12巻) | 二次（名所記・**版本OCR/誤認識多**） | `nara-meisho-yaezakura`（未登録） | 奈良の寺社縁起・光秀尼の逸話 |
 
-> - **一次史料は `shincho-koki` のみ**（`mikawa-monogatari` は当事者覚書で一次寄りだが主観・記憶違いに注意）。残りは**すべて二次史料**（軍記・軍学書・覚書）で、そのまま事実の典拠にはできない。「近世にこう語られた」水準で扱い、一次史料と突き合わせる。
+> - 各ファイルの「── コマ N ──」は NDL デジタルコレクションのコマ番号。画像は git 外の `D:\private\shiryo\<史料名>\` に同じ番号で保存している（`D:\private\shiryo\tools\` の取得スクリプトで再取得可）。
+
+> - **一次史料は `shincho-koki` と `tamonin-nikki`**（`mikawa-monogatari` は当事者覚書で一次寄りだが主観・記憶違いに注意）。残りは**すべて二次史料**（軍記・軍学書・覚書）で、そのまま事実の典拠にはできない。「近世にこう語られた」水準で扱い、一次史料と突き合わせる。
 > - 収録範囲メモ：`shincho-koki` 首巻〜巻之十五（本能寺まで）／`koyo-gunkan` 全60品。
 > - 入手できなかった史料（フロイス日本史＝訳が著作権保護中、明智軍記・信長記（甫庵）・徳川実紀・古記録類＝Wikisource未収録 等）は [`../docs/sources.md`](../docs/sources.md) に記録。
 

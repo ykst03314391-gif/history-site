@@ -46,6 +46,7 @@ Photo = {
 | `built` | `{ year?, era?, builder?, note?, uncertain? }` | 築城。`uncertain: true` で「諸説あり」 |
 | `abandoned` | 同上（`builder` なし） | 廃城。現存・未廃城なら省略（「—」表示） |
 | `lords` | `{ name, person_id?, role?, from?, to?, note?, uncertain?, sourceId? }[]` | 歴代城主。`role` は「城代」など。`person_id` があれば人物ページへリンク |
+| `changes` | `{ year?, toYear?, era?, kind?, title, description?, quote?, uncertain?, sourceId? }[]` | 増改築の歴史（年代順）。`kind` は「築城・改修・増築・廃城・破却・再建・復元・調査・整備・保存」など。期間なら `toYear` も書く。`quote` は翻刻と照合した原文だけ |
 | `features` | `{ title, body, sourceId? }[]` | 城としての特徴（縄張り・石垣・立地など） |
 | `scale` | `{ elevation?, mountain?, extent?, note?, sourceId? }` | 大きさ（標高m・山名・縄張りの範囲）。`elevation` がなければ `mountain` を「立地」として表示 |
 | `place` | `{ name?, prefecture, city, address?, lat?, lng? }` | 所在地。`lat`/`lng` があれば OpenStreetMap を埋め込む（合戦ページと同じ） |
@@ -68,6 +69,6 @@ Photo = {
   - 2行目：分類 ／ 所在地 ／ 築城年（築城者）または `builtNote`
   - ゆかりの人物・合戦を人物ページ／合戦ページへのリンクで表示
   - 検索：城名・かな・別名・分類・所在地・築城者・紹介文・タグ・ゆかりの人物名
-- 詳細：`castle.html?id=<id>` … 基本情報 → 歴代城主 → 城としての特徴 → 所在地（地図） → この城で起きた合戦 → 現在の様子 → 見学情報 → 交通アクセス → 周辺の見どころ → 関連記事 → 出典 → 更新履歴
+- 詳細：`castle.html?id=<id>` … 基本情報 → 歴代城主 → 増改築の歴史 → 城としての特徴 → 所在地（地図） → この城で起きた合戦 → 現在の様子 → 見学情報 → 交通アクセス → 周辺の見どころ → 関連記事 → 出典 → 更新履歴
 
 > ⚠️ 他のDBと同じく、現状のデータは仮置き（一般知識ベースの暫定値・出典未検証）。

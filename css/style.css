@@ -1057,6 +1057,13 @@ footer.site-footer {
 }
 .castle-card .castle-related,
 .castle-card .tags { clear: both; }
+/* 種別・所在地・築城は画像の下に回して横幅いっぱいに使う（収まらなければ「／」の位置で折り返す） */
+.castle-card .years {
+  clear: right;
+  font-size: 0.75rem;
+  font-feature-settings: "palt";
+}
+.castle-card .meta-item { white-space: nowrap; }
 .castle-photo { margin: 0; width: 300px; flex-shrink: 0; }
 .castle-photo img {
   display: block;
@@ -1075,3 +1082,16 @@ footer.site-footer {
 .photo-credit-list { margin: 0; padding-left: 1.2em; line-height: 1.7; }
 .photo-credit-list .credit-name { color: var(--ink); font-weight: 700; margin-right: 0.5em; }
 .photo-credit-list a { overflow-wrap: anywhere; }
+
+/* 増改築の歴史：築城・改修・復元などの種別ラベル */
+.change-kind {
+  display: inline-block;
+  font-size: 0.72rem;
+  line-height: 1.6;
+  padding: 0 7px;
+  margin-right: 8px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--ink-soft);
+  vertical-align: 1px;
+}

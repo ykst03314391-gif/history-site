@@ -90,6 +90,20 @@
       "sourceId": "koriyama-panel"
     }
   ],
+  "changes": [
+    {"year": 1580, "era": "天正8年", "kind": "築城", "title": "筒井順慶が築城・入城", "description": "天正年間に、大和国でただ一つの城郭として築城が始まり、天正8年に筒井順慶が入城した。", "sourceId": "koriyama-panel"},
+    {"year": 1585, "era": "天正13年", "kind": "改修", "title": "豊臣秀長が城の骨格をつくる", "description": "大和・紀伊・和泉を与えられて入った秀長が、城郭の骨格をつくったと考えられている。石材が足りず、寺院の石仏や礎石まで集めて石垣に積んだ。", "sourceId": "koriyama-panel"},
+    {"year": 1585, "toYear": 1600, "era": "天正13年〜慶長5年ごろ", "kind": "増築", "title": "天守を建てる", "description": "天守台の発掘で見つかった礎石と瓦から、1階が7×8間・5階建て相当の天守が、豊臣政権期（秀長・秀保・増田長盛のころ）に建てられたと考えられている。豊臣期大坂城と同じ型の金箔瓦も出土した。", "sourceId": "koriyama-panel"},
+    {"year": 1595, "era": "文禄4年", "kind": "増築", "title": "増田長盛の外堀普請で完成", "description": "入城した増田長盛が外堀を普請し、城下町まで囲む総構えの城が完成した。このときの城の形が、今もよく残っている。", "sourceId": "koriyama-panel"},
+    {"year": 1600, "era": "慶長5年", "kind": "廃城", "title": "関ヶ原の戦いの後に一時廃城", "description": "城は一時廃城となった。建物の多くは伏見城へ移されたとされる。", "uncertain": true, "sourceId": "koriyama-panel"},
+    {"year": 1615, "era": "元和元年", "kind": "再建", "title": "幕府の城として復興", "description": "大坂・京都に近い要衝として、幕府が城を復興した。以後、水野・松平・本多などの譜代大名が城主を務めた。江戸時代には天守は建てられなかったとみられている。", "sourceId": "koriyama-panel"},
+    {"year": 1873, "era": "明治6年ごろ", "kind": "破却", "title": "廃城令で建物を取り壊す", "description": "明治の廃城令で城の建物が取り壊された。明治時代には天守台に「植松桜碑」、付櫓台に柳沢保申を祀る祖霊社が建てられ、天守台へ東から登る今の階段もこのときつくられた。", "uncertain": true, "sourceId": "koriyama-panel"},
+    {"year": 1983, "era": "昭和58年", "kind": "復元", "title": "追手門を復元", "description": "市民運動によって追手門が復元された。", "sourceId": "tabi-mag"},
+    {"year": 1984, "era": "昭和59年", "kind": "復元", "title": "追手東隅櫓・十九間多聞櫓を復元", "description": "追手門を守る隅櫓と多聞櫓が復元された。", "sourceId": "tabi-mag"},
+    {"year": 1987, "era": "昭和62年", "kind": "復元", "title": "追手向櫓を復元", "sourceId": "tabi-mag"},
+    {"year": 2014, "era": "平成26年", "kind": "調査", "title": "天守台の発掘調査", "description": "展望施設の整備に先立って天守台を発掘し、天守の礎石23石や金箔瓦が見つかった。", "sourceId": "koriyama-panel"},
+    {"year": 2017, "era": "平成29年", "kind": "整備", "title": "天守台展望施設が完成", "description": "天守台が展望施設として整備され、上に登れるようになった。", "sourceId": "resona-column"}
+  ],
   "features": [
     {
       "title": "石仏や礎石を積み込んだ石垣（転用石）",
@@ -261,11 +275,19 @@
       "url": "https://www.resonabank.co.jp/resona_in/specialty/column/yamatokoriyama/column_0003.html",
       "note": "国史跡指定（2022年）・続日本100名城・復元された門と櫓・柳澤神社。",
       "type": "Web"
+    },
+    {
+      "id": "tabi-mag",
+      "title": "大和郡山城（ニッポン旅マガジン）",
+      "url": "https://tabi-mag.jp/na0154/",
+      "note": "追手門（昭和58年）、追手東隅櫓と十九間多聞櫓（昭和59年）、追手向櫓（昭和62年）の復元年。2026-10-21に確認。市の公式情報では未確認。",
+      "type": "Web"
     }
   ],
   "tags": ["平山城", "大和", "豊臣家", "国史跡", "続日本100名城", "転用石"],
   "updatedAt": "2026-10-21",
   "history": [
-    { "date": "2026-10-21", "note": "城ページを新規作成" }
+    { "date": "2026-10-21", "note": "城ページを新規作成" },
+    { "date": "2026-10-21", "note": "増改築の歴史を追加" }
   ]
 }

@@ -11,13 +11,16 @@
       ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c])
     );
 
-  // 築城年（不明なら補足を出す）と所在地
-  function meta(c) {
+  // 築城年（不明なら補足を出す）と所在地。項目の途中では折り返さず、収まらないときだけ「／」で折り返す
+  function metaHTML(c) {
     const built = c.builtYear
       ? `${c.builtYear}年築城${c.builder ? `（${c.builder}）` : ""}`
       : c.builtNote || "築城年不詳";
     const place = `${c.prefecture || ""}${c.city || ""}`;
-    return [c.type, place, built].filter(Boolean).join(" ／ ");
+    return [c.type, place, built]
+      .filter(Boolean)
+      .map((s) => `<span class="meta-item">${esc(s)}</span>`)
+      .join(" ／ ");
   }
 
   function relatedHTML(c) {
@@ -67,7 +70,7 @@
         ${c.photo ? `<img class="castle-thumb" src="${esc(c.photo.thumb)}" alt="${esc(c.photo.caption)}" loading="lazy">` : ""}
         <h3>${title}</h3>
         <p class="kana">${esc(c.kana || "")}${alias}</p>
-        <p class="years">${esc(meta(c))}</p>
+        <p class="years">${metaHTML(c)}</p>
         <p class="card-summary">${esc(c.summary || "")}</p>
         ${relatedHTML(c)}
         <div class="tags">${tags}</div>

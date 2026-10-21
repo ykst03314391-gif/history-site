@@ -156,6 +156,24 @@
       html.push(`<section class="section"><h2>歴代城主</h2><ul class="list lord-list">${items}</ul></section>`);
     }
 
+    // 増改築の歴史（築城・改修・破却・復元などを年代順に）
+    if (c.changes && c.changes.length) {
+      const items = c.changes
+        .map((ch) => {
+          const yrs = ch.year
+            ? `${esc(ch.year)}${ch.toYear ? `〜${esc(ch.toYear)}` : ""}年${ch.era ? `（${esc(ch.era)}）` : ""}`
+            : esc(ch.era || "");
+          return `<li>
+            ${yrs ? `<span class="lord-years">${yrs}</span>` : ""}${ch.kind ? `<span class="change-kind">${esc(ch.kind)}</span>` : ""}<b>${esc(ch.title)}</b>${uncertain(ch)}
+            ${ch.description ? `<br><span class="muted">${esc(ch.description)}</span>` : ""}
+            ${ch.quote ? `<blockquote class="castle-quote">${esc(ch.quote)}</blockquote>` : ""}
+            ${srcMark(ch.sourceId)}
+          </li>`;
+        })
+        .join("");
+      html.push(`<section class="section"><h2>増改築の歴史</h2><ul class="list lord-list">${items}</ul></section>`);
+    }
+
     // 城としての特徴
     if (c.features && c.features.length) {
       const items = c.features

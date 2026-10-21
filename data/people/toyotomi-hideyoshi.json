@@ -35,7 +35,7 @@
   "family": [
     { "relation": "妻", "name": "ねね（高台院）" },
     { "relation": "母", "name": "大政所" },
-    { "relation": "弟", "name": "豊臣秀長", "note": "秀吉を支えた補佐役" },
+    { "relation": "弟", "person_id": "toyotomi-hidenaga", "name": "豊臣秀長", "note": "秀吉を支えた補佐役" },
     { "relation": "養子", "name": "豊臣秀次" },
     { "relation": "子", "name": "豊臣秀頼" }
   ],

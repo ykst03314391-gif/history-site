@@ -1,0 +1,116 @@
+{
+  "id": "toyotomi-hidenaga",
+  "name": "豊臣秀長",
+  "kana": "とよとみ ひでなが",
+  "summary": "豊臣秀吉の弟（異父弟とする説もある）。兄が織田家臣だった頃から但馬・播磨で軍を率い、天下統一戦では紀州・四国・九州攻めで大将を務めた。大和・紀伊・和泉を与えられて郡山城に入り、「大和大納言」と呼ばれた。政権内の調整役だったとされるが、秀吉より先に病没した。",
+  "aliases": [
+    { "type": "通称", "value": "小一郎" },
+    { "type": "その他", "value": "木下長秀／羽柴長秀", "note": "初名。のちに秀長と改める" },
+    { "type": "その他", "value": "羽柴美濃守", "note": "天正記などに見える呼び名" },
+    { "type": "その他", "value": "大和大納言", "note": "大和を領して権大納言になったことからの通称" }
+  ],
+  "birth": {
+    "year": 1540,
+    "era": "天文9年",
+    "note": "生年月日には諸説あり",
+    "uncertain": true
+  },
+  "death": {
+    "year": 1591,
+    "month": 2,
+    "day": 15,
+    "era": "天正19年1月22日",
+    "note": "大和郡山城で病没"
+  },
+  "birthplace": {
+    "name": "尾張国愛知郡中村",
+    "prefecture": "愛知県",
+    "city": "名古屋市"
+  },
+  "ranks": [
+    { "year": 1585, "title": "従三位・権中納言", "note": "四国平定の後とされる" },
+    { "year": 1587, "title": "従二位・権大納言", "note": "「大和大納言」の呼び名はここから" }
+  ],
+  "family": [
+    { "relation": "兄", "person_id": "toyotomi-hideyoshi", "name": "豊臣秀吉", "note": "父が同じか違うかには議論がある（父を木下弥右衛門とする説と、竹阿弥とする説）" },
+    { "relation": "母", "name": "大政所" },
+    { "relation": "姉", "name": "とも（日秀尼）", "note": "豊臣秀次・秀保の母" },
+    { "relation": "妹", "name": "朝日姫", "note": "のちに徳川家康の正室となる" },
+    { "relation": "養子", "name": "豊臣秀保", "note": "甥（姉ともの子）。秀長の跡を継いだ" }
+  ],
+  "lords": [
+    { "person_id": "toyotomi-hideyoshi", "name": "豊臣秀吉", "note": "兄の配下として仕えた（信長の時代は織田家の陪臣にあたる）" }
+  ],
+  "retainers": [
+    { "name": "藤堂高虎" },
+    { "name": "桑山重晴" },
+    { "name": "小堀正次" }
+  ],
+  "territories": [
+    { "year": 1577, "name": "但馬国（竹田城）", "prefecture": "兵庫県", "note": "兄の但馬攻めの後、城代として竹田城に入る", "sourceId": "shincho-koki" },
+    { "year": 1580, "name": "但馬国", "prefecture": "兵庫県", "note": "兵を預かって但馬を平定し、要所に兵を置く", "sourceId": "shincho-koki" },
+    { "year": 1585, "name": "大和国（郡山）", "prefecture": "奈良県", "note": "郡山に城を築き本拠とする", "sourceId": "tensho-ki" },
+    { "year": 1585, "name": "紀伊国", "prefecture": "和歌山県", "note": "天正記には大和・紀伊両国の「物主」とある", "sourceId": "tensho-ki" },
+    { "year": 1585, "name": "和泉国", "prefecture": "大阪府", "note": "和泉も含めて約百万石を領したとされる" }
+  ],
+  "timeline": [
+    { "year": 1574, "title": "長島一向一揆攻め", "description": "信長本隊の先陣に「木下小一郎」の名が見える。一揆勢が立ちはだかると、浅井新八とともに攻めかかった", "sourceId": "shincho-koki" },
+    { "year": 1577, "month": 11, "title": "竹田城代", "description": "兄・秀吉が但馬の竹田城を落とした後、城代として入る", "sourceId": "shincho-koki" },
+    { "year": 1580, "month": 1, "title": "三木城攻め", "description": "別所長治の三木城攻めで、兄とともに鷹尾山の城に攻め入る", "sourceId": "tensho-ki" },
+    { "year": 1580, "title": "但馬平定", "description": "兄から兵を預かって但馬に攻め入り、国を平定する", "sourceId": "shincho-koki" },
+    { "year": 1582, "month": 6, "day": 13, "title": "山崎の戦い", "description": "中国大返しから兄に従って参陣したとされる", "battle_id": "yamazaki" },
+    { "year": 1582, "month": 10, "day": 15, "title": "信長の葬儀", "description": "大徳寺で営まれた信長の葬儀で、警固の大将を務める", "sourceId": "tensho-ki" },
+    { "year": 1583, "title": "伊勢攻め", "description": "柴田方についた滝川一益を攻めるため、土岐多羅越から伊勢へ入る", "sourceId": "tensho-ki" },
+    { "year": 1583, "month": 4, "title": "賤ヶ岳の戦い", "description": "柴田勝家との対陣で、田上山に本陣を置いたとされる", "battle_id": "shizugatake", "sourceId": "hoan-taikoki" },
+    { "year": 1585, "month": 3, "title": "紀州攻め", "description": "根来・雑賀攻めで副将を務める", "sourceId": "hoan-taikoki" },
+    { "year": 1585, "month": 6, "title": "四国攻め", "description": "総大将として大軍を率いて淡路から阿波へ渡り、長宗我部元親を降伏させる。元親の処遇も秀長らに任された", "sourceId": "tensho-ki" },
+    { "year": 1585, "title": "大和郡山城主", "description": "大和・紀伊などを与えられ、郡山城を本拠とする。長宗我部氏や筒井定次も秀長の配下に置かれた", "sourceId": "tensho-ki" },
+    { "year": 1587, "month": 4, "title": "九州攻め", "description": "日向方面の大将として進み、根白坂の戦いで島津勢を破る", "sourceId": "hoan-taikoki" },
+    { "year": 1591, "month": 1, "day": 22, "title": "死去", "description": "大和郡山城で病没。跡は養子の秀保が継いだ" }
+  ],
+  "episodes": [
+    {
+      "title": "兄の四国渡海を止めた書状",
+      "body": "四国攻めのとき、秀吉は自分も海を渡ろうとした。天正記によれば、秀長は書状を送り、「それでは秀長の弓矢の力が足りないように見え、殿下の御威光も小さく見える」と諫めて思いとどまらせたという。天正記は秀吉方が書かせた顕彰の文章なので、やりとりが整えられている可能性はある。",
+      "sourceId": "tensho-ki"
+    },
+    {
+      "title": "「内々の儀は宗易、公儀の事は宰相」",
+      "body": "大坂を訪れた大友宗麟に、秀長が「内々のことは宗易（千利休）に、公のことはこの宰相（秀長）に」と声をかけたという話。秀長が政権の窓口役だったことを示す話としてよく引かれる。宗麟が国元へ送った書状に見えるとされるが、原文は未確認。",
+      "uncertain": true
+    },
+    {
+      "title": "郡山城に残された金銀",
+      "body": "秀長が亡くなった後、郡山城に莫大な金銀が蓄えられていたと、奈良・興福寺の僧の日記（多聞院日記）に書かれているとされる。領国経営がうまかったとも、取り立てが厳しかったとも読める。原文は未確認。",
+      "uncertain": true
+    },
+    {
+      "title": "「名補佐役」像はいつできたか",
+      "body": "甫庵太閤記は四国・紀州の平定について「秀長・秀次の思慮だけなら、なかなかこうはいかなかった」と書き、手柄を秀吉の才知に帰している。秀長を主役にしていない書き方である。今日の「天下を支えた名補佐役」という秀長像は、後の時代の評価が積み重なってできた面がある。",
+      "sourceId": "hoan-taikoki"
+    }
+  ],
+  "achievements": [
+    { "title": "四国平定", "description": "総大将として四国へ渡り、長宗我部元親を降伏させた" },
+    { "title": "大和の支配", "description": "寺社勢力が強かった大和に入り、郡山城を本拠に国を治めた" },
+    { "title": "政権の調整役", "description": "諸大名と秀吉の間をとりなす窓口だったとされる" }
+  ],
+  "references": [],
+  "spots": [
+    { "type": "城跡", "name": "郡山城跡", "prefecture": "奈良県", "city": "大和郡山市", "description": "秀長が大和に入って本拠とした城" },
+    { "type": "墓所", "name": "大納言塚", "prefecture": "奈良県", "city": "大和郡山市", "description": "秀長の墓所と伝わる" },
+    { "type": "神社仏閣", "name": "春岳院", "prefecture": "奈良県", "city": "大和郡山市", "description": "秀長の菩提寺" },
+    { "type": "城跡", "name": "竹田城跡", "prefecture": "兵庫県", "city": "朝来市", "description": "秀長が城代を務めたと信長公記に見える" }
+  ],
+  "images": [],
+  "sources": [
+    { "id": "shincho-koki", "title": "信長公記", "author": "太田牛一", "note": "「木下小一郎」の名で、長島攻め・竹田城代・但馬平定を伝える", "type": "史料", "primary": "一次資料" },
+    { "id": "tensho-ki", "title": "天正記", "author": "大村由己", "note": "同時代の記録（播州征伐記・惟任退治記・柴田退治記・四国御発向並北国御動座事）。秀吉方の顕彰の文章なので誇張に注意", "type": "史料", "primary": "一次資料" },
+    { "id": "hoan-taikoki", "title": "太閤記", "author": "小瀬甫庵", "note": "賤ヶ岳・紀州攻め・九州攻めの記事。脚色が多い二次史料で史料批判を要する", "type": "史料", "primary": "二次資料" }
+  ],
+  "tags": ["豊臣家", "戦国大名", "大和"],
+  "history": [
+    { "date": "2026-10-21", "note": "新規作成" }
+  ],
+  "updatedAt": "2026-10-21"
+}

@@ -33,7 +33,7 @@
     {"relation": "兄", "name": "豊臣秀次"},
     {"relation": "兄", "name": "豊臣秀勝"},
     {"relation": "養父", "person_id": "toyotomi-hidenaga", "name": "豊臣秀長", "note": "実子とする説もある"},
-    {"relation": "妻", "name": "秀長の娘", "note": "従妹にあたる。多聞院日記は天正18年の暮れに、秀長の娘（「四五才歟」）と「養子侍従殿」の祝言があったと伝える。文禄3年に正式な婚礼を挙げたとする説もあるが、多聞院日記の文禄3年3月2日の祝言は金吾殿（秀俊）のもの（大善院のページを参照）"}
+    {"relation": "妻", "name": "秀長の娘", "note": "従妹にあたる。多聞院日記は天正19年正月（秀長の死の直前）に、秀長の娘（「四五才歟」）と「養子侍従殿」の祝言があったと伝える。文禄3年に正式な婚礼を挙げたとする説もあるが、多聞院日記の文禄3年3月2日の祝言は金吾殿（秀俊）のもの（大善院のページを参照）"}
   ],
   "lords": [
     {"person_id": "toyotomi-hideyoshi", "name": "豊臣秀吉", "note": "叔父（母ともの弟）にあたる"}
@@ -79,7 +79,7 @@
     {"id": "kawasumi-taikoki", "title": "川角太閤記", "note": "秀長の跡を「関白殿御舎弟」が継ぎ、戸津川の湯で疱瘡により没したことを記す。江戸初期の覚書なので史実性は要検討", "type": "史料", "primary": "二次資料"},
     {"id": "hoan-taikoki", "title": "太閤記", "author": "小瀬甫庵", "note": "名護屋在陣衆の一覧、吉野花見の記事と和歌。脚色の多い二次史料で史料批判を要する", "type": "史料", "primary": "二次資料"},
     {"id": "wikipedia", "title": "豊臣秀保（Wikipedia）", "url": "https://ja.wikipedia.org/wiki/豊臣秀保", "note": "幼名・官位・墓所などの概要。原典は未確認", "type": "ネット記事"},
-    {"id": "tamonin-nikki", "title": "多聞院日記", "author": "英俊ほか", "note": "興福寺多聞院の僧の日記。養子入り（天正16年正月）と秀長の娘との祝言（天正18年暮れ）。reference/ndl/tamonin-nikki.txt（三教書院版のOCR）と照合", "type": "史料", "primary": "一次資料"},
+    {"id": "tamonin-nikki", "title": "多聞院日記", "author": "英俊ほか", "note": "興福寺多聞院の僧の日記。養子入り（天正16年正月8日）と秀長の娘との祝言（天正19年正月）。三教書院版の原本画像と照合", "type": "史料", "primary": "一次資料"},
     {"id": "taiko-soseiki", "title": "太閤素生記", "author": "土屋知貞", "note": "辰千代丸（秀保）が猿沢池で溺死したという異説。reference/ndl/taiko-soseiki.txt と照合", "type": "史料", "primary": "二次資料"}
   ],
   "tags": ["豊臣家", "大和"],

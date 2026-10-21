@@ -118,19 +118,7 @@
           <figcaption><span class="portrait-note">肖像画は未発見</span></figcaption>
         </figure>`;
     }
-    html.push(`
-      <div class="person-head${portrait ? " has-portrait" : ""}">
-        ${portrait}
-        <div class="person-head-main">
-          <h1>${esc(p.name)}${uncertain(p.birth && p.birth.uncertain)}</h1>
-          <p class="kana">${esc(p.kana || "")}</p>
-          <p><span class="years">${birth} 〜 ${death}</span></p>
-          ${p.summary ? `<p class="summary">${esc(p.summary)}</p>` : ""}
-        </div>
-      </div>
-    `);
-
-    // 基本情報
+    // 基本情報（別名・家紋など。見出しは立てず、ヘッダー枠内に置く）
     const facts = [];
     if (p.aliases && p.aliases.length) {
       facts.push([
@@ -147,12 +135,23 @@
     if (p.tags && p.tags.length) {
       facts.push(["分類", p.tags.map((t) => `<span class="tag">${esc(t)}</span>`).join(" ")]);
     }
-    if (facts.length) {
-      const dl = `<dl class="facts">${facts
-        .map(([k, v]) => `<dt>${esc(k)}</dt><dd>${v}</dd>`)
-        .join("")}</dl>`;
-      html.push(section("基本情報", dl));
-    }
+    const factsHTML = facts.length
+      ? `<dl class="facts head-facts">${facts
+          .map(([k, v]) => `<dt>${esc(k)}</dt><dd>${v}</dd>`)
+          .join("")}</dl>`
+      : "";
+    html.push(`
+      <div class="person-head${portrait ? " has-portrait" : ""}">
+        ${portrait}
+        <div class="person-head-main">
+          <h1>${esc(p.name)}${uncertain(p.birth && p.birth.uncertain)}</h1>
+          <p class="kana">${esc(p.kana || "")}</p>
+          <p><span class="years">${birth} 〜 ${death}</span></p>
+          ${p.summary ? `<p class="summary">${esc(p.summary)}</p>` : ""}
+          ${factsHTML}
+        </div>
+      </div>
+    `);
 
     // 呼び名の変遷
     if (p.nameHistory && p.nameHistory.length) {

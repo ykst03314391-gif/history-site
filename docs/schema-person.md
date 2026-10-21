@@ -108,7 +108,7 @@ Spot = {
 { "year"?: number, "era"?: string,   // era は和暦や「幼少期」など。year が無ければ era だけを出す
   "value": string, "note"?: string, "sourceId"?: string, "uncertain"?: boolean }
 ```
-> `nameHistory` に時系列で並べ、「呼び名の変遷」として基本情報の次に出す。史料がその時期に実際どう呼んでいるかを書く（`aliases` は一覧、こちらは移り変わり）。
+> `nameHistory` に時系列で並べ、「呼び名の変遷」としてヘッダー（基本情報を含む枠）の次に出す。史料がその時期に実際どう呼んでいるかを書く（`aliases` は一覧、こちらは移り変わり）。
 
 ### Rank（官位変遷）
 ```

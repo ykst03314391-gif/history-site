@@ -290,6 +290,7 @@ html { scroll-behavior: smooth; }
 .facts { display: grid; grid-template-columns: max-content 1fr; gap: 8px 20px; }
 .facts dt { color: var(--ink-soft); font-weight: 700; }
 .facts dd { margin: 0; }
+.head-facts { margin: 16px 0 0; padding-top: 14px; border-top: 1px dashed var(--line); font-size: 0.95rem; }
 
 /* 年表 */
 .timeline { list-style: none; padding: 0; margin: 0; }

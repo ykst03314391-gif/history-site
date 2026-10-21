@@ -3,6 +3,7 @@
   "name": "織田信忠",
   "kana": "おだ のぶただ",
   "summary": "織田信長の嫡男。織田家の家督を継ぎ、甲州征伐で総大将を務めて武田氏を滅ぼした。本能寺の変の際、二条御所で明智軍と戦い自害した。",
+  "portrait": {"src": "assets/img/portraits/oda-nobutada.jpg", "caption": "織田信忠像", "holder": "総見寺（滋賀県近江八幡市）", "source": {"name": "Wikimedia Commons", "url": "https://commons.wikimedia.org/wiki/File:Oda_Nobutada3_(cropped).jpg"}, "license": "パブリックドメイン"},
   "aliases": [
     { "type": "幼名", "value": "奇妙丸" },
     { "type": "通称", "value": "勘九郎" }

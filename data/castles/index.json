@@ -114,6 +114,22 @@
       "tags": ["明智家", "丹波"]
     },
     {
+      "id": "takeda",
+      "name": "竹田城",
+      "kana": "たけだじょう",
+      "alias": "虎臥城",
+      "type": "山城",
+      "prefecture": "兵庫県",
+      "city": "朝来市",
+      "builtYear": 1443,
+      "builder": "山名宗全",
+      "summary": "但馬の古城山に築かれた総石垣の山城。秀吉の但馬攻めで落ち、秀長が城代を務めた。雲海に浮かぶ「天空の城」として知られる。",
+      "detail": true,
+      "relatedPeople": ["toyotomi-hidenaga", "toyotomi-hideyoshi"],
+      "relatedBattles": [],
+      "tags": ["山名家", "但馬", "国史跡", "日本100名城"]
+    },
+    {
       "id": "arioka",
       "name": "有岡城",
       "kana": "ありおかじょう",
@@ -166,10 +182,11 @@
       "city": "大和郡山市",
       "builtYear": 1580,
       "builder": "筒井順慶",
-      "summary": "筒井順慶が築いた城に、天正13年（1585）豊臣秀長が入り、大和・紀伊・和泉を治める拠点として大きく拡張した。",
+      "summary": "筒井順慶が築いた城に、天正13年（1585）豊臣秀長が入り、大和・紀伊・和泉を治める拠点として大きく拡張した。石垣の転用石（さかさ地蔵）で知られる。",
+      "detail": true,
       "relatedPeople": ["toyotomi-hidenaga"],
       "relatedBattles": [],
-      "tags": ["豊臣家", "大和"]
+      "tags": ["豊臣家", "大和", "国史跡", "続日本100名城"]
     },
     {
       "id": "bitchu-takamatsu",

@@ -3,6 +3,7 @@
   "name": "上杉謙信",
   "kana": "うえすぎ けんしん",
   "summary": "越後の戦国大名。「軍神」と称され、武田信玄と川中島で幾度も争った。晩年は北陸に進出し、手取川の戦いで織田軍を破った。",
+  "portrait": {"src": "assets/img/portraits/uesugi-kenshin.jpg", "caption": "上杉謙信像", "holder": "上杉神社（山形県米沢市）", "note": "所蔵はCommonsの記載による", "source": {"name": "Wikimedia Commons", "url": "https://commons.wikimedia.org/wiki/File:Uesugi_Kenshin_Portrait_from_Uesugi_Shrine.png"}, "license": "パブリックドメイン"},
   "aliases": [
     { "type": "幼名", "value": "虎千代" },
     { "type": "その他", "value": "長尾景虎", "note": "家督相続当初の名乗り" },

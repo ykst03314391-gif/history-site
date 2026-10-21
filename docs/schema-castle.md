@@ -1,7 +1,7 @@
 # 城（castle）スキーマ設計 v0.1
 
-城を一覧で扱う。現時点では `data/castles/index.json` のみ（詳細ページなし）。
-一覧は `castles.html`（武将一覧 `people.html` と同じカード形式）。
+城を 1 件 1 ファイルで扱う。一覧は `data/castles/index.json`、詳細は `data/castles/<id>.json`（詳細を書いた城だけ）。
+一覧は `castles.html`（武将一覧 `people.html` と同じカード形式）、詳細は `castle.html?id=<id>`。
 
 ## 一覧（index.json の各要素）
 
@@ -20,6 +20,31 @@
 | `relatedPeople` | string[] | ゆかりの人物の `person_id`。人物DBにある人だけリンク表示 |
 | `relatedBattles` | string[] | 関連する合戦の `battle_id`。合戦DBにあるものだけリンク表示 |
 | `tags` | string[] | タグ（大名家・旧国名・史跡指定など） |
+| `detail` | boolean? | `true` なら `<id>.json` があり、カードの城名と「詳しく見る」から詳細ページへリンクする |
+
+## 詳細（<id>.json）
+
+| フィールド | 型 | 説明 |
+|---|---|---|
+| `id` / `name` / `kana` / `alias`? / `type` / `summary` | | 一覧と同じ意味 |
+| `built` | `{ year?, era?, builder?, note?, uncertain? }` | 築城。`uncertain: true` で「諸説あり」 |
+| `abandoned` | 同上（`builder` なし） | 廃城。現存・未廃城なら省略（「—」表示） |
+| `lords` | `{ name, person_id?, role?, from?, to?, note?, uncertain?, sourceId? }[]` | 歴代城主。`role` は「城代」など。`person_id` があれば人物ページへリンク |
+| `features` | `{ title, body, sourceId? }[]` | 城としての特徴（縄張り・石垣・立地など） |
+| `scale` | `{ elevation?, mountain?, extent?, note?, sourceId? }` | 大きさ（標高m・山名・縄張りの範囲）。`elevation` がなければ `mountain` を「立地」として表示 |
+| `place` | `{ name?, prefecture, city, address?, lat?, lng? }` | 所在地。`lat`/`lng` があれば OpenStreetMap を埋め込む（合戦ページと同じ） |
+| `battles` | `{ year?, era?, name, battle_id?, description?, quote?, uncertain?, sourceId? }[]` | この城で起きた合戦。`battle_id` が合戦DBにあればリンク。`quote` は史料の原文（翻刻と照合したものだけ） |
+| `present` | `{ status?, designations?: {year, title}[], description?: string[] }` | 現在の様子・史跡指定など |
+| `visit` | `{ asOf, checkedWith?, hoursTitle?, hours?: {season, period, time, last?}[], hoursNote?, closed?, fee?, feeNote?, sourceId? }` | 見学情報。**変わりやすいので `asOf`（確認日）必須**。見出し直下に「◯年◯月◯日 時点の情報（`checkedWith`）」を表示（既定は「公式サイトで確認」）。公式で確認できなかったときは `checkedWith` にその旨を書く。`hoursTitle` 既定は「入城時間」。`last` が一つもなければ最終登城の列は出さない |
+| `access` | `{ mode, route, time?, note? }[]` | 交通アクセス（`mode`＝電車・バス・車など） |
+| `accessSourceId` | string? | アクセス情報の出典 |
+| `official` | `{ url, name }`? | 公式サイト（実在を確認したURLのみ。捏造しない） |
+| `spots` | Spot[] | 周辺の見どころ（合戦スキーマと同形式） |
+| `relatedPeople` | string[] | 関連人物の `person_id` |
+| `sources` | Source[] | 出典（人物スキーマと同形式。`note` も表示） |
+| `tags` / `updatedAt` / `history` | | 他スキーマと同じ |
+
+記事のメタに `relatedCastles[]`（城の `id`）を書くと、城ページに「関連する考察・記事」として表示する。
 
 ## 表示仕様
 
@@ -27,5 +52,6 @@
   - 2行目：分類 ／ 所在地 ／ 築城年（築城者）または `builtNote`
   - ゆかりの人物・合戦を人物ページ／合戦ページへのリンクで表示
   - 検索：城名・かな・別名・分類・所在地・築城者・紹介文・タグ・ゆかりの人物名
+- 詳細：`castle.html?id=<id>` … 基本情報 → 歴代城主 → 城としての特徴 → 所在地（地図） → この城で起きた合戦 → 現在の様子 → 見学情報 → 交通アクセス → 周辺の見どころ → 関連記事 → 出典 → 更新履歴
 
 > ⚠️ 他のDBと同じく、現状のデータは仮置き（一般知識ベースの暫定値・出典未検証）。

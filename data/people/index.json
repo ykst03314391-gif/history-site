@@ -2,6 +2,7 @@
   "people": [
     {
       "id": "oda-nobunaga",
+      "thumb": "assets/img/portraits/thumbs/oda-nobunaga.jpg",
       "name": "織田信長",
       "kana": "おだ のぶなが",
       "summary": "尾張の戦国大名。桶狭間の戦いで今川義元を破り、上洛して天下統一事業を推進したが、本能寺の変に斃れた。三英傑の一人。",
@@ -11,6 +12,7 @@
     },
     {
       "id": "oda-nobutada",
+      "thumb": "assets/img/portraits/thumbs/oda-nobutada.jpg",
       "name": "織田信忠",
       "kana": "おだ のぶただ",
       "summary": "織田信長の嫡男。織田家の家督を継ぎ、甲州征伐で総大将を務めて武田氏を滅ぼした。本能寺の変の際、二条御所で自害した。",
@@ -20,6 +22,7 @@
     },
     {
       "id": "toyotomi-hideyoshi",
+      "thumb": "assets/img/portraits/thumbs/toyotomi-hideyoshi.jpg",
       "name": "豊臣秀吉",
       "kana": "とよとみ ひでよし",
       "summary": "尾張の下層民から身を起こして織田信長に仕え、信長の死後に山崎の戦いで明智光秀を破り、天下を統一した。三英傑の一人。",
@@ -29,6 +32,7 @@
     },
     {
       "id": "toyotomi-hidenaga",
+      "thumb": "assets/img/portraits/thumbs/toyotomi-hidenaga.jpg",
       "name": "豊臣秀長",
       "kana": "とよとみ ひでなが",
       "summary": "豊臣秀吉の弟。紀州・四国・九州攻めで大将を務め、大和・紀伊・和泉を領して郡山城に入った「大和大納言」。秀吉より先に病没した。",
@@ -38,6 +42,7 @@
     },
     {
       "id": "uesugi-kenshin",
+      "thumb": "assets/img/portraits/thumbs/uesugi-kenshin.jpg",
       "name": "上杉謙信",
       "kana": "うえすぎ けんしん",
       "summary": "越後の戦国大名。「軍神」と称され、武田信玄と川中島で幾度も争った。晩年は北陸に進出し、手取川の戦いで織田軍を破った。",
@@ -47,6 +52,7 @@
     },
     {
       "id": "araki-murashige",
+      "thumb": "assets/img/portraits/thumbs/araki-murashige.jpg",
       "name": "荒木村重",
       "kana": "あらき むらしげ",
       "summary": "摂津の武将。織田信長に摂津一国を任されたが有岡城の乱で反旗を翻す。落城前に脱出して生き延び、後年は茶人「荒木道薫」として名を残した。",
@@ -56,6 +62,7 @@
     },
     {
       "id": "akechi-mitsuhide",
+      "thumb": "assets/img/portraits/thumbs/akechi-mitsuhide.jpg",
       "name": "明智光秀",
       "kana": "あけち みつひで",
       "summary": "織田信長の重臣。丹波を平定して有力大名となったが、本能寺の変で信長を討つ。まもなく山崎の戦いで秀吉に敗れ「三日天下」に終わった。連歌をよくする教養人でもあった。",

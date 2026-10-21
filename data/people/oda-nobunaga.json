@@ -3,6 +3,7 @@
   "name": "織田信長",
   "kana": "おだ のぶなが",
   "summary": "尾張の戦国大名。桶狭間の戦いで今川義元を破り、上洛して天下統一事業を推進したが、本能寺の変に斃れた。三英傑の一人。",
+  "portrait": {"src": "assets/img/portraits/oda-nobunaga.jpg", "caption": "織田信長像（狩野元秀筆・長興寺本の模写）", "holder": "東京大学史料編纂所（模写本）／原本は長興寺（愛知県豊田市）", "note": "天正11年（1583）、信長の一周忌に描かれたとされる像の写し", "source": {"name": "Wikimedia Commons", "url": "https://commons.wikimedia.org/wiki/File:Oda-Nobunaga.jpg"}, "license": "パブリックドメイン"},
   "aliases": [
     { "type": "幼名", "value": "吉法師" },
     { "type": "通称", "value": "三郎" },

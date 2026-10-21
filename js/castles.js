@@ -40,14 +40,18 @@
       .map((t) => `<span class="tag">${esc(t)}</span>`)
       .join("");
     const alias = c.alias ? `（別名：${esc(c.alias)}）` : "";
+    // 詳細ページがある城だけ城名をリンクにする（カード内に人物・合戦リンクがあるのでカード全体はリンクにしない）
+    const href = c.detail ? `castle.html?id=${encodeURIComponent(c.id)}` : "";
+    const title = href ? `<a href="${href}">${esc(c.name)}</a>` : esc(c.name);
     return `
       <div class="card castle-card">
-        <h3>${esc(c.name)}</h3>
+        <h3>${title}</h3>
         <p class="kana">${esc(c.kana || "")}${alias}</p>
         <p class="years">${esc(meta(c))}</p>
         <p class="card-summary">${esc(c.summary || "")}</p>
         ${relatedHTML(c)}
         <div class="tags">${tags}</div>
+        ${href ? `<p class="castle-more"><a href="${href}">詳しく見る →</a></p>` : ""}
       </div>`;
   }
 

@@ -3,6 +3,7 @@
   "name": "明智光秀",
   "kana": "あけち みつひで",
   "summary": "織田信長の重臣。丹波を平定して有力大名となったが、天正10年に本能寺の変を起こして信長を討つ。まもなく山崎の戦いで羽柴秀吉に敗れ、「三日天下」に終わった。連歌をよくする教養人でもあった。",
+  "portrait": {"src": "assets/img/portraits/akechi-mitsuhide.jpg", "caption": "明智光秀像", "holder": "本徳寺（大阪府岸和田市）", "source": {"name": "Wikimedia Commons", "url": "https://commons.wikimedia.org/wiki/File:Akechi_Mitsuhide.jpg"}, "license": "パブリックドメイン"},
   "aliases": [
     { "type": "通称", "value": "十兵衛" },
     { "type": "その他", "value": "惟任日向守（これとう ひゅうがのかみ）", "note": "信長から与えられた名字と官途" }

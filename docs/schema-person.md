@@ -34,6 +34,7 @@
 | `achievements` | Achievement[] | 成し遂げたこと |
 | `reputation` | Reputation[] | 後世の評価（同時代・江戸・明治・昭和・現代の時代別） |
 | `references` | Reference[] | 参考書籍（アフィリエイト対象） |
+| `portrait` | Portrait? | 肖像画。見出しの右に表示（下記） |
 | `spots` | Spot[] | ゆかりの地（城跡・銅像・刀剣・肖像画・博物館・名物など） |
 | `graves` | Graves | 墓所（現存・諸説あり・不明・なしを必ず明示する） |
 | `images` | Image[] | 人物画像 |
@@ -62,6 +63,21 @@
   "sourceId"?: string }
 ```
 
+### Portrait（肖像画）
+```
+Portrait = {
+  "src": string,            // assets/img/portraits/<person_id>.jpg（幅480px程度のJPEG）
+  "caption"?: string,       // 作品名（例：「豊臣秀長像」「伝 狩野光信筆」）
+  "holder"?: string,        // 所蔵（寺社・博物館など。模写なら模写本の所蔵と原本の所蔵を併記）
+  "note"?: string,          // 補足（「江戸時代の浮世絵（想像図）」「部分」など）
+  "source": { "name": string, "url": string },   // 入手元（Wikimedia Commons のファイルページなど）
+  "license": string         // 「パブリックドメイン」など
+}
+```
+> 使うのは**著作権の切れた平面の作品（江戸時代以前の肖像画・浮世絵）**だけ。立体物の写真や近現代の作品は使わない。
+> 同時代の肖像でないもの（後世の想像図）は `note` に必ず書く。
+> 一覧（`data/people/index.json`）には `thumb` に顔を切り出した正方形サムネイル（`assets/img/portraits/thumbs/<person_id>.jpg`、160×160）を書くと、武将一覧のカード右上に丸く表示する。
+
 ### Place / Spot（場所）
 ```
 Place = { "name": string, "prefecture"?: string, "city"?: string, "lat"?: number, "lng"?: number }
@@ -72,7 +88,8 @@ Spot = {
   "prefecture"?: string, "city"?: string,
   "lat"?: number, "lng"?: number,
   "description"?: string,   // 所蔵先の博物館名などもここに記す（例：「福岡市博物館蔵、国宝」）
-  "sourceId"?: string
+  "sourceId"?: string,
+  "castle_id"?: string      // 城DBに詳細ページがある城跡なら、名前を城ページへのリンクにする
 }
 ```
 > `Spot` に地域を持たせることで「地域から探す」「逆引き（この人物→行くべき場所）」の両方に使える。
@@ -116,6 +133,7 @@ Spot = {
 { "year": number, "month"?: number, "day"?: number,
   "title": string, "description"?: string,
   "battle_id"?: string,   // 合戦ページへのリンク
+  "castle_id"?: string,   // 城ページへのリンク（城代・城主就任など。battle_id があればそちらを優先）
   "sourceId"?: string }
 ```
 

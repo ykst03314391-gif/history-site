@@ -3,6 +3,7 @@
   "name": "荒木村重",
   "kana": "あらき むらしげ",
   "summary": "摂津の武将。織田信長に仕えて摂津一国を任されたが、天正6年に突如反旗を翻す（有岡城の乱）。落城前に単身脱出して生き延び、後年は茶人「荒木道薫」として利休七哲に数えられた。",
+  "portrait": {"src": "assets/img/portraits/araki-murashige.jpg", "caption": "歌川国芳「太平記英勇伝 廿七 荒儀摂津守村重」", "holder": "伊丹市立博物館", "note": "同時代の肖像画ではなく、江戸時代後期の浮世絵（想像図）。名前も「荒儀」ともじってある", "source": {"name": "Wikimedia Commons", "url": "https://commons.wikimedia.org/wiki/File:Araki_Murashige.jpg"}, "license": "パブリックドメイン"},
   "aliases": [
     { "type": "通称", "value": "弥介" },
     { "type": "法名", "value": "道薫（どうくん）", "note": "茶人としての号" }

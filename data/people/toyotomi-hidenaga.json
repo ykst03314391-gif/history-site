@@ -3,6 +3,7 @@
   "name": "豊臣秀長",
   "kana": "とよとみ ひでなが",
   "summary": "豊臣秀吉の弟（異父弟とする説もある）。兄が織田家臣だった頃から但馬・播磨で軍を率い、天下統一戦では紀州・四国・九州攻めで大将を務めた。大和・紀伊・和泉を与えられて郡山城に入り、「大和大納言」と呼ばれた。政権内の調整役だったとされるが、秀吉より先に病没した。",
+  "portrait": {"src": "assets/img/portraits/toyotomi-hidenaga.jpg", "caption": "豊臣秀長像", "holder": "春岳院（奈良県大和郡山市）", "source": {"name": "Wikimedia Commons", "url": "https://commons.wikimedia.org/wiki/File:Hidenaga_Toyotomi.jpg"}, "license": "パブリックドメイン"},
   "aliases": [
     { "type": "通称", "value": "小一郎" },
     { "type": "その他", "value": "木下長秀／羽柴長秀", "note": "初名。のちに秀長と改める" },
@@ -59,7 +60,7 @@
   ],
   "timeline": [
     { "year": 1574, "title": "長島一向一揆攻め", "description": "信長本隊の先陣に「木下小一郎」の名が見える。一揆勢が立ちはだかると、浅井新八とともに攻めかかった", "battle_id": "nagashima-ikko-ikki", "sourceId": "shincho-koki" },
-    { "year": 1577, "month": 11, "title": "竹田城代", "description": "兄・秀吉が但馬の竹田城を落とした後、城代として入る", "sourceId": "shincho-koki" },
+    { "year": 1577, "month": 11, "title": "竹田城代", "castle_id": "takeda", "description": "兄・秀吉が但馬の竹田城を落とした後、城代として入る", "sourceId": "shincho-koki" },
     { "year": 1580, "month": 1, "title": "三木城攻め", "description": "別所長治の三木城攻めで、兄とともに鷹尾山の城に攻め入る", "battle_id": "miki-siege", "sourceId": "tensho-ki" },
     { "year": 1580, "title": "但馬平定", "description": "兄から兵を預かって但馬に攻め入り、国を平定する", "sourceId": "shincho-koki" },
     { "year": 1582, "month": 6, "day": 13, "title": "山崎の戦い", "description": "中国大返しから兄に従って参陣したとされる", "battle_id": "yamazaki" },
@@ -68,7 +69,7 @@
     { "year": 1583, "month": 4, "title": "賤ヶ岳の戦い", "description": "柴田勝家との対陣で、田上山に本陣を置いたとされる", "battle_id": "shizugatake", "sourceId": "hoan-taikoki" },
     { "year": 1585, "month": 3, "title": "紀州攻め", "description": "根来・雑賀攻めで副将を務める", "battle_id": "kishu-campaign", "sourceId": "hoan-taikoki" },
     { "year": 1585, "month": 6, "title": "四国攻め", "description": "総大将として大軍を率いて淡路から阿波へ渡り、長宗我部元親を降伏させる。元親の処遇も秀長らに任された", "battle_id": "shikoku-campaign", "sourceId": "tensho-ki" },
-    { "year": 1585, "title": "大和郡山城主", "description": "大和・紀伊などを与えられ、郡山城を本拠とする。長宗我部氏や筒井定次も秀長の配下に置かれた", "sourceId": "tensho-ki" },
+    { "year": 1585, "title": "大和郡山城主", "castle_id": "yamato-koriyama", "description": "大和・紀伊などを与えられ、郡山城を本拠とする。長宗我部氏や筒井定次も秀長の配下に置かれた", "sourceId": "tensho-ki" },
     { "year": 1587, "month": 4, "title": "九州攻め", "description": "日向方面の大将として進み、根白坂の戦いで島津勢を破る", "battle_id": "kyushu-campaign", "sourceId": "hoan-taikoki" },
     { "year": 1591, "month": 1, "day": 22, "title": "死去", "description": "大和郡山城で病没。跡は養子の秀保が継いだ" }
   ],
@@ -101,10 +102,10 @@
   ],
   "references": [],
   "spots": [
-    { "type": "城跡", "name": "郡山城跡", "prefecture": "奈良県", "city": "大和郡山市", "description": "秀長が大和に入って本拠とした城" },
+    { "type": "城跡", "name": "郡山城跡", "castle_id": "yamato-koriyama", "prefecture": "奈良県", "city": "大和郡山市", "description": "秀長が大和に入って本拠とした城" },
     { "type": "墓所", "name": "大納言塚", "prefecture": "奈良県", "city": "大和郡山市", "description": "秀長の墓所と伝わる" },
     { "type": "神社仏閣", "name": "春岳院", "prefecture": "奈良県", "city": "大和郡山市", "description": "秀長の菩提寺" },
-    { "type": "城跡", "name": "竹田城跡", "prefecture": "兵庫県", "city": "朝来市", "description": "秀長が城代を務めたと信長公記に見える" }
+    { "type": "城跡", "name": "竹田城跡", "castle_id": "takeda", "prefecture": "兵庫県", "city": "朝来市", "description": "秀長が城代を務めたと信長公記に見える" }
   ],
   "images": [],
   "sources": [

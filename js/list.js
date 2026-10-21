@@ -19,8 +19,13 @@
     const tags = (p.tags || [])
       .map((t) => `<span class="tag">${esc(t)}</span>`)
       .join("");
+    // 肖像画があればカード右上にサムネイル（名前・生没年の横の空きに回り込ませる）
+    const thumb = p.thumb
+      ? `<img class="person-thumb" src="${esc(p.thumb)}" alt="" loading="lazy">`
+      : "";
     return `
-      <a class="card" href="person.html?id=${encodeURIComponent(p.id)}">
+      <a class="card person-card" href="person.html?id=${encodeURIComponent(p.id)}">
+        ${thumb}
         <h3>${esc(p.name)}</h3>
         <p class="kana">${esc(p.kana || "")}</p>
         <p class="years">${esc(years(p))}</p>

@@ -3,6 +3,7 @@
   "name": "豊臣秀吉",
   "kana": "とよとみ ひでよし",
   "summary": "尾張の下層民から身を起こして織田信長に仕え、信長の死後に山崎の戦いで明智光秀を破り、天下を統一した。三英傑の一人。",
+  "portrait": {"src": "assets/img/portraits/toyotomi-hideyoshi.jpg", "caption": "豊臣秀吉像（伝 狩野光信筆）", "holder": "高台寺（京都市）", "note": "部分", "source": {"name": "Wikimedia Commons", "url": "https://commons.wikimedia.org/wiki/File:Toyotomi_hideyoshi.jpg"}, "license": "パブリックドメイン"},
   "aliases": [
     { "type": "通称", "value": "藤吉郎" },
     { "type": "その他", "value": "木下秀吉", "note": "信長に仕えた当初の名乗り" },

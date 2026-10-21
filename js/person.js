@@ -92,12 +92,35 @@
     // ヘッダー
     const birth = fmtDate(p.birth);
     const death = fmtDate(p.death);
+    // 肖像画（パブリックドメインの画像のみ。所蔵と出典を必ず添える）
+    let portrait = "";
+    if (p.portrait && p.portrait.src) {
+      const pt = p.portrait;
+      const src = pt.source && pt.source.url
+        ? `<a href="${esc(pt.source.url)}" target="_blank" rel="noopener">${esc(pt.source.name || "出典")}</a>`
+        : esc((pt.source && pt.source.name) || "");
+      const credit = [
+        pt.holder ? `所蔵：${esc(pt.holder)}` : "",
+        src ? `出典：${src}${pt.license ? `（${esc(pt.license)}）` : ""}` : "",
+      ].filter(Boolean).join("<br>");
+      portrait = `<figure class="person-portrait">
+          <img src="${esc(pt.src)}" alt="${esc(pt.caption || p.name + "の肖像")}" loading="lazy">
+          <figcaption>
+            ${pt.caption ? `<span class="portrait-title">${esc(pt.caption)}</span>` : ""}
+            ${pt.note ? `<span class="portrait-note">${esc(pt.note)}</span>` : ""}
+            ${credit ? `<span class="img-credit">${credit}</span>` : ""}
+          </figcaption>
+        </figure>`;
+    }
     html.push(`
-      <div class="person-head">
-        <h1>${esc(p.name)}${uncertain(p.birth && p.birth.uncertain)}</h1>
-        <p class="kana">${esc(p.kana || "")}</p>
-        <p><span class="years">${birth} 〜 ${death}</span></p>
-        ${p.summary ? `<p class="summary">${esc(p.summary)}</p>` : ""}
+      <div class="person-head${portrait ? " has-portrait" : ""}">
+        ${portrait}
+        <div class="person-head-main">
+          <h1>${esc(p.name)}${uncertain(p.birth && p.birth.uncertain)}</h1>
+          <p class="kana">${esc(p.kana || "")}</p>
+          <p><span class="years">${birth} 〜 ${death}</span></p>
+          ${p.summary ? `<p class="summary">${esc(p.summary)}</p>` : ""}
+        </div>
       </div>
     `);
 
@@ -207,9 +230,11 @@
         .sort((a, b) => (a.year - b.year) || ((a.month || 0) - (b.month || 0)))
         .map((e) => {
           const related = inlineArticleHTML(articlesForBattle(e.battle_id));
-          // battle_id があれば見出しを合戦ページへのリンクにする
+          // battle_id があれば合戦ページへ、castle_id があれば城ページへ、見出しをリンクにする
           const title = e.battle_id
             ? `<a class="t-battle-link" href="battle.html?id=${encodeURIComponent(e.battle_id)}">${esc(e.title)}</a>`
+            : e.castle_id
+            ? `<a class="t-battle-link" href="castle.html?id=${encodeURIComponent(e.castle_id)}">${esc(e.title)}</a>`
             : esc(e.title);
           return `<li>
             <span class="t-year">${esc(e.year)}${e.month ? "." + e.month : ""}</span>
@@ -259,9 +284,13 @@
       const items = p.spots
         .map((s) => {
           const place = [s.prefecture, s.city].filter(Boolean).map(esc).join(" ");
+          // castle_id があれば城ページへのリンクにする
+          const name = s.castle_id
+            ? `<a href="castle.html?id=${encodeURIComponent(s.castle_id)}">${esc(s.name)}</a>`
+            : esc(s.name);
           return `<div class="spot-item">
             <span class="spot-type">${esc(s.type)}</span>
-            <b>${esc(s.name)}</b>
+            <b>${name}</b>
             ${place ? `<span class="spot-place">／ ${place}</span>` : ""}
             ${s.description ? `<div class="muted">${esc(s.description)}</div>` : ""}
           </div>`;

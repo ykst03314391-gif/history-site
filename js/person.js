@@ -193,7 +193,7 @@
       const items = p.retainers
         .map((r) => {
           const period = r.from || r.to ? ` <span class="muted">（${r.from || ""}〜${r.to || ""}）</span>` : "";
-          return `<li>${personLink(r)}${period}${r.note ? ` <span class="muted">${esc(r.note)}</span>` : ""}</li>`;
+          return `<li>${personLink(r)}${period}${r.note ? ` <span class="muted">${esc(r.note)}</span>` : ""}${srcMark(r.sourceId)}</li>`;
         })
         .join("");
       html.push(section("家臣団", `<ul class="list">${items}</ul>`));

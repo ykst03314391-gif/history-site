@@ -133,7 +133,8 @@ Spot = {
 { "person_id"?: string,   // サイト内に人物ページがある場合
   "name": string,         // ページが無い場合の表示名
   "from"?: number, "to"?: number,   // 出仕〜離反/死去などの期間
-  "note"?: string }       // 例: 「本能寺の変で謀反」
+  "note"?: string,        // 例: 「本能寺の変で謀反」
+  "sourceId"?: string }   // 家臣だったことの根拠（sources の id）
 ```
 > 単なる ID 配列にせず期間・備考を持たせることで、離反（例：明智光秀）や出仕時期を記録できる。
 

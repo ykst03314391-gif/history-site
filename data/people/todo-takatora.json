@@ -1,0 +1,105 @@
+{
+  "id": "todo-takatora",
+  "name": "藤堂高虎",
+  "kana": "とうどう たかとら",
+  "summary": "近江の武将。浅井長政をはじめ主君を何度も替えたのち、豊臣秀長に仕えて頭角を現した。秀長・秀保の死後は秀吉の直臣となり、伊予で大名に。関ヶ原では東軍につき、のち伊勢津・伊賀を領する大名となった。宇和島城・今治城・伊賀上野城などを手がけた築城の名手として知られる。",
+  "aliases": [
+    {"type": "幼名", "value": "与吉"},
+    {"type": "通称", "value": "与右衛門"},
+    {"type": "その他", "value": "佐渡守／和泉守", "note": "官途名。甫庵太閤記には「藤堂佐渡守」、川角太閤記には「藤堂和泉」と見える"},
+    {"type": "戒名", "value": "寒松院殿道賢高山権大僧都"}
+  ],
+  "birth": {
+    "year": 1556,
+    "month": 2,
+    "day": 16,
+    "era": "弘治2年1月6日"
+  },
+  "death": {
+    "year": 1630,
+    "month": 11,
+    "day": 9,
+    "era": "寛永7年10月5日",
+    "note": "江戸の藩邸で没したとされる"
+  },
+  "birthplace": {
+    "name": "近江国犬上郡藤堂村",
+    "prefecture": "滋賀県",
+    "city": "犬上郡甲良町"
+  },
+  "family": [
+    {"relation": "父", "name": "藤堂虎高"},
+    {"relation": "妻", "name": "久芳院", "note": "正室。一色義直の娘とされる"},
+    {"relation": "子", "name": "藤堂高次", "note": "嫡男。津藩の跡を継ぐ"},
+    {"relation": "養子", "name": "藤堂高吉"}
+  ],
+  "lords": [
+    {"name": "浅井長政", "note": "最初の主君。姉川の戦いに加わったとされる"},
+    {"name": "阿閉貞征・磯野員昌・津田信澄", "note": "浅井氏の滅亡後、主君を転々とした"},
+    {"person_id": "toyotomi-hidenaga", "name": "豊臣秀長", "from": 1576, "to": 1591, "note": "秀長のもとで出世し、重臣となる（仕官の年は諸説）"},
+    {"person_id": "toyotomi-hideyasu", "name": "豊臣秀保", "from": 1591, "to": 1595, "note": "秀長の跡を継いだ秀保を補佐した"},
+    {"person_id": "toyotomi-hideyoshi", "name": "豊臣秀吉", "from": 1595, "to": 1598, "note": "秀保の死後、直臣となる"},
+    {"name": "徳川家康・秀忠・家光", "from": 1600, "note": "関ヶ原で東軍につき、以後徳川家に仕えた"}
+  ],
+  "territories": [
+    {"year": 1585, "name": "紀伊国（粉河）", "prefecture": "和歌山県", "note": "秀長の家臣として1万石（原典未確認）", "province": "紀伊国", "place": "粉河", "lat": 34.2797, "lng": 135.4072},
+    {"year": 1595, "name": "伊予国（板島）", "prefecture": "愛媛県", "note": "秀吉の直臣となり7万石。板島（のちの宇和島）に入る（原典未確認）", "province": "伊予国", "place": "宇和島城", "lat": 33.2196, "lng": 132.565},
+    {"year": 1600, "name": "伊予国（今治）", "prefecture": "愛媛県", "note": "関ヶ原の功で20万石。今治城を築いて居城とする（原典未確認）", "province": "伊予国", "place": "今治城", "lat": 34.0647, "lng": 133.0058},
+    {"year": 1608, "name": "伊勢国（津）・伊賀国", "prefecture": "三重県", "note": "22万石で伊勢津・伊賀へ移る。のち加増されて約32万石（原典未確認）", "province": "伊勢国", "place": "津城", "lat": 34.7183, "lng": 136.5058},
+    {"year": 1608, "name": "伊賀国", "prefecture": "三重県", "note": "伊賀上野城を改修する", "province": "伊賀国", "place": "伊賀上野城", "lat": 34.7708, "lng": 136.1258}
+  ],
+  "timeline": [
+    {"year": 1556, "month": 1, "day": 6, "title": "誕生", "description": "近江の藤堂村に生まれる"},
+    {"year": 1570, "title": "姉川の戦い", "description": "浅井方として戦ったとされる（原典未確認）", "battle_id": "anegawa"},
+    {"year": 1583, "month": 4, "title": "賤ヶ岳の戦い", "description": "秀長の配下として加わったとされる（原典未確認）", "battle_id": "shizugatake"},
+    {"year": 1587, "month": 4, "title": "九州攻め（根白坂）", "description": "日向の高城を囲む秀長の陣に島津勢が夜討ちをかけたとき、川角太閤記は「藤堂和泉」が鉄炮百挺ほどで味方の陣の後ろから加勢したと書く。甫庵太閤記も「秀長の臣藤堂羽田岸田」が多くの敵を討ち取ったとする", "battle_id": "kyushu-campaign", "sourceId": "hoan-taikoki"},
+    {"year": 1592, "title": "文禄の役", "description": "秀保の名代として朝鮮へ渡ったとされる。甫庵太閤記は船手（水軍）の将の中に「藤堂佐渡守」を挙げる", "sourceId": "hoan-taikoki"},
+    {"year": 1595, "title": "伊予の大名となる", "description": "秀保が没し、秀吉の直臣として伊予板島7万石を与えられる（原典未確認）"},
+    {"year": 1600, "month": 9, "title": "関ヶ原の戦い", "description": "東軍として戦い、戦後に伊予今治20万石となる（原典未確認）"},
+    {"year": 1608, "title": "伊勢津へ移る", "description": "伊勢・伊賀22万石に移され、津城・伊賀上野城を拠点とする（原典未確認）"},
+    {"year": 1630, "month": 10, "day": 5, "title": "死去", "description": "75歳で没した"}
+  ],
+  "episodes": [
+    {"title": "「七度主君を変えねば武士とは言えぬ」", "body": "高虎は何度も主君を替えた人物として知られ、「武士たる者、七度主君を変えねば武士とは言えぬ」と言ったと伝わる。ただし出典ははっきりせず、後世に作られた言葉の可能性が高い。", "uncertain": true}
+  ],
+  "achievements": [
+    {"title": "築城", "description": "宇和島城・今治城・伊賀上野城などを手がけ、和歌山城の普請にも関わったとされる"}
+  ],
+  "spots": [
+    {"type": "城跡", "name": "宇和島城", "prefecture": "愛媛県", "city": "宇和島市", "description": "板島に入って改修した城"},
+    {"type": "城跡", "name": "今治城", "prefecture": "愛媛県", "city": "今治市", "description": "関ヶ原の後に築いた海城"},
+    {"type": "城跡", "name": "伊賀上野城", "prefecture": "三重県", "city": "伊賀市", "description": "高石垣で知られる"},
+    {"type": "城跡", "name": "津城跡", "prefecture": "三重県", "city": "津市", "description": "伊勢津に移ってからの居城"}
+  ],
+  "graves": {
+    "status": "現存",
+    "note": "東京・上野の寒松院のほか、三重県内などに墓所・供養塔があるとされる。現状は未確認。",
+    "places": [
+      {
+        "name": "寒松院",
+        "prefecture": "東京都",
+        "city": "台東区"
+      },
+      {
+        "name": "寒松院",
+        "prefecture": "三重県",
+        "city": "津市"
+      },
+      {
+        "name": "上行寺",
+        "prefecture": "三重県",
+        "city": "伊賀市"
+      }
+    ]
+  },
+  "sources": [
+    {"id": "hoan-taikoki", "title": "太閤記", "author": "小瀬甫庵", "note": "九州攻めで「秀長の臣藤堂羽田岸田」が敵を討ち取ったこと、文禄の役の船手に「藤堂佐渡守」がいたことを記す。脚色の多い二次史料", "type": "史料", "primary": "二次資料"},
+    {"id": "kawasumi-taikoki", "title": "川角太閤記", "note": "根白坂の夜討ちで「藤堂和泉」が鉄炮百挺で加勢したことを記す。江戸初期の覚書", "type": "史料", "primary": "二次資料"},
+    {"id": "wikipedia", "title": "藤堂高虎（Wikipedia）", "url": "https://ja.wikipedia.org/wiki/藤堂高虎", "note": "生没年・主君と領地の変遷・墓所などの概要。原典は未確認", "type": "ネット記事"}
+  ],
+  "tags": ["豊臣家臣", "秀長家臣", "築城", "伊勢津藩"],
+  "history": [
+    {"date": "2026-10-21", "note": "新規作成"}
+  ],
+  "updatedAt": "2026-10-21"
+}

@@ -1,0 +1,50 @@
+{
+  "id": "jiunin",
+  "name": "慈雲院",
+  "kana": "じうんいん",
+  "category": "other",
+  "summary": "豊臣秀長の正室。実名・出自ははっきりしない。秀長の大和入国とともに郡山に入り、大政所とともに秀吉へのとりなしをしたことも伝わる。秀長の跡を継いだ秀保も若くして没し、秀長家が絶えた後も、元和6年まで生きたとされる。",
+  "aliases": [
+    {"type": "法名", "value": "慈雲院芳室紹慶", "note": "高野山奥之院の石塔に刻まれた名とされる"},
+    {"type": "その他", "value": "智雲院", "note": "江戸時代の記録に見える表記。「慈雲院」の方が正しいとする見方がある"},
+    {"type": "その他", "value": "大和大方様", "note": "秀長の死後の呼び名とされる"}
+  ],
+  "birth": {
+    "note": "生年は不明"
+  },
+  "death": {
+    "year": 1620,
+    "era": "元和6年",
+    "note": "月日は3月28日とも2月28日ともいう（過去帳による違い）",
+    "uncertain": true
+  },
+  "family": [
+    {"relation": "夫", "person_id": "toyotomi-hidenaga", "name": "豊臣秀長", "note": "結婚は永禄9〜10年ごろと推定されている"},
+    {"relation": "子", "name": "与一郎", "note": "秀長の嫡男とみられるが、早くに亡くなった"},
+    {"relation": "養子", "person_id": "toyotomi-hideyasu", "name": "豊臣秀保"},
+    {"relation": "養女", "person_id": "daizenin", "name": "大善院", "note": "養女として育てたとする見方がある（諸説）"}
+  ],
+  "timeline": [
+    {"year": 1585, "title": "郡山に入る", "description": "秀長の大和入国にともない郡山に入ったとされる（多聞院日記によるとされるが原典未確認）"},
+    {"year": 1591, "month": 1, "title": "夫秀長の死", "description": "秀長が郡山城で病没し、養子の秀保が跡を継ぐ"},
+    {"year": 1591, "month": 2, "title": "大徳寺の僧をとりなす", "description": "千利休の事件に連座した大徳寺の僧について、大政所とともに秀吉にとりなし、処罰を免れさせたとされる（原典未確認）"},
+    {"year": 1595, "title": "秀長家の断絶", "description": "秀保が没して秀長家は絶え、郡山を去ったとみられる"},
+    {"year": 1620, "title": "死去", "description": "元和6年に没したとされる"}
+  ],
+  "spots": [
+    {"type": "城跡", "name": "郡山城跡", "castle_id": "yamato-koriyama", "prefecture": "奈良県", "city": "大和郡山市", "description": "秀長とともに暮らした城"},
+    {"type": "神社仏閣", "name": "高野山奥之院（豊臣家墓所）", "prefecture": "和歌山県", "city": "伊都郡高野町", "description": "生前に建てた石塔（逆修塔）があるとされる"}
+  ],
+  "graves": {
+    "status": "不明",
+    "note": "墓所ははっきりしない。高野山奥之院に生前供養の石塔があるとされる。"
+  },
+  "sources": [
+    {"id": "wikipedia", "title": "慈雲院 (豊臣秀長室)（Wikipedia）", "url": "https://ja.wikipedia.org/wiki/慈雲院_(豊臣秀長室)", "note": "法名・没年・出自の諸説などの概要。手元の原典には記述が見つからず、原典は未確認", "type": "ネット記事"}
+  ],
+  "tags": ["豊臣家", "秀長の妻"],
+  "history": [
+    {"date": "2026-10-21", "note": "新規作成"}
+  ],
+  "updatedAt": "2026-10-21"
+}

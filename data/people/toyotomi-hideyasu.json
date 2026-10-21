@@ -1,0 +1,88 @@
+{
+  "id": "toyotomi-hideyasu",
+  "name": "豊臣秀保",
+  "kana": "とよとみ ひでやす",
+  "summary": "豊臣秀長の養子で、秀吉の姉ともの三男（秀次の弟）。秀長の死後、13歳で大和・紀伊を継いで郡山城主となり「大和中納言」と呼ばれた。文禄の役では肥前名護屋に在陣した。十津川で17歳の若さで没し、大和の豊臣家は絶えた。",
+  "aliases": [
+    {"type": "幼名", "value": "辰千代／御虎", "note": "聚楽第行幸の記録に「御虎侍従」と見えるとされる（原典未確認）"},
+    {"type": "その他", "value": "羽柴秀保"},
+    {"type": "その他", "value": "大和中納言", "note": "甫庵太閤記の名護屋在陣衆の一覧などに見える呼び名"},
+    {"type": "その他", "value": "秀俊", "note": "甫庵太閤記の吉野花見の記事は「大和中納言秀俊卿」と書く。小早川秀秋（秀俊）との混同とみられる"}
+  ],
+  "birth": {
+    "year": 1579,
+    "era": "天正7年",
+    "note": "月日・出生地は不明"
+  },
+  "death": {
+    "year": 1595,
+    "month": 5,
+    "day": 24,
+    "era": "文禄4年4月16日",
+    "note": "大和の十津川で没した。没年を文禄3年とする史料もある（川角太閤記は「午の年」とする）",
+    "uncertain": true
+  },
+  "ranks": [
+    {"year": 1588, "title": "侍従", "note": "原典未確認"},
+    {"year": 1591, "title": "従四位下・参議", "note": "原典未確認"},
+    {"year": 1592, "title": "従三位・権中納言", "note": "「大和中納言」の呼び名はここから（原典未確認）"}
+  ],
+  "family": [
+    {"relation": "父", "name": "三好吉房", "note": "木下弥助とも"},
+    {"relation": "母", "person_id": "tomo", "name": "とも（日秀尼）"},
+    {"relation": "兄", "name": "豊臣秀次"},
+    {"relation": "兄", "name": "豊臣秀勝"},
+    {"relation": "養父", "person_id": "toyotomi-hidenaga", "name": "豊臣秀長", "note": "実子とする説もある"},
+    {"relation": "妻", "name": "秀長の娘", "note": "従妹にあたる。天正19年に祝言、文禄3年に正式な婚礼を挙げたとされる（原典未確認）"}
+  ],
+  "lords": [
+    {"person_id": "toyotomi-hideyoshi", "name": "豊臣秀吉", "note": "叔父（母ともの弟）にあたる"}
+  ],
+  "retainers": [
+    {"person_id": "todo-takatora", "name": "藤堂高虎", "from": 1591, "to": 1595, "note": "秀長から引き続き仕え、若い秀保の後見役を務めたとされる"},
+    {"person_id": "kuwayama-shigeharu", "name": "桑山重晴", "from": 1591, "to": 1595, "note": "後見役の一人とされる"}
+  ],
+  "territories": [
+    {"year": 1591, "name": "大和国（郡山）", "prefecture": "奈良県", "note": "秀長の死で跡を継ぎ、郡山城主となる。和泉などは継げなかったとされる", "sourceId": "kawasumi-taikoki", "province": "大和国", "place": "郡山城跡", "lat": 34.6497, "lng": 135.7826},
+    {"year": 1591, "name": "紀伊国", "prefecture": "和歌山県", "note": "秀長の旧領を継ぐ（原典未確認）", "province": "紀伊国"}
+  ],
+  "timeline": [
+    {"year": 1579, "title": "誕生", "description": "秀吉の姉ともと三好吉房の三男として生まれる"},
+    {"year": 1588, "month": 1, "title": "秀長の養子となる", "description": "叔父秀長の養子に決まったとされる（多聞院日記によるとされるが原典未確認）"},
+    {"year": 1591, "month": 1, "title": "大和郡山城主", "castle_id": "yamato-koriyama", "description": "養父秀長が郡山城で没し、跡を継ぐ。川角太閤記は「大和大納言殿御病死被成候其の跡へは関白殿御舎弟拝領」と書く", "sourceId": "kawasumi-taikoki"},
+    {"year": 1592, "title": "肥前名護屋に在陣", "description": "朝鮮出兵（文禄の役）で名護屋に在陣。甫庵太閤記の「肥前国名護屋在陣衆」には「一万人 大和中納言」とある。自身は海を渡らず、藤堂高虎を名代として送ったとされる", "sourceId": "hoan-taikoki"},
+    {"year": 1594, "month": 2, "title": "吉野の花見", "description": "秀吉の吉野の花見で、道中に茶屋を設けて秀吉をもてなし、和歌を詠んだ", "sourceId": "hoan-taikoki"},
+    {"year": 1595, "month": 4, "day": 16, "title": "十津川で死去", "description": "17歳で没し、大和の豊臣家は絶えた。郡山には増田長盛が入った", "sourceId": "kawasumi-taikoki"}
+  ],
+  "episodes": [
+    {"title": "吉野の花見での一首", "body": "文禄3年2月、秀吉は大勢を引き連れて吉野の花見を催した。甫庵太閤記によれば、一行が市之坂に着くと「大和中納言」が建てた茶屋があり、秀吉は立ち寄って饗膳を楽しんだ。花見の歌会では「権中納言秀保」の名で「年々に来てもみねども御芳野の花に心を懸けぬ間もなき」の一首が載る。", "sourceId": "hoan-taikoki"},
+    {"title": "死因の謎", "body": "十津川での死には諸説ある。川角太閤記は「戸津川の湯にて御疱瘡被成御果候」と、湯治先での疱瘡による病死と書く。一方、江戸時代の編纂物には、十津川の滝で小姓とともに溺れ死んだという話もある。秀吉は葬儀を内々に済ませるよう命じたとも伝わる（原典未確認）。", "sourceId": "kawasumi-taikoki", "uncertain": true},
+    {"title": "暴君の逸話", "body": "祖父物語などには、秀保が乱暴なふるまいをしたという話が伝わる。ただ、同じ年に切腹した兄秀次の「殺生関白」という悪評に引きずられて作られた話ではないか、という見方もある。", "uncertain": true}
+  ],
+  "spots": [
+    {"type": "城跡", "name": "郡山城跡", "castle_id": "yamato-koriyama", "prefecture": "奈良県", "city": "大和郡山市", "description": "秀長の跡を継いで城主となった城"},
+    {"type": "その他", "name": "十津川", "prefecture": "奈良県", "city": "十津川村", "description": "秀保が没した地"},
+    {"type": "城跡", "name": "名護屋城跡", "prefecture": "佐賀県", "city": "唐津市", "description": "文禄の役で在陣した"}
+  ],
+  "graves": {
+    "status": "諸説あり",
+    "note": "京都・善正寺（母日秀が兄秀次の菩提のために建てた寺）に、秀次・日秀とともに墓があるとされる。現状は未確認。",
+    "places": [
+      {
+        "name": "善正寺",
+        "prefecture": "京都府",
+        "city": "京都市左京区"
+      }
+    ]
+  },
+  "sources": [
+    {"id": "kawasumi-taikoki", "title": "川角太閤記", "note": "秀長の跡を「関白殿御舎弟」が継ぎ、戸津川の湯で疱瘡により没したことを記す。江戸初期の覚書なので史実性は要検討", "type": "史料", "primary": "二次資料"},
+    {"id": "hoan-taikoki", "title": "太閤記", "author": "小瀬甫庵", "note": "名護屋在陣衆の一覧、吉野花見の記事と和歌。脚色の多い二次史料で史料批判を要する", "type": "史料", "primary": "二次資料"},
+    {"id": "wikipedia", "title": "豊臣秀保（Wikipedia）", "url": "https://ja.wikipedia.org/wiki/豊臣秀保", "note": "幼名・官位・養子入りの時期・墓所などの概要。原典は未確認", "type": "ネット記事"}
+  ],
+  "tags": ["豊臣家", "大和"],
+  "history": [
+    {"date": "2026-10-21", "note": "新規作成"}
+  ],
+  "updatedAt": "2026-10-21"
+}

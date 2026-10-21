@@ -1,0 +1,86 @@
+{
+  "id": "tomo",
+  "name": "とも（日秀尼）",
+  "kana": "とも",
+  "category": "other",
+  "summary": "豊臣秀吉の姉。三好吉房に嫁ぎ、秀次・秀勝・秀保の三人の男子を産んだ。しかし秀勝は朝鮮の陣中で病死、秀保は十津川で急死、秀次は切腹と、文禄年間に子をすべて失った。出家して日秀と名乗り、京都に瑞龍寺（村雲御所）を開いて一族の菩提を弔い、92歳の長寿を保った。",
+  "aliases": [
+    {"type": "その他", "value": "智", "note": "諱と伝わる"},
+    {"type": "法名", "value": "瑞龍院日秀", "note": "院号は瑞龍院。村雲尼とも呼ばれた"}
+  ],
+  "birth": {
+    "year": 1534,
+    "era": "天文3年",
+    "note": "通説。天文元年（1532）とする説もある",
+    "uncertain": true
+  },
+  "death": {
+    "year": 1625,
+    "month": 5,
+    "day": 30,
+    "era": "寛永2年4月24日",
+    "note": "4月4日とする説もある",
+    "uncertain": true
+  },
+  "birthplace": {
+    "name": "尾張国愛知郡中村",
+    "prefecture": "愛知県",
+    "city": "名古屋市"
+  },
+  "family": [
+    {"relation": "母", "person_id": "omandokoro", "name": "大政所"},
+    {"relation": "父", "name": "木下弥右衛門", "note": "竹阿弥とする説もある"},
+    {"relation": "弟", "person_id": "toyotomi-hideyoshi", "name": "豊臣秀吉"},
+    {"relation": "弟", "person_id": "toyotomi-hidenaga", "name": "豊臣秀長"},
+    {"relation": "妹", "person_id": "asahi-hime", "name": "朝日姫"},
+    {"relation": "夫", "name": "三好吉房", "note": "木下弥助とも"},
+    {"relation": "子", "name": "豊臣秀次", "note": "秀吉の養子となり関白を継ぐ。文禄4年に切腹"},
+    {"relation": "子", "name": "豊臣秀勝", "note": "文禄元年、朝鮮の巨済島の陣中で病死"},
+    {"relation": "子", "person_id": "toyotomi-hideyasu", "name": "豊臣秀保", "note": "秀長の養子となる。文禄4年に十津川で死去"}
+  ],
+  "timeline": [
+    {"year": 1534, "title": "誕生", "description": "尾張の中村に生まれたとされる"},
+    {"year": 1592, "title": "次男秀勝の死", "description": "朝鮮出兵のさなか、秀勝が巨済島の陣中で病死する"},
+    {"year": 1595, "month": 4, "title": "三男秀保の死", "description": "秀長の跡を継いでいた秀保が、十津川で急死する"},
+    {"year": 1595, "month": 7, "title": "長男秀次の切腹", "description": "関白秀次が切腹させられ、夫の吉房も讃岐へ流された。秀次の菩提のため、嵯峨に善正寺を建てたとされる"},
+    {"year": 1596, "title": "出家し瑞龍寺を開く", "description": "出家して日秀と名乗り、京都の村雲に瑞龍寺を建てた。後陽成天皇から寺領を受け「村雲御所」と呼ばれた"},
+    {"year": 1615, "title": "豊臣家の滅亡", "description": "大坂夏の陣で秀頼が自害し、豊臣家が滅ぶ"},
+    {"year": 1625, "month": 4, "day": 24, "title": "死去", "description": "92歳で没したとされる"}
+  ],
+  "episodes": [
+    {"title": "守り刀を秀吉に贈る", "body": "出家のとき、手元にあった守り刀を弟の秀吉に贈ったという。その刀は寺の名にちなんで「村雲」の名で呼ばれ、江戸時代の名物刀の目録に載ったとされる（原典未確認）。", "uncertain": true}
+  ],
+  "spots": [
+    {"type": "神社仏閣", "name": "瑞龍寺（村雲御所）", "prefecture": "滋賀県", "city": "近江八幡市", "description": "日秀が京都に開いた寺。昭和36年に、秀次が築いた八幡山城の本丸跡へ移った"},
+    {"type": "神社仏閣", "name": "善正寺", "prefecture": "京都府", "city": "京都市左京区", "description": "秀次の菩提のために建てた寺。日秀の肖像画・木像が残るとされる"}
+  ],
+  "graves": {
+    "status": "諸説あり",
+    "note": "瑞龍寺・本圀寺・善正寺に墓所があるとされる。現状は未確認。",
+    "places": [
+      {
+        "name": "瑞龍寺",
+        "prefecture": "滋賀県",
+        "city": "近江八幡市"
+      },
+      {
+        "name": "本圀寺",
+        "prefecture": "京都府",
+        "city": "京都市山科区"
+      },
+      {
+        "name": "善正寺",
+        "prefecture": "京都府",
+        "city": "京都市左京区"
+      }
+    ]
+  },
+  "sources": [
+    {"id": "wikipedia", "title": "日秀尼（Wikipedia）", "url": "https://ja.wikipedia.org/wiki/日秀尼", "note": "生没年・家族・出家と寺の建立・墓所などの概要。手元の原典には記述が見つからず、原典は未確認", "type": "ネット記事"}
+  ],
+  "tags": ["豊臣家", "秀吉の姉"],
+  "history": [
+    {"date": "2026-10-21", "note": "新規作成"}
+  ],
+  "updatedAt": "2026-10-21"
+}

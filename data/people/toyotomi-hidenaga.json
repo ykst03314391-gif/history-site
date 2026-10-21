@@ -35,21 +35,21 @@
   "family": [
     { "relation": "兄", "person_id": "toyotomi-hideyoshi", "name": "豊臣秀吉", "note": "父が同じか違うかには議論がある（父を木下弥右衛門とする説と、竹阿弥とする説）" },
     { "relation": "母", "person_id": "omandokoro", "name": "大政所" },
-    { "relation": "姉", "name": "とも（日秀尼）", "note": "豊臣秀次・秀保の母" },
-    { "relation": "妹", "name": "朝日姫", "note": "のちに徳川家康の正室となる" },
-    { "relation": "正室", "name": "慈雲院", "note": "法名。「智雲院」とも。実名・出自は不明（諸説あり・原典未確認）" },
-    { "relation": "側室", "name": "興俊尼", "note": "諸説あり・原典未確認" },
-    { "relation": "娘", "name": "大善院", "note": "毛利秀元の正室となったとされる（諸説あり・原典未確認）" },
+    { "relation": "姉", "person_id": "tomo", "name": "とも（日秀尼）", "note": "豊臣秀次・秀保の母" },
+    { "relation": "妹", "person_id": "asahi-hime", "name": "朝日姫", "note": "のちに徳川家康の正室となる" },
+    { "relation": "正室", "person_id": "jiunin", "name": "慈雲院", "note": "法名。「智雲院」とも。実名・出自は不明（諸説あり・原典未確認）" },
+    { "relation": "側室", "person_id": "koshunni", "name": "興俊尼", "note": "「光秀尼」と同じ人物とされる（諸説あり・原典未確認）" },
+    { "relation": "娘", "person_id": "daizenin", "name": "大善院", "note": "毛利秀元の正室となったとされる（諸説あり・原典未確認）" },
     { "relation": "子", "name": "男子", "note": "早世したとされ、跡は甥の秀保が継いだ（諸説あり・原典未確認）" },
-    { "relation": "養子", "name": "豊臣秀保", "note": "甥（姉ともの子）。秀長の跡を継いだ" }
+    { "relation": "養子", "person_id": "toyotomi-hideyasu", "name": "豊臣秀保", "note": "甥（姉ともの子）。秀長の跡を継いだ" }
   ],
   "lords": [
     { "person_id": "toyotomi-hideyoshi", "name": "豊臣秀吉", "note": "兄の配下として仕えた（信長の時代は織田家の陪臣にあたる）" }
   ],
   "retainers": [
-    { "name": "藤堂高虎" },
-    { "name": "桑山重晴" },
-    { "name": "小堀正次" }
+    { "person_id": "todo-takatora", "name": "藤堂高虎" },
+    { "person_id": "kuwayama-shigeharu", "name": "桑山重晴" },
+    { "person_id": "kobori-masatsugu", "name": "小堀正次" }
   ],
   "territories": [
     { "year": 1577, "name": "但馬国（竹田城）", "prefecture": "兵庫県", "note": "兄の但馬攻めの後、城代として竹田城に入る", "sourceId": "shincho-koki", "province": "但馬国", "place": "竹田城跡", "lat": 35.3006, "lng": 134.8292 },
@@ -117,7 +117,8 @@
   "history": [
     { "date": "2026-10-21", "note": "新規作成" },
     { "date": "2026-10-21", "note": "年表の合戦（長島・三木・伊勢・紀州・四国・九州）を合戦ページにリンク" },
-    { "date": "2026-10-21", "note": "家系の母（大政所）を人物ページにリンク" }
+    { "date": "2026-10-21", "note": "家系の母（大政所）を人物ページにリンク" },
+    { "date": "2026-10-21", "note": "家系（とも・朝日姫・慈雲院・興俊尼・大善院・秀保）と家臣（藤堂高虎・桑山重晴・小堀正次）を人物ページにリンク" }
   ],
   "updatedAt": "2026-10-21"
 }

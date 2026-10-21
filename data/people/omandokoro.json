@@ -34,10 +34,10 @@
   "family": [
     { "relation": "夫", "name": "木下弥右衛門", "note": "最初の夫。秀吉・ともの父とされる" },
     { "relation": "夫", "name": "竹阿弥", "note": "弥右衛門の死後の再婚相手とされる。秀長・朝日姫の父とする説がある（原典未確認）" },
-    { "relation": "子", "name": "とも（日秀尼）", "note": "長女。豊臣秀次・秀保の母" },
+    { "relation": "子", "person_id": "tomo", "name": "とも（日秀尼）", "note": "長女。豊臣秀次・秀保の母" },
     { "relation": "子", "person_id": "toyotomi-hideyoshi", "name": "豊臣秀吉" },
     { "relation": "子", "person_id": "toyotomi-hidenaga", "name": "豊臣秀長", "note": "秀吉と父が同じか違うかには議論がある" },
-    { "relation": "子", "name": "朝日姫", "note": "のちに徳川家康の正室となる" }
+    { "relation": "子", "person_id": "asahi-hime", "name": "朝日姫", "note": "のちに徳川家康の正室となる" }
   ],
   "timeline": [
     { "year": 1513, "title": "誕生", "description": "尾張で生まれたとされる（生年は没年からの逆算）" },
@@ -74,7 +74,8 @@
   ],
   "tags": ["豊臣家", "秀吉の母"],
   "history": [
-    { "date": "2026-10-21", "note": "新規作成" }
+    { "date": "2026-10-21", "note": "新規作成" },
+    { "date": "2026-10-21", "note": "家系の子（とも・朝日姫）を人物ページにリンク" }
   ],
   "updatedAt": "2026-10-21"
 }

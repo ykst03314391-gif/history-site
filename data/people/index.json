@@ -95,6 +95,108 @@
       "deathYear": 1592,
       "deathEra": "天正20年7月22日",
       "tags": ["豊臣家", "秀吉の母"]
+    },
+    {
+      "id": "tomo",
+      "category": "other",
+      "name": "とも（日秀尼）",
+      "kana": "とも",
+      "summary": "豊臣秀吉の姉。秀次・秀勝・秀保の母。文禄年間に子をすべて失い、出家して日秀と名乗り瑞龍寺（村雲御所）を開いた。",
+      "birthYear": 1534,
+      "birthEra": "天文3年",
+      "deathYear": 1625,
+      "deathEra": "寛永2年4月24日",
+      "tags": ["豊臣家", "秀吉の姉"]
+    },
+    {
+      "id": "asahi-hime",
+      "category": "other",
+      "name": "朝日姫",
+      "kana": "あさひひめ",
+      "summary": "豊臣秀吉の妹。家康を臣従させる政略で、44歳で徳川家康の正室となり「駿河御前」と呼ばれた。",
+      "birthYear": 1543,
+      "birthEra": "天文12年",
+      "deathYear": 1590,
+      "deathEra": "天正18年1月14日",
+      "tags": ["豊臣家", "秀吉の妹", "徳川家"]
+    },
+    {
+      "id": "jiunin",
+      "category": "other",
+      "name": "慈雲院",
+      "kana": "じうんいん",
+      "summary": "豊臣秀長の正室。実名・出自は不明。秀長家が絶えた後も元和6年まで生きたとされる。",
+      "deathYear": 1620,
+      "deathEra": "元和6年",
+      "tags": ["豊臣家", "秀長の妻"]
+    },
+    {
+      "id": "koshunni",
+      "category": "other",
+      "name": "興俊尼",
+      "kana": "こうしゅんに",
+      "summary": "豊臣秀長の側室とされる女性。大和の秋篠氏の出。秀長の死後に出家し、奈良の興福院の院主となった。",
+      "birthYear": 1552,
+      "birthEra": "天文21年",
+      "deathYear": 1622,
+      "deathEra": "元和8年",
+      "tags": ["豊臣家", "秀長の妻"]
+    },
+    {
+      "id": "daizenin",
+      "category": "other",
+      "name": "大善院",
+      "kana": "だいぜんいん",
+      "summary": "豊臣秀長の娘「きく」。秀吉の養女として毛利秀元に嫁ぎ、22歳で没した。",
+      "birthYear": 1588,
+      "birthEra": "天正16年",
+      "deathYear": 1609,
+      "deathEra": "慶長14年11月29日",
+      "tags": ["豊臣家", "秀長の娘", "毛利家"]
+    },
+    {
+      "id": "toyotomi-hideyasu",
+      "name": "豊臣秀保",
+      "kana": "とよとみ ひでやす",
+      "summary": "秀長の養子で秀次の弟。13歳で大和・紀伊を継いだ「大和中納言」。十津川で17歳で没し、大和の豊臣家は絶えた。",
+      "birthYear": 1579,
+      "birthEra": "天正7年",
+      "deathYear": 1595,
+      "deathEra": "文禄4年4月16日",
+      "tags": ["豊臣家", "大和"]
+    },
+    {
+      "id": "todo-takatora",
+      "name": "藤堂高虎",
+      "kana": "とうどう たかとら",
+      "summary": "主君を何度も替えたのち豊臣秀長に仕えて出世した近江の武将。関ヶ原後は伊勢津・伊賀の大名。築城の名手。",
+      "birthYear": 1556,
+      "birthEra": "弘治2年1月6日",
+      "deathYear": 1630,
+      "deathEra": "寛永7年10月5日",
+      "tags": ["豊臣家臣", "秀長家臣", "築城", "伊勢津藩"]
+    },
+    {
+      "id": "kuwayama-shigeharu",
+      "name": "桑山重晴",
+      "kana": "くわやま しげはる",
+      "summary": "豊臣秀長の重臣。賤ヶ岳の戦いで砦を守り、竹田城・和歌山城を任された。茶人でもある。",
+      "birthYear": 1524,
+      "birthEra": "大永4年",
+      "deathYear": 1606,
+      "deathEra": "慶長11年10月1日",
+      "tags": ["豊臣家臣", "秀長家臣", "茶人"]
+    },
+    {
+      "id": "kobori-masatsugu",
+      "name": "小堀正次",
+      "kana": "こぼり まさつぐ",
+      "summary": "豊臣秀長の家臣。大和・紀伊の検地を担い、関ヶ原後は備中松山で国務を取り仕切った。小堀遠州の父。",
+      "birthYear": 1540,
+      "birthEra": "天文9年",
+      "deathYear": 1604,
+      "deathEra": "慶長9年3月30日",
+      "tags": ["豊臣家臣", "秀長家臣", "備中"]
     }
   ]
 }

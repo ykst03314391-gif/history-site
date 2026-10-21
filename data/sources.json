@@ -122,6 +122,10 @@
           "id": "toyotomi-hidenaga"
         },
         {
+          "type": "person",
+          "id": "kuwayama-shigeharu"
+        },
+        {
           "type": "battle",
           "id": "miki-siege"
         },
@@ -153,6 +157,18 @@
       "note": "秀吉の時代を伝える覚書・聞書。伝聞を含むため史実性は要検討。",
       "url": "https://ja.wikisource.org/wiki/川角太閤記",
       "usedIn": [
+        {
+          "type": "person",
+          "id": "toyotomi-hideyasu"
+        },
+        {
+          "type": "person",
+          "id": "todo-takatora"
+        },
+        {
+          "type": "person",
+          "id": "kuwayama-shigeharu"
+        },
         {
           "type": "castle",
           "id": "yamato-koriyama"
@@ -206,6 +222,18 @@
         {
           "type": "person",
           "id": "toyotomi-hidenaga"
+        },
+        {
+          "type": "person",
+          "id": "toyotomi-hideyasu"
+        },
+        {
+          "type": "person",
+          "id": "todo-takatora"
+        },
+        {
+          "type": "person",
+          "id": "kuwayama-shigeharu"
         },
         {
           "type": "battle",

@@ -1,0 +1,62 @@
+{
+  "id": "daizenin",
+  "name": "大善院",
+  "kana": "だいぜんいん",
+  "category": "other",
+  "summary": "豊臣秀長の娘で、名は「きく」。父の死後、秀吉の養女として毛利輝元の養子・毛利秀元に嫁いだ。慶長14年、22歳の若さで京都で没した。生母が誰かははっきりしない。",
+  "aliases": [
+    {"type": "その他", "value": "きく", "note": "名。駒井日記に「御きくさま」と見えるとされる"},
+    {"type": "法名", "value": "大善院月澗宗照"}
+  ],
+  "birth": {
+    "year": 1588,
+    "era": "天正16年",
+    "note": "享年からの逆算による",
+    "uncertain": true
+  },
+  "death": {
+    "year": 1609,
+    "month": 12,
+    "day": 25,
+    "era": "慶長14年11月29日",
+    "note": "京都で没したとされる"
+  },
+  "family": [
+    {"relation": "父", "person_id": "toyotomi-hidenaga", "name": "豊臣秀長"},
+    {"relation": "母", "name": "不明", "note": "興俊尼（光秀尼）とする説などがある"},
+    {"relation": "養母", "person_id": "jiunin", "name": "慈雲院", "note": "父の正室。養母だったとする見方がある（諸説）"},
+    {"relation": "養父", "person_id": "toyotomi-hideyoshi", "name": "豊臣秀吉", "note": "養女となって嫁いだ"},
+    {"relation": "夫", "name": "毛利秀元"}
+  ],
+  "timeline": [
+    {"year": 1588, "title": "誕生", "description": "秀長の娘として生まれたとされる"},
+    {"year": 1591, "month": 1, "title": "父秀長の死", "description": "父が郡山城で病没する"},
+    {"year": 1595, "month": 2, "title": "毛利秀元に嫁ぐ", "description": "秀吉の養女として、毛利秀元に嫁いだとされる（原典未確認）"},
+    {"year": 1609, "month": 11, "day": 29, "title": "死去", "description": "22歳で没した"}
+  ],
+  "episodes": [
+    {"title": "文禄3年の祝言は誰のものか", "body": "興福寺の僧の日記（多聞院日記）の文禄3年3月2日の条に、秀長の娘の祝言の記事がある。これを秀保と姉の婚礼とみる研究者と、大善院と秀俊（のちの小早川秀秋）の婚礼とみる研究者とで解釈が分かれている（原典未確認）。", "uncertain": true}
+  ],
+  "spots": [
+    {"type": "神社仏閣", "name": "功山寺", "prefecture": "山口県", "city": "下関市", "description": "長府毛利家ゆかりの寺。位牌が祀られているとされる"}
+  ],
+  "graves": {
+    "status": "諸説あり",
+    "note": "父秀長の菩提寺である京都・大徳寺の大光院にあるとされる。現状は未確認。",
+    "places": [
+      {
+        "name": "大徳寺 大光院",
+        "prefecture": "京都府",
+        "city": "京都市北区"
+      }
+    ]
+  },
+  "sources": [
+    {"id": "wikipedia", "title": "大善院 (毛利秀元室)（Wikipedia）", "url": "https://ja.wikipedia.org/wiki/大善院_(毛利秀元室)", "note": "名・生没年・婚姻・墓所などの概要。手元の原典には記述が見つからず、原典は未確認", "type": "ネット記事"}
+  ],
+  "tags": ["豊臣家", "秀長の娘", "毛利家"],
+  "history": [
+    {"date": "2026-10-21", "note": "新規作成"}
+  ],
+  "updatedAt": "2026-10-21"
+}

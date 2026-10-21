@@ -275,17 +275,17 @@
       html.push(section("成し遂げたこと", `<ul class="list">${items}</ul>`));
     }
 
-    // 後世の評価（時代別）
+    // 人物評価（時代別。同じ era が続くときはラベルを最初の1つだけ出す）
     if (p.reputation && p.reputation.length) {
       const items = p.reputation
         .map(
-          (r) => `<div class="rep-item">
-            <span class="rep-era">${esc(r.era)}</span>
-            <div class="rep-body">${esc(r.body)}${srcMark(r.sourceId)}</div>
+          (r, i) => `<div class="rep-item">
+            ${i > 0 && p.reputation[i - 1].era === r.era ? "<span></span>" : `<span class="rep-era">${esc(r.era)}</span>`}
+            <div class="rep-body">${r.title ? `<b>${esc(r.title)}</b><br>` : ""}${esc(r.body)}${srcMark(r.sourceId)}</div>
           </div>`
         )
         .join("");
-      html.push(section("後世の評価", `<div class="rep-list">${items}</div>`));
+      html.push(section("人物評価", `<div class="rep-list">${items}</div>`));
     }
 
     // 逸話

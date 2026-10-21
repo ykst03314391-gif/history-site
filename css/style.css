@@ -335,7 +335,7 @@ html { scroll-behavior: smooth; }
   padding: 0 5px; margin-left: 6px; vertical-align: middle;
 }
 
-/* 後世の評価（時代別） */
+/* 人物評価（時代別） */
 .rep-list { display: grid; gap: 12px; }
 .rep-item {
   display: grid;

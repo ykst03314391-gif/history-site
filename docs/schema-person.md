@@ -34,7 +34,7 @@
 | `timeline` | Event[] | 個人の年表 |
 | `episodes` | Episode[] | 逸話・エピソード |
 | `achievements` | Achievement[] | 成し遂げたこと |
-| `reputation` | Reputation[] | 後世の評価（同時代・江戸・明治・昭和・現代の時代別） |
+| `reputation` | Reputation[] | 人物評価（存命時・死去後、または同時代・江戸・明治・昭和・現代の時代別） |
 | `references` | Reference[] | 参考書籍（アフィリエイト対象） |
 | `portrait` | Portrait? | 肖像画。見出しの右に表示（下記） |
 | `spots` | Spot[] | ゆかりの地（城跡・銅像・刀剣・肖像画・博物館・名物など） |
@@ -176,13 +176,15 @@ Spot = {
 { "src": string, "caption"?: string, "credit"?: string, "license"?: string }
 ```
 
-### Reputation（後世の評価）
+### Reputation（人物評価）
 ```
-{ "era": "同時代" | "江戸" | "明治" | "昭和" | "現代" | string,
+{ "era": "存命時" | "死去後" | "同時代" | "江戸" | "明治" | "昭和" | "現代" | string,
+  "title"?: string,       // 項目の小見出し（例：「熊野の木の一件」）
   "body": string,         // その時代における評価・人物像
   "sourceId"?: string }
 ```
 > 時代ごとに評価がどう変わってきたかを示す。戦国期の同時代評価から、江戸の軍記物、近代の再評価、現代の研究による見直しまで。
+> 「存命時」「死去後」の2区分で書いてもよい（豊臣秀長など）。同じ era が続く項目はラベルを最初の1つだけ表示するので、出典ごとに項目を分けて並べる。
 
 ### Graves（墓所）
 ```

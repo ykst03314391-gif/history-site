@@ -327,6 +327,40 @@
           "id": "daizenin"
         }
       ]
+    },
+    {
+      "id": "jozan-kidan",
+      "level": 3,
+      "title": "常山紀談",
+      "yomi": "じょうざんきだん",
+      "author": "湯浅常山",
+      "kind": "史料",
+      "era": "江戸中期（元文〜明和年間）成立",
+      "note": "戦国武将の逸話を集めた書。名将言行録などの元ネタになった。逸話の史実性は要検討。大町桂月校訂・至誠堂版（1912年）を使用。",
+      "url": "https://dl.ndl.go.jp/pid/778101",
+      "usedIn": [
+        {
+          "type": "person",
+          "id": "toyotomi-hidenaga"
+        }
+      ]
+    },
+    {
+      "id": "meisho-genkoroku",
+      "level": 3,
+      "title": "名将言行録",
+      "yomi": "めいしょうげんこうろく",
+      "author": "岡谷繁実",
+      "kind": "史料",
+      "era": "明治2年（1869）成立",
+      "note": "諸書から武将の言行・逸話を集めて編んだ書。出典の確かでない話も多い。1911年刊本を使用。",
+      "url": "https://dl.ndl.go.jp/pid/782779",
+      "usedIn": [
+        {
+          "type": "person",
+          "id": "toyotomi-hidenaga"
+        }
+      ]
     }
   ]
 }

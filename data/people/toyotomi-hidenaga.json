@@ -52,7 +52,7 @@
     { "person_id": "kobori-masatsugu", "name": "小堀正次" }
   ],
   "territories": [
-    { "year": 1577, "name": "但馬国（竹田城）", "prefecture": "兵庫県", "note": "兄の但馬攻めの後、城代として竹田城に入る", "sourceId": "shincho-koki", "province": "但馬国", "place": "竹田城跡", "lat": 35.3006, "lng": 134.8292 },
+    { "year": 1577, "name": "但馬国（竹田城）", "prefecture": "兵庫県", "note": "兄の但馬攻めの後、城代として竹田城に入る", "sourceId": "shincho-koki", "province": "但馬国", "district": "但馬国朝来郡", "place": "竹田城跡", "lat": 35.3006, "lng": 134.8292 },
     { "year": 1580, "name": "但馬国", "prefecture": "兵庫県", "note": "兵を預かって但馬を平定し、要所に兵を置く。信長公記では引き続き竹田（太田垣氏の旧居城）を拠点としている", "sourceId": "shincho-koki", "province": "但馬国", "place": "竹田城跡", "lat": 35.3006, "lng": 134.8292 },
     { "year": 1585, "name": "大和国（郡山）", "prefecture": "奈良県", "note": "郡山に城を築き本拠とする", "sourceId": "tensho-ki", "province": "大和国", "place": "郡山城跡", "lat": 34.6497, "lng": 135.7826 },
     { "year": 1585, "name": "紀伊国", "prefecture": "和歌山県", "note": "天正記には大和・紀伊両国の「物主」とある", "sourceId": "tensho-ki", "province": "紀伊国", "place": "和歌山城（秀長が築かせたとされる）", "lat": 34.2277, "lng": 135.1713 },

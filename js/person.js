@@ -193,7 +193,7 @@
       const mapHTML = hasMap
         ? `<div id="territory-map" class="territory-map" role="img" aria-label="領地の変遷の地図"></div>
            <div id="territory-legend" class="territory-legend"></div>
-           <p class="territory-map-note muted">色は国（令制国）の範囲で、番号は下の一覧と対応します。線は年代順につないだもの、ピンは城など代表地点です。国の範囲は1868年時点の国界による近似で、国全体を支配していたとは限りません。</p>`
+           <p class="territory-map-note muted">色は領地の範囲で、国の一部だけを領したときは郡の範囲を塗っています。番号は下の一覧と対応します。線は年代順につないだもの、ピンは城など代表地点です。国界は1868年時点、郡界は1920年時点の境界による近似で、戦国期の境界とは細部で違います。</p>`
         : "";
       html.push(section("領地の変遷", `${mapHTML}<ul class="list terr-list">${items}</ul>`));
     }
@@ -413,21 +413,34 @@
   }
 
   function onMap(t) {
-    return hasCoords(t) || provincesOf(t).length > 0;
+    return hasCoords(t) || areasOf(t).length > 0;
   }
 
-  // province は "大和国" か ["大和国", "紀伊国"]
-  function provincesOf(t) {
-    if (!t || !t.province) return [];
-    return Array.isArray(t.province) ? t.province : [t.province];
-  }
+  const asList = (v) => (!v ? [] : Array.isArray(v) ? v : [v]);
 
-  // 令制国の境界（tools/build-provinces.py で生成）。国を塗る人物ページでだけ読み込む
-  function loadProvinces(territories) {
-    if (!territories.some((t) => provincesOf(t).length)) return Promise.resolve(null);
-    return fetch("assets/geo/provinces.geojson")
-      .then((res) => (res.ok ? res.json() : null))
-      .catch(() => null);
+  // 塗る範囲。国の一部だけなら district（"但馬国朝来郡" か配列）で郡を、国全体なら province（"大和国" か配列）で国を塗る
+  function areasOf(t) {
+    if (!t) return [];
+    const d = asList(t.district);
+    return d.length ? d : asList(t.province);
+  }
+  const isDistrict = (name) => /郡$/.test(name);
+
+  // 国界（tools/build-provinces.py）と郡界（tools/build-districts.py）。塗る範囲がある人物ページでだけ、要る方を読み込む
+  function loadAreas(territories) {
+    const names = territories.flatMap(areasOf);
+    const get = (url) =>
+      fetch(url)
+        .then((res) => (res.ok ? res.json() : null))
+        .catch(() => null);
+    return Promise.all([
+      names.some((n) => !isDistrict(n)) ? get("assets/geo/provinces.geojson") : null,
+      names.some(isDistrict) ? get("assets/geo/districts.geojson") : null,
+    ]).then(([prov, dist]) => ({
+      features: [...(prov ? prov.features : []), ...(dist ? dist.features : [])],
+      prov: !!prov,
+      dist: !!dist,
+    }));
   }
 
   // 手に入れた年が早い国ほど淡く、遅い国ほど濃く塗る
@@ -436,7 +449,7 @@
   // 領地の変遷の地図：国の塗りつぶし＋番号付きピン＋年代順の線
   function initTerritoryMap(territories) {
     const el = document.getElementById("territory-map");
-    Promise.all([loadLeaflet(), loadProvinces(territories)])
+    Promise.all([loadLeaflet(), loadAreas(territories)])
       .then(([L, geo]) => {
         // ベクター図形を足す前に表示範囲を決めておく（未設定だと描画で落ちる）。最後に fitBounds で合わせ直す
         const map = L.map(el, { scrollWheelZoom: false }).setView([35, 136], 6);
@@ -444,13 +457,14 @@
           maxZoom: 18,
           attribution:
             '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' +
-            (geo ? ' | 国界: <a href="https://github.com/Asukana/Ryoseikoku_20230626_TSV">令制国データ</a> (CC0)' : ""),
+            (geo.prov ? ' | 国界: <a href="https://github.com/Asukana/Ryoseikoku_20230626_TSV">令制国データ</a> (CC0)' : "") +
+            (geo.dist ? ' | 郡界: <a href="https://nlftp.mlit.go.jp/ksj/">国土数値情報 行政区域 1920年</a> (国土交通省, CC BY 4.0)' : ""),
         }).addTo(map);
 
-        // 国ごとに、最初に領地として出てくる年と該当する項目をまとめる
+        // 国・郡ごとに、最初に領地として出てくる年と該当する項目をまとめる
         const provs = new Map();
         territories.forEach((t, i) => {
-          for (const name of provincesOf(t)) {
+          for (const name of areasOf(t)) {
             if (!provs.has(name)) provs.set(name, { year: t.year, items: [] });
             provs.get(name).items.push({ t, n: i + 1 });
           }
@@ -460,9 +474,10 @@
           TERR_COLORS[Math.round((years.indexOf(year) / Math.max(years.length - 1, 1)) * (TERR_COLORS.length - 1))];
 
         const provLayers = new Map();
-        const features = geo ? geo.features : [];
-        for (const [name, info] of provs) {
-          const f = features.find((x) => x.properties.name === name);
+        // 国を先に、郡を後に描いて、国の中の郡が隠れないようにする
+        const order = [...provs].sort(([a], [b]) => isDistrict(a) - isDistrict(b));
+        for (const [name, info] of order) {
+          const f = geo.features.find((x) => x.properties.name === name);
           if (!f) continue;
           const color = colorOf(info.year);
           const popup = `<div class="terr-popup"><b>${esc(name)}</b>${info.items
@@ -492,7 +507,7 @@
         const pts = territories
           .map((t, i) => {
             if (hasCoords(t)) return { t, n: i + 1, ll: [Number(t.lat), Number(t.lng)] };
-            const layer = provLayers.get(provincesOf(t)[0]);
+            const layer = provLayers.get(areasOf(t)[0]);
             if (!layer) return null;
             const c = layer.getBounds().getCenter();
             return { t, n: i + 1, ll: [c.lat, c.lng] };

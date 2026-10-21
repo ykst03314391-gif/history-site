@@ -2,6 +2,9 @@
 (async function () {
   const listEl = document.getElementById("list");
   const searchEl = document.getElementById("search");
+  // 並べ方の切替。50音順／地域別／国別（地域・国は家が興った国 homeProvince で分ける）
+  const orderEl = document.getElementById("order");
+  const { kanaRow, REGIONS, isProvince, provinceRank, regionOf, regionRank, setupSwitch, by, diff } = window.ListOrder;
   let clans = [];
 
   const esc = (s) =>
@@ -9,21 +12,56 @@
       ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c])
     );
 
+  // 興った国と勢力範囲。項目の途中では折り返さない
+  function metaHTML(c) {
+    const items = [c.homeProvince ? `${c.homeProvince}で興る` : "", c.region || ""].filter(Boolean);
+    if (!items.length) return "";
+    return `<p class="years">${items.map((s) => `<span class="meta-item">${esc(s)}</span>`).join(" ／ ")}</p>`;
+  }
+
   function cardHTML(c) {
     return `
       <a class="card" href="clan.html?id=${encodeURIComponent(c.id)}">
         <h3>${esc(c.name)}</h3>
         <p class="kana">${esc(c.kana || "")}</p>
-        ${c.region ? `<p class="years">${esc(c.region)}</p>` : ""}
+        ${metaHTML(c)}
         <p class="card-summary">${esc(c.summary || "")}</p>
         ${c.kamon ? `<div class="tags"><span class="tag">家紋：${esc(c.kamon)}</span></div>` : ""}
       </a>`;
   }
 
+  const prov = (c) => (isProvince(c.homeProvince) ? c.homeProvince : null);
+  const byProvince = (a, b) => diff(provinceRank(prov(a)), provinceRank(prov(b)));
+  const byRegion = (a, b) => diff(regionRank(prov(a)), regionRank(prov(b)));
+
+  // 並べ方ごとの見出し。items は50音順に並んでいる前提で、同順位のあいだは50音順のまま残る（sort は安定）
+  function groupOf(c, order) {
+    if (order === "kana") return kanaRow(c.kana);
+    if (!prov(c)) return "国不明";
+    return order === "region" ? regionOf(prov(c)) : `${prov(c)}（${regionOf(prov(c))}）`;
+  }
+  function sortFor(order, items) {
+    if (order === "kana") return items;
+    return [...items].sort(order === "region" ? by(byRegion, byProvince) : byProvince);
+  }
+
   function render(items) {
-    listEl.innerHTML = items.length
-      ? items.map(cardHTML).join("")
-      : `<p class="muted">該当する大名家がありません。</p>`;
+    if (!items.length) {
+      listEl.innerHTML = `<p class="muted">該当する大名家がありません。</p>`;
+      return;
+    }
+    const order = currentOrder();
+    let html = "";
+    let current = null;
+    for (const c of sortFor(order, items)) {
+      const row = groupOf(c, order);
+      if (row !== current) {
+        html += `<h3 class="kana-row-heading">${esc(row)}</h3>`;
+        current = row;
+      }
+      html += cardHTML(c);
+    }
+    listEl.innerHTML = html;
   }
 
   function filter(q) {
@@ -31,16 +69,21 @@
     if (!q) return render(clans);
     render(
       clans.filter((c) =>
-        [c.name, c.kana, c.summary, c.region].join(" ").toLowerCase().includes(q)
+        [c.name, c.kana, c.summary, c.region, c.homeProvince].join(" ").toLowerCase().includes(q)
       )
     );
   }
 
+  const currentOrder = setupSwitch(orderEl, ["kana", "region", "province"], () => filter(searchEl.value));
+
   try {
     const res = await fetch("data/clans/index.json");
     if (!res.ok) throw new Error(res.status);
-    clans = (await res.json()).clans || [];
-    render(clans);
+    // 読み（kana）の50音順に並べておく
+    clans = ((await res.json()).clans || []).sort((a, b) =>
+      (a.kana || a.name || "").localeCompare(b.kana || b.name || "", "ja")
+    );
+    filter(searchEl.value);
     searchEl.addEventListener("input", (e) => filter(e.target.value));
   } catch (err) {
     listEl.innerHTML = `<p class="error">大名家データの読み込みに失敗しました。ローカルで開いている場合は簡易サーバー経由で表示してください（README参照）。</p>`;

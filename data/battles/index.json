@@ -2,115 +2,185 @@
   "battles": [
     {
       "id": "kawanakajima",
+      "photo": {"src": "assets/img/battles/kawanakajima.jpg", "thumb": "assets/img/battles/thumbs/kawanakajima.jpg", "caption": "川中島古戦場（八幡原史跡公園）の八幡社", "author": "baggio4ever", "license": "CC BY 3.0", "licenseUrl": "https://creativecommons.org/licenses/by/3.0", "source": {"name": "Wikimedia Commons", "url": "https://commons.wikimedia.org/wiki/File:%E5%85%AB%E5%B9%A1%E5%8E%9F%E5%8F%B2%E8%B7%A1%E5%85%AC%E5%9C%922_-_panoramio.jpg"}},
       "name": "川中島の戦い",
       "kana": "かわなかじまのたたかい",
       "year": 1553,
       "summary": "上杉謙信と武田信玄が北信濃をめぐって数度にわたり対陣した一連の戦い。",
-      "prefecture": "長野県"
+      "prefecture": "長野県",
+      "province": "信濃国",
+      "lat": 36.5902,
+      "lng": 138.1879,
+      "sides": [{ "name": "上杉軍", "outcome": "決着つかず" }, { "name": "武田軍", "outcome": "決着つかず" }]
     },
     {
       "id": "okehazama",
+      "photo": {"src": "assets/img/battles/okehazama.jpg", "thumb": "assets/img/battles/thumbs/okehazama.jpg", "caption": "桶狭間古戦場公園の織田信長・今川義元の像", "note": "像は近年に建てられたもの", "author": "Asturio Cantabrio", "license": "CC BY-SA 4.0", "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0", "source": {"name": "Wikimedia Commons", "url": "https://commons.wikimedia.org/wiki/File:Okehazama_Battlefield_Park_ac_(6).jpg"}},
       "name": "桶狭間の戦い",
       "kana": "おけはざまのたたかい",
       "year": 1560,
       "summary": "織田信長が寡兵で今川義元の大軍を破り、義元を討ち取った奇襲戦。",
-      "prefecture": "愛知県"
+      "prefecture": "愛知県",
+      "province": "尾張国",
+      "lat": 35.0553,
+      "lng": 136.9713,
+      "sides": [{ "name": "織田軍", "outcome": "勝利" }, { "name": "今川軍", "outcome": "敗北" }]
     },
     {
       "id": "anegawa",
+      "photo": {"src": "assets/img/battles/anegawa.jpg", "thumb": "assets/img/battles/thumbs/anegawa.jpg", "caption": "姉川古戦場の標柱と案内板", "author": "立花左近", "license": "CC BY-SA 3.0", "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0", "source": {"name": "Wikimedia Commons", "url": "https://commons.wikimedia.org/wiki/File:Anegawa_Historic_Battlefield.jpg"}},
       "name": "姉川の戦い",
       "kana": "あねがわのたたかい",
       "year": 1570,
       "summary": "織田・徳川連合軍が浅井・朝倉連合軍を近江姉川で破った戦い。",
-      "prefecture": "滋賀県"
+      "prefecture": "滋賀県",
+      "province": "近江国",
+      "lat": 35.4436,
+      "lng": 136.279,
+      "sides": [{ "name": "織田・徳川連合軍", "outcome": "勝利" }, { "name": "浅井・朝倉連合軍", "outcome": "敗北" }]
     },
     {
       "id": "nagashima-ikko-ikki",
+      "photo": {"src": "assets/img/battles/nagashima-ikko-ikki.jpg", "thumb": "assets/img/battles/thumbs/nagashima-ikko-ikki.jpg", "caption": "長島の願証寺", "note": "一揆の後に再興された寺で、戦国時代の建物ではない", "author": "立花左近", "license": "CC BY-SA 3.0", "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0", "source": {"name": "Wikimedia Commons", "url": "https://commons.wikimedia.org/wiki/File:Gansh%C5%8D-ji_in_Kuwana.jpg"}},
       "name": "長島一向一揆攻め",
       "kana": "ながしまいっこういっきぜめ",
       "year": 1574,
       "summary": "織田信長が伊勢長島に拠った一向一揆を、数度の攻撃の末に滅ぼした戦い。",
-      "prefecture": "三重県"
+      "prefecture": "三重県",
+      "province": "伊勢国",
+      "lat": 35.0929,
+      "lng": 136.6978,
+      "sides": [{ "name": "織田軍", "outcome": "勝利" }, { "name": "長島一向一揆", "outcome": "敗北" }]
     },
     {
       "id": "nagashino",
+      "photo": {"src": "assets/img/battles/nagashino.jpg", "thumb": "assets/img/battles/thumbs/nagashino.jpg", "caption": "設楽原の「織田信長戦地本陣跡」", "author": "Taka1", "license": "CC BY-SA 4.0", "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0", "source": {"name": "Wikimedia Commons", "url": "https://commons.wikimedia.org/wiki/File:%E6%9C%AC%E9%99%A3%E8%B7%A1.jpg"}},
       "name": "長篠の戦い",
       "kana": "ながしののたたかい",
       "year": 1575,
       "summary": "織田・徳川連合軍が鉄砲を活用し、武田勝頼の騎馬隊を破った戦い。",
-      "prefecture": "愛知県"
+      "prefecture": "愛知県",
+      "province": "三河国",
+      "lat": 34.9227,
+      "lng": 137.5619,
+      "sides": [{ "name": "織田・徳川連合軍", "outcome": "勝利" }, { "name": "武田軍", "outcome": "敗北" }]
     },
     {
       "id": "tedorigawa",
+      "photo": {"src": "assets/img/battles/tedorigawa.jpg", "thumb": "assets/img/battles/thumbs/tedorigawa.jpg", "caption": "手取川の流れ（川北大橋から上流を望む）", "note": "川の写真で、古戦場の碑などではない", "author": "クハ４１９－５", "license": "CC BY-SA 3.0", "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0", "source": {"name": "Wikimedia Commons", "url": "https://commons.wikimedia.org/wiki/File:%E6%89%8B%E5%8F%96%E5%B7%9D_%E5%B7%9D%E5%8C%97%E5%A4%A7%E6%A9%8B%E3%82%88%E3%82%8A%E9%B6%B4%E6%9D%A5%E5%81%B4_-_panoramio.jpg"}},
       "name": "手取川の戦い",
       "kana": "てどりがわのたたかい",
       "year": 1577,
       "summary": "上杉謙信が北陸に侵攻し、柴田勝家らの織田軍を加賀手取川で破ったとされる戦い。",
-      "prefecture": "石川県"
+      "prefecture": "石川県",
+      "province": "加賀国",
+      "lat": 36.3287,
+      "lng": 136.6412,
+      "sides": [{ "name": "上杉軍", "outcome": "勝利" }, { "name": "織田軍", "outcome": "敗北" }]
     },
     {
       "id": "arioka-siege",
+      "photo": {"src": "assets/img/castles/arioka.jpg", "thumb": "assets/img/castles/thumbs/arioka.jpg", "caption": "有岡城跡の石垣", "author": "Saigen Jiro", "license": "CC0", "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en", "source": {"name": "Wikimedia Commons", "url": "https://commons.wikimedia.org/wiki/File:Arioka_Castle,_ishigaki.jpg"}},
       "name": "有岡城の乱",
       "kana": "ありおかじょうのらん",
       "year": 1578,
       "summary": "荒木村重が織田信長に反旗を翻し、有岡城に籠城した一件。",
-      "prefecture": "兵庫県"
+      "prefecture": "兵庫県",
+      "province": "摂津国",
+      "lat": 34.7838,
+      "lng": 135.4206,
+      "sides": [{ "name": "織田軍", "outcome": "勝利" }, { "name": "荒木方", "outcome": "敗北" }]
     },
     {
       "id": "miki-siege",
+      "photo": {"src": "assets/img/castles/miki.jpg", "thumb": "assets/img/castles/thumbs/miki.jpg", "caption": "別所長治の辞世の歌碑（三木城跡）", "author": "ブレイズマン", "license": "CC BY-SA 3.0", "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0", "source": {"name": "Wikimedia Commons", "url": "https://commons.wikimedia.org/wiki/File:Mikij7.jpg"}},
       "name": "三木城攻め",
       "kana": "みきじょうぜめ",
       "year": 1578,
       "summary": "羽柴秀吉が別所長治の三木城を約2年の兵糧攻めで落とした戦い。",
-      "prefecture": "兵庫県"
+      "prefecture": "兵庫県",
+      "province": "播磨国",
+      "lat": 34.7999,
+      "lng": 134.9879,
+      "sides": [{ "name": "羽柴軍", "outcome": "勝利" }, { "name": "別所軍", "outcome": "敗北" }]
     },
     {
       "id": "honnoji-no-hen",
+      "photo": {"src": "assets/img/battles/honnoji-no-hen.jpg", "thumb": "assets/img/battles/thumbs/honnoji-no-hen.jpg", "caption": "本能寺跡の石碑", "note": "変のときの本能寺はこの場所にあった。いまの本能寺は、のちに寺町へ移ったもの", "author": "Saigen Jiro", "license": "CC0", "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en", "source": {"name": "Wikimedia Commons", "url": "https://commons.wikimedia.org/wiki/File:Honnoji-ato,_sekihi.jpg"}},
       "name": "本能寺の変",
       "kana": "ほんのうじのへん",
       "year": 1582,
       "summary": "明智光秀が京・本能寺に主君・織田信長を急襲し、これを討った政変。",
-      "prefecture": "京都府"
+      "prefecture": "京都府",
+      "province": "山城国",
+      "lat": 35.006,
+      "lng": 135.7537,
+      "sides": [{ "name": "明智軍", "outcome": "勝利" }, { "name": "織田方", "outcome": "敗北" }]
     },
     {
       "id": "yamazaki",
+      "photo": {"src": "assets/img/battles/yamazaki.jpg", "thumb": "assets/img/battles/thumbs/yamazaki.jpg", "caption": "天王山の「山崎合戦之地」の碑", "author": "mariemon", "license": "CC BY 3.0", "licenseUrl": "https://creativecommons.org/licenses/by/3.0", "source": {"name": "Wikimedia Commons", "url": "https://commons.wikimedia.org/wiki/File:%E5%B1%B1%E5%B4%8E%E5%90%88%E6%88%A63026.jpg"}},
       "name": "山崎の戦い",
       "kana": "やまざきのたたかい",
       "year": 1582,
       "summary": "羽柴秀吉が明智光秀を破り、信長の仇を討った戦い。",
-      "prefecture": "京都府"
+      "prefecture": "京都府",
+      "province": "山城国",
+      "lat": 34.9019,
+      "lng": 135.6763,
+      "sides": [{ "name": "羽柴軍", "outcome": "勝利" }, { "name": "明智軍", "outcome": "敗北" }]
     },
     {
       "id": "ise-campaign",
+      "photo": {"src": "assets/img/battles/ise-campaign.jpg", "thumb": "assets/img/battles/thumbs/ise-campaign.jpg", "caption": "伊勢亀山城の多門櫓", "note": "江戸時代の櫓で、伊勢攻めのころの建物ではない", "author": "Saigen Jiro", "license": "CC0", "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en", "source": {"name": "Wikimedia Commons", "url": "https://commons.wikimedia.org/wiki/File:Kameyama_Castle_(Ise),_Tamon-yagura.jpg"}},
       "name": "伊勢攻め",
       "kana": "いせぜめ",
       "year": 1583,
       "summary": "賤ヶ岳の戦いに先立ち、羽柴秀吉が柴田方の滝川一益を攻めた戦い。",
-      "prefecture": "三重県"
+      "prefecture": "三重県",
+      "province": "伊勢国",
+      "lat": 34.8561,
+      "lng": 136.4506,
+      "sides": [{ "name": "羽柴軍", "outcome": "勝利" }, { "name": "滝川軍", "outcome": "敗北" }]
     },
     {
       "id": "shizugatake",
+      "photo": {"src": "assets/img/battles/shizugatake.jpg", "thumb": "assets/img/battles/thumbs/shizugatake.jpg", "caption": "賤ヶ岳の山頂からの眺め", "author": "helohelon", "license": "CC BY-SA 3.0", "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0", "source": {"name": "Wikimedia Commons", "url": "https://commons.wikimedia.org/wiki/File:%E8%B3%A4%E3%83%B6%E5%B2%B3%E3%82%88%E3%82%8A%E3%81%AE%E7%9C%BA%E6%9C%9B_-_panoramio.jpg"}},
       "name": "賤ヶ岳の戦い",
       "kana": "しずがたけのたたかい",
       "year": 1583,
       "summary": "羽柴秀吉が柴田勝家を破り、織田家中の主導権を握った戦い。",
-      "prefecture": "滋賀県"
+      "prefecture": "滋賀県",
+      "province": "近江国",
+      "lat": 35.5061,
+      "lng": 136.1931,
+      "sides": [{ "name": "羽柴軍", "outcome": "勝利" }, { "name": "柴田軍", "outcome": "敗北" }]
     },
     {
       "id": "kishu-campaign",
+      "photo": {"src": "assets/img/battles/kishu-campaign.jpg", "thumb": "assets/img/battles/thumbs/kishu-campaign.jpg", "caption": "太田城跡の石碑", "author": "Saigen Jiro", "license": "CC0", "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en", "source": {"name": "Wikimedia Commons", "url": "https://commons.wikimedia.org/wiki/File:Ota_Castle_(Kii),_sekihi.jpg"}},
       "name": "紀州攻め",
       "kana": "きしゅうぜめ",
       "year": 1585,
       "summary": "羽柴秀吉が根来寺・雑賀衆を攻め、紀伊を平定した戦い。",
-      "prefecture": "和歌山県"
+      "prefecture": "和歌山県",
+      "province": "紀伊国",
+      "lat": 34.2306,
+      "lng": 135.196,
+      "sides": [{ "name": "羽柴軍", "outcome": "勝利" }, { "name": "根来・雑賀衆", "outcome": "敗北" }]
     },
     {
       "id": "shikoku-campaign",
+      "photo": {"src": "assets/img/battles/shikoku-campaign.jpg", "thumb": "assets/img/battles/thumbs/shikoku-campaign.jpg", "caption": "一宮城跡の本丸下の石垣", "license": "パブリックドメイン", "source": {"name": "Wikimedia Commons", "url": "https://commons.wikimedia.org/wiki/File:Itimayajo13.jpg"}},
       "name": "四国攻め",
       "kana": "しこくぜめ",
       "year": 1585,
       "summary": "豊臣秀長を総大将とする大軍が四国へ渡り、長宗我部元親を降伏させた戦い。",
-      "prefecture": "徳島県"
+      "prefecture": "徳島県",
+      "province": "阿波国",
+      "lat": 34.0341,
+      "lng": 134.4631,
+      "sides": [{ "name": "羽柴軍", "outcome": "勝利" }, { "name": "長宗我部軍", "outcome": "敗北" }]
     },
     {
       "id": "kyushu-campaign",
@@ -118,7 +188,11 @@
       "kana": "きゅうしゅうぜめ",
       "year": 1587,
       "summary": "豊臣秀吉が九州へ渡り、島津義久を降伏させた戦い。",
-      "prefecture": "宮崎県"
+      "prefecture": "宮崎県",
+      "province": "日向国",
+      "lat": 32.1503,
+      "lng": 131.4591,
+      "sides": [{ "name": "豊臣軍", "outcome": "勝利" }, { "name": "島津軍", "outcome": "敗北" }]
     }
   ]
 }

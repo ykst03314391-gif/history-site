@@ -34,6 +34,15 @@
     </div>
     <input type="search" id="search" class="search-box" placeholder="名前・かな・タグで検索…">
 
+    <fieldset id="order" class="order-switch">
+      <legend>並べ方</legend>
+      <label><input type="radio" name="order" value="kana" checked><span>50音順</span></label>
+      <label><input type="radio" name="order" value="region"><span>地域別</span></label>
+      <label><input type="radio" name="order" value="province"><span>国別</span></label>
+      <label><input type="radio" name="order" value="clan"><span>家別</span></label>
+      <span class="order-note muted">地域別・国別は出身国で分けています（北から）。家別は一門の家ごとに並べ、自分の家の項目がない家臣は仕えた家の後ろにまとめています</span>
+    </fieldset>
+
     <div id="list" class="card-grid" aria-live="polite"></div>
   </main>
 
@@ -41,6 +50,7 @@
     <p>戦国クロニクル（開発中）／ 掲載情報には諸説あります。</p>
   </footer>
 
+  <script src="js/order.js"></script>
   <script src="js/list.js"></script>
 </body>
 </html>

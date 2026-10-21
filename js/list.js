@@ -2,6 +2,8 @@
 (async function () {
   const listEl = document.getElementById("list");
   const searchEl = document.getElementById("search");
+  // 並べ方の切替（武将一覧だけにある）。50音順／地域別／国別／家別
+  const orderEl = document.getElementById("order");
   // data-category="other" なら武将ではない人物、無指定なら武将を一覧する
   const category = listEl.dataset.category || "";
   let people = [];
@@ -39,23 +41,90 @@
       </a>`;
   }
 
-  // 50音の行見出し。かなの先頭1文字から行を判定する（濁音・半濁音・小書きも同じ行）
-  const ROWS = [
-    ["あ行", "ぁあぃいぅうゔぇえぉお"],
-    ["か行", "かがきぎくぐけげこご"],
-    ["さ行", "さざしじすずせぜそぞ"],
-    ["た行", "ただちぢっつづてでとど"],
-    ["な行", "なにぬねの"],
-    ["は行", "はばぱひびぴふぶぷへべぺほぼぽ"],
-    ["ま行", "まみむめも"],
-    ["や行", "ゃやゅゆょよ"],
-    ["ら行", "らりるれろ"],
-    ["わ行", "ゎわゐゑをん"],
-  ];
-  function rowOf(p) {
-    const c = (p.kana || "").trim().charAt(0);
-    const row = ROWS.find(([, chars]) => chars.includes(c));
-    return row ? row[0] : "その他";
+  const { kanaRow, isProvince, provinceRank, regionOf, regionRank, setupSwitch, by, diff } = window.ListOrder;
+  const UNKNOWN = "出身国不明";
+
+  // 出身国は各人物データの birthplace から取る（province があればそれ、なければ name 先頭の「〇〇国」）
+  const provinceById = {};
+  let provincesLoaded = null;
+  function loadProvinces() {
+    if (!provincesLoaded) {
+      provincesLoaded = Promise.all(
+        people.map((p) =>
+          fetch(`data/people/${encodeURIComponent(p.id)}.json`)
+            .then((r) => (r.ok ? r.json() : null))
+            .catch(() => null)
+            .then((d) => {
+              const bp = (d && d.birthplace) || {};
+              const m = (bp.name || "").match(/^(.{1,3}?国)/);
+              const prov = bp.province || (m && m[1]);
+              provinceById[p.id] = isProvince(prov) ? prov : null;
+            })
+        )
+      );
+    }
+    return provincesLoaded;
+  }
+
+  // 家はタグから取る。「〇〇家」があればその家の一門、なければ「〇〇家臣」からその家の家臣とする
+  // 家の並びは大名家データ（clans/index.json）の読みの50音順。データにない家は家名の順
+  const clanKana = {};
+  let clansLoaded = null;
+  function loadClans() {
+    if (!clansLoaded) {
+      clansLoaded = fetch("data/clans/index.json")
+        .then((r) => (r.ok ? r.json() : {}))
+        .catch(() => ({}))
+        .then((d) => {
+          for (const c of d.clans || []) clanKana[c.name] = { kana: c.kana || c.name, id: c.id };
+        });
+    }
+    return clansLoaded;
+  }
+  const NO_CLAN = "家不明";
+  function clanOf(p) {
+    const tags = p.tags || [];
+    const own = tags.find((t) => /家$/.test(t));
+    if (own) return { clan: own, retainer: false };
+    const served = tags.map((t) => t.match(/^(.+家)臣$/)).find(Boolean);
+    if (served) return { clan: served[1], retainer: true };
+    return null;
+  }
+  function clanLabel(p) {
+    const c = clanOf(p);
+    if (!c) return NO_CLAN;
+    return c.retainer ? `${c.clan}の家臣` : c.clan;
+  }
+  function clanSortKey(name) {
+    return (clanKana[name] && clanKana[name].kana) || name;
+  }
+
+  // 並べ方ごとの見出しと順序
+  function groupOf(p, order) {
+    if (order === "kana") return kanaRow(p.kana);
+    if (order === "clan") return clanLabel(p);
+    const prov = provinceById[p.id];
+    if (!prov) return UNKNOWN;
+    return order === "region" ? regionOf(prov) : `${prov}（${regionOf(prov)}）`;
+  }
+  function sortFor(order, items) {
+    if (order === "kana") return items;
+    if (order === "clan") {
+      // 家ごとにまとめ、一門のすぐ後ろにその家の家臣を置く。家のない人は末尾
+      return [...items].sort((a, b) => {
+        const ca = clanOf(a), cb = clanOf(b);
+        if (!ca || !cb) return (ca ? 0 : 1) - (cb ? 0 : 1);
+        return (
+          clanSortKey(ca.clan).localeCompare(clanSortKey(cb.clan), "ja") ||
+          ca.retainer - cb.retainer
+        );
+      });
+    }
+    // items は50音順なので、同順位のあいだは50音順のまま残る（sort は安定）
+    const prov = (p) => provinceById[p.id];
+    const byProvince = (a, b) => diff(provinceRank(prov(a)), provinceRank(prov(b)));
+    const byRegion = (a, b) => diff(regionRank(prov(a)), regionRank(prov(b)));
+    return [...items].sort(order === "region" ? by(byRegion, byProvince) : byProvince);
   }
 
   // 武将一覧の末尾に置く「その他の人物」への入口カード
@@ -68,19 +137,28 @@
       </a>`;
   }
 
+  // 家別の見出しは、大名家データにある家ならその家のページへリンクする
+  function headingHTML(row, order, p) {
+    const c = order === "clan" && clanOf(p);
+    const info = c && clanKana[c.clan];
+    if (!info || !info.id) return esc(row);
+    return `<a href="clan.html?id=${encodeURIComponent(info.id)}">${esc(row)}</a>`;
+  }
+
   function render(items, showOther) {
     const more = showOther && !category ? otherCardHTML() : "";
     if (!items.length) {
       listEl.innerHTML = `<p class="muted">該当する人物がいません。</p>` + more;
       return;
     }
-    // items は50音順に並んでいる前提。行が変わるところに見出しを挟む
+    // items は50音順に並んでいる前提。並べ方に従って並べ替え、グループが変わるところに見出しを挟む
+    const order = currentOrder();
     let html = "";
     let current = null;
-    for (const p of items) {
-      const row = rowOf(p);
+    for (const p of sortFor(order, items)) {
+      const row = groupOf(p, order);
       if (row !== current) {
-        html += `<h3 class="kana-row-heading">${esc(row)}</h3>`;
+        html += `<h3 class="kana-row-heading">${headingHTML(row, order, p)}</h3>`;
         current = row;
       }
       html += cardHTML(p);
@@ -101,6 +179,17 @@
     );
   }
 
+  // 並べ方を切り替える。地域別・国別は各人物データを、家別は大名家データを読み終えてから描く
+  const currentOrder = setupSwitch(orderEl, ["kana", "region", "province", "clan"], applyOrder);
+  async function applyOrder() {
+    const order = currentOrder();
+    if (order !== "kana") {
+      listEl.innerHTML = `<p class="muted">読み込み中…</p>`;
+      await (order === "clan" ? loadClans() : loadProvinces());
+    }
+    filter(searchEl.value);
+  }
+
   try {
     const res = await fetch("data/people/index.json");
     if (!res.ok) throw new Error(res.status);
@@ -113,8 +202,8 @@
       .sort((a, b) =>
         (a.kana || a.name || "").localeCompare(b.kana || b.name || "", "ja")
       );
-    render(people, true);
     searchEl.addEventListener("input", (e) => filter(e.target.value));
+    await applyOrder();
   } catch (err) {
     listEl.innerHTML = `<p class="error">データの読み込みに失敗しました。ローカルで開いている場合は、簡易サーバー経由で表示してください（README参照）。</p>`;
     console.error(err);

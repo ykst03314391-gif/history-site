@@ -2,6 +2,9 @@
 (async function () {
   const listEl = document.getElementById("list");
   const searchEl = document.getElementById("search");
+  // 並べ方の切替。50音順／地域別／国別／種類別／国宝／日本100名城
+  const orderEl = document.getElementById("order");
+  const { kanaRow, REGIONS, isProvince, provinceRank, regionOf, regionRank, setupSwitch, by, diff } = window.ListOrder;
   let castles = [];
   let peopleById = {};
   let battlesById = {};
@@ -78,12 +81,70 @@
       </div>`;
   }
 
+  // 北から（緯度の大きい順）。緯度のない城は後ろ
+  const lat = (c) => (typeof c.lat === "number" ? c.lat : -Infinity);
+  const byNorth = (a, b) => diff(lat(b), lat(a));
+  const prov = (c) => (isProvince(c.province) ? c.province : null);
+  const byProvince = (a, b) => diff(provinceRank(prov(a)), provinceRank(prov(b)));
+  const byRegion = (a, b) => diff(regionRank(prov(a)), regionRank(prov(b)));
+  const hasTag = (c, t) => (c.tags || []).includes(t);
+
+  // labels の順に見出しを立て、その見出しに入る城を並べる。空の見出しは出さない（emptyNote があれば注記を出す）
+  function grouped(items, labels, labelOf, emptyNote = {}) {
+    return labels
+      .map((label) => [label, items.filter((c) => labelOf(c) === label), emptyNote[label]])
+      .filter(([, list, note]) => list.length || note);
+  }
+
+  const TYPES = ["山城", "平山城", "平城"];
+  const MEIJO = ["日本100名城", "続日本100名城"];
+
+  // 並べ方ごとに [見出し, 城の配列, 空のときの注記] の並びを作る。items は50音順に並んでいる前提
+  function groupsFor(order, items) {
+    if (order === "kana") {
+      const rows = [...new Set(items.map((c) => kanaRow(c.kana)))];
+      return grouped(items, rows, (c) => kanaRow(c.kana));
+    }
+    const north = [...items].sort(byNorth);
+    if (order === "region") {
+      const sorted = [...items].sort(by(byRegion, byProvince, byNorth));
+      const label = (c) => (prov(c) ? regionOf(prov(c)) : "国不明");
+      return grouped(sorted, [...REGIONS, "国不明"], label);
+    }
+    if (order === "province") {
+      const sorted = [...items].sort(by(byProvince, byNorth));
+      const label = (c) => (prov(c) ? `${prov(c)}（${regionOf(prov(c))}）` : "国不明");
+      return grouped(sorted, [...new Set(sorted.map(label))], label);
+    }
+    if (order === "type") {
+      const label = (c) => (TYPES.includes(c.type) ? c.type : "その他");
+      return grouped(north, [...TYPES, "その他"], label);
+    }
+    // 国宝・100名城は、該当する城だけを出す
+    if (order === "treasure") {
+      const label = (c) => (hasTag(c, "国宝") ? "国宝" : null);
+      const note = { 国宝: "掲載している城に、国宝の城はまだありません。" };
+      return grouped(north, ["国宝"], label, note);
+    }
+    if (order === "meijo") {
+      const label = (c) => MEIJO.find((t) => hasTag(c, t)) || null;
+      const note = { 日本100名城: "該当する城がありません。" };
+      return grouped(north, MEIJO, label, note);
+    }
+    return [["", items]];
+  }
+
   function render(items) {
     if (!items.length) {
       listEl.innerHTML = `<p class="muted">該当する城がありません。</p>`;
       return;
     }
-    listEl.innerHTML = items.map(cardHTML).join("");
+    listEl.innerHTML = groupsFor(currentOrder(), items)
+      .map(([label, list, note]) =>
+        (label ? `<h3 class="kana-row-heading">${esc(label)}</h3>` : "") +
+        (list.length ? list.map(cardHTML).join("") : `<p class="muted list-note">${esc(note)}</p>`)
+      )
+      .join("");
   }
 
   function filter(q) {
@@ -92,7 +153,7 @@
     render(
       castles.filter((c) => {
         const hay = [
-          c.name, c.kana, c.alias, c.type, c.prefecture, c.city, c.builder, c.summary,
+          c.name, c.kana, c.alias, c.type, c.prefecture, c.province, c.city, c.builder, c.summary,
           ...(c.tags || []),
           ...(c.relatedPeople || []).map((id) => peopleById[id]?.name),
         ]
@@ -102,6 +163,12 @@
       })
     );
   }
+
+  const currentOrder = setupSwitch(
+    orderEl,
+    ["kana", "region", "province", "type", "treasure", "meijo"],
+    () => filter(searchEl.value)
+  );
 
   async function load(url) {
     const res = await fetch(url);
@@ -115,10 +182,13 @@
       load("data/people/index.json"),
       load("data/battles/index.json"),
     ]);
-    castles = castleData.castles || [];
+    // 読み（kana）の50音順に並べておく。ほかの並べ方でも同順位のあいだはこの順が残る
+    castles = (castleData.castles || []).sort((a, b) =>
+      (a.kana || a.name || "").localeCompare(b.kana || b.name || "", "ja")
+    );
     for (const p of peopleData.people || []) peopleById[p.id] = p;
     for (const b of battleData.battles || []) battlesById[b.id] = b;
-    render(castles);
+    filter(searchEl.value);
     const creditsEl = document.getElementById("photo-credits");
     if (creditsEl) creditsEl.innerHTML = creditsHTML(castles);
     searchEl.addEventListener("input", (e) => filter(e.target.value));

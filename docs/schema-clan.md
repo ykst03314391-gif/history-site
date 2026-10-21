@@ -19,6 +19,8 @@
 | `summary` | string | 一覧カード用の一言紹介 |
 | `kamon` | string | 家紋名 |
 | `region` | string | 主な勢力圏（例：`尾張・美濃`） |
+| `homeProvince` | string | その家が興った国（例：`尾張国`）。一覧の地域別・国別に使う。のちに勢力を広げても動かさない。家の名の起こりではなく、戦国大名として興った国を書く |
+| `homeNote` | string? | `homeProvince` の決め方に迷う家の理由メモ（例：上杉家は名字の起こりが丹波だが越後とする） |
 
 ## 詳細（<id>.json）
 

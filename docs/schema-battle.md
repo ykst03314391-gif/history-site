@@ -20,6 +20,10 @@
 | `year` | number | 主な年（一覧の並び順に使う） |
 | `summary` | string | 一言紹介 |
 | `prefecture` | string | 主な所在地の都道府県 |
+| `province` | string | 主な戦場の令制国（例：`尾張国`）。詳細の `place.name` の先頭の国名と合わせる。一覧の地域別・国別に使う。何か国にもわたる攻めも主な戦場の国を1つ書く |
+| `lat` / `lng` | number | 主な戦場の座標（詳細の `place` と同じ値）。一覧で同じ国の中を北から並べるのに使う |
+| `sides` | { name, outcome }[] | 対戦した陣営と勝敗（詳細の `sides` から `name` と `outcome` だけを写す）。一覧カードに「織田軍（勝）× 今川軍（負）」の形で出す。詳細を直したらこちらも直す |
+| `photo` | Photo? | 古戦場・史跡の写真。形は城の `photo`（schema-castle.md）と同じで、画像は `assets/img/battles/<id>.jpg`（幅720px）と `thumbs/<id>.jpg`（160×160）。戦場が城一覧の城と同じなら、その城の写真をそのまま使ってよい |
 
 ## 詳細（<id>.json）
 
@@ -52,7 +56,7 @@
 
 ## 表示仕様
 
-- 一覧：`battles.html` … `index.json` から年代順にカード表示
+- 一覧：`battles.html` … `index.json` からカード表示。並べ方は年代順／50音順／地域別／国別（地域・国は `province`、同じ国の中は北から）。下に写真の出典
 - 詳細：`battle.html?id=<id>` …
   - 見出し（名前・日付・場所・要約）
   - **対戦した陣営**（勝敗つき、武将は人物ページへリンク）

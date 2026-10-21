@@ -34,6 +34,17 @@
     </div>
     <input type="search" id="search" class="search-box" placeholder="城名・かな・所在地・人物・タグで検索…">
 
+    <fieldset id="order" class="order-switch">
+      <legend>並べ方</legend>
+      <label><input type="radio" name="order" value="kana" checked><span>50音順</span></label>
+      <label><input type="radio" name="order" value="region"><span>地域別</span></label>
+      <label><input type="radio" name="order" value="province"><span>国別</span></label>
+      <label><input type="radio" name="order" value="type"><span>種類別</span></label>
+      <label><input type="radio" name="order" value="treasure"><span>国宝</span></label>
+      <label><input type="radio" name="order" value="meijo"><span>日本100名城</span></label>
+      <span class="order-note muted">50音順以外は、同じ見出しの中を北から並べています</span>
+    </fieldset>
+
     <div id="list" class="card-grid" aria-live="polite"></div>
     <section id="photo-credits" class="photo-credits"></section>
   </main>
@@ -42,6 +53,7 @@
     <p>戦国クロニクル（開発中）／ 掲載情報には諸説あります。</p>
   </footer>
 
+  <script src="js/order.js"></script>
   <script src="js/castles.js"></script>
 </body>
 </html>

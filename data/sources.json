@@ -1,0 +1,402 @@
+{
+  "levels": [
+    {
+      "id": 1,
+      "title": "一次資料",
+      "description": "その時代を生きた当事者・同時代の人が書いた記録。事実の典拠として最も重く見るが、書き手の立場による偏りには注意する。"
+    },
+    {
+      "id": 2,
+      "title": "二次資料",
+      "description": "後世に編まれた軍記・伝記・軍学書と、研究者による論文・調査報告。軍記類は脚色や年次の誤りが多く、「後世にこう語られた」水準で扱い、一次資料と突き合わせる。"
+    },
+    {
+      "id": 3,
+      "title": "三次資料",
+      "description": "一次・二次資料をもとにまとめた概説・Web記事。城の沿革や復元年など、史跡の基本情報の確認に使っている。"
+    },
+    {
+      "id": 4,
+      "title": "見学情報の確認先（史料ではないもの）",
+      "description": "開城時間・観覧料・アクセスなど、現地を訪ねるための実用情報の出どころ。歴史の事実の根拠には使わない。情報は変わることがあるので、訪問前に最新情報を確認してほしい。"
+    }
+  ],
+  "sources": [
+    {
+      "id": "shincho-koki",
+      "level": 1,
+      "title": "信長公記",
+      "yomi": "しんちょうこうき",
+      "author": "太田牛一",
+      "kind": "史料",
+      "era": "江戸初期（慶長年間ごろ）成立",
+      "note": "信長の旧臣が書いた信長の一代記。戦国研究の代表的な一次史料。我自刊我書本（1881年）を底本とする Wikisource の翻刻を使用。",
+      "url": "https://ja.wikisource.org/wiki/信長公記",
+      "usedIn": [
+        {
+          "type": "article",
+          "id": "tedorigawa-kenshin"
+        },
+        {
+          "type": "article",
+          "id": "araki-murashige-survival"
+        },
+        {
+          "type": "person",
+          "id": "oda-nobunaga"
+        },
+        {
+          "type": "person",
+          "id": "oda-nobutada"
+        },
+        {
+          "type": "person",
+          "id": "toyotomi-hideyoshi"
+        },
+        {
+          "type": "person",
+          "id": "toyotomi-hidenaga"
+        },
+        {
+          "type": "person",
+          "id": "akechi-mitsuhide"
+        },
+        {
+          "type": "person",
+          "id": "araki-murashige"
+        },
+        {
+          "type": "battle",
+          "id": "okehazama"
+        },
+        {
+          "type": "battle",
+          "id": "anegawa"
+        },
+        {
+          "type": "battle",
+          "id": "nagashima-ikko-ikki"
+        },
+        {
+          "type": "battle",
+          "id": "nagashino"
+        },
+        {
+          "type": "battle",
+          "id": "tedorigawa"
+        },
+        {
+          "type": "battle",
+          "id": "arioka-siege"
+        },
+        {
+          "type": "battle",
+          "id": "miki-siege"
+        },
+        {
+          "type": "battle",
+          "id": "honnoji-no-hen"
+        },
+        {
+          "type": "battle",
+          "id": "yamazaki"
+        },
+        {
+          "type": "battle",
+          "id": "shizugatake"
+        },
+        {
+          "type": "castle",
+          "id": "takeda"
+        }
+      ]
+    },
+    {
+      "id": "tensho-ki",
+      "level": 1,
+      "title": "天正記",
+      "yomi": "てんしょうき",
+      "author": "大村由己",
+      "kind": "史料",
+      "era": "天正年間（同時代）成立",
+      "note": "秀吉の御伽衆が書いた秀吉関係の記録群（播磨別所記・惟任退治記・柴田退治記・紀州御発向記・四国御発向並北国御動座記など）。同時代の記録だが、秀吉方の顕彰の文なので誇張に注意。",
+      "url": "https://ja.wikisource.org/wiki/天正記",
+      "usedIn": [
+        {
+          "type": "person",
+          "id": "toyotomi-hidenaga"
+        },
+        {
+          "type": "battle",
+          "id": "miki-siege"
+        },
+        {
+          "type": "battle",
+          "id": "ise-campaign"
+        },
+        {
+          "type": "battle",
+          "id": "kishu-campaign"
+        },
+        {
+          "type": "battle",
+          "id": "shikoku-campaign"
+        },
+        {
+          "type": "castle",
+          "id": "yamato-koriyama"
+        }
+      ]
+    },
+    {
+      "id": "kawasumi-taikoki",
+      "level": 2,
+      "title": "川角太閤記",
+      "yomi": "かわすみたいこうき",
+      "kind": "史料",
+      "era": "江戸初期成立",
+      "note": "秀吉の時代を伝える覚書・聞書。伝聞を含むため史実性は要検討。",
+      "url": "https://ja.wikisource.org/wiki/川角太閤記",
+      "usedIn": [
+        {
+          "type": "castle",
+          "id": "yamato-koriyama"
+        }
+      ]
+    },
+    {
+      "id": "koyo-gunkan",
+      "level": 2,
+      "title": "甲陽軍鑑",
+      "yomi": "こうようぐんかん",
+      "author": "高坂昌信（仮託）・小幡景憲（編）",
+      "kind": "史料",
+      "era": "江戸初期成立",
+      "note": "武田信玄・勝頼期の武田氏をめぐる軍学書。川中島や上杉謙信の記述を含むが、年次の錯誤が多く史料批判が必要。",
+      "url": "https://ja.wikisource.org/wiki/甲陽軍鑑",
+      "usedIn": [
+        {
+          "type": "article",
+          "id": "tedorigawa-kenshin"
+        },
+        {
+          "type": "person",
+          "id": "oda-nobunaga"
+        },
+        {
+          "type": "person",
+          "id": "uesugi-kenshin"
+        },
+        {
+          "type": "battle",
+          "id": "kawanakajima"
+        }
+      ]
+    },
+    {
+      "id": "koriyama-panel",
+      "level": 2,
+      "title": "郡山城天守台発掘調査現地説明会資料",
+      "yomi": "こおりやまじょうてんしゅだいはっくつちょうさげんちせつめいかいしりょう",
+      "author": "大和郡山市",
+      "kind": "調査資料",
+      "year": "2014",
+      "note": "市が作成した発掘調査の現地説明会資料。城の沿革と、天守台の規模・発掘成果の典拠。",
+      "url": "https://www.arch.kanagawa-u.ac.jp/lab/shimazaki_kazushi/shimazaki/JAPANCasle/165yamatokooriyama/shiryo_2609.pdf",
+      "usedIn": [
+        {
+          "type": "castle",
+          "id": "yamato-koriyama"
+        }
+      ]
+    },
+    {
+      "id": "hoan-taikoki",
+      "level": 2,
+      "title": "太閤記",
+      "yomi": "たいこうき",
+      "author": "小瀬甫庵",
+      "kind": "史料",
+      "era": "江戸初期（寛永年間）成立",
+      "note": "秀吉の伝記。読み物としての脚色が多く、信頼性には注意が必要。",
+      "url": "https://ja.wikisource.org/wiki/太閤記",
+      "usedIn": [
+        {
+          "type": "person",
+          "id": "toyotomi-hideyoshi"
+        },
+        {
+          "type": "person",
+          "id": "toyotomi-hidenaga"
+        },
+        {
+          "type": "battle",
+          "id": "kishu-campaign"
+        },
+        {
+          "type": "battle",
+          "id": "shikoku-campaign"
+        },
+        {
+          "type": "battle",
+          "id": "kyushu-campaign"
+        }
+      ]
+    },
+    {
+      "id": "taiko-soseiki",
+      "level": 2,
+      "title": "太閤素生記",
+      "yomi": "たいこうそじょうき",
+      "author": "土屋知貞",
+      "kind": "史料",
+      "era": "江戸前期成立",
+      "note": "秀吉の出自を記した記録。大政所の実名「なか」や御器所村出身の説はこれによる。",
+      "usedIn": [
+        {
+          "type": "person",
+          "id": "omandokoro"
+        }
+      ]
+    },
+    {
+      "id": "kawana-2021",
+      "level": 2,
+      "title": "能登畠山氏の権力編成と遊佐氏",
+      "yomi": "のとはたけやましのけんりょくへんせいとゆさし",
+      "author": "川名俊",
+      "kind": "論文",
+      "year": "2021",
+      "publication": "『市大日本史』第24号、大阪市立大学日本史学会、25–44頁",
+      "note": "能登畠山氏の内訌と遊佐氏の動向を扱う論文。手取川の戦いの引き金となった七尾城陥落の背景。",
+      "url": "https://cir.nii.ac.jp/crid/1390010842621238272",
+      "usedIn": [
+        {
+          "type": "article",
+          "id": "tedorigawa-kenshin"
+        },
+        {
+          "type": "person",
+          "id": "uesugi-kenshin"
+        }
+      ]
+    },
+    {
+      "id": "fujishiro-2025",
+      "level": 2,
+      "title": "ビジネスパーソンのための教養講座 本郷歴史サロン（第58回）「手取川の戦い」をめぐる議論",
+      "yomi": "びじねすぱーそんのためのきょうようこうざ",
+      "author": "藤城徹",
+      "kind": "雑誌記事",
+      "year": "2025",
+      "publication": "『企業診断』72巻9号、同友館、114–116頁",
+      "note": "本郷和人による手取川の史料批判（「大勝」への懐疑）を整理した記事。",
+      "usedIn": [
+        {
+          "type": "article",
+          "id": "tedorigawa-kenshin"
+        },
+        {
+          "type": "person",
+          "id": "uesugi-kenshin"
+        },
+        {
+          "type": "topic",
+          "id": "tedorigawa-reassessment"
+        }
+      ]
+    },
+    {
+      "id": "walkerplus",
+      "level": 4,
+      "title": "郡山城跡（ウォーカープラス）",
+      "yomi": "こおりやまじょうせき",
+      "kind": "Web",
+      "note": "天守台展望施設の利用時間・観覧料。2026-10-21 確認。",
+      "url": "https://www.walkerplus.com/article/1024880/",
+      "usedIn": [
+        {
+          "type": "castle",
+          "id": "yamato-koriyama"
+        }
+      ]
+    },
+    {
+      "id": "rurubu",
+      "level": 4,
+      "title": "史跡郡山城跡（るるぶ&more）",
+      "yomi": "しせきこおりやまじょうせき",
+      "kind": "Web",
+      "note": "交通アクセス。2026-10-21 確認。",
+      "url": "https://rurubu.jp/andmore/spot/80031473",
+      "usedIn": [
+        {
+          "type": "castle",
+          "id": "yamato-koriyama"
+        }
+      ]
+    },
+    {
+      "id": "asago-official",
+      "level": 4,
+      "title": "竹田城跡公式ホームページ",
+      "yomi": "たけだじょうせきこうしきほーむぺーじ",
+      "author": "朝来市",
+      "kind": "Web",
+      "note": "開城時間・観覧料・アクセス。2026-10-21 確認。",
+      "url": "https://www.city.asago.hyogo.jp/site/takeda/",
+      "usedIn": [
+        {
+          "type": "castle",
+          "id": "takeda"
+        }
+      ]
+    },
+    {
+      "id": "asago-history",
+      "level": 3,
+      "title": "竹田城の歴史（竹田城跡公式ホームページ）",
+      "yomi": "たけだじょうのれきし",
+      "author": "朝来市",
+      "kind": "Web",
+      "note": "築城・城主の変遷・石垣の整備・廃城・史跡指定など城の沿革。2026-10-21 確認。",
+      "url": "https://www.city.asago.hyogo.jp/site/takeda/3092.html",
+      "usedIn": [
+        {
+          "type": "castle",
+          "id": "takeda"
+        }
+      ]
+    },
+    {
+      "id": "tabi-mag",
+      "level": 3,
+      "title": "大和郡山城（ニッポン旅マガジン）",
+      "yomi": "やまとこおりやまじょう",
+      "kind": "Web",
+      "note": "追手門・追手東隅櫓などの復元年。2026-10-21 確認。",
+      "url": "https://tabi-mag.jp/na0154/",
+      "usedIn": [
+        {
+          "type": "castle",
+          "id": "yamato-koriyama"
+        }
+      ]
+    },
+    {
+      "id": "resona-column",
+      "level": 4,
+      "title": "大和郡山の見どころ（りそな銀行コラム）",
+      "yomi": "やまとこおりやまのみどころ",
+      "kind": "Web",
+      "note": "史跡指定（2022年）・続日本100名城・移築された櫓・柳沢神社。",
+      "url": "https://www.resonabank.co.jp/resona_in/specialty/column/yamatokoriyama/column_0003.html",
+      "usedIn": [
+        {
+          "type": "castle",
+          "id": "yamato-koriyama"
+        }
+      ]
+    }
+  ]
+}

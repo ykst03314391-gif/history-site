@@ -379,6 +379,14 @@ html { scroll-behavior: smooth; }
 .src-primary1 { background: var(--accent); color: #fff; }
 .src-primary2 { background: #efe9dc; color: var(--ink-soft); border: 1px solid var(--line); }
 
+/* 出典一覧ページ（sources.html） */
+.src-entries { list-style: none; padding: 0; margin: 0 0 8px; }
+.src-entry { padding: 12px 0; border-bottom: 1px dashed var(--line); }
+.src-entry p { margin: 0 0 4px; }
+.src-entry-title { overflow-wrap: anywhere; }
+.src-entry-note { font-size: 0.92rem; }
+.src-used { margin-top: 6px; }
+
 /* ゆかりの地・出典 */
 .spot-item, .ref-item { padding: 8px 0; border-bottom: 1px dashed var(--line); }
 .spot-type {

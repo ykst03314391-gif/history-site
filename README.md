@@ -278,6 +278,12 @@ AとBを対等の二本柱にはしない。**看板（サイトの魂）は常�
 - **切り替えのタイミング**：サイトの作成が一通り終わり、**公開の目途が立った段階**で実施する（それまでは OSM のまま進める）。
 - **切り替え時の作業**：Google Cloud で **Maps Embed API キー**を発行 → **HTTP リファラ制限**をかける → 地図生成箇所（`js/battle.js`・`js/topic.js` の OSM iframe）を Google Embed に差し替える。
 
+**人物の「領地の変遷」地図**は別系統。Leaflet（unpkg）＋ OSM タイルで、令制国の塗りつぶし・番号付きピン・年代順の線を描く（`js/person.js`）。
+
+- データ：`territories[]` に `province`（例 `"大和国"`、複数なら配列）で国を塗り、`lat`/`lng` でピン（`place` は地点名、`approx` はおおよその位置）。座標が無ければ国の中心にピンを置く。
+- 国界：`assets/geo/provinces.geojson`（全68か国）。`tools/build-provinces.py` で、令制国データ [Asukana/Ryoseikoku_20230626_TSV](https://github.com/Asukana/Ryoseikoku_20230626_TSV)（CC0・1868年時点の国界のラスター）をポリゴン化して作る。戦国期の国界とは細部で違いうる近似。
+- 複数の国を塗る・ピンを何本も立てるので、Google へ移すなら Embed API ではなく Maps JavaScript API が要る。
+
 ## ローカルでの起動方法
 
 データを `fetch` で読み込むため、**HTML ファイルを直接ダブルクリック（`file://`）で開くと動作しません**。

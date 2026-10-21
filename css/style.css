@@ -902,3 +902,45 @@ footer.site-footer {
   border-radius: var(--radius);
 }
 .stance-cta p { margin: 0 0 14px; font-size: 1.05rem; }
+
+/* 人物：領地の変遷の地図 */
+.territory-map {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  max-height: 540px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow: hidden;
+  z-index: 0;
+}
+.territory-map-note { font-size: 0.82rem; margin: 6px 0 12px; }
+.terr-marker span {
+  display: inline-block;
+  transform: translate(-50%, -50%);
+  min-width: 26px;
+  padding: 2px 7px;
+  border: 2px solid #fff;
+  border-radius: 13px;
+  background: var(--accent);
+  color: #fff;
+  font: 700 0.8rem/1.4 var(--serif);
+  text-align: center;
+  white-space: nowrap;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
+}
+.terr-popup + .terr-popup { margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--line); }
+.terr-popup { font-family: var(--serif); line-height: 1.6; }
+.terr-num {
+  display: inline-block;
+  min-width: 1.5em;
+  margin-right: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.75rem;
+  line-height: 1.5em;
+  text-align: center;
+}
+.territory-legend { display: flex; flex-wrap: wrap; gap: 4px 16px; margin: 8px 0 0; font-size: 0.85rem; }
+.terr-legend-item { display: inline-flex; align-items: center; gap: 6px; }
+.terr-legend-item i { display: inline-block; width: 14px; height: 14px; border-radius: 3px; opacity: 0.75; }

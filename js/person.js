@@ -33,7 +33,8 @@
   // 年月日を表示用文字列に
   function fmtDate(d) {
     if (!d) return "不明";
-    if (d.era) return esc(d.era);
+    // 和暦があれば西暦を括弧で併記（例：天文9年（1540））
+    if (d.era) return esc(d.era) + (d.year ? `（${d.year}）` : "");
     const parts = [];
     if (d.year) parts.push(d.year + "年");
     if (d.month) parts.push(d.month + "月");
@@ -161,10 +162,17 @@
 
     // 領地変遷
     if (p.territories && p.territories.length) {
+      // 座標（lat/lng）か令制国名（province）のある領地は地図にも番号付きで示す
+      const hasMap = p.territories.some(onMap);
       const items = p.territories
-        .map((t) => `<li><b>${t.year ? esc(t.year) + "年 " : ""}</b>${esc(t.name)}${t.prefecture ? `<span class="muted">（${esc(t.prefecture)}）</span>` : ""}${t.note ? ` — <span class="muted">${esc(t.note)}</span>` : ""}${srcMark(t.sourceId)}</li>`)
+        .map((t, i) => `<li>${hasMap && onMap(t) ? `<span class="terr-num">${i + 1}</span>` : ""}<b>${t.year ? esc(t.year) + "年 " : ""}</b>${esc(t.name)}${t.prefecture ? `<span class="muted">（${esc(t.prefecture)}）</span>` : ""}${t.note ? ` — <span class="muted">${esc(t.note)}</span>` : ""}${srcMark(t.sourceId)}</li>`)
         .join("");
-      html.push(section("領地の変遷", `<ul class="list">${items}</ul>`));
+      const mapHTML = hasMap
+        ? `<div id="territory-map" class="territory-map" role="img" aria-label="領地の変遷の地図"></div>
+           <div id="territory-legend" class="territory-legend"></div>
+           <p class="territory-map-note muted">色は国（令制国）の範囲で、番号は下の一覧と対応します。線は年代順につないだもの、ピンは城など代表地点です。国の範囲は1868年時点の国界による近似で、国全体を支配していたとは限りません。</p>`
+        : "";
+      html.push(section("領地の変遷", `${mapHTML}<ul class="list terr-list">${items}</ul>`));
     }
 
     // 年表イベントに紐付けて表示した記事は、末尾の関連記事から除外する
@@ -346,6 +354,157 @@
     html.splice(1, 0, tocHTML());
 
     contentEl.innerHTML = html.join("");
+    if (document.getElementById("territory-map")) initTerritoryMap(p.territories);
+  }
+
+  function hasCoords(t) {
+    return t && isFinite(Number(t.lat)) && isFinite(Number(t.lng)) && t.lat != null && t.lng != null;
+  }
+
+  // Leaflet は地図がある人物ページでだけ読み込む
+  const LEAFLET = "https://unpkg.com/leaflet@1.9.4/dist/";
+  function loadLeaflet() {
+    if (window.L) return Promise.resolve(window.L);
+    return new Promise((resolve, reject) => {
+      // CSS が効く前に地図を作ると大きさを読み違えるので、CSS と JS の両方を待つ
+      let pending = 2;
+      const done = () => --pending === 0 && resolve(window.L);
+      const css = document.createElement("link");
+      css.rel = "stylesheet";
+      css.href = LEAFLET + "leaflet.css";
+      css.onload = done;
+      css.onerror = reject;
+      document.head.appendChild(css);
+      const js = document.createElement("script");
+      js.src = LEAFLET + "leaflet.js";
+      js.onload = done;
+      js.onerror = reject;
+      document.head.appendChild(js);
+    });
+  }
+
+  function onMap(t) {
+    return hasCoords(t) || provincesOf(t).length > 0;
+  }
+
+  // province は "大和国" か ["大和国", "紀伊国"]
+  function provincesOf(t) {
+    if (!t || !t.province) return [];
+    return Array.isArray(t.province) ? t.province : [t.province];
+  }
+
+  // 令制国の境界（tools/build-provinces.py で生成）。国を塗る人物ページでだけ読み込む
+  function loadProvinces(territories) {
+    if (!territories.some((t) => provincesOf(t).length)) return Promise.resolve(null);
+    return fetch("assets/geo/provinces.geojson")
+      .then((res) => (res.ok ? res.json() : null))
+      .catch(() => null);
+  }
+
+  // 手に入れた年が早い国ほど淡く、遅い国ほど濃く塗る
+  const TERR_COLORS = ["#e0b24a", "#d4853a", "#c0562e", "#9b2d20", "#6b1d15"];
+
+  // 領地の変遷の地図：国の塗りつぶし＋番号付きピン＋年代順の線
+  function initTerritoryMap(territories) {
+    const el = document.getElementById("territory-map");
+    Promise.all([loadLeaflet(), loadProvinces(territories)])
+      .then(([L, geo]) => {
+        // ベクター図形を足す前に表示範囲を決めておく（未設定だと描画で落ちる）。最後に fitBounds で合わせ直す
+        const map = L.map(el, { scrollWheelZoom: false }).setView([35, 136], 6);
+        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+          maxZoom: 18,
+          attribution:
+            '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' +
+            (geo ? ' | 国界: <a href="https://github.com/Asukana/Ryoseikoku_20230626_TSV">令制国データ</a> (CC0)' : ""),
+        }).addTo(map);
+
+        // 国ごとに、最初に領地として出てくる年と該当する項目をまとめる
+        const provs = new Map();
+        territories.forEach((t, i) => {
+          for (const name of provincesOf(t)) {
+            if (!provs.has(name)) provs.set(name, { year: t.year, items: [] });
+            provs.get(name).items.push({ t, n: i + 1 });
+          }
+        });
+        const years = [...new Set([...provs.values()].map((v) => v.year))].sort((a, b) => a - b);
+        const colorOf = (year) =>
+          TERR_COLORS[Math.round((years.indexOf(year) / Math.max(years.length - 1, 1)) * (TERR_COLORS.length - 1))];
+
+        const provLayers = new Map();
+        const features = geo ? geo.features : [];
+        for (const [name, info] of provs) {
+          const f = features.find((x) => x.properties.name === name);
+          if (!f) continue;
+          const color = colorOf(info.year);
+          const popup = `<div class="terr-popup"><b>${esc(name)}</b>${info.items
+            .map(({ t, n }) => `<div>${n}. ${t.year ? esc(t.year) + "年 " : ""}${esc(t.name)}</div>`)
+            .join("")}</div>`;
+          const layer = L.geoJSON(f, {
+            style: { color, weight: 1.5, opacity: 0.9, fillColor: color, fillOpacity: 0.38 },
+          })
+            .bindPopup(popup)
+            .addTo(map);
+          provLayers.set(name, layer);
+        }
+
+        // 凡例：年ごとに国をまとめる
+        const legendEl = document.getElementById("territory-legend");
+        if (legendEl && provLayers.size) {
+          legendEl.innerHTML = years
+            .map((y) => {
+              const names = [...provs].filter(([n, v]) => v.year === y && provLayers.has(n)).map(([n]) => n);
+              if (!names.length) return "";
+              return `<span class="terr-legend-item"><i style="background:${colorOf(y)}"></i>${y ? esc(y) + "年〜 " : ""}${names.map(esc).join("・")}</span>`;
+            })
+            .join("");
+        }
+
+        // ピンの位置：座標があればそこ、無ければ国の範囲の中心
+        const pts = territories
+          .map((t, i) => {
+            if (hasCoords(t)) return { t, n: i + 1, ll: [Number(t.lat), Number(t.lng)] };
+            const layer = provLayers.get(provincesOf(t)[0]);
+            if (!layer) return null;
+            const c = layer.getBounds().getCenter();
+            return { t, n: i + 1, ll: [c.lat, c.lng] };
+          })
+          .filter(Boolean);
+
+        L.polyline(pts.map((x) => x.ll), { color: "#9b2d20", weight: 2, opacity: 0.7, dashArray: "6 6" }).addTo(map);
+
+        // 同じ地点の領地は 1 本のピンにまとめる（例：「1・2」）
+        const groups = new Map();
+        for (const x of pts) {
+          const key = x.ll.join(",");
+          if (!groups.has(key)) groups.set(key, []);
+          groups.get(key).push(x);
+        }
+        for (const list of groups.values()) {
+          const label = list.map((x) => x.n).join("・");
+          const icon = L.divIcon({
+            className: "terr-marker",
+            html: `<span>${esc(label)}</span>`,
+            iconSize: null,
+          });
+          const popup = list
+            .map(({ t, n }) => {
+              const where = t.place ? `地図の位置：${esc(t.place)}${t.approx ? "（おおよそ）" : ""}` : t.approx ? "位置はおおよそ" : "";
+              return `<div class="terr-popup"><b>${n}. ${t.year ? esc(t.year) + "年 " : ""}${esc(t.name)}</b>${t.note ? `<div>${esc(t.note)}</div>` : ""}${where ? `<div class="muted">${where}</div>` : ""}</div>`;
+            })
+            .join("");
+          L.marker(list[0].ll, { icon, title: label }).bindPopup(popup).addTo(map);
+        }
+
+        map.invalidateSize();
+        const bounds = L.latLngBounds(pts.map((x) => x.ll));
+        for (const layer of provLayers.values()) bounds.extend(layer.getBounds());
+        if (pts.length === 1 && !provLayers.size) map.setView(pts[0].ll, 10);
+        else if (bounds.isValid()) map.fitBounds(bounds, { padding: [16, 16] });
+      })
+      .catch((err) => {
+        console.error(err);
+        el.outerHTML = `<p class="muted">地図を読み込めませんでした。</p>`;
+      });
   }
 
   Promise.all([

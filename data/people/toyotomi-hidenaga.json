@@ -36,6 +36,10 @@
     { "relation": "母", "name": "大政所" },
     { "relation": "姉", "name": "とも（日秀尼）", "note": "豊臣秀次・秀保の母" },
     { "relation": "妹", "name": "朝日姫", "note": "のちに徳川家康の正室となる" },
+    { "relation": "正室", "name": "慈雲院", "note": "法名。「智雲院」とも。実名・出自は不明（諸説あり・原典未確認）" },
+    { "relation": "側室", "name": "興俊尼", "note": "諸説あり・原典未確認" },
+    { "relation": "娘", "name": "大善院", "note": "毛利秀元の正室となったとされる（諸説あり・原典未確認）" },
+    { "relation": "子", "name": "男子", "note": "早世したとされ、跡は甥の秀保が継いだ（諸説あり・原典未確認）" },
     { "relation": "養子", "name": "豊臣秀保", "note": "甥（姉ともの子）。秀長の跡を継いだ" }
   ],
   "lords": [
@@ -47,11 +51,11 @@
     { "name": "小堀正次" }
   ],
   "territories": [
-    { "year": 1577, "name": "但馬国（竹田城）", "prefecture": "兵庫県", "note": "兄の但馬攻めの後、城代として竹田城に入る", "sourceId": "shincho-koki" },
-    { "year": 1580, "name": "但馬国", "prefecture": "兵庫県", "note": "兵を預かって但馬を平定し、要所に兵を置く", "sourceId": "shincho-koki" },
-    { "year": 1585, "name": "大和国（郡山）", "prefecture": "奈良県", "note": "郡山に城を築き本拠とする", "sourceId": "tensho-ki" },
-    { "year": 1585, "name": "紀伊国", "prefecture": "和歌山県", "note": "天正記には大和・紀伊両国の「物主」とある", "sourceId": "tensho-ki" },
-    { "year": 1585, "name": "和泉国", "prefecture": "大阪府", "note": "和泉も含めて約百万石を領したとされる" }
+    { "year": 1577, "name": "但馬国（竹田城）", "prefecture": "兵庫県", "note": "兄の但馬攻めの後、城代として竹田城に入る", "sourceId": "shincho-koki", "province": "但馬国", "place": "竹田城跡", "lat": 35.3006, "lng": 134.8292 },
+    { "year": 1580, "name": "但馬国", "prefecture": "兵庫県", "note": "兵を預かって但馬を平定し、要所に兵を置く。信長公記では引き続き竹田（太田垣氏の旧居城）を拠点としている", "sourceId": "shincho-koki", "province": "但馬国", "place": "竹田城跡", "lat": 35.3006, "lng": 134.8292 },
+    { "year": 1585, "name": "大和国（郡山）", "prefecture": "奈良県", "note": "郡山に城を築き本拠とする", "sourceId": "tensho-ki", "province": "大和国", "place": "郡山城跡", "lat": 34.6497, "lng": 135.7826 },
+    { "year": 1585, "name": "紀伊国", "prefecture": "和歌山県", "note": "天正記には大和・紀伊両国の「物主」とある", "sourceId": "tensho-ki", "province": "紀伊国", "place": "和歌山城（秀長が築かせたとされる）", "lat": 34.2277, "lng": 135.1713 },
+    { "year": 1585, "name": "和泉国", "prefecture": "大阪府", "note": "和泉も含めて約百万石を領したとされる", "province": "和泉国" }
   ],
   "timeline": [
     { "year": 1574, "title": "長島一向一揆攻め", "description": "信長本隊の先陣に「木下小一郎」の名が見える。一揆勢が立ちはだかると、浅井新八とともに攻めかかった", "sourceId": "shincho-koki" },

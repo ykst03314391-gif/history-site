@@ -58,18 +58,18 @@
     { "year": 1585, "name": "和泉国", "prefecture": "大阪府", "note": "和泉も含めて約百万石を領したとされる", "province": "和泉国" }
   ],
   "timeline": [
-    { "year": 1574, "title": "長島一向一揆攻め", "description": "信長本隊の先陣に「木下小一郎」の名が見える。一揆勢が立ちはだかると、浅井新八とともに攻めかかった", "sourceId": "shincho-koki" },
+    { "year": 1574, "title": "長島一向一揆攻め", "description": "信長本隊の先陣に「木下小一郎」の名が見える。一揆勢が立ちはだかると、浅井新八とともに攻めかかった", "battle_id": "nagashima-ikko-ikki", "sourceId": "shincho-koki" },
     { "year": 1577, "month": 11, "title": "竹田城代", "description": "兄・秀吉が但馬の竹田城を落とした後、城代として入る", "sourceId": "shincho-koki" },
-    { "year": 1580, "month": 1, "title": "三木城攻め", "description": "別所長治の三木城攻めで、兄とともに鷹尾山の城に攻め入る", "sourceId": "tensho-ki" },
+    { "year": 1580, "month": 1, "title": "三木城攻め", "description": "別所長治の三木城攻めで、兄とともに鷹尾山の城に攻め入る", "battle_id": "miki-siege", "sourceId": "tensho-ki" },
     { "year": 1580, "title": "但馬平定", "description": "兄から兵を預かって但馬に攻め入り、国を平定する", "sourceId": "shincho-koki" },
     { "year": 1582, "month": 6, "day": 13, "title": "山崎の戦い", "description": "中国大返しから兄に従って参陣したとされる", "battle_id": "yamazaki" },
     { "year": 1582, "month": 10, "day": 15, "title": "信長の葬儀", "description": "大徳寺で営まれた信長の葬儀で、警固の大将を務める", "sourceId": "tensho-ki" },
-    { "year": 1583, "title": "伊勢攻め", "description": "柴田方についた滝川一益を攻めるため、土岐多羅越から伊勢へ入る", "sourceId": "tensho-ki" },
+    { "year": 1583, "title": "伊勢攻め", "description": "柴田方についた滝川一益を攻めるため、土岐多羅越から伊勢へ入る", "battle_id": "ise-campaign", "sourceId": "tensho-ki" },
     { "year": 1583, "month": 4, "title": "賤ヶ岳の戦い", "description": "柴田勝家との対陣で、田上山に本陣を置いたとされる", "battle_id": "shizugatake", "sourceId": "hoan-taikoki" },
-    { "year": 1585, "month": 3, "title": "紀州攻め", "description": "根来・雑賀攻めで副将を務める", "sourceId": "hoan-taikoki" },
-    { "year": 1585, "month": 6, "title": "四国攻め", "description": "総大将として大軍を率いて淡路から阿波へ渡り、長宗我部元親を降伏させる。元親の処遇も秀長らに任された", "sourceId": "tensho-ki" },
+    { "year": 1585, "month": 3, "title": "紀州攻め", "description": "根来・雑賀攻めで副将を務める", "battle_id": "kishu-campaign", "sourceId": "hoan-taikoki" },
+    { "year": 1585, "month": 6, "title": "四国攻め", "description": "総大将として大軍を率いて淡路から阿波へ渡り、長宗我部元親を降伏させる。元親の処遇も秀長らに任された", "battle_id": "shikoku-campaign", "sourceId": "tensho-ki" },
     { "year": 1585, "title": "大和郡山城主", "description": "大和・紀伊などを与えられ、郡山城を本拠とする。長宗我部氏や筒井定次も秀長の配下に置かれた", "sourceId": "tensho-ki" },
-    { "year": 1587, "month": 4, "title": "九州攻め", "description": "日向方面の大将として進み、根白坂の戦いで島津勢を破る", "sourceId": "hoan-taikoki" },
+    { "year": 1587, "month": 4, "title": "九州攻め", "description": "日向方面の大将として進み、根白坂の戦いで島津勢を破る", "battle_id": "kyushu-campaign", "sourceId": "hoan-taikoki" },
     { "year": 1591, "month": 1, "day": 22, "title": "死去", "description": "大和郡山城で病没。跡は養子の秀保が継いだ" }
   ],
   "episodes": [
@@ -114,7 +114,8 @@
   ],
   "tags": ["豊臣家", "戦国大名", "大和"],
   "history": [
-    { "date": "2026-10-21", "note": "新規作成" }
+    { "date": "2026-10-21", "note": "新規作成" },
+    { "date": "2026-10-21", "note": "年表の合戦（長島・三木・伊勢・紀州・四国・九州）を合戦ページにリンク" }
   ],
   "updatedAt": "2026-10-21"
 }

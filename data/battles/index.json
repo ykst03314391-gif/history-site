@@ -25,6 +25,14 @@
       "prefecture": "滋賀県"
     },
     {
+      "id": "nagashima-ikko-ikki",
+      "name": "長島一向一揆攻め",
+      "kana": "ながしまいっこういっきぜめ",
+      "year": 1574,
+      "summary": "織田信長が伊勢長島に拠った一向一揆を、数度の攻撃の末に滅ぼした戦い。",
+      "prefecture": "三重県"
+    },
+    {
       "id": "nagashino",
       "name": "長篠の戦い",
       "kana": "ながしののたたかい",
@@ -49,6 +57,14 @@
       "prefecture": "兵庫県"
     },
     {
+      "id": "miki-siege",
+      "name": "三木城攻め",
+      "kana": "みきじょうぜめ",
+      "year": 1578,
+      "summary": "羽柴秀吉が別所長治の三木城を約2年の兵糧攻めで落とした戦い。",
+      "prefecture": "兵庫県"
+    },
+    {
       "id": "honnoji-no-hen",
       "name": "本能寺の変",
       "kana": "ほんのうじのへん",
@@ -65,12 +81,44 @@
       "prefecture": "京都府"
     },
     {
+      "id": "ise-campaign",
+      "name": "伊勢攻め",
+      "kana": "いせぜめ",
+      "year": 1583,
+      "summary": "賤ヶ岳の戦いに先立ち、羽柴秀吉が柴田方の滝川一益を攻めた戦い。",
+      "prefecture": "三重県"
+    },
+    {
       "id": "shizugatake",
       "name": "賤ヶ岳の戦い",
       "kana": "しずがたけのたたかい",
       "year": 1583,
       "summary": "羽柴秀吉が柴田勝家を破り、織田家中の主導権を握った戦い。",
       "prefecture": "滋賀県"
+    },
+    {
+      "id": "kishu-campaign",
+      "name": "紀州攻め",
+      "kana": "きしゅうぜめ",
+      "year": 1585,
+      "summary": "羽柴秀吉が根来寺・雑賀衆を攻め、紀伊を平定した戦い。",
+      "prefecture": "和歌山県"
+    },
+    {
+      "id": "shikoku-campaign",
+      "name": "四国攻め",
+      "kana": "しこくぜめ",
+      "year": 1585,
+      "summary": "豊臣秀長を総大将とする大軍が四国へ渡り、長宗我部元親を降伏させた戦い。",
+      "prefecture": "徳島県"
+    },
+    {
+      "id": "kyushu-campaign",
+      "name": "九州攻め",
+      "kana": "きゅうしゅうぜめ",
+      "year": 1587,
+      "summary": "豊臣秀吉が九州へ渡り、島津義久を降伏させた戦い。",
+      "prefecture": "宮崎県"
     }
   ]
 }

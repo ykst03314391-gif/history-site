@@ -111,6 +111,12 @@
             ${credit ? `<span class="img-credit">${credit}</span>` : ""}
           </figcaption>
         </figure>`;
+    } else {
+      // 肖像画が見つかっていない人物は「画像なし」の絵を置く（レイアウトを揃えるため）
+      portrait = `<figure class="person-portrait person-portrait--none">
+          <img src="assets/img/portraits/noimage.svg" alt="肖像画なし">
+          <figcaption><span class="portrait-note">肖像画は未発見</span></figcaption>
+        </figure>`;
     }
     html.push(`
       <div class="person-head${portrait ? " has-portrait" : ""}">
@@ -146,6 +152,17 @@
         .map(([k, v]) => `<dt>${esc(k)}</dt><dd>${v}</dd>`)
         .join("")}</dl>`;
       html.push(section("基本情報", dl));
+    }
+
+    // 呼び名の変遷
+    if (p.nameHistory && p.nameHistory.length) {
+      const items = p.nameHistory
+        .map((n) => {
+          const when = n.year ? `${esc(n.year)}年${n.era ? `（${esc(n.era)}）` : ""} ` : n.era ? `${esc(n.era)} ` : "";
+          return `<li><b>${when}</b>${esc(n.value)}${uncertain(n.uncertain)}${n.note ? ` <span class="muted">${esc(n.note)}</span>` : ""}${srcMark(n.sourceId)}</li>`;
+        })
+        .join("");
+      html.push(section("呼び名の変遷", `<ul class="list">${items}</ul>`));
     }
 
     // 官位変遷

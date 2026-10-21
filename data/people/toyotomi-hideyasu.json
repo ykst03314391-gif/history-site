@@ -3,6 +3,7 @@
   "name": "豊臣秀保",
   "kana": "とよとみ ひでやす",
   "summary": "豊臣秀長の養子で、秀吉の姉ともの三男（秀次の弟）。秀長の死後、13歳で大和・紀伊を継いで郡山城主となり「大和中納言」と呼ばれた。文禄の役では肥前名護屋に在陣した。十津川で17歳の若さで没し、大和の豊臣家は絶えた。",
+  "portrait": {"src": "assets/img/portraits/toyotomi-hideyasu.jpg", "caption": "『義烈百人一首』より", "holder": "信州地域史料アーカイブ（NPO長野県図書館等協働機構）", "note": "部分。江戸後期の版本の挿絵で、後世の想像図。本では「木下秀俊」と題されているが、文中に「大和大納言秀長の養子」「十津川にて十七歳で死去」とあり秀保を指す", "source": {"name": "Wikimedia Commons", "url": "https://commons.wikimedia.org/wiki/File:Kinoshita_Hidetoshi.jpg"}, "license": "CC BY 4.0"},
   "aliases": [
     {"type": "幼名", "value": "辰千代／御虎", "note": "聚楽第行幸の記録に「御虎侍従」と見えるとされる（原典未確認）"},
     {"type": "その他", "value": "羽柴秀保"},

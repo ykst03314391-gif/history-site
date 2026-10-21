@@ -156,6 +156,7 @@
     },
     {
       "id": "toyotomi-hideyasu",
+      "thumb": "assets/img/portraits/thumbs/toyotomi-hideyasu.jpg",
       "name": "豊臣秀保",
       "kana": "とよとみ ひでやす",
       "summary": "秀長の養子で秀次の弟。13歳で大和・紀伊を継いだ「大和中納言」。十津川で17歳で没し、大和の豊臣家は絶えた。",
@@ -167,6 +168,7 @@
     },
     {
       "id": "todo-takatora",
+      "thumb": "assets/img/portraits/thumbs/todo-takatora.jpg",
       "name": "藤堂高虎",
       "kana": "とうどう たかとら",
       "summary": "主君を何度も替えたのち豊臣秀長に仕えて出世した近江の武将。関ヶ原後は伊勢津・伊賀の大名。築城の名手。",
@@ -189,6 +191,7 @@
     },
     {
       "id": "kobori-masatsugu",
+      "thumb": "assets/img/portraits/thumbs/kobori-masatsugu.jpg",
       "name": "小堀正次",
       "kana": "こぼり まさつぐ",
       "summary": "豊臣秀長の家臣。大和・紀伊の検地を担い、関ヶ原後は備中松山で国務を取り仕切った。小堀遠州の父。",

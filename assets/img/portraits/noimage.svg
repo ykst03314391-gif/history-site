@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="画像なし">
+  <rect width="200" height="200" fill="#efe9dc"/>
+  <g fill="#d3c9b6">
+    <circle cx="100" cy="72" r="30"/>
+    <path d="M44 150c0-34 25-50 56-50s56 16 56 50z"/>
+  </g>
+  <text x="100" y="178" text-anchor="middle" font-family="'Yu Mincho','Hiragino Mincho ProN','Noto Serif JP',serif" font-size="22" fill="#8c8273">画像なし</text>
+</svg>

@@ -26,10 +26,8 @@
     const tags = (p.tags || [])
       .map((t) => `<span class="tag">${esc(t)}</span>`)
       .join("");
-    // 肖像画があればカード右上にサムネイル（名前・生没年の横の空きに回り込ませる）
-    const thumb = p.thumb
-      ? `<img class="person-thumb" src="${esc(p.thumb)}" alt="" loading="lazy">`
-      : "";
+    // カード右上にサムネイル（名前・生没年の横の空きに回り込ませる）。肖像画が無ければ「画像なし」の絵
+    const thumb = `<img class="person-thumb" src="${esc(p.thumb || "assets/img/portraits/noimage.svg")}" alt="" loading="lazy">`;
     return `
       <a class="card person-card" href="person.html?id=${encodeURIComponent(p.id)}">
         ${thumb}

@@ -3,6 +3,7 @@
   "name": "小堀正次",
   "kana": "こぼり まさつぐ",
   "summary": "近江の武将で、豊臣秀長の家臣。寺社の力が強い大和・紀伊で検地などの実務を担った。秀長家が絶えると秀吉に仕え、関ヶ原の後は備中松山を拠点に備中の国務を取り仕切った。茶人・作庭家として名高い小堀遠州（政一）の父。",
+  "portrait": {"src": "assets/img/portraits/kobori-masatsugu.jpg", "caption": "小堀正次像", "holder": "小堀遠州公顕彰会", "note": "部分。制作年代は不明。所蔵はCommonsの記載による", "source": {"name": "Wikimedia Commons", "url": "https://commons.wikimedia.org/wiki/File:Kobori_Masatsugu.jpg"}, "license": "パブリックドメイン"},
   "aliases": [
     {"type": "通称", "value": "新助（新介）"},
     {"type": "その他", "value": "小堀政次"},

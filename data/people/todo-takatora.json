@@ -3,6 +3,7 @@
   "name": "藤堂高虎",
   "kana": "とうどう たかとら",
   "summary": "近江の武将。浅井長政をはじめ主君を何度も替えたのち、豊臣秀長に仕えて頭角を現した。秀長・秀保の死後は秀吉の直臣となり、伊予で大名に。関ヶ原では東軍につき、のち伊勢津・伊賀を領する大名となった。宇和島城・今治城・伊賀上野城などを手がけた築城の名手として知られる。",
+  "portrait": {"src": "assets/img/portraits/todo-takatora.jpg", "caption": "藤堂高虎像（寒松院本の模写）", "holder": "東京大学史料編纂所（模写本）／原本は寒松院（三重県津市）", "note": "部分。賛は天海。原本は1945年の空襲で焼失した", "source": {"name": "Wikimedia Commons", "url": "https://commons.wikimedia.org/wiki/File:Todo_Takatora_(Kanshoin_Tsu)_(replica).jpg"}, "license": "パブリックドメイン"},
   "aliases": [
     {"type": "幼名", "value": "与吉"},
     {"type": "通称", "value": "与右衛門"},

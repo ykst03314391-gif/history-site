@@ -1022,9 +1022,11 @@ footer.site-footer {
 .portrait-title { color: var(--ink); font-weight: 700; }
 .portrait-note { margin-top: 2px; }
 .person-portrait .img-credit { margin-top: 4px; }
+.person-portrait--none { width: 140px; }
 @media (max-width: 600px) {
   .person-head.has-portrait { flex-direction: column; }
   .person-portrait { width: 100%; max-width: 240px; margin: 0 auto; }
+  .person-portrait--none { max-width: 140px; }
 }
 /* 武将一覧のサムネイル：肖像画の顔を切り出した正方形（portraits/thumbs/）をカード右上に置く */
 .person-thumb {

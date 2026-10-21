@@ -21,6 +21,7 @@
 | `category` | string? | `"other"` で武将ではない人物（武将の家族など）。無指定は武将。`index.json` にも同じ値を書く |
 | `summary` | string | 一言紹介（一覧カード・クイズ・SEO 用の短い要約） |
 | `aliases` | Alias[] | 幼名・通称・法名などの別名 |
+| `nameHistory` | NameEntry[] | 呼び名の変遷（史料での呼ばれ方を時系列で） |
 | `kamon` | Kamon | 家紋 |
 | `birth` | DateInfo | 生年（月日は不明可） |
 | `death` | DateInfo | 没年 |
@@ -77,6 +78,7 @@ Portrait = {
 ```
 > 使うのは**著作権の切れた平面の作品（江戸時代以前の肖像画・浮世絵）**だけ。立体物の写真や近現代の作品は使わない。
 > 同時代の肖像でないもの（後世の想像図）は `note` に必ず書く。
+> 肖像画が見つからない人物は `portrait` を省く。人物ページと一覧には「画像なし」の絵（`assets/img/portraits/noimage.svg`）を自動で表示する。
 > 一覧（`data/people/index.json`）には `thumb` に顔を切り出した正方形サムネイル（`assets/img/portraits/thumbs/<person_id>.jpg`、160×160）を書くと、武将一覧のカード右上に丸く表示する。
 
 > 一覧（`data/people/index.json`）の `category` が `"other"` の人物は武将一覧（`people.html`）に出さず、「その他の人物」（`others.html`）に並べる。どちらも読み（`kana`）の50音順で、行ごとに見出しを付ける。
@@ -100,6 +102,13 @@ Spot = {
 > `Spot` に地域を持たせることで「地域から探す」「逆引き（この人物→行くべき場所）」の両方に使える。
 > 刀剣・肖像画は所蔵する博物館の所在地を `prefecture` / `city` に入れると、その地域からも辿れる。
 > **墓所は `graves` フィールドで別管理する**（不明・なしも明示するため）。
+
+### NameEntry（呼び名の変遷）
+```
+{ "year"?: number, "era"?: string,   // era は和暦や「幼少期」など。year が無ければ era だけを出す
+  "value": string, "note"?: string, "sourceId"?: string, "uncertain"?: boolean }
+```
+> `nameHistory` に時系列で並べ、「呼び名の変遷」として基本情報の次に出す。史料がその時期に実際どう呼んでいるかを書く（`aliases` は一覧、こちらは移り変わり）。
 
 ### Rank（官位変遷）
 ```

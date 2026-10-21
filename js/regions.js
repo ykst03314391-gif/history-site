@@ -19,10 +19,10 @@
     "熊本県","大分県","宮崎県","鹿児島県","沖縄県"
   ];
 
-  // regions[pref] = { people: Map<id,{name,reasons:Set}>, spots: [] }
+  // regions[pref] = { people: Map<id,{name,reasons:Set}>, spots: [], exhibits: [] }
   const regions = {};
   function bucket(pref) {
-    if (!regions[pref]) regions[pref] = { people: new Map(), spots: [] };
+    if (!regions[pref]) regions[pref] = { people: new Map(), spots: [], exhibits: [] };
     return regions[pref];
   }
   function addPerson(pref, id, name, reason) {
@@ -70,6 +70,33 @@
       }
     }
 
+    // お出かけトピック：会期が終わっていないものを会場の県に載せる（読めなくても人物側は出す）
+    const today = new Date().toLocaleDateString("sv-SE"); // YYYY-MM-DD（ローカル日付）
+    try {
+      const tRes = await fetch("data/topics/index.json");
+      if (tRes.ok) {
+        for (const t of (await tRes.json()).topics || []) {
+          if (t.stream !== "お出かけ" || !t.place || !t.place.prefecture) continue;
+          const from = (t.period && t.period.from) || "";
+          const to = (t.period && t.period.to) || "";
+          if (to && to < today) continue;
+          bucket(t.place.prefecture).exhibits.push({
+            id: t.id,
+            title: t.title || "",
+            venue: [t.place.city, t.place.name].filter(Boolean).join(" "),
+            from,
+            to,
+            upcoming: !!from && from > today,
+          });
+        }
+      }
+    } catch (e) {
+      console.error(e);
+    }
+    for (const r of Object.values(regions)) {
+      r.exhibits.sort((a, b) => (a.to || "9999").localeCompare(b.to || "9999"));
+    }
+
     const activePrefs = PREF_ORDER.filter((pf) => regions[pf]);
     if (!activePrefs.length) {
       resultEl.innerHTML = `<p class="muted">まだ地域データがありません。</p>`;
@@ -81,7 +108,7 @@
     btnEl.innerHTML = activePrefs
       .map((pf) => {
         const r = regions[pf];
-        const count = r.people.size + r.spots.length;
+        const count = r.people.size + r.spots.length + r.exhibits.length;
         return `<button class="pref-btn" data-pref="${esc(pf)}">${esc(pf)}<span class="pref-count">${count}</span></button>`;
       })
       .join("");
@@ -118,7 +145,24 @@
           .join("");
         spotHTML = `<section class="section"><h2>史跡・スポット</h2>${items}</section>`;
       }
-      resultEl.innerHTML = `<h3 class="region-title">${esc(pf)}</h3>${peopleHTML}${spotHTML}`;
+      // 開催中・開催予定の展示
+      let exhibitHTML = "";
+      if (r.exhibits.length) {
+        const items = r.exhibits
+          .map((x) => {
+            const status = x.upcoming ? "開催予定" : "開催中";
+            const period = x.from || x.to ? `${esc(x.from)} 〜 ${esc(x.to)}` : "";
+            return `<div class="spot-item">
+                <span class="spot-type">${status}</span>
+                <a href="topic.html?id=${encodeURIComponent(x.id)}"><b>${esc(x.title)}</b></a>
+                ${x.venue ? `<span class="spot-place">／ ${esc(x.venue)}</span>` : ""}
+                ${period ? `<div class="muted">会期：${period}</div>` : ""}
+              </div>`;
+          })
+          .join("");
+        exhibitHTML = `<section class="section"><h2>今見られる展示・イベント</h2>${items}</section>`;
+      }
+      resultEl.innerHTML = `<h3 class="region-title">${esc(pf)}</h3>${exhibitHTML}${peopleHTML}${spotHTML}`;
 
       // ボタンの選択状態
       btnEl.querySelectorAll(".pref-btn").forEach((b) =>
@@ -131,8 +175,9 @@
       if (b) renderPref(b.dataset.pref);
     });
 
-    // 初期表示：最初の県
-    renderPref(activePrefs[0]);
+    // 初期表示：?pref= の県、なければ最初の県
+    const want = new URLSearchParams(location.search).get("pref");
+    renderPref(activePrefs.includes(want) ? want : activePrefs[0]);
   } catch (err) {
     resultEl.innerHTML = `<p class="error">地域データの読み込みに失敗しました。ローカルで開いている場合は簡易サーバー経由で表示してください（README参照）。</p>`;
     console.error(err);

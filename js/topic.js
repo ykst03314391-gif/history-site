@@ -22,6 +22,9 @@
     if (t.place && (t.place.name || t.place.prefecture)) {
       let loc = esc([t.place.prefecture, t.place.city, t.place.name].filter(Boolean).join(" "));
       if (t.place.address) loc += `<br><span class="muted">${esc(t.place.address)}</span>`;
+      if (t.place.prefecture) {
+        loc += `<br><a href="regions.html?pref=${encodeURIComponent(t.place.prefecture)}">${esc(t.place.prefecture)}のゆかりの人物・史跡を見る →</a>`;
+      }
       rows.push(["会場", loc]);
     }
     if (t.platform) rows.push(["対応", esc(t.platform)]);

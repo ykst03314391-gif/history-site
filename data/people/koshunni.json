@@ -56,8 +56,8 @@
   },
   "sources": [
     {"id": "wikipedia", "title": "光秀尼（Wikipedia）", "url": "https://ja.wikipedia.org/wiki/光秀尼", "note": "出自・生没年・興福院との関わりなどの概要。原典は未確認", "type": "ネット記事"},
-    {"id": "nara-meisho-yaezakura", "title": "奈良名所八重桜", "author": "大久保秀興・本林伊祐", "note": "延宝6年刊の奈良の名所案内。巻12の興福院の項に、興俊と秀長の出会い、娘の毛利家への輿入れ、二百石の拝領を記す。reference/ndl/nara-meisho-yaezakura.txt（版本のOCR）と照合", "type": "史料", "primary": "二次資料"},
-    {"id": "tamonin-nikki", "title": "多聞院日記", "author": "英俊ほか", "note": "興福寺多聞院の僧の日記。文禄3年3月2日、秋篠氏につながる秀長の側室の娘の祝言。reference/ndl/tamonin-nikki.txt（三教書院版のOCR）と照合", "type": "史料", "primary": "一次資料"}
+    {"id": "nara-meisho-yaezakura", "title": "奈良名所八重桜", "author": "大久保秀興・本林伊祐", "note": "延宝6年刊の奈良の名所案内。巻12の興福院の項に、興俊と秀長の出会い、娘の毛利家への輿入れ、二百石の拝領を記す。延宝6年版本の原本画像と照合", "type": "史料", "primary": "二次資料"},
+    {"id": "tamonin-nikki", "title": "多聞院日記", "author": "英俊ほか", "note": "興福寺多聞院の僧の日記。文禄3年3月2日、秋篠氏につながる秀長の側室の娘の祝言。三教書院版の原本画像と照合", "type": "史料", "primary": "一次資料"}
   ],
   "tags": ["豊臣家", "秀長の妻"],
   "history": [

@@ -80,7 +80,7 @@
     {"id": "hoan-taikoki", "title": "太閤記", "author": "小瀬甫庵", "note": "名護屋在陣衆の一覧、吉野花見の記事と和歌。脚色の多い二次史料で史料批判を要する", "type": "史料", "primary": "二次資料"},
     {"id": "wikipedia", "title": "豊臣秀保（Wikipedia）", "url": "https://ja.wikipedia.org/wiki/豊臣秀保", "note": "幼名・官位・墓所などの概要。原典は未確認", "type": "ネット記事"},
     {"id": "tamonin-nikki", "title": "多聞院日記", "author": "英俊ほか", "note": "興福寺多聞院の僧の日記。養子入り（天正16年正月8日）と秀長の娘との祝言（天正19年正月）。三教書院版の原本画像と照合", "type": "史料", "primary": "一次資料"},
-    {"id": "taiko-soseiki", "title": "太閤素生記", "author": "土屋知貞", "note": "辰千代丸（秀保）が猿沢池で溺死したという異説。reference/ndl/taiko-soseiki.txt と照合", "type": "史料", "primary": "二次資料"}
+    {"id": "taiko-soseiki", "title": "太閤素生記", "author": "土屋知貞", "note": "辰千代丸（秀保）が猿沢池で溺死したという異説。改定史籍集覧本の原本画像と照合", "type": "史料", "primary": "二次資料"}
   ],
   "tags": ["豊臣家", "大和"],
   "history": [

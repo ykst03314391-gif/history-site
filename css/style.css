@@ -199,6 +199,18 @@ html { scroll-behavior: smooth; }
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: 18px;
 }
+/* 人物一覧の50音の行見出し（グリッドの横幅いっぱいに置く） */
+.kana-row-heading {
+  grid-column: 1 / -1;
+  margin: 12px 0 -6px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--line);
+  font-size: 1rem;
+  color: var(--ink-soft);
+}
+.kana-row-heading:first-child { margin-top: 0; }
+/* 「その他の人物」への入口カード */
+.card-more { border-style: dashed; background: transparent; box-shadow: none; }
 /* 考察・記事はトピックのように縦積みで一覧する */
 .article-list { display: block; }
 .article-list .card { margin-bottom: 16px; }
@@ -1017,3 +1029,41 @@ footer.site-footer {
   object-fit: cover;
 }
 .person-card .tags { clear: both; }
+/* 生没年は画像の下に回して1行で表示する（画像の横だと幅が足りず折り返す） */
+.person-card .years {
+  clear: right;
+  white-space: nowrap;
+  font-size: 0.75rem;
+  font-feature-settings: "palt";
+}
+
+/* ---- 城の写真（一覧カードの右上は角丸の正方形、詳細ページは見出しの右） ---- */
+.castle-thumb {
+  float: right;
+  width: 72px;
+  height: 72px;
+  margin: 0 0 8px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  object-fit: cover;
+}
+.castle-card .castle-related,
+.castle-card .tags { clear: both; }
+.castle-photo { margin: 0; width: 300px; flex-shrink: 0; }
+.castle-photo img {
+  display: block;
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+}
+.castle-photo figcaption { font-size: 0.75rem; line-height: 1.5; color: var(--ink-soft); margin-top: 6px; }
+.castle-photo figcaption span { display: block; }
+.castle-photo .img-credit { margin-top: 4px; overflow-wrap: anywhere; }
+@media (max-width: 600px) {
+  .castle-photo { width: 100%; max-width: 420px; margin: 0 auto; }
+}
+.photo-credits { margin-top: 32px; font-size: 0.8rem; color: var(--ink-soft); }
+.photo-credits h2 { font-size: 1rem; margin-bottom: 8px; }
+.photo-credit-list { margin: 0; padding-left: 1.2em; line-height: 1.7; }
+.photo-credit-list .credit-name { color: var(--ink); font-weight: 700; margin-right: 0.5em; }
+.photo-credit-list a { overflow-wrap: anywhere; }

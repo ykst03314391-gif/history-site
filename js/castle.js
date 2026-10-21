@@ -46,10 +46,11 @@
   }
 
   try {
-    const [cRes, aRes, bRes] = await Promise.all([
+    const [cRes, aRes, bRes, ciRes] = await Promise.all([
       fetch(`data/castles/${encodeURIComponent(id)}.json`),
       fetch("data/articles/index.json").then((r) => (r.ok ? r.json() : { articles: [] })).catch(() => ({ articles: [] })),
       fetch("data/battles/index.json").then((r) => (r.ok ? r.json() : { battles: [] })).catch(() => ({ battles: [] })),
+      fetch("data/castles/index.json").then((r) => (r.ok ? r.json() : { castles: [] })).catch(() => ({ castles: [] })),
     ]);
     if (!cRes.ok) throw new Error("not found");
     const c = await cRes.json();
@@ -75,12 +76,38 @@
     const span = built || abandoned
       ? `${built ? "築城 " + built : "築城年不詳"}${abandoned ? "　〜　廃城 " + abandoned : ""}`
       : "";
+    // 写真は城一覧のデータ（index.json の photo）を使う
+    const ph = (((ciRes && ciRes.castles) || []).find((x) => x.id === c.id) || {}).photo;
+    let photoHTML = "";
+    if (ph) {
+      const lic = ph.licenseUrl
+        ? `<a href="${esc(ph.licenseUrl)}" target="_blank" rel="noopener">${esc(ph.license)}</a>`
+        : esc(ph.license);
+      const credit = [
+        ph.author ? `撮影：${esc(ph.author)}` : "",
+        lic,
+        `出典：<a href="${esc(ph.source.url)}" target="_blank" rel="noopener">${esc(ph.source.name)}</a>`,
+        ph.licenseUrl ? "縮小・トリミングして使用" : "",
+      ].filter(Boolean).join(" ／ ");
+      photoHTML = `
+        <figure class="castle-photo">
+          <img src="${esc(ph.src)}" alt="${esc(ph.caption)}">
+          <figcaption>
+            <span class="portrait-title">${esc(ph.caption)}</span>
+            ${ph.note ? `<span class="portrait-note">${esc(ph.note)}</span>` : ""}
+            <span class="img-credit">${credit}</span>
+          </figcaption>
+        </figure>`;
+    }
     html.push(`
-      <div class="person-head">
-        <h1>${esc(c.name)}</h1>
-        <p class="kana">${esc(c.kana || "")}${c.alias ? `（別名：${esc(c.alias)}）` : ""}</p>
-        ${span ? `<p class="years">${span}</p>` : ""}
-        ${c.summary ? `<p class="summary">${esc(c.summary)}</p>` : ""}
+      <div class="person-head${ph ? " has-portrait" : ""}">
+        ${photoHTML}
+        <div class="person-head-main">
+          <h1>${esc(c.name)}</h1>
+          <p class="kana">${esc(c.kana || "")}${c.alias ? `（別名：${esc(c.alias)}）` : ""}</p>
+          ${span ? `<p class="years">${span}</p>` : ""}
+          ${c.summary ? `<p class="summary">${esc(c.summary)}</p>` : ""}
+        </div>
       </div>
     `);
 

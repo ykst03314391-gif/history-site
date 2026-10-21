@@ -35,6 +35,25 @@
       </div>`;
   }
 
+  // 写真のクレジット（作者・ライセンス・出典。CCの写真は縮小・トリミングしている）
+  function creditHTML(ph) {
+    const lic = ph.licenseUrl
+      ? `<a href="${esc(ph.licenseUrl)}" target="_blank" rel="noopener">${esc(ph.license)}</a>`
+      : esc(ph.license);
+    const src = `<a href="${esc(ph.source.url)}" target="_blank" rel="noopener">${esc(ph.source.name)}</a>`;
+    return [ph.author ? `撮影：${esc(ph.author)}` : "", lic, src, ph.licenseUrl ? "縮小・トリミングして使用" : ""]
+      .filter(Boolean)
+      .join(" ／ ");
+  }
+
+  function creditsHTML(items) {
+    const rows = items
+      .filter((c) => c.photo)
+      .map((c) => `<li><span class="credit-name">${esc(c.name)}</span>${esc(c.photo.caption)}：${creditHTML(c.photo)}</li>`)
+      .join("");
+    return rows ? `<h2>写真の出典</h2><ul class="photo-credit-list">${rows}</ul>` : "";
+  }
+
   function cardHTML(c) {
     const tags = (c.tags || [])
       .map((t) => `<span class="tag">${esc(t)}</span>`)
@@ -45,6 +64,7 @@
     const title = href ? `<a href="${href}">${esc(c.name)}</a>` : esc(c.name);
     return `
       <div class="card castle-card">
+        ${c.photo ? `<img class="castle-thumb" src="${esc(c.photo.thumb)}" alt="${esc(c.photo.caption)}" loading="lazy">` : ""}
         <h3>${title}</h3>
         <p class="kana">${esc(c.kana || "")}${alias}</p>
         <p class="years">${esc(meta(c))}</p>
@@ -96,6 +116,8 @@
     for (const p of peopleData.people || []) peopleById[p.id] = p;
     for (const b of battleData.battles || []) battlesById[b.id] = b;
     render(castles);
+    const creditsEl = document.getElementById("photo-credits");
+    if (creditsEl) creditsEl.innerHTML = creditsHTML(castles);
     searchEl.addEventListener("input", (e) => filter(e.target.value));
   } catch (err) {
     listEl.innerHTML = `<p class="error">データの読み込みに失敗しました。ローカルで開いている場合は、簡易サーバー経由で表示してください（README参照）。</p>`;

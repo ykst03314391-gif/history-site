@@ -2,6 +2,7 @@
   "castles": [
     {
       "id": "kasugayama",
+      "photo": {"src": "assets/img/castles/kasugayama.jpg", "thumb": "assets/img/castles/thumbs/kasugayama.jpg", "caption": "春日山城跡の本丸", "author": "柴錬アワー", "license": "CC BY-SA 4.0", "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0", "source": {"name": "Wikimedia Commons", "url": "https://commons.wikimedia.org/wiki/File:Honmaru_of_Kasugayama_Castle.jpg"}},
       "name": "春日山城",
       "kana": "かすがやまじょう",
       "type": "山城",
@@ -16,6 +17,7 @@
     },
     {
       "id": "nanao",
+      "photo": {"src": "assets/img/castles/nanao.jpg", "thumb": "assets/img/castles/thumbs/nanao.jpg", "caption": "七尾城跡の古道と石積み", "author": "tom-spring", "license": "パブリックドメイン", "source": {"name": "Wikimedia Commons", "url": "https://commons.wikimedia.org/wiki/File:Nanaojo-old-rute.JPG"}},
       "name": "七尾城",
       "kana": "ななおじょう",
       "type": "山城",
@@ -30,6 +32,7 @@
     },
     {
       "id": "kiyosu",
+      "photo": {"src": "assets/img/castles/kiyosu.jpg", "thumb": "assets/img/castles/thumbs/kiyosu.jpg", "caption": "清洲城の模擬天守", "note": "1989年に建てられた模擬天守で、戦国時代の清洲城の姿を再現したものではない", "author": "inunami", "license": "CC BY 2.0", "licenseUrl": "https://creativecommons.org/licenses/by/2.0", "source": {"name": "Wikimedia Commons", "url": "https://commons.wikimedia.org/wiki/File:Kiyosu_20220212154913_(52270310705).jpg"}},
       "name": "清洲城",
       "kana": "きよすじょう",
       "type": "平城",
@@ -44,6 +47,7 @@
     },
     {
       "id": "gifu",
+      "photo": {"src": "assets/img/castles/gifu.jpg", "thumb": "assets/img/castles/thumbs/gifu.jpg", "caption": "岐阜城の復興天守", "note": "1956年の再建。信長の時代の建物ではない", "author": "Alpsdake", "license": "CC BY-SA 4.0", "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0", "source": {"name": "Wikimedia Commons", "url": "https://commons.wikimedia.org/wiki/File:Gifu_Castle_(2019-01-13).jpg"}},
       "name": "岐阜城",
       "kana": "ぎふじょう",
       "alias": "稲葉山城",
@@ -59,6 +63,7 @@
     },
     {
       "id": "azuchi",
+      "photo": {"src": "assets/img/castles/azuchi.jpg", "thumb": "assets/img/castles/thumbs/azuchi.jpg", "caption": "安土城跡の石段と石垣", "author": "ブレイズマン", "license": "パブリックドメイン", "source": {"name": "Wikimedia Commons", "url": "https://commons.wikimedia.org/wiki/File:Aduchi_castle9.jpg"}},
       "name": "安土城",
       "kana": "あづちじょう",
       "type": "山城",
@@ -73,6 +78,7 @@
     },
     {
       "id": "nagahama",
+      "photo": {"src": "assets/img/castles/nagahama.jpg", "thumb": "assets/img/castles/thumbs/nagahama.jpg", "caption": "長浜城の本丸跡", "author": "先従隗始", "license": "CC0", "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en", "source": {"name": "Wikimedia Commons", "url": "https://commons.wikimedia.org/wiki/File:Nagahama_Castle_-_Nagahama_Castle_Historical_Museum_20200920_02.jpg"}},
       "name": "長浜城",
       "kana": "ながはまじょう",
       "type": "平城",
@@ -87,6 +93,7 @@
     },
     {
       "id": "sakamoto",
+      "photo": {"src": "assets/img/castles/sakamoto.jpg", "thumb": "assets/img/castles/thumbs/sakamoto.jpg", "caption": "琵琶湖の水位が下がって現れた坂本城跡の石垣", "note": "2021年11月の渇水時に撮影", "author": "あずきごはん", "license": "CC BY-SA 4.0", "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0", "source": {"name": "Wikimedia Commons", "url": "https://commons.wikimedia.org/wiki/File:坂本城跡の石垣遺構.jpg"}},
       "name": "坂本城",
       "kana": "さかもとじょう",
       "type": "平城",
@@ -101,6 +108,7 @@
     },
     {
       "id": "tanba-kameyama",
+      "photo": {"src": "assets/img/castles/tanba-kameyama.jpg", "thumb": "assets/img/castles/thumbs/tanba-kameyama.jpg", "caption": "明治5年（1872）に撮影された亀山城の天守", "note": "江戸時代の天守で、光秀の時代の建物ではない", "license": "パブリックドメイン", "source": {"name": "Wikimedia Commons", "url": "https://commons.wikimedia.org/wiki/File:Kameyamaj.jpg"}},
       "name": "丹波亀山城",
       "kana": "たんばかめやまじょう",
       "type": "平山城",
@@ -115,6 +123,7 @@
     },
     {
       "id": "takeda",
+      "photo": {"src": "assets/img/castles/takeda.jpg", "thumb": "assets/img/castles/thumbs/takeda.jpg", "caption": "雲海に浮かぶ竹田城跡", "author": "bullets95", "license": "CC BY-SA 2.0", "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0", "source": {"name": "Wikimedia Commons", "url": "https://commons.wikimedia.org/wiki/File:Flickr_-_bullets95_-_DSC01859.jpg"}},
       "name": "竹田城",
       "kana": "たけだじょう",
       "alias": "虎臥城",
@@ -131,6 +140,7 @@
     },
     {
       "id": "arioka",
+      "photo": {"src": "assets/img/castles/arioka.jpg", "thumb": "assets/img/castles/thumbs/arioka.jpg", "caption": "有岡城跡の石垣", "author": "Saigen Jiro", "license": "CC0", "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en", "source": {"name": "Wikimedia Commons", "url": "https://commons.wikimedia.org/wiki/File:Arioka_Castle,_ishigaki.jpg"}},
       "name": "有岡城",
       "kana": "ありおかじょう",
       "alias": "伊丹城",
@@ -146,6 +156,7 @@
     },
     {
       "id": "miki",
+      "photo": {"src": "assets/img/castles/miki.jpg", "thumb": "assets/img/castles/thumbs/miki.jpg", "caption": "別所長治の辞世の歌碑（三木城跡）", "author": "ブレイズマン", "license": "CC BY-SA 3.0", "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0", "source": {"name": "Wikimedia Commons", "url": "https://commons.wikimedia.org/wiki/File:Mikij7.jpg"}},
       "name": "三木城",
       "kana": "みきじょう",
       "type": "平山城",
@@ -160,6 +171,7 @@
     },
     {
       "id": "osaka",
+      "photo": {"src": "assets/img/castles/osaka.jpg", "thumb": "assets/img/castles/thumbs/osaka.jpg", "caption": "大坂城の天守", "note": "1931年の復興天守。豊臣期の天守ではない", "author": "SOUTHPASIFIC", "license": "CC BY-SA 4.0", "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0", "source": {"name": "Wikimedia Commons", "url": "https://commons.wikimedia.org/wiki/File:2025,Osaka,15_(79).jpg"}},
       "name": "大坂城",
       "kana": "おおさかじょう",
       "type": "平山城",
@@ -174,6 +186,7 @@
     },
     {
       "id": "yamato-koriyama",
+      "photo": {"src": "assets/img/castles/yamato-koriyama.jpg", "thumb": "assets/img/castles/thumbs/yamato-koriyama.jpg", "caption": "郡山城の追手門", "note": "1983年の復元", "author": "Kooriyannma", "license": "CC BY 3.0", "licenseUrl": "https://creativecommons.org/licenses/by/3.0", "source": {"name": "Wikimedia Commons", "url": "https://commons.wikimedia.org/wiki/File:Kooriyama_jyou_006.JPG"}},
       "name": "郡山城",
       "kana": "こおりやまじょう",
       "alias": "大和郡山城",
@@ -190,6 +203,7 @@
     },
     {
       "id": "bitchu-takamatsu",
+      "photo": {"src": "assets/img/castles/bitchu-takamatsu.jpg", "thumb": "assets/img/castles/thumbs/bitchu-takamatsu.jpg", "caption": "備中高松城跡", "author": "Reggaeman", "license": "CC BY-SA 3.0", "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/", "source": {"name": "Wikimedia Commons", "url": "https://commons.wikimedia.org/wiki/File:Bitchu_Takamatsu_castle_ruins.jpg"}},
       "name": "備中高松城",
       "kana": "びっちゅうたかまつじょう",
       "type": "平城",

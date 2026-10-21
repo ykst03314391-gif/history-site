@@ -21,6 +21,22 @@
 | `relatedBattles` | string[] | 関連する合戦の `battle_id`。合戦DBにあるものだけリンク表示 |
 | `tags` | string[] | タグ（大名家・旧国名・史跡指定など） |
 | `detail` | boolean? | `true` なら `<id>.json` があり、カードの城名と「詳しく見る」から詳細ページへリンクする |
+| `photo` | Photo? | 城の写真。一覧カード右上に `thumb`（角丸の正方形）、詳細ページの見出し右に `src` を表示し、クレジットを添える |
+
+### Photo（写真）
+```
+Photo = {
+  "src": string,        // assets/img/castles/<id>.jpg（幅720px）
+  "thumb": string,      // assets/img/castles/thumbs/<id>.jpg（160×160）
+  "caption": string,
+  "note"?: string,      // 復興天守・模擬天守など、戦国期の姿でない場合は必ず書く
+  "author"?: string,    // 撮影者（Commons の作者名）
+  "license": string,    // "CC BY-SA 4.0" / "CC0" / "パブリックドメイン" など
+  "licenseUrl"?: string,
+  "source": { "name": string, "url": string }  // Commons のファイルページ
+}
+```
+> 建物の写真には撮影者の著作権があるので、CC0・パブリックドメイン・CC BY・CC BY-SA のものだけを使う。CCの写真は「作者・ライセンス（リンク）・出典・縮小・トリミングしたこと」を表示する（城一覧の下の「写真の出典」と詳細ページのキャプション）。
 
 ## 詳細（<id>.json）
 

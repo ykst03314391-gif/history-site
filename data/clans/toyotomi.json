@@ -13,7 +13,7 @@
   ],
   "members": [
     { "person_id": "toyotomi-hideyoshi", "name": "豊臣秀吉", "role": "当主", "type": "一門" },
-    { "name": "大政所", "role": "母", "type": "一門" },
+    { "person_id": "omandokoro", "name": "大政所", "role": "母", "type": "一門" },
     { "name": "ねね（高台院）", "role": "正室", "type": "一門" },
     { "person_id": "toyotomi-hidenaga", "name": "豊臣秀長", "role": "弟。補佐役", "type": "一門" },
     { "name": "豊臣秀次", "role": "甥（養子）。関白を継ぐも切腹", "type": "一門" },

@@ -18,6 +18,7 @@
 | `id` | string | 一意なID（例：`oda-nobunaga`） |
 | `name` | string | 正式・代表的な氏名 |
 | `kana` | string | 読みがな |
+| `category` | string? | `"other"` で武将ではない人物（武将の家族など）。無指定は武将。`index.json` にも同じ値を書く |
 | `summary` | string | 一言紹介（一覧カード・クイズ・SEO 用の短い要約） |
 | `aliases` | Alias[] | 幼名・通称・法名などの別名 |
 | `kamon` | Kamon | 家紋 |
@@ -77,6 +78,10 @@ Portrait = {
 > 使うのは**著作権の切れた平面の作品（江戸時代以前の肖像画・浮世絵）**だけ。立体物の写真や近現代の作品は使わない。
 > 同時代の肖像でないもの（後世の想像図）は `note` に必ず書く。
 > 一覧（`data/people/index.json`）には `thumb` に顔を切り出した正方形サムネイル（`assets/img/portraits/thumbs/<person_id>.jpg`、160×160）を書くと、武将一覧のカード右上に丸く表示する。
+
+> 一覧（`data/people/index.json`）の `category` が `"other"` の人物は武将一覧（`people.html`）に出さず、「その他の人物」（`others.html`）に並べる。どちらも読み（`kana`）の50音順で、行ごとに見出しを付ける。
+
+> 一覧（`data/people/index.json`）の生没年は `birthYear`/`deathYear`（西暦）に加え、`birthEra`/`deathEra` に個別JSONの `birth.era`/`death.era` と同じ和暦を書く。カードには「天文9年（1540） 〜 天正19年1月22日（1591）」の形で表示する（和暦が無ければ西暦のみ）。
 
 ### Place / Spot（場所）
 ```

@@ -210,7 +210,7 @@ html { scroll-behavior: smooth; }
 }
 .kana-row-heading:first-child { margin-top: 0; }
 /* 「その他の人物」への入口カード */
-.card-more { border-style: dashed; background: transparent; box-shadow: none; }
+.card.card-more { border-style: dashed; background: transparent; box-shadow: none; }
 /* 考察・記事はトピックのように縦積みで一覧する */
 .article-list { display: block; }
 .article-list .card { margin-bottom: 16px; }

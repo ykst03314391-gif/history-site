@@ -12,7 +12,7 @@
   ],
   "sides": [
     { "name": "羽柴軍", "outcome": "勝利", "commanders": [{ "person_id": "toyotomi-hidenaga", "name": "羽柴秀長" }], "participants": [{ "name": "羽柴秀次" }, { "name": "宇喜多秀家" }, { "name": "黒田孝高" }, { "name": "蜂須賀正勝" }, { "name": "仙石秀久" }, { "name": "小早川隆景" }], "note": "秀吉は渡海せず、秀長が総大将として軍を率いた" },
-    { "name": "長宗我部軍", "outcome": "敗北", "commanders": [{ "name": "長宗我部元親" }], "participants": [{ "name": "長宗我部親吉" }, { "name": "東条関兵衛" }], "note": "長宗我部親吉は脇城、東条関兵衛は木津城を守った（天正記）" }
+    { "name": "長宗我部軍", "outcome": "敗北", "commanders": [{ "person_id": "chosokabe-motochika", "name": "長宗我部元親" }], "participants": [{ "name": "長宗我部親吉" }, { "name": "東条関兵衛" }], "note": "長宗我部親吉は脇城、東条関兵衛は木津城を守った（天正記）" }
   ],
   "result": "長宗我部元親が降伏し、土佐一国を安堵された",
   "relatedPeople": ["toyotomi-hidenaga", "toyotomi-hideyoshi"],

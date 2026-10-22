@@ -103,6 +103,22 @@
         {
           "type": "castle",
           "id": "takeda"
+        },
+        {
+          "type": "person",
+          "id": "asai-shinpachi"
+        },
+        {
+          "type": "person",
+          "id": "bessho-nagaharu"
+        },
+        {
+          "type": "person",
+          "id": "takigawa-kazumasu"
+        },
+        {
+          "type": "person",
+          "id": "chosokabe-motochika"
         }
       ]
     },
@@ -144,6 +160,22 @@
         {
           "type": "castle",
           "id": "yamato-koriyama"
+        },
+        {
+          "type": "person",
+          "id": "bessho-nagaharu"
+        },
+        {
+          "type": "person",
+          "id": "takigawa-kazumasu"
+        },
+        {
+          "type": "person",
+          "id": "tsutsui-sadatsugu"
+        },
+        {
+          "type": "person",
+          "id": "chosokabe-motochika"
         }
       ]
     },
@@ -172,6 +204,18 @@
         {
           "type": "castle",
           "id": "yamato-koriyama"
+        },
+        {
+          "type": "person",
+          "id": "takigawa-kazumasu"
+        },
+        {
+          "type": "person",
+          "id": "chosokabe-motochika"
+        },
+        {
+          "type": "battle",
+          "id": "neshirozaka"
         }
       ]
     },
@@ -246,6 +290,26 @@
         {
           "type": "battle",
           "id": "kyushu-campaign"
+        },
+        {
+          "type": "person",
+          "id": "asai-shinpachi"
+        },
+        {
+          "type": "person",
+          "id": "takigawa-kazumasu"
+        },
+        {
+          "type": "person",
+          "id": "tsutsui-sadatsugu"
+        },
+        {
+          "type": "person",
+          "id": "chosokabe-motochika"
+        },
+        {
+          "type": "battle",
+          "id": "neshirozaka"
         }
       ]
     },
@@ -304,6 +368,10 @@
         {
           "type": "castle",
           "id": "yamato-koriyama"
+        },
+        {
+          "type": "person",
+          "id": "tsutsui-sadatsugu"
         }
       ]
     },
@@ -342,6 +410,14 @@
         {
           "type": "person",
           "id": "toyotomi-hidenaga"
+        },
+        {
+          "type": "person",
+          "id": "tsutsui-sadatsugu"
+        },
+        {
+          "type": "battle",
+          "id": "neshirozaka"
         }
       ]
     },
@@ -359,6 +435,105 @@
         {
           "type": "person",
           "id": "toyotomi-hidenaga"
+        },
+        {
+          "type": "person",
+          "id": "tsutsui-sadatsugu"
+        }
+      ]
+    },
+    {
+      "id": "azai-sandaiki",
+      "level": 2,
+      "title": "浅井三代記",
+      "yomi": "あざいさんだいき",
+      "kind": "史料",
+      "era": "江戸前期成立",
+      "note": "近江の浅井氏三代の軍記。潤色が多く、年次や人名の誤りもあるので、後世の語りとして扱う。Wikisource の翻刻を使用。",
+      "url": "https://ja.wikisource.org/wiki/浅井三代記",
+      "usedIn": [
+        {
+          "type": "person",
+          "id": "asai-shinpachi"
+        }
+      ]
+    },
+    {
+      "id": "hojo-godaiki",
+      "level": 2,
+      "title": "北条五代記",
+      "yomi": "ほうじょうごだいき",
+      "author": "三浦浄心",
+      "kind": "史料",
+      "era": "江戸初期成立",
+      "note": "後北条氏五代の事跡や関東の見聞をまとめた軍記。Wikisource の翻刻を使用。",
+      "url": "https://ja.wikisource.org/wiki/北条五代記",
+      "usedIn": [
+        {
+          "type": "person",
+          "id": "takigawa-kazumasu"
+        }
+      ]
+    },
+    {
+      "id": "ihon-odawaraki",
+      "level": 2,
+      "title": "異本小田原記",
+      "yomi": "いほんおだわらき",
+      "kind": "史料",
+      "era": "江戸時代成立",
+      "note": "後北条氏の興亡を記した軍記で、北条五代記と同じ系統の異本。Wikisource の翻刻を使用。",
+      "url": "https://ja.wikisource.org/wiki/異本小田原記",
+      "usedIn": [
+        {
+          "type": "person",
+          "id": "takigawa-kazumasu"
+        },
+        {
+          "type": "person",
+          "id": "tsutsui-sadatsugu"
+        },
+        {
+          "type": "person",
+          "id": "chosokabe-motochika"
+        }
+      ]
+    },
+    {
+      "id": "keicho-kenmonshu",
+      "level": 2,
+      "title": "慶長見聞集",
+      "yomi": "けいちょうけんもんしゅう",
+      "author": "三浦浄心",
+      "kind": "史料",
+      "era": "江戸初期成立",
+      "note": "江戸初期の見聞を書きとめた随筆。戦国の出来事は間接的に伝える。Wikisource の翻刻を使用。",
+      "url": "https://ja.wikisource.org/wiki/慶長見聞集",
+      "usedIn": [
+        {
+          "type": "person",
+          "id": "chosokabe-motochika"
+        }
+      ]
+    },
+    {
+      "id": "intoku-taiheiki",
+      "level": 2,
+      "title": "陰徳太平記",
+      "yomi": "いんとくたいへいき",
+      "author": "香川正矩・香川景継",
+      "kind": "史料",
+      "era": "江戸中期（正徳年間）刊行",
+      "note": "毛利氏を中心に中国地方の戦国を描いた軍記（全81巻）。毛利方の視点で脚色も多い。NDL デジタルの校本（OCR 本文・未校正）を使用。",
+      "url": "https://dl.ndl.go.jp/pid/772376",
+      "usedIn": [
+        {
+          "type": "person",
+          "id": "tsutsui-sadatsugu"
+        },
+        {
+          "type": "battle",
+          "id": "neshirozaka"
         }
       ]
     }

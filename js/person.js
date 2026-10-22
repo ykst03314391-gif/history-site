@@ -24,6 +24,31 @@
     return `<section class="section"><h2>更新履歴</h2><ul class="history-list">${items}</ul></section>`;
   }
 
+  // 本文中の語をサイト内ページへのリンクにする。links: [{ text, person_id | battle_id | castle_id }]
+  // 各語は最初に出てきた1か所だけをリンクにする
+  function linkText(text, links) {
+    const s = String(text ?? "");
+    if (!links || !links.length) return esc(s);
+    const hrefOf = (l) =>
+      l.person_id ? `person.html?id=${encodeURIComponent(l.person_id)}`
+      : l.battle_id ? `battle.html?id=${encodeURIComponent(l.battle_id)}`
+      : l.castle_id ? `castle.html?id=${encodeURIComponent(l.castle_id)}`
+      : "";
+    const hits = links
+      .filter((l) => l.text && hrefOf(l))
+      .map((l) => ({ l, at: s.indexOf(l.text) }))
+      .filter((h) => h.at >= 0)
+      .sort((a, b) => a.at - b.at);
+    let out = "";
+    let pos = 0;
+    for (const { l, at } of hits) {
+      if (at < pos) continue;
+      out += esc(s.slice(pos, at)) + `<a href="${hrefOf(l)}">${esc(l.text)}</a>`;
+      pos = at + l.text.length;
+    }
+    return out + esc(s.slice(pos));
+  }
+
   const id = new URLSearchParams(location.search).get("id");
   if (!id || !/^[a-z0-9-]+$/.test(id)) {
     contentEl.innerHTML = `<p class="error">人物IDが指定されていません。</p>`;
@@ -279,7 +304,7 @@
             <span class="t-year"><span>${esc(e.year)}年</span>${e.month ? `<span>${esc(e.month)}月</span>` : ""}</span>
             <span>
               <span class="t-title">${title}</span>
-              ${e.description ? `<br><span class="t-desc">${esc(e.description)}</span>` : ""}
+              ${e.description ? `<br><span class="t-desc">${linkText(e.description, e.links)}</span>` : ""}
               ${e.sourceId ? `<br>${srcMark(e.sourceId)}` : ""}
               ${related ? `<br>${related}` : ""}
             </span>

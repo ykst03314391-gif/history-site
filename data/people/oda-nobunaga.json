@@ -53,7 +53,7 @@
     { "person_id": "shibata-katsuie", "name": "柴田勝家", "note": "織田家筆頭家老の一人" },
     { "person_id": "akechi-mitsuhide", "name": "明智光秀", "to": 1582, "note": "本能寺の変で謀反を起こす" },
     { "name": "丹羽長秀" },
-    { "name": "滝川一益" },
+    { "person_id": "takigawa-kazumasu", "name": "滝川一益" },
     { "person_id": "araki-murashige", "name": "荒木村重", "to": 1578, "note": "摂津を任されたが有岡城の乱で離反" }
   ],
   "territories": [

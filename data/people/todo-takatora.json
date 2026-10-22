@@ -52,7 +52,7 @@
     {"year": 1556, "month": 1, "day": 6, "title": "誕生", "description": "近江の藤堂村に生まれる"},
     {"year": 1570, "title": "姉川の戦い", "description": "浅井方として戦ったとされる（原典未確認）", "battle_id": "anegawa"},
     {"year": 1583, "month": 4, "title": "賤ヶ岳の戦い", "description": "秀長の配下として加わったとされる（原典未確認）", "battle_id": "shizugatake"},
-    {"year": 1587, "month": 4, "title": "九州攻め（根白坂）", "description": "日向の高城を囲む秀長の陣に島津勢が夜討ちをかけたとき、川角太閤記は「藤堂和泉」が鉄炮百挺ほどで味方の陣の後ろから加勢したと書く。甫庵太閤記も「秀長の臣藤堂羽田岸田」が多くの敵を討ち取ったとする", "battle_id": "kyushu-campaign", "sourceId": "hoan-taikoki"},
+    {"year": 1587, "month": 4, "title": "根白坂の戦い", "description": "日向の高城を囲む秀長の陣に島津勢が夜討ちをかけたとき、川角太閤記は「藤堂和泉」が鉄炮百挺ほどで味方の陣の後ろから加勢したと書く。甫庵太閤記も「秀長の臣藤堂羽田岸田」が多くの敵を討ち取ったとする", "battle_id": "neshirozaka", "sourceId": "hoan-taikoki"},
     {"year": 1592, "title": "文禄の役", "description": "秀保の名代として朝鮮へ渡ったとされる。甫庵太閤記は船手（水軍）の将の中に「藤堂佐渡守」を挙げる", "sourceId": "hoan-taikoki"},
     {"year": 1595, "title": "伊予の大名となる", "description": "秀保が没し、秀吉の直臣として伊予板島7万石を与えられる（原典未確認）"},
     {"year": 1600, "month": 9, "title": "関ヶ原の戦い", "description": "東軍として戦い、戦後に伊予今治20万石となる（原典未確認）"},
@@ -99,7 +99,8 @@
   ],
   "tags": ["豊臣家臣", "秀長家臣", "築城", "伊勢津藩"],
   "history": [
-    {"date": "2026-10-21", "note": "新規作成"}
+    {"date": "2026-10-21", "note": "新規作成"},
+    {"date": "2026-10-22", "note": "年表の根白坂を根白坂の戦いのページにリンク"}
   ],
-  "updatedAt": "2026-10-21"
+  "updatedAt": "2026-10-22"
 }

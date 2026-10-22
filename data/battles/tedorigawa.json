@@ -12,7 +12,7 @@
   ],
   "sides": [
     { "name": "上杉軍", "outcome": "勝利", "commanders": [{ "person_id": "uesugi-kenshin", "name": "上杉謙信" }], "participants": [{ "name": "柿崎景家" }, { "name": "直江景綱" }] },
-    { "name": "織田軍", "outcome": "敗北", "commanders": [{ "name": "柴田勝家" }], "participants": [{ "person_id": "toyotomi-hideyoshi", "name": "羽柴秀吉" }, { "name": "丹羽長秀" }, { "name": "滝川一益" }], "note": "羽柴秀吉は勝家と対立し戦線を離脱したと伝わる" }
+    { "name": "織田軍", "outcome": "敗北", "commanders": [{ "name": "柴田勝家" }], "participants": [{ "person_id": "toyotomi-hideyoshi", "name": "羽柴秀吉" }, { "name": "丹羽長秀" }, { "person_id": "takigawa-kazumasu", "name": "滝川一益" }], "note": "羽柴秀吉は勝家と対立し戦線を離脱したと伝わる" }
   ],
   "result": "上杉謙信が織田軍を破ったと伝わる（規模には諸説あり）",
   "relatedPeople": ["uesugi-kenshin", "oda-nobunaga"],

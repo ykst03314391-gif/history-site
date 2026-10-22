@@ -159,8 +159,11 @@ Spot = {
   "title": string, "description"?: string,
   "battle_id"?: string,   // 合戦ページへのリンク
   "castle_id"?: string,   // 城ページへのリンク（城代・城主就任など。battle_id があればそちらを優先）
+  "links"?: [ { "text": string, "person_id"?: string, "battle_id"?: string, "castle_id"?: string } ],
+                          // description の中の語をサイト内ページへのリンクにする（各語の最初の1か所）
   "sourceId"?: string }
 ```
+> 例：`"links": [{ "text": "浅井新八", "person_id": "asai-shinpachi" }]` で、説明文の「浅井新八」が人物ページへのリンクになる。
 
 ### Episode（逸話）
 ```

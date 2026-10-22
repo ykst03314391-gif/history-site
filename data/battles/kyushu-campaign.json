@@ -10,12 +10,13 @@
     "日向の高城を囲んだ秀長の陣に対し、4月17日、島津勢は夜襲をかけた。甫庵太閤記によれば、宮部継潤らの陣が襲われると、五十町ほど離れていた秀長は知らせを受けてすぐに駆けつけ、島津勢を打ち破った。秀長の家臣の藤堂高虎らが追い討ちをかけたという。この戦いは根白坂の戦いと呼ばれ、敗れた島津方は高城を明け渡した。",
     "勝ち目がないと見た島津家は、重臣の伊集院忠棟を秀長の陣へ送り、義久の助命を願った。秀長がこれを秀吉に取り次ぎ、5月、義久は剃髪して薩摩の泰平寺で秀吉に降った。義久は本領を安堵され、弟たちと家老が人質として差し出された。甫庵太閤記では、降伏の窓口に立ったのは秀長だった。"
   ],
+  "links": [{ "text": "根白坂の戦い", "battle_id": "neshirozaka" }, { "text": "藤堂高虎", "person_id": "todo-takatora" }],
   "sides": [
-    { "name": "豊臣軍", "outcome": "勝利", "commanders": [{ "person_id": "toyotomi-hideyoshi", "name": "豊臣秀吉" }, { "person_id": "toyotomi-hidenaga", "name": "羽柴秀長" }], "participants": [{ "name": "宮部継潤" }, { "name": "藤堂高虎" }, { "name": "黒田孝高" }, { "name": "小早川隆景" }], "note": "秀吉は肥後・薩摩路、秀長は豊後・日向路の大将" },
+    { "name": "豊臣軍", "outcome": "勝利", "commanders": [{ "person_id": "toyotomi-hideyoshi", "name": "豊臣秀吉" }, { "person_id": "toyotomi-hidenaga", "name": "羽柴秀長" }], "participants": [{ "name": "宮部継潤" }, { "person_id": "todo-takatora", "name": "藤堂高虎" }, { "name": "黒田孝高" }, { "name": "小早川隆景" }], "note": "秀吉は肥後・薩摩路、秀長は豊後・日向路の大将" },
     { "name": "島津軍", "outcome": "敗北", "commanders": [{ "name": "島津義久" }], "participants": [{ "name": "島津義弘" }, { "name": "島津家久" }, { "name": "伊集院忠棟" }], "note": "義久は降伏し、本領を安堵された" }
   ],
   "result": "島津義久が降伏し、九州は秀吉に従った",
-  "relatedPeople": ["toyotomi-hideyoshi", "toyotomi-hidenaga"],
+  "relatedPeople": ["toyotomi-hideyoshi", "toyotomi-hidenaga", "todo-takatora"],
   "spots": [
     {"type": "古戦場", "name": "根白坂", "prefecture": "宮崎県", "city": "児湯郡木城町", "description": "島津勢が秀長方の陣に夜襲をかけ、敗れた地。"},
     {"type": "城跡", "name": "高城跡", "prefecture": "宮崎県", "city": "児湯郡木城町", "description": "秀長が囲んだ島津方の城。"},
@@ -26,7 +27,8 @@
   ],
   "tags": ["豊臣秀吉", "豊臣秀長", "島津義久", "九州"],
   "history": [
-    { "date": "2026-10-21", "note": "新規作成" }
+    { "date": "2026-10-21", "note": "新規作成" },
+    { "date": "2026-10-22", "note": "解説の根白坂の戦い・藤堂高虎をページにリンク" }
   ],
-  "updatedAt": "2026-10-21"
+  "updatedAt": "2026-10-22"
 }

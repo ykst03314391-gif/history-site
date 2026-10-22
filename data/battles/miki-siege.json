@@ -12,7 +12,7 @@
   ],
   "sides": [
     { "name": "羽柴軍", "outcome": "勝利", "commanders": [{ "person_id": "toyotomi-hideyoshi", "name": "羽柴秀吉" }], "participants": [{ "person_id": "toyotomi-hidenaga", "name": "羽柴秀長" }, { "name": "別所重棟" }, { "name": "浅野長政" }], "note": "織田信長の命による中国攻めの一環。別所重棟は長治の一族だが秀吉方についた" },
-    { "name": "別所軍", "outcome": "敗北", "commanders": [{ "name": "別所長治" }], "participants": [{ "name": "別所吉親" }, { "name": "別所友之" }], "note": "毛利方と結んでいたが、救援は届かなかった" }
+    { "name": "別所軍", "outcome": "敗北", "commanders": [{ "person_id": "bessho-nagaharu", "name": "別所長治" }], "participants": [{ "name": "別所吉親" }, { "name": "別所友之" }], "note": "毛利方と結んでいたが、救援は届かなかった" }
   ],
   "result": "羽柴秀吉が三木城を落とし、別所長治は自害した",
   "relatedPeople": ["toyotomi-hideyoshi", "toyotomi-hidenaga"],

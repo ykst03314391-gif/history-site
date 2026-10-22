@@ -12,7 +12,7 @@
   ],
   "sides": [
     { "name": "羽柴軍", "outcome": "勝利", "commanders": [{ "person_id": "toyotomi-hideyoshi", "name": "羽柴秀吉" }], "participants": [{ "person_id": "toyotomi-hidenaga", "name": "羽柴秀長" }, { "name": "三好秀次" }, { "name": "筒井順慶" }, { "name": "稲葉一鉄" }, { "name": "織田信雄" }, { "name": "蒲生氏郷" }], "note": "秀長は土岐多羅越えの一手を率いた（柴田退治記）" },
-    { "name": "滝川軍", "outcome": "敗北", "commanders": [{ "name": "滝川一益" }], "participants": [{ "name": "滝川益重" }, { "name": "佐治新介" }], "note": "柴田勝家・織田信孝と結んでいた" }
+    { "name": "滝川軍", "outcome": "敗北", "commanders": [{ "person_id": "takigawa-kazumasu", "name": "滝川一益" }], "participants": [{ "name": "滝川益重" }, { "name": "佐治新介" }], "note": "柴田勝家・織田信孝と結んでいた" }
   ],
   "result": "羽柴軍が亀山城・峯城を落とし、滝川一益はのちに降伏した",
   "relatedPeople": ["toyotomi-hideyoshi", "toyotomi-hidenaga"],

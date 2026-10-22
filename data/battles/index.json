@@ -193,6 +193,18 @@
       "lat": 32.1503,
       "lng": 131.4591,
       "sides": [{ "name": "豊臣軍", "outcome": "勝利" }, { "name": "島津軍", "outcome": "敗北" }]
+    },
+    {
+      "id": "neshirozaka",
+      "name": "根白坂の戦い",
+      "kana": "ねじろざかのたたかい",
+      "year": 1587,
+      "summary": "九州攻めで、高城を囲む豊臣秀長の陣に島津勢が夜襲をかけ、敗れた戦い。",
+      "prefecture": "宮崎県",
+      "province": "日向国",
+      "lat": 32.1503,
+      "lng": 131.4591,
+      "sides": [{ "name": "豊臣軍", "outcome": "勝利" }, { "name": "島津軍", "outcome": "敗北" }]
     }
   ]
 }

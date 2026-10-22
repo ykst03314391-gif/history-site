@@ -250,6 +250,16 @@
       html.push(section("家臣団", `<ul class="list">${items}</ul>`));
     }
 
+    // 与力（主君から付けられた大名。家臣ではないので家臣団と分ける）
+    if (p.yoriki && p.yoriki.length) {
+      const items = p.yoriki
+        .map((r) => `<li>${personLink(r)}${period(r)}${r.note ? ` <span class="muted">${esc(r.note)}</span>` : ""}${srcMark(r.sourceId)}</li>`)
+        .join("");
+      const yn = p.yorikiNote;
+      const note = yn ? `<p class="muted">${esc(yn.text)}${srcMark(yn.sourceId)}</p>` : "";
+      html.push(section("与力", `<ul class="list">${items}</ul>${note}`));
+    }
+
     // 領地変遷
     if (p.territories && p.territories.length) {
       // 座標（lat/lng）か令制国名（province）のある領地は地図にも番号付きで示す

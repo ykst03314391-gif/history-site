@@ -30,6 +30,8 @@
 | `family` | Relation[] | 親・子・親戚などの関係（家系図の元データ） |
 | `lords` | Service[] | 仕えた人（主君） |
 | `retainers` | Retainer[] | 家臣団（出仕期間・備考を持てる） |
+| `yoriki` | Retainer[] | 与力（主君から付けられた大名。家臣ではないので家臣団と分ける）。形は Retainer と同じ |
+| `yorikiNote` | { text: string, sourceId?: string } | 与力欄の補足（名前の分からない与力がいたことなど）。一覧の下に出す |
 | `territories` | Territory[] | 領地変遷（時系列） |
 | `timeline` | Event[] | 個人の年表 |
 | `episodes` | Episode[] | 逸話・エピソード |
@@ -138,6 +140,7 @@ Spot = {
   "sourceId"?: string }   // 家臣だったことの根拠（sources の id）
 ```
 > 単なる ID 配列にせず期間・備考を持たせることで、離反（例：明智光秀）や出仕時期を記録できる。
+> 与力（例：秀長に付けられた筒井定次・長宗我部元親）は `retainers` に入れず `yoriki` に分ける。付けられた側の人物では、`lords` にその主君を書く。
 
 ### Territory（領地変遷）
 ```

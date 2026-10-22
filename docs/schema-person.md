@@ -121,7 +121,7 @@ Spot = {
   "person_id"?: string,   // サイト内に人物ページがある場合
   "name": string,         // ページが無い場合の表示名
   "note"?: string,
-  "article_id"?: string } // この関係を論じた考察記事の id。記事が公開済み（draft でない）なら注記の横に「考察」リンクを出す
+  "article_id"?: string } // この関係を論じた考察記事の id。注記の横に「考察」リンクを出す。記事が下書き（draft）の間はリンクにせず「考察（執筆中）」と予告する
 ```
 
 ### Service（仕えた主君）

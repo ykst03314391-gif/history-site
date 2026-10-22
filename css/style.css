@@ -355,6 +355,10 @@ html { scroll-behavior: smooth; }
   color: var(--accent);
 }
 .inline-article:hover { background: #ece4d3; text-decoration: none; }
+/* 下書きの記事の予告（リンクにしない） */
+.inline-article.is-pending { color: var(--ink-soft); border-left-color: var(--line); }
+.inline-article.is-pending:hover { background: #f3eee3; }
+.inline-article.is-pending .inline-article-label { background: var(--ink-soft); }
 .inline-article-label {
   font-size: 0.68rem;
   background: var(--accent);

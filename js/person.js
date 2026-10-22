@@ -179,10 +179,15 @@
     // 年表イベント・家系に紐付けて表示した記事は、末尾の関連記事から除外する
     const usedArticleIds = new Set();
 
-    // 家系（article_id があり、その記事が公開済みなら注記の横に考察リンクを出す）
+    // 家系（article_id があれば注記の横に考察リンクを出す。下書きの記事はリンクにせず「執筆中」と予告する）
     const articleLink = (id) => {
-      const a = id && (articles || []).find((x) => x.id === id && !x.draft);
+      const a = id && (articles || []).find((x) => x.id === id);
       if (!a) return "";
+      if (a.draft) {
+        return ` <span class="inline-article is-pending">
+          <span class="inline-article-label">考察（執筆中）</span>${esc(a.title)}
+        </span>`;
+      }
       usedArticleIds.add(a.id);
       return ` <a class="inline-article" href="article.html?id=${encodeURIComponent(a.id)}">
           <span class="inline-article-label">考察</span>${esc(a.title)}

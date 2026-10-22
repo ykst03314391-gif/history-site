@@ -118,6 +118,8 @@
       const prim = s && s.primary ? `（${s.primary}）` : "";
       return ` <span class="src-mark" title="出典${prim}：${esc(label)}">出典: ${esc(label)}</span>`;
     }
+    // 典拠が複数ある項目用（sourceId に配列も書ける）
+    const srcMarks = (ids) => [].concat(ids || []).map(srcMark).join("");
 
     // ヘッダー
     const birth = fmtDate(p.birth);
@@ -220,7 +222,7 @@
     };
     if (p.family && p.family.length) {
       const items = p.family
-        .map((r) => `<li><b>${esc(r.relation)}</b>：${personLink(r)}${r.note ? ` <span class="muted">${esc(r.note)}</span>` : ""}${articleLink(r.article_id)}</li>`)
+        .map((r) => `<li><b>${esc(r.relation)}</b>：${personLink(r)}${r.note ? ` <span class="muted">${esc(r.note)}</span>` : ""}${srcMarks(r.sourceId)}${articleLink(r.article_id)}</li>`)
         .join("");
       html.push(section("家系・親族", `<ul class="list">${items}</ul>`));
     }
@@ -235,7 +237,7 @@
     // 仕えた主君
     if (p.lords && p.lords.length) {
       const items = p.lords
-        .map((s) => `<li>${personLink(s)}${period(s)}${s.note ? ` <span class="muted">${esc(s.note)}</span>` : ""}</li>`)
+        .map((s) => `<li>${personLink(s)}${period(s)}${s.note ? ` <span class="muted">${esc(s.note)}</span>` : ""}${srcMark(s.sourceId)}</li>`)
         .join("");
       html.push(section("仕えた人", `<ul class="list">${items}</ul>`));
     }
@@ -265,7 +267,7 @@
       // 座標（lat/lng）か令制国名（province）のある領地は地図にも番号付きで示す
       const hasMap = p.territories.some(onMap);
       const items = p.territories
-        .map((t, i) => `<li>${hasMap && onMap(t) ? `<span class="terr-num" style="background:${terrColor(i)}">${i + 1}</span>` : ""}<b>${terrYears(t)}</b>${esc(t.name)}${t.prefecture ? `<span class="muted">（${[].concat(t.prefecture).map(esc).join("・")}）</span>` : ""}${t.note ? ` — <span class="muted">${esc(t.note)}</span>` : ""}${t.untilNote ? `<span class="muted terr-until">→ ${t.until ? esc(t.until) + "年 " : ""}${esc(t.untilNote)}</span>` : ""}${srcMark(t.sourceId)}${hasMap && onMap(t) ? `<div class="terr-snap" data-i="${i}" role="img" aria-label="${esc(terrYears(t) + t.name)}の時点の領地"></div><p class="terr-snap-caption muted" data-i="${i}"></p>` : ""}</li>`)
+        .map((t, i) => `<li>${hasMap && onMap(t) ? `<span class="terr-num" style="background:${terrColor(i)}">${i + 1}</span>` : ""}<b>${terrYears(t)}</b>${esc(t.name)}${t.prefecture ? `<span class="muted">（${[].concat(t.prefecture).map(esc).join("・")}）</span>` : ""}${t.note ? ` — <span class="muted">${esc(t.note)}</span>` : ""}${t.untilNote ? `<span class="muted terr-until">→ ${t.until ? esc(t.until) + "年 " : ""}${esc(t.untilNote)}</span>` : ""}${srcMarks(t.sourceId)}${hasMap && onMap(t) ? `<div class="terr-snap" data-i="${i}" role="img" aria-label="${esc(terrYears(t) + t.name)}の時点の領地"></div><p class="terr-snap-caption muted" data-i="${i}"></p>` : ""}</li>`)
         .join("");
       const mapHTML = hasMap
         ? `<div id="territory-map" class="territory-map" role="img" aria-label="領地の変遷の地図"></div>

@@ -123,12 +123,14 @@ Spot = {
   "person_id"?: string,   // サイト内に人物ページがある場合
   "name": string,         // ページが無い場合の表示名
   "note"?: string,
+  "sourceId"?: string | string[], // 関係・注記の根拠（sources の id）。リンク先の人物ページで出典を示せる場合は付けない
   "article_id"?: string } // この関係を論じた考察記事の id。注記の横に「考察」リンクを出す。記事が下書き（draft）の間はリンクにせず「考察（執筆中）」と予告する
 ```
 
 ### Service（仕えた主君）
 ```
-{ "person_id"?: string, "name": string, "from"?: number, "to"?: number, "note"?: string }
+{ "person_id"?: string, "name": string, "from"?: number, "to"?: number, "note"?: string,
+  "sourceId"?: string }   // 仕えた期間（主に始まりの年）の根拠（sources の id）
 ```
 
 ### Retainer（家臣）
@@ -144,7 +146,7 @@ Spot = {
 
 ### Territory（領地変遷）
 ```
-{ "year"?: number, "name": string, "prefecture"?: string | string[], "note"?: string, "sourceId"?: string,
+{ "year"?: number, "name": string, "prefecture"?: string | string[], "note"?: string, "sourceId"?: string | string[],
   "province"?: string | string[],   // 地図で塗る国（例 "大和国"）。国全体を領したとき
   "district"?: string | string[],   // 地図で塗る郡（例 "但馬国朝来郡"）。国の一部だけのときは province より優先して郡だけを塗る
                                     // 郡と国全体が混じるときは国名も並べる（例 ["伊勢国安濃郡", "伊賀国"]）

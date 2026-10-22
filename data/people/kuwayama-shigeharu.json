@@ -48,6 +48,7 @@
     {"year": 1583, "month": 4, "title": "賤ヶ岳の戦い", "description": "甫庵太閤記によれば、秀長の配下として賤ヶ岳の砦を守った。佐久間盛政の攻撃で近くの砦が落ちるといったん城を出たが、丹羽長秀の加勢を知って引き返し、ともに砦を守った", "battle_id": "shizugatake", "sourceId": "hoan-taikoki"},
     {"year": 1583, "title": "竹田城を任される", "castle_id": "takeda", "description": "天正記に「但馬竹田桑山修理進」とある", "sourceId": "tensho-ki"},
     {"year": 1585, "month": 3, "title": "紀州攻め", "description": "紀州攻めの後、和歌山に入れ置かれる。川角太閤記は「和哥山へは桑山法印を入置かれ候」と書く", "battle_id": "kishu-campaign", "sourceId": "kawasumi-taikoki"},
+    {"year": 1592, "title": "奈良で金を借りた者の召し取りを命じられる", "description": "秀長の死後の天正20年、多聞院日記に一晏法印・井上源吾・杉若越前守と並んで「桑山修理」の名が見え、奈良中で京・堺・大坂の金を借りた者を召し取るよう命じられている", "sourceId": "tamonin-nikki"},
     {"year": 1595, "title": "秀吉の直臣となる", "description": "秀保が没し、秀吉に直接仕えるようになる（原典未確認）"},
     {"year": 1600, "title": "関ヶ原の戦い", "description": "東軍に属し、和歌山城を守ったとされる。のち隠居し、所領を孫たちに分けた（原典未確認）"},
     {"year": 1606, "month": 10, "day": 1, "title": "死去", "description": "83歳で没したとされる"}
@@ -77,6 +78,7 @@
     ]
   },
   "sources": [
+    {"id": "tamonin-nikki", "title": "多聞院日記", "author": "英俊ほか", "publisher": "三教書院（辻善之助編）", "year": "1935〜39", "page": "第4巻", "url": "https://dl.ndl.go.jp/pid/1920664", "note": "興福寺多聞院の僧の日記。秀長の死後の天正20年、秀長家の奉行衆と並んで「桑山修理」の名が見える。三教書院版のOCR本文による", "type": "史料", "primary": "一次資料"},
     {"id": "tensho-ki", "title": "天正記（柴田退治記）", "author": "大村由己", "note": "賤ヶ岳の後の城の配置に「但馬竹田桑山修理進」とある。秀吉方の顕彰の文章", "type": "史料", "primary": "一次資料"},
     {"id": "hoan-taikoki", "title": "太閤記", "author": "小瀬甫庵", "note": "賤ヶ岳の砦の守備と丹羽長秀とのやりとり。脚色の多い二次史料", "type": "史料", "primary": "二次資料"},
     {"id": "kawasumi-taikoki", "title": "川角太閤記", "note": "紀州攻めの後に「和哥山へは桑山法印を入置かれ」と記す。江戸初期の覚書", "type": "史料", "primary": "二次資料"},
@@ -84,7 +86,8 @@
   ],
   "tags": ["豊臣家臣", "秀長家臣", "茶人"],
   "history": [
-    {"date": "2026-10-21", "note": "新規作成"}
+    {"date": "2026-10-21", "note": "新規作成"},
+    {"date": "2026-10-22", "note": "秀長の死後の動き（天正20年）を多聞院日記から追加"}
   ],
   "updatedAt": "2026-10-21"
 }

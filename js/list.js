@@ -14,10 +14,11 @@
       ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c])
     );
 
-  // 和暦があれば西暦を括弧で併記（例：天文9年（1540） 〜 天正19年1月22日（1591））
+  // 西暦を先に書き、和暦の年があれば括弧で併記（例：1540年（天文9年） 〜 1591年（天正19年））
   function fmtYear(era, year) {
-    if (era) return year ? `${era}（${year}）` : era;
-    return year ?? "?";
+    const eraYear = era ? era.replace(/年.*$/, "年") : "";
+    if (year) return `${year}年${eraYear ? `（${eraYear}）` : ""}`;
+    return eraYear || "?";
   }
 
   function years(p) {

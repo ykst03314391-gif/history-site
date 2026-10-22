@@ -338,6 +338,7 @@ html { scroll-behavior: smooth; }
   border-bottom: 1px dashed var(--line);
 }
 .timeline .t-year { color: var(--accent); font-weight: 700; }
+.timeline .t-year > span { display: inline-block; }
 .timeline .t-title { font-weight: 700; }
 .timeline .t-desc { color: var(--ink-soft); font-size: 0.92rem; }
 .inline-article {

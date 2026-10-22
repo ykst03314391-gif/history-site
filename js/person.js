@@ -30,16 +30,21 @@
     return;
   }
 
-  // 年月日を表示用文字列に
+  // 年月日を表示用文字列に。西暦を先に書き、和暦があれば括弧で併記（例：1591年2月15日（天正19年1月22日））
   function fmtDate(d) {
     if (!d) return "不明";
-    // 和暦があれば西暦を括弧で併記（例：天文9年（1540））
-    if (d.era) return esc(d.era) + (d.year ? `（${d.year}）` : "");
     const parts = [];
     if (d.year) parts.push(d.year + "年");
-    if (d.month) parts.push(d.month + "月");
-    if (d.day) parts.push(d.day + "日");
-    return parts.length ? parts.join("") : "不明";
+    if (d.year && d.month) parts.push(d.month + "月");
+    if (d.year && d.month && d.day) parts.push(d.day + "日");
+    if (!parts.length) return d.era ? esc(d.era) : "不明";
+    return parts.join("") + (d.era ? `（${esc(d.era)}）` : "");
+  }
+
+  // 一時点の年の見出し（例：1585年（天正13年10月） ）。年が無ければ和暦や「幼少期」などをそのまま
+  function whenLabel(year, era) {
+    if (year) return `${esc(year)}年${era ? `（${esc(era)}）` : ""} `;
+    return era ? `${esc(era)} ` : "";
   }
 
   function uncertain(flag) {
@@ -157,8 +162,7 @@
     if (p.nameHistory && p.nameHistory.length) {
       const items = p.nameHistory
         .map((n) => {
-          const when = n.year ? `${esc(n.year)}年${n.era ? `（${esc(n.era)}）` : ""} ` : n.era ? `${esc(n.era)} ` : "";
-          return `<li><b>${when}</b>${esc(n.value)}${uncertain(n.uncertain)}${n.note ? ` <span class="muted">${esc(n.note)}</span>` : ""}${srcMark(n.sourceId)}</li>`;
+          return `<li><b>${whenLabel(n.year, n.era)}</b>${esc(n.value)}${uncertain(n.uncertain)}${n.note ? ` <span class="muted">${esc(n.note)}</span>` : ""}${srcMark(n.sourceId)}</li>`;
         })
         .join("");
       html.push(section("呼び名の変遷", `<ul class="list">${items}</ul>`));
@@ -167,7 +171,7 @@
     // 官位変遷
     if (p.ranks && p.ranks.length) {
       const items = p.ranks
-        .map((r) => `<li><b>${r.year ? esc(r.year) + "年 " : ""}</b>${esc(r.title)}${r.note ? ` <span class="muted">${esc(r.note)}</span>` : ""}${srcMark(r.sourceId)}</li>`)
+        .map((r) => `<li><b>${whenLabel(r.year, r.era)}</b>${esc(r.title)}${r.note ? ` <span class="muted">${esc(r.note)}</span>` : ""}${srcMark(r.sourceId)}</li>`)
         .join("");
       html.push(section("官位", `<ul class="list">${items}</ul>`));
     }
@@ -180,10 +184,17 @@
       html.push(section("家系・親族", `<ul class="list">${items}</ul>`));
     }
 
+    // 仕えた・仕えられた期間（例：（1573〜1591年）（〜1591年）（1576年〜））
+    const period = (r) => {
+      if (!r.from && !r.to) return "";
+      const text = r.from && r.to ? `${esc(r.from)}〜${esc(r.to)}年` : r.from ? `${esc(r.from)}年〜` : `〜${esc(r.to)}年`;
+      return ` <span class="muted">（${text}）</span>`;
+    };
+
     // 仕えた主君
     if (p.lords && p.lords.length) {
       const items = p.lords
-        .map((s) => `<li>${personLink(s)}${s.note ? ` <span class="muted">${esc(s.note)}</span>` : ""}</li>`)
+        .map((s) => `<li>${personLink(s)}${period(s)}${s.note ? ` <span class="muted">${esc(s.note)}</span>` : ""}</li>`)
         .join("");
       html.push(section("仕えた人", `<ul class="list">${items}</ul>`));
     }
@@ -192,8 +203,7 @@
     if (p.retainers && p.retainers.length) {
       const items = p.retainers
         .map((r) => {
-          const period = r.from || r.to ? ` <span class="muted">（${r.from || ""}〜${r.to || ""}）</span>` : "";
-          return `<li>${personLink(r)}${period}${r.note ? ` <span class="muted">${esc(r.note)}</span>` : ""}${srcMark(r.sourceId)}</li>`;
+          return `<li>${personLink(r)}${period(r)}${r.note ? ` <span class="muted">${esc(r.note)}</span>` : ""}${srcMark(r.sourceId)}</li>`;
         })
         .join("");
       html.push(section("家臣団", `<ul class="list">${items}</ul>`));
@@ -253,7 +263,7 @@
             ? `<a class="t-battle-link" href="castle.html?id=${encodeURIComponent(e.castle_id)}">${esc(e.title)}</a>`
             : esc(e.title);
           return `<li>
-            <span class="t-year">${esc(e.year)}${e.month ? "." + e.month : ""}</span>
+            <span class="t-year"><span>${esc(e.year)}年</span>${e.month ? `<span>${esc(e.month)}月</span>` : ""}</span>
             <span>
               <span class="t-title">${title}</span>
               ${e.description ? `<br><span class="t-desc">${esc(e.description)}</span>` : ""}

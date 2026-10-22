@@ -258,7 +258,7 @@
     // 呼び名の変遷
     if (p.nameHistory && p.nameHistory.length) {
       const items = p.nameHistory
-        .map((n) => entry({ when: whenLabel(n.year, n.era).trim(), main: esc(n.value), after: uncertain(n.uncertain), note: n.note, tail: srcMark(n.sourceId) }))
+        .map((n) => entry({ when: whenLabel(n.year, n.era).trim(), main: esc(n.value), after: uncertain(n.uncertain), note: n.note, tail: srcMarks(n.sourceId) }))
         .join("");
       html.push(section("呼び名の変遷", `<ul class="entry-list">${items}</ul>`));
     }
@@ -266,7 +266,7 @@
     // 官位変遷
     if (p.ranks && p.ranks.length) {
       const items = p.ranks
-        .map((r) => entry({ when: whenLabel(r.year, r.era).trim(), main: esc(r.title), note: r.note, tail: srcMark(r.sourceId) }))
+        .map((r) => entry({ when: whenLabel(r.year, r.era).trim(), main: esc(r.title), note: r.note, tail: srcMarks(r.sourceId) }))
         .join("");
       html.push(section("官位", `<ul class="entry-list">${items}</ul>`));
     }
@@ -307,7 +307,7 @@
     // 仕えた主君
     if (p.lords && p.lords.length) {
       const items = p.lords
-        .map((s) => entry({ main: personLink(s), after: period(s), note: s.note, tail: srcMark(s.sourceId) }))
+        .map((s) => entry({ main: personLink(s), after: period(s), note: s.note, tail: srcMarks(s.sourceId) }))
         .join("");
       html.push(section("仕えた人", `<ul class="entry-list">${items}</ul>`));
     }
@@ -326,7 +326,7 @@
         .map((r) => entry({ main: personLink(r), after: period(r), note: r.note, tail: srcMarks(r.sourceId) }))
         .join("");
       const yn = p.yorikiNote;
-      const note = yn ? `<p class="entry-note">${sentences(yn.text, srcMark(yn.sourceId))}</p>` : "";
+      const note = yn ? `<p class="entry-note">${sentences(yn.text, srcMarks(yn.sourceId))}</p>` : "";
       html.push(section("与力", `<ul class="entry-list">${items}</ul>${note}`));
     }
 
@@ -394,11 +394,12 @@
           // 説明は見出しの下に字下げして線を引く（他の一覧と同じ）。出典は説明の最後の文の末尾に付ける
           const desc = e.description
             ? splitSentences(linkText(e.description, e.links))
-                .map((t, i, a) => `<span class="sent">${fmtText(t)}${i === a.length - 1 ? srcMark(e.sourceId) : ""}</span>`)
+                .map((t, i, a) => `<span class="sent">${fmtText(t)}${i === a.length - 1 ? srcMarks(e.sourceId) : ""}</span>`)
                 .join("")
-            : srcMark(e.sourceId);
-          return `<li>
-            <span class="t-year"><span>${esc(e.year)}年</span>${e.month ? `<span>${esc(e.month)}月</span>` : ""}</span>
+            : srcMarks(e.sourceId);
+          // toYear のある項目は、出来事ではなく期間についての注記（記録の空白など）として控えめに出す
+          return `<li${e.toYear ? ' class="t-span"' : ""}>
+            <span class="t-year">${e.toYear ? `<span>${esc(e.year)}〜</span><span>${esc(e.toYear)}年</span>` : `<span>${esc(e.year)}年</span>${e.month ? `<span>${esc(e.month)}月</span>` : ""}`}</span>
             <div>
               <div class="entry-head"><span class="t-title">${num}${title}</span></div>
               ${desc ? `<div class="entry-note">${desc}</div>` : ""}
@@ -417,7 +418,7 @@
     // 成し遂げたこと
     if (p.achievements && p.achievements.length) {
       const items = p.achievements
-        .map((a) => entry({ main: esc(a.title), note: a.description, tail: srcMark(a.sourceId) }))
+        .map((a) => entry({ main: esc(a.title), note: a.description, tail: srcMarks(a.sourceId) }))
         .join("");
       html.push(section("成し遂げたこと", `<ul class="entry-list">${items}</ul>`));
     }
@@ -431,7 +432,7 @@
           const first = r.title ? "" : splitSentences(body.split("\n")[0])[0] || "";
           const head = r.title || first;
           const rest = body.slice(first.length).replace(/^\n+/, "");
-          const mark = srcMark(r.sourceId);
+          const mark = srcMarks(r.sourceId);
           return `<div class="rep-item">
             ${i > 0 && p.reputation[i - 1].era === r.era ? "<span></span>" : `<span class="rep-era">${esc(r.era)}</span>`}
             <div class="rep-body">
@@ -447,7 +448,7 @@
     // 逸話
     if (p.episodes && p.episodes.length) {
       const items = p.episodes
-        .map((e) => entry({ main: esc(e.title), after: uncertain(e.uncertain), note: e.body, tail: srcMark(e.sourceId) }))
+        .map((e) => entry({ main: esc(e.title), after: uncertain(e.uncertain), note: e.body, tail: srcMarks(e.sourceId) }))
         .join("");
       html.push(section("逸話・エピソード", `<ul class="entry-list">${items}</ul>`));
     }

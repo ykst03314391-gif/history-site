@@ -347,6 +347,9 @@ html { scroll-behavior: smooth; }
 .timeline .t-year > span { display: inline-block; }
 .timeline .t-title { font-weight: 700; }
 .timeline .t-desc { display: block; color: var(--ink-soft); font-size: 0.92rem; }
+.timeline li.t-span .t-year,
+.timeline li.t-span .t-title { color: var(--ink-soft); font-weight: normal; }
+.timeline li.t-span .entry-note { color: #7a7266; }
 
 /* 人物ページの一覧（呼び名・官位・家系・家臣・領地など）。見出し行と説明を分け、説明は句点ごとに改行する */
 .entry-list { list-style: none; padding: 0; margin: 0; }

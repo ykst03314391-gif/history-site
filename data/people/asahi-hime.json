@@ -29,7 +29,7 @@
   },
   "family": [
     {"relation": "母", "person_id": "omandokoro", "name": "大政所"},
-    {"relation": "父", "name": "竹阿弥", "note": "『太閤素生記』による通説。秀吉と父が同じか違うかには諸説ある"},
+    {"relation": "父", "name": "竹阿弥", "note": "『太閤素生記』による通説。秀吉と父が同じか違うかには諸説ある", "article_id": "hidenaga-father-chikuami"},
     {"relation": "兄", "person_id": "toyotomi-hideyoshi", "name": "豊臣秀吉"},
     {"relation": "兄", "person_id": "toyotomi-hidenaga", "name": "豊臣秀長"},
     {"relation": "姉", "person_id": "tomo", "name": "とも（日秀尼）"},

@@ -120,7 +120,8 @@ Spot = {
 { "relation": "父" | "母" | "兄" | "弟" | "姉" | "妹" | "妻" | "子" | "養子" | "叔父" | "従兄弟" | "その他",
   "person_id"?: string,   // サイト内に人物ページがある場合
   "name": string,         // ページが無い場合の表示名
-  "note"?: string }
+  "note"?: string,
+  "article_id"?: string } // この関係を論じた考察記事の id。記事が公開済み（draft でない）なら注記の横に「考察」リンクを出す
 ```
 
 ### Service（仕えた主君）

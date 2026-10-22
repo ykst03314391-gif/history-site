@@ -44,7 +44,7 @@
     { "year": 1587, "era": "天正15年", "title": "従二位・権大納言", "note": "「大和大納言」の呼び名はここから" }
   ],
   "family": [
-    { "relation": "兄", "person_id": "toyotomi-hideyoshi", "name": "豊臣秀吉", "note": "父が同じか違うかには議論がある（父を木下弥右衛門とする説と、竹阿弥とする説）" },
+    { "relation": "兄", "person_id": "toyotomi-hideyoshi", "name": "豊臣秀吉", "note": "父が同じか違うかには議論がある（父を木下弥右衛門とする説と、竹阿弥とする説）", "article_id": "hidenaga-father-chikuami" },
     { "relation": "母", "person_id": "omandokoro", "name": "大政所" },
     { "relation": "姉", "person_id": "tomo", "name": "とも（日秀尼）", "note": "豊臣秀次・秀保の母" },
     { "relation": "妹", "person_id": "asahi-hime", "name": "朝日姫", "note": "のちに徳川家康の正室となる" },

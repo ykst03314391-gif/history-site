@@ -29,7 +29,7 @@
   },
   "family": [
     {"relation": "母", "person_id": "omandokoro", "name": "大政所"},
-    {"relation": "父", "name": "木下弥右衛門", "note": "竹阿弥とする説もある"},
+    {"relation": "父", "name": "木下弥右衛門", "note": "竹阿弥とする説もある", "article_id": "hidenaga-father-chikuami"},
     {"relation": "弟", "person_id": "toyotomi-hideyoshi", "name": "豊臣秀吉"},
     {"relation": "弟", "person_id": "toyotomi-hidenaga", "name": "豊臣秀長"},
     {"relation": "妹", "person_id": "asahi-hime", "name": "朝日姫"},

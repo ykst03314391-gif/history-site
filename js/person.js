@@ -176,10 +176,21 @@
       html.push(section("官位", `<ul class="list">${items}</ul>`));
     }
 
-    // 家系
+    // 年表イベント・家系に紐付けて表示した記事は、末尾の関連記事から除外する
+    const usedArticleIds = new Set();
+
+    // 家系（article_id があり、その記事が公開済みなら注記の横に考察リンクを出す）
+    const articleLink = (id) => {
+      const a = id && (articles || []).find((x) => x.id === id && !x.draft);
+      if (!a) return "";
+      usedArticleIds.add(a.id);
+      return ` <a class="inline-article" href="article.html?id=${encodeURIComponent(a.id)}">
+          <span class="inline-article-label">考察</span>${esc(a.title)}
+        </a>`;
+    };
     if (p.family && p.family.length) {
       const items = p.family
-        .map((r) => `<li><b>${esc(r.relation)}</b>：${personLink(r)}${r.note ? ` <span class="muted">${esc(r.note)}</span>` : ""}</li>`)
+        .map((r) => `<li><b>${esc(r.relation)}</b>：${personLink(r)}${r.note ? ` <span class="muted">${esc(r.note)}</span>` : ""}${articleLink(r.article_id)}</li>`)
         .join("");
       html.push(section("家系・親族", `<ul class="list">${items}</ul>`));
     }
@@ -223,9 +234,6 @@
         : "";
       html.push(section("領地の変遷", `${mapHTML}<ul class="list terr-list">${items}</ul>`));
     }
-
-    // 年表イベントに紐付けて表示した記事は、末尾の関連記事から除外する
-    const usedArticleIds = new Set();
 
     // 指定の合戦に関連する記事（この人物に関連するもの）を探す
     function articlesForBattle(battleId) {

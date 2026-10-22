@@ -86,6 +86,18 @@
       "references": [
         { "title": "戦国武将の選択（産経セレクト）", "author": "本郷和人", "affiliateUrl": "https://www.amazon.co.jp/dp/XXXXXXXXXX?tag=YOUR_ASSOCIATE_TAG-22", "note": "※リンクは仮。登録後に実商品URL＋タグへ差し替え。手取川の史料批判に関連" }
       ]
+    },
+    {
+      "id": "hidenaga-father-chikuami",
+      "title": "秀長の父は竹阿弥か ― 異父弟説はどこから来たか",
+      "series": "myth-busting",
+      "category": "考察",
+      "summary": "豊臣秀長は秀吉の異父弟だったとも言われる。その根拠をたどると、江戸時代前期の『太閤素生記』に行き着く。この説はいつ、誰が、何をもとに言い出したのか。同時代の史料から言えること・言えないことを分けて確かめる。",
+      "date": "",
+      "author": "管理人",
+      "relatedPeople": ["toyotomi-hidenaga", "toyotomi-hideyoshi"],
+      "tags": ["豊臣秀長", "豊臣秀吉", "竹阿弥", "太閤素生記", "通説", "考察"],
+      "draft": true
     }
   ]
 }

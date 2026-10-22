@@ -168,8 +168,11 @@ Spot = {
   "castle_id"?: string,   // 城ページへのリンク（城代・城主就任など。battle_id があればそちらを優先）
   "links"?: [ { "text": string, "person_id"?: string, "battle_id"?: string, "castle_id"?: string } ],
                           // description の中の語をサイト内ページへのリンクにする（各語の最初の1か所）
+  "place"?: string, "lat"?: number, "lng"?: number, "approx"?: boolean,
+                          // 年表の上の地図に置く地点。無ければ castle_id の城、battle_id の合戦の地点（各 index.json の lat/lng）を使う
   "sourceId"?: string }
 ```
+> 年表の地図：地点の分かる出来事に年表の番号を付け、地図にピンを立てる（近い地点はまとめる）。城・合戦の地点が出来事の場所とずれるとき（城とは別の場所での出来事など）は `lat`/`lng` を書く。
 > 例：`"links": [{ "text": "浅井新八", "person_id": "asai-shinpachi" }]` で、説明文の「浅井新八」が人物ページへのリンクになる。
 
 ### Episode（逸話）

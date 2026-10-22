@@ -70,8 +70,14 @@
   // 説明文を句点ごとに改行する（かっこの中の句点では切らない）。tail（出典マーカーなど）は最後の文の末尾に付ける
   function sentences(text, tail = "") {
     return splitSentences(String(text ?? ""))
-      .map((t, i, a) => `<span class="sent">${esc(t)}${i === a.length - 1 ? tail : ""}</span>`)
+      .map((t, i, a) => `<span class="sent">${keepTail(esc(t))}${i === a.length - 1 ? tail : ""}</span>`)
       .join("");
+  }
+  // 文末の数文字を改行させない（「る。」だけが次の行に残るのを防ぐ）。末尾にタグや文字参照があれば何もしない
+  function keepTail(html, n = 6) {
+    const tail = html.slice(-n);
+    if (html.length <= n || /[<>&;]/.test(tail)) return html;
+    return `${html.slice(0, -n)}<span class="nobr">${tail}</span>`;
   }
   // 文の区切り。HTML（linkText の結果など）を渡しても、タグに句点やかっこは無いのでそのまま使える
   function splitSentences(s) {
@@ -146,15 +152,14 @@
     // 改行（\n）で段落に分ける。tail（出典マーカーなど）は最後の段落の末尾に付ける
     const paras = (text, tail = "") => {
       const ps = String(text ?? "").split("\n");
-      return ps.map((t, i) => `<p>${esc(t)}${i === ps.length - 1 ? tail : ""}</p>`).join("");
+      return ps.map((t, i) => `<p>${keepTail(esc(t))}${i === ps.length - 1 ? tail : ""}</p>`).join("");
     };
-    // ゆかりの地・墓所の名前（url があれば外部リンク。その場所自体のページでなければ urlLabel でリンク先を示す）
+    // ゆかりの地・墓所の名前（url があれば外部リンク）
     const spotName = (s) =>
-      s.url
-        ? `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.name)}</a>${
-            s.urlLabel ? ` <span class="muted">［リンク先：${esc(s.urlLabel)}］</span>` : ""
-          }`
-        : esc(s.name);
+      s.url ? `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.name)}</a>` : esc(s.name);
+    // リンク先がその場所自体のページでなければ urlLabel でリンク先を示す
+    const spotLinkNote = (s) =>
+      s.url && s.urlLabel ? `<span class="entry-link-note">［リンク先：${esc(s.urlLabel)}］</span>` : "";
 
     // ヘッダー
     const birth = fmtDate(p.birth);
@@ -238,6 +243,8 @@
 
     // 年表イベント・家系に紐付けて表示した記事は、末尾の関連記事から除外する
     const usedArticleIds = new Set();
+    // 年代順に並べた年表（年表の地図でも同じ順・番号を使う）
+    let timeline = [];
 
     // 家系（article_id があれば注記の横に考察リンクを出す。下書きの記事はリンクにせず「執筆中」と予告する）
     const articleLink = (id) => {
@@ -311,9 +318,7 @@
         })
         .join("");
       const mapHTML = hasMap
-        ? `<div id="territory-map" class="territory-map" role="img" aria-label="領地の変遷の地図"></div>
-           <div id="territory-legend" class="territory-legend"></div>
-           <p class="territory-map-note muted">色は領地の範囲で、国の一部だけを領したときは郡の範囲を塗っています。色と番号は下の一覧と対応し、淡く点線で囲んだ範囲はのちに手放した領地です。一覧の各項目の下の地図は、その時点で持っていた領地だけを示します。線は年代順につないだもの、ピンは城など代表地点です。国界は1868年時点、郡界は1920年時点の境界による近似で、戦国期の境界とは細部で違います。</p>`
+        ? `<div id="territory-map" class="territory-map" role="img" aria-label="領地の変遷の地図"></div>           <p class="territory-map-note muted">色は領地の範囲で、国の一部だけを領したときは郡の範囲を塗っています。色と番号は下の一覧と対応し、淡く点線で囲んだ範囲はのちに手放した領地です。一覧の各項目の下の地図は、その時点で持っていた領地だけを示します。線は年代順につないだもの、ピンは城など代表地点です。国界は1868年時点、郡界は1920年時点の境界による近似で、戦国期の境界とは細部で違います。</p>`
         : "";
       html.push(section("領地の変遷", `${mapHTML}<ul class="entry-list terr-list">${items}</ul>`));
     }
@@ -342,10 +347,13 @@
 
     // 年表
     if (p.timeline && p.timeline.length) {
-      const items = p.timeline
-        .slice()
-        .sort((a, b) => (a.year - b.year) || ((a.month || 0) - (b.month || 0)))
-        .map((e) => {
+      // 同じ年で月の無い出来事は、データに書いた順のまま置く（月が無いからといって年の初めに回さない）
+      timeline = p.timeline.slice().sort((a, b) => (a.year - b.year) || (a.month && b.month ? a.month - b.month : 0));
+      // 場所の分かる出来事（合戦・城のページがあるか、座標がある）は、年表の上の地図に番号付きで示す
+      const hasMap = timeline.some(hasEventPlace);
+      const items = timeline
+        .map((e, i) => {
+          const num = hasMap && hasEventPlace(e) ? `<span class="terr-num">${i + 1}</span>` : "";
           const related = inlineArticleHTML(articlesForBattle(e.battle_id));
           // battle_id があれば合戦ページへ、castle_id があれば城ページへ、見出しをリンクにする
           const title = e.battle_id
@@ -353,18 +361,27 @@
             : e.castle_id
             ? `<a class="t-battle-link" href="castle.html?id=${encodeURIComponent(e.castle_id)}">${esc(e.title)}</a>`
             : esc(e.title);
+          // 説明は見出しの下に字下げして線を引く（他の一覧と同じ）。出典は説明の最後の文の末尾に付ける
+          const desc = e.description
+            ? splitSentences(linkText(e.description, e.links))
+                .map((t, i, a) => `<span class="sent">${keepTail(t)}${i === a.length - 1 ? srcMark(e.sourceId) : ""}</span>`)
+                .join("")
+            : srcMark(e.sourceId);
           return `<li>
             <span class="t-year"><span>${esc(e.year)}年</span>${e.month ? `<span>${esc(e.month)}月</span>` : ""}</span>
-            <span>
-              <span class="t-title">${title}</span>
-              ${e.description ? `<span class="t-desc">${splitSentences(linkText(e.description, e.links)).map((t) => `<span class="sent">${t}</span>`).join("")}</span>` : ""}
-              ${e.sourceId ? `<br>${srcMark(e.sourceId)}` : ""}
-              ${related ? `<br>${related}` : ""}
-            </span>
+            <div>
+              <div class="entry-head"><span class="t-title">${num}${title}</span></div>
+              ${desc ? `<div class="entry-note">${desc}</div>` : ""}
+              ${related ? `<div class="t-related">${related}</div>` : ""}
+            </div>
           </li>`;
         })
         .join("");
-      html.push(section("年表", `<ul class="timeline">${items}</ul>`));
+      const mapHTML = hasMap
+        ? `<div id="timeline-map" class="territory-map" role="img" aria-label="年表の出来事の地図"></div>
+           <p class="territory-map-note muted">番号は下の年表と対応しています。合戦・城の項目はそのページの地点に、ほかは出来事の場所に置いています。近い地点の出来事は1本のピンにまとめ、拡大すると分かれます。</p>`
+        : "";
+      html.push(section("年表", `${mapHTML}<ul class="timeline">${items}</ul>`));
     }
 
     // 成し遂げたこと
@@ -378,12 +395,21 @@
     // 人物評価（時代別。同じ era が続くときはラベルを最初の1つだけ出す）
     if (p.reputation && p.reputation.length) {
       const items = p.reputation
-        .map(
-          (r, i) => `<div class="rep-item">
+        .map((r, i) => {
+          // 見出し：title があればそれ、無ければ本文の最初の一文（「〜と見られていた。」の要約）。残りを字下げした説明にする
+          const body = String(r.body ?? "");
+          const first = r.title ? "" : splitSentences(body.split("\n")[0])[0] || "";
+          const head = r.title || first;
+          const rest = body.slice(first.length).replace(/^\n+/, "");
+          const mark = srcMark(r.sourceId);
+          return `<div class="rep-item">
             ${i > 0 && p.reputation[i - 1].era === r.era ? "<span></span>" : `<span class="rep-era">${esc(r.era)}</span>`}
-            <div class="rep-body">${r.title ? `<b>${esc(r.title)}</b>` : ""}${paras(r.body, srcMark(r.sourceId))}</div>
-          </div>`
-        )
+            <div class="rep-body">
+              <div class="entry-head"><span class="entry-main">${esc(head)}</span>${rest ? "" : mark}</div>
+              ${rest ? `<div class="entry-note">${paras(rest, mark)}</div>` : ""}
+            </div>
+          </div>`;
+        })
         .join("");
       html.push(section("人物評価", `<div class="rep-list">${items}</div>`));
     }
@@ -404,10 +430,8 @@
         ? `<a href="castle.html?id=${encodeURIComponent(s.castle_id)}">${esc(s.name)}</a>`
         : spotName(s);
       return `<div class="spot-item">
-            <span class="spot-type">${esc(type)}</span>
-            <b>${name}</b>
-            ${place ? `<span class="spot-place">／ ${place}</span>` : ""}
-            ${s.description || s.sourceId ? `<div class="muted">${esc(s.description || "")}${srcMarks(s.sourceId)}</div>` : ""}
+            <div class="entry-head"><span class="spot-type">${esc(type)}</span><b>${name}</b>${place ? `<span class="spot-place">／ ${place}</span>` : ""}${s.castle_id ? "" : spotLinkNote(s)}</div>
+            ${s.description || s.sourceId ? `<div class="entry-note">${sentences(s.description, srcMarks(s.sourceId)) || srcMarks(s.sourceId)}</div>` : ""}
           </div>`;
     };
     const g = p.graves;
@@ -461,10 +485,9 @@
             ? `<span class="entry-link-note">［リンク先：Amazon］</span>`
             : "";
           const meta = [r.author, r.publisher, r.year].filter(Boolean).map(esc).join(" / ");
-          // 1行目：書名とリンク先、2行目：著者・出版社・年、その下に紹介（句点ごとに改行）
+          // 1行目：書名・著者・出版社・年・リンク先、その下に紹介（句点ごとに改行）
           return `<li class="entry">
-            <div class="entry-head"><span class="entry-main">${title}</span>${shop}</div>
-            ${meta ? `<div class="entry-meta">${meta}</div>` : ""}
+            <div class="entry-head"><span class="entry-main">${title}</span>${meta ? `<span class="entry-meta">${meta}</span>` : ""}${shop}</div>
             ${r.note ? `<div class="entry-note">${sentences(r.note)}</div>` : ""}
           </li>`;
         })
@@ -492,8 +515,7 @@
           return `<li class="entry src-entry">
             <span class="src-badges">${badges}</span>
             <div>
-              <div class="entry-head"><span class="entry-main">${title}</span>${linkNote}</div>
-              ${meta ? `<div class="entry-meta">${meta}</div>` : ""}
+              <div class="entry-head"><span class="entry-main">${title}</span>${meta ? `<span class="entry-meta">${meta}</span>` : ""}${linkNote}</div>
             </div>
           </li>`;
         })
@@ -506,6 +528,79 @@
 
     contentEl.innerHTML = html.join("");
     if (document.getElementById("territory-map")) initTerritoryMap(p.territories);
+    if (document.getElementById("timeline-map")) initTimelineMap(timeline);
+  }
+
+  // 年表の出来事の場所：座標があればそこ、無ければ城、合戦のページの地点
+  function hasEventPlace(e) {
+    return hasCoords(e) || !!e.castle_id || !!e.battle_id;
+  }
+
+  // 年表の地図：出来事ごとの番号付きピン
+  function initTimelineMap(events) {
+    const el = document.getElementById("timeline-map");
+    const index = (url, key) =>
+      fetch(url)
+        .then((res) => (res.ok ? res.json() : {}))
+        .catch(() => ({}))
+        .then((d) => new Map((d[key] || []).map((x) => [x.id, x])));
+    Promise.all([loadLeaflet(), index("data/battles/index.json", "battles"), index("data/castles/index.json", "castles")])
+      .then(([L, battles, castles]) => {
+        const map = L.map(el, { scrollWheelZoom: false }).setView([35, 136], 6);
+        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+          maxZoom: 18,
+          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        }).addTo(map);
+
+        const pts = events
+          .map((e, i) => {
+            const at = hasCoords(e) ? e : castles.get(e.castle_id) || battles.get(e.battle_id);
+            if (!hasCoords(at)) return null;
+            const where = e.place || (at === e ? "" : at.name);
+            return { e, n: i + 1, ll: [Number(at.lat), Number(at.lng)], where };
+          })
+          .filter(Boolean);
+        if (!pts.length) {
+          el.remove();
+          return;
+        }
+
+        // 画面上で重なるほど近い出来事は 1 本のピンにまとめる（例：「2・3」）。拡大・縮小のたびにまとめ直す
+        const markers = L.layerGroup().addTo(map);
+        const drawPins = () => {
+          markers.clearLayers();
+          const groups = [];
+          for (const x of pts) {
+            const px = map.latLngToContainerPoint(x.ll);
+            const g = groups.find((g) => g.px.distanceTo(px) < 28);
+            if (g) g.list.push(x);
+            else groups.push({ px, list: [x] });
+          }
+          for (const { list } of groups) {
+            const label = list.map((x) => x.n).join("・");
+            const icon = L.divIcon({ className: "terr-marker", html: `<span>${esc(label)}</span>`, iconSize: null });
+            const popup = list
+              .map(({ e, n, where }) => {
+                const when = `${esc(e.year)}年${e.month ? esc(e.month) + "月" : ""}`;
+                const place = where ? `地図の位置：${esc(where)}${e.approx ? "（おおよそ）" : ""}` : "";
+                return `<div class="terr-popup"><b>${n}. ${when} ${esc(e.title)}</b>${place ? `<div class="muted">${place}</div>` : ""}</div>`;
+              })
+              .join("");
+            L.marker(list[0].ll, { icon, title: label }).bindPopup(popup).addTo(markers);
+          }
+        };
+
+        map.invalidateSize();
+        const bounds = L.latLngBounds(pts.map((x) => x.ll));
+        if (pts.length === 1) map.setView(pts[0].ll, 10);
+        else map.fitBounds(bounds, { padding: [24, 24] });
+        drawPins();
+        map.on("zoomend", drawPins);
+      })
+      .catch((err) => {
+        console.error(err);
+        el.outerHTML = `<p class="muted">地図を読み込めませんでした。</p>`;
+      });
   }
 
   function hasCoords(t) {
@@ -708,19 +803,6 @@
             .bindPopup(popup)
             .addTo(map);
           provLayers.set(name, layer);
-        }
-
-        // 凡例：項目ごとに、その項目で初めて塗った国・郡をまとめる
-        const legendEl = document.getElementById("territory-legend");
-        if (legendEl && provLayers.size) {
-          legendEl.innerHTML = territories
-            .map((t, i) => {
-              const names = [...provs].filter(([n, v]) => v.first === i && provLayers.has(n)).map(([n]) => n);
-              if (!names.length) return "";
-              const lost = names.every((n) => provs.get(n).items.every(({ t }) => t.until));
-              return `<span class="terr-legend-item${lost ? " is-lost" : ""}"><i style="background:${terrColor(i)}"></i>${i + 1}. ${t.year && !t.until ? esc(t.year) + "年〜 " : terrYears(t)}${names.map(esc).join("・")}</span>`;
-            })
-            .join("");
         }
 
         // ピンの位置：座標があればそこ、無ければ国の範囲の中心

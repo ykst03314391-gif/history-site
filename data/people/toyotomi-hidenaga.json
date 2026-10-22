@@ -88,17 +88,17 @@
     { "year": 1574, "title": "長島一向一揆攻め", "description": "信長本隊の先陣に「木下小一郎」の名が見える。一揆勢が立ちはだかると、浅井新八とともに攻めかかった", "links": [{ "text": "浅井新八", "person_id": "asai-shinpachi" }], "battle_id": "nagashima-ikko-ikki", "sourceId": "shincho-koki" },
     { "year": 1577, "month": 11, "title": "竹田城代", "castle_id": "takeda", "description": "兄・秀吉が但馬の竹田城を落とした後、城代として入る", "sourceId": "shincho-koki" },
     { "year": 1580, "month": 1, "title": "三木城攻め", "description": "別所長治の三木城攻めで、兄とともに鷹尾山の城に攻め入る", "links": [{ "text": "別所長治", "person_id": "bessho-nagaharu" }], "battle_id": "miki-siege", "sourceId": "tensho-ki" },
-    { "year": 1580, "title": "但馬平定", "description": "兄から兵を預かって但馬に攻め入り、国を平定する", "sourceId": "shincho-koki" },
+    { "year": 1580, "title": "但馬平定", "place": "但馬国", "lat": 35.42, "lng": 134.78, "approx": true,"description": "兄から兵を預かって但馬に攻め入り、国を平定する", "sourceId": "shincho-koki" },
     { "year": 1582, "month": 6, "day": 13, "title": "山崎の戦い", "description": "中国大返しから兄に従って参陣したとされる", "battle_id": "yamazaki" },
-    { "year": 1582, "month": 10, "day": 15, "title": "信長の葬儀", "description": "大徳寺で営まれた信長の葬儀で、警固の大将を務める", "sourceId": "tensho-ki" },
+    { "year": 1582, "month": 10, "day": 15, "title": "信長の葬儀", "place": "大徳寺（京都市北区）", "lat": 35.0441, "lng": 135.7462,"description": "大徳寺で営まれた信長の葬儀で、警固の大将を務める", "sourceId": "tensho-ki" },
     { "year": 1583, "title": "伊勢攻め", "description": "柴田方についた滝川一益を攻めるため、土岐多羅越から伊勢へ入る", "links": [{ "text": "滝川一益", "person_id": "takigawa-kazumasu" }], "battle_id": "ise-campaign", "sourceId": "tensho-ki" },
     { "year": 1583, "month": 4, "title": "賤ヶ岳の戦い", "description": "柴田勝家との対陣で、田上山に本陣を置いたとされる", "battle_id": "shizugatake", "sourceId": "hoan-taikoki" },
     { "year": 1585, "month": 3, "title": "紀州攻め", "description": "根来・雑賀攻めで副将を務める", "battle_id": "kishu-campaign", "sourceId": "hoan-taikoki" },
     { "year": 1585, "month": 6, "title": "四国攻め", "description": "総大将として大軍を率いて淡路から阿波へ渡り、長宗我部元親を降伏させる。元親の処遇も秀長らに任された", "links": [{ "text": "長宗我部元親", "person_id": "chosokabe-motochika" }], "battle_id": "shikoku-campaign", "sourceId": "tensho-ki" },
     { "year": 1585, "title": "大和郡山城主", "castle_id": "yamato-koriyama", "description": "大和・紀伊などを与えられ、郡山城を本拠とする。長宗我部氏や筒井定次も秀長の配下に置かれた", "links": [{ "text": "長宗我部", "person_id": "chosokabe-motochika" }, { "text": "筒井定次", "person_id": "tsutsui-sadatsugu" }], "sourceId": "tensho-ki" },
-    { "year": 1585, "month": 9, "day": 3, "title": "大和入国", "description": "兄・秀吉とともに郡山に入る。多聞院日記は「秀吉兄弟上下五千程ニテ被入訖」と書き、興福寺の両門跡をはじめ、春日社・東大寺の者までこぞって迎えに出たという。翌日、秀吉は伊勢の蒲生氏郷に、大和の仕置のために昨日郡山に来たと書き送っている", "sourceId": "tamonin-nikki" },
+    { "year": 1585, "month": 9, "day": 3, "title": "大和入国", "place": "郡山", "lat": 34.6497, "lng": 135.7826,"description": "兄・秀吉とともに郡山に入る。多聞院日記は「秀吉兄弟上下五千程ニテ被入訖」と書き、興福寺の両門跡をはじめ、春日社・東大寺の者までこぞって迎えに出たという。翌日、秀吉は伊勢の蒲生氏郷に、大和の仕置のために昨日郡山に来たと書き送っている", "sourceId": "tamonin-nikki" },
     { "year": 1587, "month": 4, "title": "九州攻め", "description": "日向方面の大将として進み、根白坂の戦いで島津勢を破る", "links": [{ "text": "根白坂の戦い", "battle_id": "neshirozaka" }], "battle_id": "kyushu-campaign", "sourceId": "hoan-taikoki" },
-    { "year": 1591, "month": 1, "day": 22, "title": "死去", "description": "大和郡山城で病没。跡は養子の秀保が継いだ" }
+    { "year": 1591, "month": 1, "day": 22, "title": "死去", "place": "大和郡山城", "lat": 34.6497, "lng": 135.7826,"description": "大和郡山城で病没。跡は養子の秀保が継いだ" }
   ],
   "episodes": [
     {
@@ -156,7 +156,7 @@
     { "type": "神社仏閣", "name": "長谷寺", "url": "https://www.hasedera.or.jp/", "prefecture": "奈良県", "city": "桜井市", "description": "秀長が長谷寺の惣中・本願に宛てた書状（天正14年か）2通と、秀長の娘「三八女」が天正16年（1588）に寄進した釣灯籠が伝わる", "sourceId": "toyotomi-kyodai-ten" },
     { "type": "神社仏閣", "name": "談山神社（多武峰）", "url": "https://www.tanzan.or.jp/", "prefecture": "奈良県", "city": "桜井市", "description": "大和に入った直後の天正13年9月6日付で、秀長が多武峰の門前に出した下知状の写しが伝わる（内容は未確認）", "sourceId": "toyotomi-kyodai-ten" },
     { "type": "博物館", "name": "奈良国立博物館", "url": "https://www.narahaku.go.jp/", "prefecture": "奈良県", "city": "奈良市", "description": "天正18年（1590）10月の「羽柴秀長都状」を所蔵する。秀長の年を「五十一」と記すとされ、生年を天文9年とする根拠になっている", "sourceId": "toyotomi-kyodai-ten" },
-    { "type": "名物", "name": "肩衝茶入 銘 薬師院", "url": "https://www.kosetsu-museum.or.jp/mikage/", "urlLabel": "所蔵先の香雪美術館の公式サイト", "prefecture": "兵庫県", "city": "神戸市", "description": "秀長らが所持したとされる南宋〜元時代の茶入。香雪美術館蔵", "sourceId": "toyotomi-kyodai-ten" },
+    { "type": "名物", "name": "肩衝茶入 銘 薬師院（香雪美術館蔵）","url": "https://www.kosetsu-museum.or.jp/mikage/", "urlLabel": "所蔵先の香雪美術館の公式サイト", "prefecture": "兵庫県", "city": "神戸市", "description": "秀長らが所持したとされる南宋〜元時代の茶入", "sourceId": "toyotomi-kyodai-ten" },
     { "type": "城跡", "name": "竹田城跡", "castle_id": "takeda", "prefecture": "兵庫県", "city": "朝来市", "description": "秀長が城代を務めたと信長公記に見える" }
   ],
   "graves": {

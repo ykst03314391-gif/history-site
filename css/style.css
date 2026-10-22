@@ -21,6 +21,8 @@ body {
   font-family: var(--serif);
   font-weight: 500;
   color: var(--ink);
+  /* 段落の最後の行に「る。」など数文字だけが残らないよう、行の折り返しを整える */
+  text-wrap: pretty;
   background-color: var(--bg);
   background-image:
     radial-gradient(rgba(0, 0, 0, 0.02) 1px, transparent 1px);
@@ -355,10 +357,16 @@ html { scroll-behavior: smooth; }
 .entry-main { font-weight: 700; }
 .entry-note { color: var(--ink-soft); font-size: 0.9rem; margin: 4px 0 0; line-height: 1.75; }
 .sent { display: block; }
-.entry-meta { color: var(--ink-soft); font-size: 0.85rem; margin-top: 2px; }
-.entry-link-note { color: var(--ink-soft); font-size: 0.82rem; font-weight: normal; }
-.entry-meta .entry-link-note { margin-left: 10px; }
-.terr-until-label { display: block; font-weight: 700; }
+.nobr { white-space: nowrap; }
+/* 見出し行の下は字下げし、説明は左に線を引いて見出しと区別する */
+.entry-head ~ .entry-note { margin-left: 1em; padding-left: 0.8em; border-left: 2px solid var(--line); margin-top: 6px; }
+.entry-meta { color: var(--ink-soft); font-size: 0.85rem; }
+/* リンク先の説明は著者・出版社などの書誌と見分けられるよう、ゴシック体の小さな札にする */
+.entry-link-note {
+  font-family: "Yu Gothic", "YuGothic", "Hiragino Sans", "Meiryo", sans-serif;
+  color: #7a7166; font-size: 0.72rem; font-weight: normal;
+  background: var(--bg-panel); border: 1px solid var(--line); border-radius: 4px; padding: 0 6px;
+}.terr-until-label { display: block; font-weight: 700; }
 .inline-article {
   display: inline-flex;
   align-items: center;
@@ -417,6 +425,9 @@ html { scroll-behavior: smooth; }
 .rep-body { color: var(--ink); font-size: 0.95rem; }
 .rep-body p { margin: 0 0 0.6em; }
 .rep-body p:last-child { margin-bottom: 0; }
+.rep-body .entry-note p { margin-bottom: 0.5em; }
+.rep-body .entry-note p:last-child { margin-bottom: 0; }
+.timeline .t-related { margin-top: 6px; }
 
 /* 墓所 */
 .grave-status {
@@ -1000,7 +1011,8 @@ footer.site-footer {
   overflow: hidden;
   z-index: 0;
 }
-.territory-map-note { font-size: 0.82rem; margin: 6px 0 12px; }
+/* 地図の注記は本文より控えめにする */
+.territory-map-note { font-size: 0.78rem; margin: 6px 0 12px; color: #8a8175; line-height: 1.7; }
 .terr-marker span {
   display: inline-block;
   transform: translate(-50%, -50%);
@@ -1028,10 +1040,6 @@ footer.site-footer {
   line-height: 1.5em;
   text-align: center;
 }
-.territory-legend { display: flex; flex-wrap: wrap; gap: 4px 16px; margin: 8px 0 0; font-size: 0.85rem; }
-.terr-legend-item { display: inline-flex; align-items: center; gap: 6px; }
-.terr-legend-item i { display: inline-block; width: 14px; height: 14px; border-radius: 3px; opacity: 0.75; }
-.terr-legend-item.is-lost i { opacity: 0.3; outline: 1px dashed currentColor; }
 .terr-until { display: block; font-size: 0.85em; }
 /* 一覧の各項目の下に置く、その時点の領地だけの地図 */
 .terr-snap { height: 300px; max-width: 560px; margin: 8px 0 2px; border: 1px solid var(--line); border-radius: 6px; z-index: 0; }

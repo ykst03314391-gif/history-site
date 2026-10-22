@@ -1124,6 +1124,17 @@ footer.site-footer {
 @media (max-width: 600px) {
   .castle-photo { width: 100%; max-width: 420px; margin: 0 auto; }
 }
+/* ---- 家紋の絵（一覧カードの右上、詳細ページは見出しの右） ---- */
+.kamon-thumb { float: right; width: 56px; height: 56px; margin: 0 0 8px 12px; object-fit: contain; }
+.clan-card .card-summary { clear: right; }
+.kamon-figure { margin: 0; width: 160px; flex-shrink: 0; text-align: center; }
+.kamon-figure img { display: block; width: 120px; height: 120px; margin: 0 auto; object-fit: contain; }
+.kamon-figure figcaption { font-size: 0.75rem; line-height: 1.5; color: var(--ink-soft); margin-top: 6px; text-align: left; }
+.kamon-figure figcaption span { display: block; }
+.kamon-figure .img-credit { margin-top: 4px; overflow-wrap: anywhere; }
+@media (max-width: 600px) {
+  .kamon-figure { margin: 0 auto; }
+}
 .photo-credits { margin-top: 32px; font-size: 0.8rem; color: var(--ink-soft); }
 .photo-credits h2 { font-size: 1rem; margin-bottom: 8px; }
 .photo-credit-list { margin: 0; padding-left: 1.2em; line-height: 1.7; }

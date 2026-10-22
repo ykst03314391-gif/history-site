@@ -21,7 +21,18 @@
     return label;
   }
 
-  function render(c) {
+  // 家紋の絵のクレジット（作者・ライセンス・出典。CCの絵は縮小して使用）
+  function creditHTML(k) {
+    const lic = k.licenseUrl
+      ? `<a href="${esc(k.licenseUrl)}" target="_blank" rel="noopener">${esc(k.license)}</a>`
+      : esc(k.license);
+    const src = `<a href="${esc(k.source.url)}" target="_blank" rel="noopener">${esc(k.source.name)}</a>`;
+    return [k.author ? `作者：${esc(k.author)}` : "", lic, `出典：${src}`, k.note ? esc(k.note) : ""]
+      .filter(Boolean)
+      .join(" ／ ");
+  }
+
+  function render(c, kamonImage) {
     document.title = `${c.name} ｜ 戦国クロニクル`;
     const html = [];
 
@@ -29,12 +40,28 @@
     const facts = [];
     if (c.kamon) facts.push(`家紋：${esc(c.kamon)}`);
     if (c.base && c.base.name) facts.push(`本拠：${esc(c.base.name)}`);
+    // 家紋の絵は大名家一覧のデータ（index.json の kamonImage）を使う
+    const k = kamonImage;
+    const kamonHTML = k
+      ? `
+        <figure class="kamon-figure">
+          <img src="${esc(k.src)}" alt="家紋：${esc(c.kamon || "")}">
+          <figcaption>
+            <span class="portrait-title">${esc(c.kamon || "家紋")}</span>
+            ${k.colorNote ? `<span class="portrait-note">${esc(k.colorNote)}</span>` : ""}
+            <span class="img-credit">${creditHTML(k)}</span>
+          </figcaption>
+        </figure>`
+      : "";
     html.push(`
-      <div class="person-head">
-        <h1>${esc(c.name)}</h1>
-        <p class="kana">${esc(c.kana || "")}</p>
-        ${facts.length ? `<p class="years">${facts.join("　／　")}</p>` : ""}
-        ${c.summary ? `<p class="summary">${esc(c.summary)}</p>` : ""}
+      <div class="person-head${k ? " has-portrait" : ""}">
+        ${kamonHTML}
+        <div class="person-head-main">
+          <h1>${esc(c.name)}</h1>
+          <p class="kana">${esc(c.kana || "")}</p>
+          ${facts.length ? `<p class="years">${facts.join("　／　")}</p>` : ""}
+          ${c.summary ? `<p class="summary">${esc(c.summary)}</p>` : ""}
+        </div>
       </div>
     `);
 
@@ -115,12 +142,14 @@
     root.prepend(nav);
   }
 
-  fetch(`data/clans/${encodeURIComponent(id)}.json`)
-    .then((res) => {
+  Promise.all([
+    fetch(`data/clans/${encodeURIComponent(id)}.json`).then((res) => {
       if (!res.ok) throw new Error(res.status);
       return res.json();
-    })
-    .then(render)
+    }),
+    fetch("data/clans/index.json").then((r) => (r.ok ? r.json() : null)).catch(() => null),
+  ])
+    .then(([c, idx]) => render(c, (((idx && idx.clans) || []).find((x) => x.id === c.id) || {}).kamonImage))
     .catch((err) => {
       contentEl.innerHTML = `<p class="error">大名家データを読み込めませんでした（ID: ${esc(id)}）。ローカルで開いている場合は簡易サーバー経由で表示してください（README参照）。</p>`;
       console.error(err);

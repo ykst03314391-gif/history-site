@@ -6,6 +6,7 @@
       "kana": "おだけ",
       "summary": "尾張から興り、信長の代に天下統一目前まで勢力を広げた家。",
       "kamon": "織田木瓜",
+      "kamonImage": {"src": "assets/img/kamon/oda.png", "author": "Mukai", "license": "CC BY-SA 3.0", "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0", "source": {"name": "Wikimedia Commons", "url": "https://commons.wikimedia.org/wiki/File:Oda_ka_(No_background_and_Black_color_drawing).svg"}},
       "region": "尾張・美濃・近江",
       "homeProvince": "尾張国"
     },
@@ -15,6 +16,7 @@
       "kana": "とよとみけ",
       "summary": "秀吉が一代で築き上げ、天下統一を成し遂げた家。",
       "kamon": "五三桐",
+      "kamonImage": {"src": "assets/img/kamon/toyotomi.png", "author": "Mukai", "license": "CC BY-SA 3.0", "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0", "note": "黒地に白抜きの原画の色を反転し、背景を透明にして使用", "source": {"name": "Wikimedia Commons", "url": "https://commons.wikimedia.org/wiki/File:Japanese_Crest_Gosann_Kiri.svg"}},
       "region": "畿内（大坂）",
       "homeProvince": "尾張国",
       "homeNote": "秀吉の出身の尾張とする。天下人としての本拠は大坂（摂津国）"
@@ -25,6 +27,7 @@
       "kana": "うえすぎけ",
       "summary": "越後を拠点とし、「軍神」謙信を擁した名門。",
       "kamon": "上杉笹",
+      "kamonImage": {"src": "assets/img/kamon/uesugi.png", "author": "Gameposo, vectorised by Marnanel", "license": "CC BY-SA 4.0", "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0", "source": {"name": "Wikimedia Commons", "url": "https://commons.wikimedia.org/wiki/File:Uesugi_Sasa_(No_background_and_Black_color_drawing).svg"}},
       "region": "越後",
       "homeProvince": "越後国",
       "homeNote": "名字の起こりは丹波国上杉荘だが、戦国大名としての上杉家（越後長尾氏の景虎＝謙信が継いだ家）は越後で興ったため越後とする"
@@ -35,6 +38,7 @@
       "kana": "あけちけ",
       "summary": "光秀が織田家中で台頭し、本能寺の変で歴史を動かした家。",
       "kamon": "水色桔梗",
+      "kamonImage": {"src": "assets/img/kamon/akechi.png", "author": "Lemon-s", "license": "パブリックドメイン", "note": "色を黒に変えて使用", "colorNote": "本来の色は水色。このサイトでは、ほかの家紋とそろえて黒で表示している", "source": {"name": "Wikimedia Commons", "url": "https://commons.wikimedia.org/wiki/File:Mizu-iro_Kiky%C5%8D.svg"}},
       "region": "丹波・近江",
       "homeProvince": "美濃国",
       "homeNote": "光秀の出自は美濃の土岐明智氏とされる（諸説あり）"

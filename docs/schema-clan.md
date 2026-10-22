@@ -19,8 +19,23 @@
 | `summary` | string | 一覧カード用の一言紹介 |
 | `kamon` | string | 家紋名 |
 | `region` | string | 主な勢力圏（例：`尾張・美濃`） |
+| `kamonImage` | KamonImage? | 家紋の絵。一覧カードの右上と詳細ページの見出しの右に出し、クレジットを添える |
 | `homeProvince` | string | その家が興った国（例：`尾張国`）。一覧の地域別・国別に使う。のちに勢力を広げても動かさない。家の名の起こりではなく、戦国大名として興った国を書く |
 | `homeNote` | string? | `homeProvince` の決め方に迷う家の理由メモ（例：上杉家は名字の起こりが丹波だが越後とする） |
+
+### KamonImage（家紋の絵）
+```
+KamonImage = {
+  "src": string,        // assets/img/kamon/<id>.png（240×240、背景は透明）
+  "author"?: string,    // 作者（Commons の作者名）
+  "license": string,    // "CC BY-SA 3.0" / "パブリックドメイン" など
+  "licenseUrl"?: string,
+  "note"?: string,      // 色の反転など、原画に手を加えたときは必ず書く（クレジットに出す）
+  "colorNote"?: string, // 家紋の本来の色と表示の色が違うときの注記（例：水色桔梗を黒で表示）。詳細ページの家紋名の下に出し、一覧カードの家紋タグに「（図は黒で表示）」を添える
+  "source": { "name": string, "url": string }  // Commons のファイルページ
+}
+```
+> Commons の家紋の絵から、CC0・パブリックドメイン・CC BY・CC BY-SA のものだけを使う。一覧ページの下に「家紋の絵の出典」を出す。
 
 ## 詳細（<id>.json）
 

@@ -12,6 +12,25 @@
       ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c])
     );
 
+  // 家紋の絵のクレジット（作者・ライセンス・出典。CCの絵は縮小して使用）
+  function creditHTML(k) {
+    const lic = k.licenseUrl
+      ? `<a href="${esc(k.licenseUrl)}" target="_blank" rel="noopener">${esc(k.license)}</a>`
+      : esc(k.license);
+    const src = `<a href="${esc(k.source.url)}" target="_blank" rel="noopener">${esc(k.source.name)}</a>`;
+    return [k.author ? `作者：${esc(k.author)}` : "", lic, `出典：${src}`, k.note ? esc(k.note) : ""]
+      .filter(Boolean)
+      .join(" ／ ");
+  }
+
+  function creditsHTML(items) {
+    const rows = items
+      .filter((c) => c.kamonImage)
+      .map((c) => `<li><span class="credit-name">${esc(c.name)}</span>${esc(c.kamon || "家紋")}：${creditHTML(c.kamonImage)}</li>`)
+      .join("");
+    return rows ? `<h2>家紋の絵の出典</h2><ul class="photo-credit-list">${rows}</ul>` : "";
+  }
+
   // 興った国と勢力範囲。項目の途中では折り返さない
   function metaHTML(c) {
     const items = [c.homeProvince ? `${c.homeProvince}で興る` : "", c.region || ""].filter(Boolean);
@@ -21,12 +40,13 @@
 
   function cardHTML(c) {
     return `
-      <a class="card" href="clan.html?id=${encodeURIComponent(c.id)}">
+      <a class="card clan-card" href="clan.html?id=${encodeURIComponent(c.id)}">
+        ${c.kamonImage ? `<img class="kamon-thumb" src="${esc(c.kamonImage.src)}" alt="家紋：${esc(c.kamon || "")}" loading="lazy">` : ""}
         <h3>${esc(c.name)}</h3>
         <p class="kana">${esc(c.kana || "")}</p>
         ${metaHTML(c)}
         <p class="card-summary">${esc(c.summary || "")}</p>
-        ${c.kamon ? `<div class="tags"><span class="tag">家紋：${esc(c.kamon)}</span></div>` : ""}
+        ${c.kamon ? `<div class="tags"><span class="tag">家紋：${esc(c.kamon)}${c.kamonImage && c.kamonImage.colorNote ? "（図は黒で表示）" : ""}</span></div>` : ""}
       </a>`;
   }
 
@@ -84,6 +104,8 @@
       (a.kana || a.name || "").localeCompare(b.kana || b.name || "", "ja")
     );
     filter(searchEl.value);
+    const creditsEl = document.getElementById("photo-credits");
+    if (creditsEl) creditsEl.innerHTML = creditsHTML(clans);
     searchEl.addEventListener("input", (e) => filter(e.target.value));
   } catch (err) {
     listEl.innerHTML = `<p class="error">大名家データの読み込みに失敗しました。ローカルで開いている場合は簡易サーバー経由で表示してください（README参照）。</p>`;

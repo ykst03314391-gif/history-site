@@ -98,7 +98,8 @@ Spot = {
   "lat"?: number, "lng"?: number,
   "description"?: string,   // 所蔵先の博物館名などもここに記す（例：「福岡市博物館蔵、国宝」）
   "sourceId"?: string,
-  "castle_id"?: string      // 城DBに詳細ページがある城跡なら、名前を城ページへのリンクにする
+  "castle_id"?: string,     // 城DBに詳細ページがある城跡なら、名前を城ページへのリンクにする
+  "url"?: string            // 公式サイトや自治体の紹介ページ。名前を外部リンクにする（castle_id があればそちらを優先）
 }
 ```
 > `Spot` に地域を持たせることで「地域から探す」「逆引き（この人物→行くべき場所）」の両方に使える。
@@ -204,10 +205,10 @@ Spot = {
 ### Graves（墓所）
 ```
 { "status": "現存" | "諸説あり" | "不明" | "なし",   // 必ず記す
-  "note"?: string,
+  "note"?: string, "sourceId"?: string | string[],   // note の典拠
   "places"?: [
     { "name": string, "prefecture"?: string, "city"?: string,
-      "description"?: string, "sourceId"?: string }
+      "description"?: string, "sourceId"?: string, "url"?: string }
   ] }
 ```
 > 墓所は「わからない」ことも情報。遺骸が見つかっていない・供養塔が各地にある等を `status` と `note` で明示する。

@@ -103,6 +103,11 @@
     }
     // 典拠が複数ある項目用（sourceId に配列も書ける）
     const srcMarks = (ids) => [].concat(ids || []).map(srcMark).join("");
+    // ゆかりの地・墓所の名前（url があれば外部リンク）
+    const spotName = (s) =>
+      s.url
+        ? `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.name)}</a>`
+        : esc(s.name);
 
     // ヘッダー
     const birth = fmtDate(p.birth);
@@ -343,15 +348,15 @@
       const items = p.spots
         .map((s) => {
           const place = [s.prefecture, s.city].filter(Boolean).map(esc).join(" ");
-          // castle_id があれば城ページへのリンクにする
+          // castle_id があれば城ページへ、url があれば公式サイトなどへのリンクにする
           const name = s.castle_id
             ? `<a href="castle.html?id=${encodeURIComponent(s.castle_id)}">${esc(s.name)}</a>`
-            : esc(s.name);
+            : spotName(s);
           return `<div class="spot-item">
             <span class="spot-type">${esc(s.type)}</span>
             <b>${name}</b>
             ${place ? `<span class="spot-place">／ ${place}</span>` : ""}
-            ${s.description ? `<div class="muted">${esc(s.description)}</div>` : ""}
+            ${s.description || s.sourceId ? `<div class="muted">${esc(s.description || "")}${srcMarks(s.sourceId)}</div>` : ""}
           </div>`;
         })
         .join("");
@@ -366,15 +371,15 @@
           const place = [pl.prefecture, pl.city].filter(Boolean).map(esc).join(" ");
           return `<div class="spot-item">
               <span class="spot-type">墓所</span>
-              <b>${esc(pl.name)}</b>
+              <b>${spotName(pl)}</b>
               ${place ? `<span class="spot-place">／ ${place}</span>` : ""}
-              ${pl.description ? `<div class="muted">${esc(pl.description)}</div>` : ""}
+              ${pl.description || pl.sourceId ? `<div class="muted">${esc(pl.description || "")}${srcMarks(pl.sourceId)}</div>` : ""}
             </div>`;
         })
         .join("");
       const status = `<p class="grave-status">状態：<b>${esc(g.status || "不明")}</b>${
         g.note ? ` <span class="muted">${esc(g.note)}</span>` : ""
-      }</p>`;
+      }${srcMarks(g.sourceId)}</p>`;
       html.push(section("墓所", status + places));
     }
 
@@ -407,8 +412,12 @@
           const title = r.affiliateUrl
             ? `<a href="${esc(r.affiliateUrl)}" target="_blank" rel="noopener">${esc(r.title)}</a>`
             : esc(r.title);
+          // リンク先が Amazon のときはその旨を添える
+          const shop = /(^|\.)amazon\.co\.jp$/.test(new URL(r.affiliateUrl || "about:blank").hostname)
+            ? ` <span class="muted">［リンク先：Amazon］</span>`
+            : "";
           const meta = [r.author, r.publisher, r.year].filter(Boolean).map(esc).join(" / ");
-          return `<div class="ref-item">${title}${meta ? ` <span class="muted">（${meta}）</span>` : ""}${r.note ? `<div class="muted">${esc(r.note)}</div>` : ""}</div>`;
+          return `<div class="ref-item">${title}${shop}${meta ? ` <span class="muted">（${meta}）</span>` : ""}${r.note ? `<div class="muted">${esc(r.note)}</div>` : ""}</div>`;
         })
         .join("");
       html.push(section("参考書籍", items));

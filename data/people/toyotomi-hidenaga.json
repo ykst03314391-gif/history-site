@@ -141,30 +141,31 @@
     { "era": "死去後", "title": "研究による組み立て直し（2）", "body": "一方で、大和の支配の厳しさに目を向ける研究者もいる。渡邊大門は多聞院日記をもとに、秀長が入った直後の武具の取り上げを刀狩に先立つものとみる。日記の天正13年閏8月25日の条は、多武峰（多武峯）と話がついたらしく、前日の夕方に一山の衆が弓・鑓・鉄砲・具足・甲・大小の刀を残らず「進上」として運び、今朝すべて運び上げたと書き、「兵力全不入、天下平均ノ事也」と結ぶ。ただし対象は多武峰で、日記は命じた人の名を書かない。ほかに渡邊は、寺社への指出と寺領の削減、郡山城のための石集めを挙げる。寺領については、9月27日の条に興福寺領「二万六千余」をすべて取り上げ、うち五千石を寺の修造に充てるとの話がまとまったとあり、29日の条には「寺門領事又一万石可落之由申來」とある（渡邊は25日の条とするが、日記では29日）。天正15年8月朔日の条には「去年撿知ニ礼ヲ仕タル曲事トテ、國中庄屋衆卅七人籠者了ト」とあり、前年の検地で役人に礼（贈り物）をしたことを咎められ、国中の庄屋37人が牢に入れられたという（伝聞）。渡邊は暴君ではなかったとし、戦国の「善政」とは土地と年貢と在地の勢力を押さえることだった、と結ぶ。", "sourceId": "watanabe-2026" }
   ],
   "references": [
-    { "title": "羽柴秀長文書集", "author": "黒田基樹・柴裕之 編", "publisher": "東京堂出版", "year": 2025, "isbn": "9784490211153", "note": "秀長の出した文書・受けた文書を年代順に476号まで収め、関係文書目録と年表を付ける。近江伊香郡宛の文書など、このページで原本未確認の文書を確かめるのに使う" },
-    { "title": "羽柴秀長 秀吉の天下を支えた弟", "author": "柴裕之", "publisher": "KADOKAWA（角川選書）", "year": 2025, "isbn": "9784047037403", "note": "大河ドラマ「豊臣兄弟！」の時代考証を務めた研究者による評伝。生い立ちから妻子、一門筆頭としての執政、死後まで" },
-    { "title": "秀吉を天下人にした男 羽柴秀長 大大名との外交と領国統治", "author": "黒田基樹", "publisher": "講談社（講談社現代新書）", "note": "大大名との外交と、大和・紀伊などの領国統治から秀長を描く" },
-    { "title": "大和大納言 豊臣秀長 補佐役か、もう一人の秀吉か", "author": "天野忠幸", "publisher": "平凡社", "year": 2025, "isbn": "9784582477535", "note": "畿内の戦国史の研究者による評伝。秀長以前の大和の事情から説き起こす" },
-    { "title": "豊臣秀長 「天下人の賢弟」の実像", "author": "和田裕弘", "publisher": "中央公論新社（中公新書）", "year": 2025, "isbn": "9784121028778", "note": "織田家臣団の研究者による評伝。正室・慈雲院の出自についての説も" },
-    { "title": "秀吉と豊臣一族 研究の最前線", "author": "河内将芳 編", "publisher": "山川出版社", "year": 2025, "note": "第二章、播磨良紀「秀吉の〝後継〟を期待された秀長の足跡」（34–51頁）" }
+    { "title": "羽柴秀長文書集", "author": "黒田基樹・柴裕之 編", "publisher": "東京堂出版", "year": 2025, "isbn": "9784490211153", "affiliateUrl": "https://www.amazon.co.jp/dp/4490211155", "note": "秀長の出した文書・受けた文書を年代順に476号まで収め、関係文書目録と年表を付ける。近江伊香郡宛の文書など、このページで原本未確認の文書を確かめるのに使う" },
+    { "title": "羽柴秀長 秀吉の天下を支えた弟", "author": "柴裕之", "publisher": "KADOKAWA（角川選書）", "year": 2025, "isbn": "9784047037403", "affiliateUrl": "https://www.amazon.co.jp/dp/4047037400", "note": "大河ドラマ「豊臣兄弟！」の時代考証を務めた研究者による評伝。生い立ちから妻子、一門筆頭としての執政、死後まで" },
+    { "title": "秀吉を天下人にした男 羽柴秀長 大大名との外交と領国統治", "author": "黒田基樹", "publisher": "講談社（講談社現代新書）", "year": 2025, "isbn": "9784065410745", "affiliateUrl": "https://www.amazon.co.jp/dp/4065410746", "note": "大大名との外交と、大和・紀伊などの領国統治から秀長を描く" },
+    { "title": "大和大納言 豊臣秀長 補佐役か、もう一人の秀吉か", "author": "天野忠幸", "publisher": "平凡社", "year": 2025, "isbn": "9784582477535", "affiliateUrl": "https://www.amazon.co.jp/dp/4582477534", "note": "畿内の戦国史の研究者による評伝。秀長以前の大和の事情から説き起こす" },
+    { "title": "豊臣秀長 「天下人の賢弟」の実像", "author": "和田裕弘", "publisher": "中央公論新社（中公新書）", "year": 2025, "isbn": "9784121028778", "affiliateUrl": "https://www.amazon.co.jp/dp/4121028775", "note": "織田家臣団の研究者による評伝。正室・慈雲院の出自についての説も" },
+    { "title": "秀吉と豊臣一族 研究の最前線", "author": "河内将芳 編", "publisher": "山川出版社", "year": 2025, "isbn": "9784634152588", "affiliateUrl": "https://www.amazon.co.jp/dp/4634152584", "note": "第二章、播磨良紀「秀吉の〝後継〟を期待された秀長の足跡」（34–51頁）" }
   ],
   "spots": [
     { "type": "城跡", "name": "郡山城跡", "castle_id": "yamato-koriyama", "prefecture": "奈良県", "city": "大和郡山市", "description": "秀長が大和に入って本拠とした城" },
-    { "type": "墓所", "name": "大納言塚", "prefecture": "奈良県", "city": "大和郡山市", "description": "秀長の墓所と伝わる" },
-    { "type": "神社仏閣", "name": "春岳院", "prefecture": "奈良県", "city": "大和郡山市", "description": "秀長の菩提寺。寺の名は法名「春岳紹栄」から。肖像画（豊臣秀長像）を所蔵する" },
-    { "type": "神社仏閣", "name": "高野山奥之院（豊臣家墓所）", "prefecture": "和歌山県", "city": "伊都郡高野町", "description": "法名と命日を刻んだ五輪塔（砂岩製・高さ183cm）がある。妻・慈雲院の五輪塔と並ぶ", "sourceId": "kinoshita-okunoin" },
-    { "type": "神社仏閣", "name": "長谷寺", "prefecture": "奈良県", "city": "桜井市", "description": "秀長が長谷寺の惣中・本願に宛てた書状（天正14年か）2通と、秀長の娘「三八女」が天正16年（1588）に寄進した釣灯籠が伝わる", "sourceId": "toyotomi-kyodai-ten" },
-    { "type": "神社仏閣", "name": "談山神社（多武峰）", "prefecture": "奈良県", "city": "桜井市", "description": "大和に入った直後の天正13年9月6日付で、秀長が多武峰の門前に出した下知状の写しが伝わる（内容は未確認）", "sourceId": "toyotomi-kyodai-ten" },
-    { "type": "博物館", "name": "奈良国立博物館", "prefecture": "奈良県", "city": "奈良市", "description": "天正18年（1590）10月の「羽柴秀長都状」を所蔵する。秀長の年を「五十一」と記すとされ、生年を天文9年とする根拠になっている", "sourceId": "toyotomi-kyodai-ten" },
-    { "type": "名物", "name": "肩衝茶入 銘 薬師院", "prefecture": "兵庫県", "city": "神戸市", "description": "秀長らが所持したとされる南宋〜元時代の茶入。香雪美術館蔵", "sourceId": "toyotomi-kyodai-ten" },
+    { "type": "墓所", "name": "大納言塚", "url": "https://www.city.yamatokoriyama.lg.jp/soshiki/machidukuri_senryaku/rekishi_bunkazai/bunkazai101/s_bunkazai/shiseki/1864.html", "prefecture": "奈良県", "city": "大和郡山市", "description": "秀長の墓所と伝わる" },
+    { "type": "神社仏閣", "name": "春岳院", "url": "https://www.city.yamatokoriyama.lg.jp/soshiki/chiikishinkoka/kanko/3/3508.html", "prefecture": "奈良県", "city": "大和郡山市", "description": "秀長の菩提寺。寺の名は法名「春岳紹栄」から。肖像画（豊臣秀長像）を所蔵する" },
+    { "type": "神社仏閣", "name": "高野山奥之院（豊臣家墓所）", "url": "https://www.koyasan.or.jp/", "prefecture": "和歌山県", "city": "伊都郡高野町", "description": "法名と命日を刻んだ五輪塔（砂岩製・高さ183cm）がある。妻・慈雲院の五輪塔と並ぶ", "sourceId": "kinoshita-okunoin" },
+    { "type": "神社仏閣", "name": "長谷寺", "url": "https://www.hasedera.or.jp/", "prefecture": "奈良県", "city": "桜井市", "description": "秀長が長谷寺の惣中・本願に宛てた書状（天正14年か）2通と、秀長の娘「三八女」が天正16年（1588）に寄進した釣灯籠が伝わる", "sourceId": "toyotomi-kyodai-ten" },
+    { "type": "神社仏閣", "name": "談山神社（多武峰）", "url": "https://www.tanzan.or.jp/", "prefecture": "奈良県", "city": "桜井市", "description": "大和に入った直後の天正13年9月6日付で、秀長が多武峰の門前に出した下知状の写しが伝わる（内容は未確認）", "sourceId": "toyotomi-kyodai-ten" },
+    { "type": "博物館", "name": "奈良国立博物館", "url": "https://www.narahaku.go.jp/", "prefecture": "奈良県", "city": "奈良市", "description": "天正18年（1590）10月の「羽柴秀長都状」を所蔵する。秀長の年を「五十一」と記すとされ、生年を天文9年とする根拠になっている", "sourceId": "toyotomi-kyodai-ten" },
+    { "type": "名物", "name": "肩衝茶入 銘 薬師院", "url": "https://www.kosetsu-museum.or.jp/mikage/", "prefecture": "兵庫県", "city": "神戸市", "description": "秀長らが所持したとされる南宋〜元時代の茶入。香雪美術館蔵", "sourceId": "toyotomi-kyodai-ten" },
     { "type": "城跡", "name": "竹田城跡", "castle_id": "takeda", "prefecture": "兵庫県", "city": "朝来市", "description": "秀長が城代を務めたと信長公記に見える" }
   ],
   "graves": {
     "status": "諸説あり",
     "note": "郡山の大納言塚が墓所と伝わる。ほかに高野山奥之院の豊臣家墓所に、法名と命日（天正十九年正月廿二）を刻んだ五輪塔がある。妻の慈雲院が、天正19年5月に自分の生前供養の塔を建てたとき、あわせて建てたとみられる（木下浩良氏の推測）。",
+    "sourceId": "kinoshita-okunoin",
     "places": [
-      { "name": "大納言塚", "prefecture": "奈良県", "city": "大和郡山市", "description": "秀長の墓所と伝わる" },
-      { "name": "高野山奥之院（豊臣家墓所）", "prefecture": "和歌山県", "city": "伊都郡高野町", "description": "五輪塔（供養塔）。砂岩製・高さ183cm", "sourceId": "kinoshita-okunoin" }
+      { "name": "大納言塚", "url": "https://www.city.yamatokoriyama.lg.jp/soshiki/machidukuri_senryaku/rekishi_bunkazai/bunkazai101/s_bunkazai/shiseki/1864.html", "prefecture": "奈良県", "city": "大和郡山市", "description": "秀長の墓所と伝わる" },
+      { "name": "高野山奥之院（豊臣家墓所）", "url": "https://www.koyasan.or.jp/", "prefecture": "和歌山県", "city": "伊都郡高野町", "description": "五輪塔（供養塔）。砂岩製・高さ183cm", "sourceId": "kinoshita-okunoin" }
     ]
   },
   "images": [],

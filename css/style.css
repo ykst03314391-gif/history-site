@@ -358,6 +358,8 @@ html { scroll-behavior: smooth; }
 .entry-note { color: var(--ink-soft); font-size: 0.9rem; margin: 4px 0 0; line-height: 1.75; }
 .sent { display: block; }
 .nobr { white-space: nowrap; }
+/* 説明文の中の史料の原文の引用（データでは {{…}}）。リンクの朱と区別できる藍色にする */
+.quote { color: #1f5f93; }
 /* 見出し行の下は字下げし、説明は左に線を引いて見出しと区別する */
 .entry-head ~ .entry-note { margin-left: 1em; padding-left: 0.8em; border-left: 2px solid var(--line); margin-top: 6px; }
 .entry-meta { color: var(--ink-soft); font-size: 0.85rem; }
@@ -742,6 +744,9 @@ footer.site-footer {
   line-height: 1.75;
 }
 .provisional-notice strong { color: #8a6a1e; }
+/* 出典を確かめた人物の案内は、警告より控えめにする */
+.provisional-notice.is-checked { background: var(--bg-panel); border-color: var(--line); border-left-color: #2f5d7c; }
+.provisional-notice.is-checked strong { color: #2f5d7c; }
 /* 収録人物セクション等に添える小さめの但し書き */
 .provisional-inline { font-size: 0.85rem; color: var(--ink-soft); margin: 4px 0 14px; }
 .provisional-inline strong { color: #8a6a1e; }

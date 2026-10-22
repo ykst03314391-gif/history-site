@@ -35,6 +35,7 @@
 | `territories` | Territory[] | 領地変遷（時系列） |
 | `timeline` | Event[] | 個人の年表 |
 | `episodes` | Episode[] | 逸話・エピソード |
+| `questions` | Question[] | 諸説・疑問（諸説ある事柄や「なぜ？」という問い）。題名と短い説明だけを書き、詳しくは考察記事で論じる |
 | `achievements` | Achievement[] | 成し遂げたこと |
 | `reputation` | Reputation[] | 人物評価（存命時・死去後、または同時代・江戸・明治・昭和・現代の時代別） |
 | `references` | Reference[] | 参考書籍（アフィリエイト対象） |
@@ -42,9 +43,13 @@
 | `spots` | Spot[] | ゆかりの地（城跡・銅像・刀剣・肖像画・博物館・名物など） |
 | `graves` | Graves | 墓所（現存・諸説あり・不明・なしを必ず明示する） |
 | `images` | Image[] | 人物画像 |
-| `sources` | Source[] | 出典の一覧（本文から `sourceId` で参照） |
+| `sources` | Source[] | 出典の一覧（本文から `sourceId` で参照）。各出典の `note` も出典欄に表示する |
+| `sourcesChecked` | boolean | 出典を1つずつ当たり、確認状況を各出典の `note` に書き終えた人物は `true`。ページ上部の「⚠ 仮置きデータ」の注記が「出典の確認状況」の案内に替わる |
 | `tags` | string[] | 分類タグ（例：`織田家`, `三英傑`） |
 | `updatedAt` | string | 最終更新日（ISO 8601） |
+
+### 説明文の中の原文の引用
+説明文（`note`・`description`・`body`・`text` など）で史料の原文をそのまま引くときは、「」ではなく `{{…}}` で書く（例：`日記は{{美濃守ハハヤ大力次第也}}と書く`）。表示では「…」で括って藍色にし、地の文や、書名・用語・現代語訳を括った「」と見分ける。原文の表記どおりの呼び名（`{{美濃守殿}}` など）も含む。
 
 ## サブ構造の定義
 
@@ -179,6 +184,15 @@ Spot = {
 ```
 { "title": string, "body": string, "uncertain"?: boolean, "sourceId"?: string }
 ```
+
+### Question（諸説・疑問）
+```
+{ "title": string,            // 問いの形の題名（例：「秀吉とは異父兄弟なのか？」）
+  "text": string,             // 何が分かれているか・何が分からないかの短い説明（2〜3文）
+  "sourceId"?: string | string[],
+  "article_id"?: string }     // 詳しく論じる考察記事の id。説明の下にリンクを出す。下書き（draft）の間は「考察（執筆中）」と予告する
+```
+> 結論はここに書かず、記事に回す。人物ページは「どんな論点があるか」の目次の役目にとどめる。
 
 ### Achievement（成し遂げたこと）
 ```

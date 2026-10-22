@@ -96,6 +96,66 @@
       "relatedPeople": ["toyotomi-hidenaga", "toyotomi-hideyoshi"],
       "tags": ["豊臣秀長", "豊臣秀吉", "竹阿弥", "太閤素生記", "通説", "考察"],
       "draft": true
+    },
+    {
+      "id": "hidenaga-name-change",
+      "title": "秀長はなぜ「長秀」から「秀長」に改めたのか",
+      "series": "myth-busting",
+      "category": "考察",
+      "summary": "初め「長秀」と名乗った秀長は、天正12年（1584）に「秀長」へ改めたとされる。名の字の由来と改名の時期から、その理由を考える。",
+      "date": "",
+      "author": "管理人",
+      "relatedPeople": ["toyotomi-hidenaga"],
+      "tags": ["豊臣秀長", "改名", "偏諱", "考察"],
+      "draft": true
+    },
+    {
+      "id": "hidenaga-son-yoichiro",
+      "title": "秀長に実の子はいたのか ― 与一郎をめぐって",
+      "series": "myth-busting",
+      "category": "考察",
+      "summary": "秀長の跡は養子の秀保が継いだ。だが江戸時代の大名家の記録には、秀長の子とみられる与一郎の影が見える。その記事と研究の見方を確かめる。",
+      "date": "",
+      "author": "管理人",
+      "relatedPeople": ["toyotomi-hidenaga"],
+      "tags": ["豊臣秀長", "与一郎", "豊臣秀保", "考察"],
+      "draft": true
+    },
+    {
+      "id": "hidenaga-yamato-rule",
+      "title": "秀長は大和の「名君」だったのか",
+      "series": "myth-busting",
+      "category": "考察",
+      "summary": "郡山城の秀長は善政の名君と語られることが多い。多聞院日記に残る武具の提出・寺領の削減・庄屋の入牢の記事から、大和支配の実像を見直す。",
+      "date": "",
+      "author": "管理人",
+      "relatedPeople": ["toyotomi-hidenaga"],
+      "tags": ["豊臣秀長", "大和", "郡山城", "多聞院日記", "考察"],
+      "draft": true
+    },
+    {
+      "id": "hidenaga-if-lived",
+      "title": "秀長が長生きしていたら、豊臣政権は続いたのか",
+      "series": "myth-busting",
+      "category": "考察",
+      "summary": "「秀長がいれば利休も秀次も死なずに済んだ」とよく言われる。政権の中で秀長が実際に担った役目から、この「もしも」を考える。",
+      "date": "",
+      "author": "管理人",
+      "relatedPeople": ["toyotomi-hidenaga"],
+      "tags": ["豊臣秀長", "豊臣政権", "千利休", "豊臣秀次", "考察"],
+      "draft": true
+    },
+    {
+      "id": "hidenaga-independence",
+      "title": "秀長は「補佐役」で満足していたのか",
+      "series": "myth-busting",
+      "category": "考察",
+      "summary": "兄を支える名補佐役と語られる秀長。大大名となり軍の大将も務めながら、なぜ自立しなかったのか。「補佐役」という像の出どころと、当時の兄弟・一門の在り方から考える。",
+      "date": "",
+      "author": "管理人",
+      "relatedPeople": ["toyotomi-hidenaga", "toyotomi-hideyoshi"],
+      "tags": ["豊臣秀長", "豊臣秀吉", "補佐役", "豊臣政権", "考察"],
+      "draft": true
     }
   ]
 }

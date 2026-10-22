@@ -70,14 +70,37 @@
   // 説明文を句点ごとに改行する（かっこの中の句点では切らない）。tail（出典マーカーなど）は最後の文の末尾に付ける
   function sentences(text, tail = "") {
     return splitSentences(String(text ?? ""))
-      .map((t, i, a) => `<span class="sent">${keepTail(esc(t))}${i === a.length - 1 ? tail : ""}</span>`)
+      .map((t, i, a) => `<span class="sent">${fmtText(esc(t))}${i === a.length - 1 ? tail : ""}</span>`)
       .join("");
   }
-  // 文末の数文字を改行させない（「る。」だけが次の行に残るのを防ぐ）。末尾にタグや文字参照があれば何もしない
+  // 説明文の表示を整える：引用（「」の中）の色を変え、文末が数文字だけ次の行に残らないようにする
+  const fmtText = (html) => keepTail(markQuotes(html));
+  // 史料の原文の引用は、データでは {{…}} と書く。表示では「…」で括り、色を変えて地の文・ほかの「」と見分ける
+  function markQuotes(html) {
+    return html.replace(/\{\{([^{}]*)\}\}/g, (m, q) => `<span class="quote">「${q}」</span>`);
+  }
+  // 文末の数文字を改行させない（「る。」だけが次の行に残るのを防ぐ）。
+  // タグ・文字参照は文字に数えず、区切りが要素の途中に来るときはその要素の前で区切る
   function keepTail(html, n = 6) {
-    const tail = html.slice(-n);
-    if (html.length <= n || /[<>&;]/.test(tail)) return html;
-    return `${html.slice(0, -n)}<span class="nobr">${tail}</span>`;
+    const tokens = html.match(/<[^>]*>|&[^;\s]+;|[\s\S]/g) || [];
+    let split = tokens.length, count = 0;
+    while (split > 0 && count < n) if (!tokens[--split].startsWith("<")) count++;
+    const open = [];
+    for (let i = 0; i < split; i++) {
+      const t = tokens[i];
+      if (/^<\//.test(t)) open.pop();
+      else if (/^<[^!/]/.test(t) && !/\/>$/.test(t)) open.push(i);
+    }
+    if (open.length) split = open[0];
+    // 長い引用やリンクごと折り返せなくなると行からはみ出すので、そのときは要素の後ろの文字だけをまとめる
+    const kept = tokens.slice(split).filter((t) => !t.startsWith("<")).length;
+    if (kept > 16) {
+      split = tokens.length;
+      while (split > 0 && !tokens[split - 1].startsWith("<")) split--;
+      if (split === tokens.length) return html;
+    }
+    if (split === 0) return html;
+    return `${tokens.slice(0, split).join("")}<span class="nobr">${tokens.slice(split).join("")}</span>`;
   }
   // 文の区切り。HTML（linkText の結果など）を渡しても、タグに句点やかっこは無いのでそのまま使える
   function splitSentences(s) {
@@ -85,8 +108,8 @@
     let depth = 0, start = 0;
     for (let i = 0; i < s.length; i++) {
       const c = s[i];
-      if ("「『（(【".includes(c)) depth++;
-      else if ("」』）)】".includes(c)) depth = Math.max(0, depth - 1);
+      if ("「『（(【{".includes(c)) depth++;
+      else if ("」』）)】}".includes(c)) depth = Math.max(0, depth - 1);
       else if (c === "。" && depth === 0) {
         out.push(s.slice(start, i + 1));
         start = i + 1;
@@ -138,6 +161,13 @@
     document.title = `${p.name} ｜ 戦国クロニクル`;
     const html = [];
 
+    // 出典を1つずつ確かめた人物（sourcesChecked）は、仮置きの注記を確認状況の案内に差し替える
+    const notice = document.querySelector(".provisional-notice");
+    if (notice && p.sourcesChecked) {
+      notice.classList.add("is-checked");
+      notice.innerHTML = `<strong>出典の確認状況</strong>：出典ごとの確認状況は、末尾の「出典」欄の各出典の説明に記しています。「原典未確認」とした記述は、研究書などからの孫引きです。`;
+    }
+
     // 出典マーカー：項目の sourceId を、末尾「出典」欄の該当典拠に対応づけて小さく表示
     const srcMap = new Map((p.sources || []).map((s) => [s.id, s]));
     function srcMark(sourceId) {
@@ -152,7 +182,7 @@
     // 改行（\n）で段落に分ける。tail（出典マーカーなど）は最後の段落の末尾に付ける
     const paras = (text, tail = "") => {
       const ps = String(text ?? "").split("\n");
-      return ps.map((t, i) => `<p>${keepTail(esc(t))}${i === ps.length - 1 ? tail : ""}</p>`).join("");
+      return ps.map((t, i) => `<p>${fmtText(esc(t))}${i === ps.length - 1 ? tail : ""}</p>`).join("");
     };
     // ゆかりの地・墓所の名前（url があれば外部リンク）
     const spotName = (s) =>
@@ -364,7 +394,7 @@
           // 説明は見出しの下に字下げして線を引く（他の一覧と同じ）。出典は説明の最後の文の末尾に付ける
           const desc = e.description
             ? splitSentences(linkText(e.description, e.links))
-                .map((t, i, a) => `<span class="sent">${keepTail(t)}${i === a.length - 1 ? srcMark(e.sourceId) : ""}</span>`)
+                .map((t, i, a) => `<span class="sent">${fmtText(t)}${i === a.length - 1 ? srcMark(e.sourceId) : ""}</span>`)
                 .join("")
             : srcMark(e.sourceId);
           return `<li>
@@ -405,7 +435,7 @@
           return `<div class="rep-item">
             ${i > 0 && p.reputation[i - 1].era === r.era ? "<span></span>" : `<span class="rep-era">${esc(r.era)}</span>`}
             <div class="rep-body">
-              <div class="entry-head"><span class="entry-main">${esc(head)}</span>${rest ? "" : mark}</div>
+              <div class="entry-head"><span class="entry-main">${markQuotes(esc(head))}</span>${rest ? "" : mark}</div>
               ${rest ? `<div class="entry-note">${paras(rest, mark)}</div>` : ""}
             </div>
           </div>`;
@@ -420,6 +450,14 @@
         .map((e) => entry({ main: esc(e.title), after: uncertain(e.uncertain), note: e.body, tail: srcMark(e.sourceId) }))
         .join("");
       html.push(section("逸話・エピソード", `<ul class="entry-list">${items}</ul>`));
+    }
+
+    // 諸説・疑問（題名と短い説明だけを出し、詳しくは考察記事へリンクする）
+    if (p.questions && p.questions.length) {
+      const items = p.questions
+        .map((q) => entry({ main: esc(q.title), note: q.text, tail: srcMarks(q.sourceId), extra: articleLink(q.article_id) }))
+        .join("");
+      html.push(section("諸説・疑問", `<ul class="entry-list">${items}</ul>`));
     }
 
     // ゆかりの地・史跡（墓所もここにまとめる。墓所の状態は不明・なしも必ず明示）
@@ -516,6 +554,7 @@
             <span class="src-badges">${badges}</span>
             <div>
               <div class="entry-head"><span class="entry-main">${title}</span>${meta ? `<span class="entry-meta">${meta}</span>` : ""}${linkNote}</div>
+              ${s.note ? `<div class="entry-note">${sentences(s.note)}</div>` : ""}
             </div>
           </li>`;
         })
@@ -835,7 +874,7 @@
           const popup = list
             .map(({ t, n }) => {
               const where = t.place ? `地図の位置：${esc(t.place)}${t.approx ? "（おおよそ）" : ""}` : t.approx ? "位置はおおよそ" : "";
-              return `<div class="terr-popup"><b>${n}. ${terrYears(t)}${esc(t.name)}</b>${t.note ? `<div>${esc(t.note)}</div>` : ""}${where ? `<div class="muted">${where}</div>` : ""}</div>`;
+              return `<div class="terr-popup"><b>${n}. ${terrYears(t)}${esc(t.name)}</b>${t.note ? `<div>${markQuotes(esc(t.note))}</div>` : ""}${where ? `<div class="muted">${where}</div>` : ""}</div>`;
             })
             .join("");
           L.marker(list[0].ll, { icon, title: label }).bindPopup(popup).addTo(map);

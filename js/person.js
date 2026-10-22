@@ -103,10 +103,12 @@
     }
     // 典拠が複数ある項目用（sourceId に配列も書ける）
     const srcMarks = (ids) => [].concat(ids || []).map(srcMark).join("");
-    // ゆかりの地・墓所の名前（url があれば外部リンク）
+    // ゆかりの地・墓所の名前（url があれば外部リンク。その場所自体のページでなければ urlLabel でリンク先を示す）
     const spotName = (s) =>
       s.url
-        ? `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.name)}</a>`
+        ? `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.name)}</a>${
+            s.urlLabel ? ` <span class="muted">［リンク先：${esc(s.urlLabel)}］</span>` : ""
+          }`
         : esc(s.name);
 
     // ヘッダー
@@ -431,12 +433,16 @@
           const title = s.url
             ? `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title)}</a>`
             : esc(s.title);
+          // リンク先が資料そのものでないとき（書誌・刊本・紹介ページなど）はその旨を添える
+          const linkNote = s.url && s.urlLabel
+            ? ` <span class="muted">［リンク先：${esc(s.urlLabel)}］</span>`
+            : "";
           const badges =
             (s.type ? `<span class="src-type">${esc(s.type)}</span>` : "") +
             (s.primary
               ? `<span class="src-primary src-${s.primary === "一次資料" ? "primary1" : "primary2"}">${esc(s.primary)}</span>`
               : "");
-          return `<li>${badges ? badges + " " : ""}${title}${
+          return `<li>${badges ? badges + " " : ""}${title}${linkNote}${
             meta ? ` <span class="muted">（${meta}）</span>` : ""
           }</li>`;
         })

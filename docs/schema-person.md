@@ -99,7 +99,8 @@ Spot = {
   "description"?: string,   // 所蔵先の博物館名などもここに記す（例：「福岡市博物館蔵、国宝」）
   "sourceId"?: string,
   "castle_id"?: string,     // 城DBに詳細ページがある城跡なら、名前を城ページへのリンクにする
-  "url"?: string            // 公式サイトや自治体の紹介ページ。名前を外部リンクにする（castle_id があればそちらを優先）
+  "url"?: string,           // 公式サイトや自治体の紹介ページ。名前を外部リンクにする（castle_id があればそちらを優先）
+  "urlLabel"?: string       // url がその場所自体のページでないとき（観光案内の一覧、上位組織のトップ、所蔵先など）、リンク先を示す
 }
 ```
 > `Spot` に地域を持たせることで「地域から探す」「逆引き（この人物→行くべき場所）」の両方に使える。
@@ -208,7 +209,7 @@ Spot = {
   "note"?: string, "sourceId"?: string | string[],   // note の典拠
   "places"?: [
     { "name": string, "prefecture"?: string, "city"?: string,
-      "description"?: string, "sourceId"?: string, "url"?: string }
+      "description"?: string, "sourceId"?: string, "url"?: string, "urlLabel"?: string }
   ] }
 ```
 > 墓所は「わからない」ことも情報。遺骸が見つかっていない・供養塔が各地にある等を `status` と `note` で明示する。
@@ -222,6 +223,7 @@ Spot = {
   "year"?: number,
   "page"?: string,
   "url"?: string,
+  "urlLabel"?: string,    // url が資料そのものでないとき（NDLサーチの書誌、刊本の別の巻、出版社の紹介、報道発表など）、リンク先を示す
   "type"?: "史料" | "書籍" | "論文" | "ネット記事" | "その他",  // 出典の種別
   "primary"?: "一次資料" | "二次資料" }   // 史料・書籍の場合に明記
 ```

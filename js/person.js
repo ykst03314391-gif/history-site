@@ -315,7 +315,7 @@
     // 家臣団
     if (p.retainers && p.retainers.length) {
       const items = p.retainers
-        .map((r) => entry({ main: personLink(r), after: period(r), note: r.note, tail: srcMark(r.sourceId) }))
+        .map((r) => entry({ main: personLink(r), after: period(r), note: r.note, tail: srcMarks(r.sourceId) }))
         .join("");
       html.push(section("家臣団", `<ul class="entry-list">${items}</ul>`));
     }
@@ -323,7 +323,7 @@
     // 与力（主君から付けられた大名。家臣ではないので家臣団と分ける）
     if (p.yoriki && p.yoriki.length) {
       const items = p.yoriki
-        .map((r) => entry({ main: personLink(r), after: period(r), note: r.note, tail: srcMark(r.sourceId) }))
+        .map((r) => entry({ main: personLink(r), after: period(r), note: r.note, tail: srcMarks(r.sourceId) }))
         .join("");
       const yn = p.yorikiNote;
       const note = yn ? `<p class="entry-note">${sentences(yn.text, srcMark(yn.sourceId))}</p>` : "";

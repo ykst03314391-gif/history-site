@@ -458,13 +458,18 @@
             : esc(r.title);
           // リンク先が Amazon のときはその旨を添える
           const shop = /(^|\.)amazon\.co\.jp$/.test(new URL(r.affiliateUrl || "about:blank").hostname)
-            ? ` <span class="muted">［リンク先：Amazon］</span>`
+            ? `<span class="entry-link-note">［リンク先：Amazon］</span>`
             : "";
           const meta = [r.author, r.publisher, r.year].filter(Boolean).map(esc).join(" / ");
-          return `<div class="ref-item">${title}${shop}${meta ? ` <span class="muted">（${meta}）</span>` : ""}${r.note ? `<div class="muted">${esc(r.note)}</div>` : ""}</div>`;
+          // 1行目：書名とリンク先、2行目：著者・出版社・年、その下に紹介（句点ごとに改行）
+          return `<li class="entry">
+            <div class="entry-head"><span class="entry-main">${title}</span>${shop}</div>
+            ${meta ? `<div class="entry-meta">${meta}</div>` : ""}
+            ${r.note ? `<div class="entry-note">${sentences(r.note)}</div>` : ""}
+          </li>`;
         })
         .join("");
-      html.push(section("参考書籍", items));
+      html.push(section("参考書籍", `<ul class="entry-list">${items}</ul>`));
     }
 
     // 出典（種別・一次/二次を明示）
@@ -477,18 +482,23 @@
             : esc(s.title);
           // リンク先が資料そのものでないとき（書誌・刊本・紹介ページなど）はその旨を添える
           const linkNote = s.url && s.urlLabel
-            ? ` <span class="muted">［リンク先：${esc(s.urlLabel)}］</span>`
+            ? `<span class="entry-link-note">［リンク先：${esc(s.urlLabel)}］</span>`
             : "";
           // 塗りつぶし＝区分（色は SRC_CLASS）、枠だけ＝種別
           const badges =
             (s.primary ? `<span class="src-primary ${SRC_CLASS[s.primary] || ""}">${esc(s.primary)}</span>` : "") +
             (s.type ? `<span class="src-type">${esc(s.type)}</span>` : "");
-          return `<li>${badges ? badges + " " : ""}${title}${linkNote}${
-            meta ? ` <span class="muted">（${meta}）</span>` : ""
-          }</li>`;
+          // 左の列にバッジ、右の列に題名（横にリンク先）とその下の著者・出版社・年・頁。題名と著者の頭をそろえる
+          return `<li class="entry src-entry">
+            <span class="src-badges">${badges}</span>
+            <div>
+              <div class="entry-head"><span class="entry-main">${title}</span>${linkNote}</div>
+              ${meta ? `<div class="entry-meta">${meta}</div>` : ""}
+            </div>
+          </li>`;
         })
         .join("");
-      html.push(section("出典", `${SRC_LEGEND}<ul class="list src-list">${items}</ul>`));
+      html.push(section("出典", `${SRC_LEGEND}<ul class="entry-list src-list">${items}</ul>`));
     }
 
     // 目次をヘッダー（html[0]）の直後に挿入

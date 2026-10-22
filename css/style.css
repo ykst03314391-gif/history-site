@@ -67,14 +67,17 @@ main.reading { max-width: 880px; }
 .side-toc li { margin: 0 0 8px; line-height: 1.5; }
 .side-toc a { color: var(--ink-soft); border-bottom: none; font-size: 0.9rem; }
 .side-toc a:hover { color: var(--accent); }
+/* 置いた位置から始まり、スクロールしたら画面の上端近くに貼り付く（sticky）。
+   本文の左外に出すため、幅0の float にして本文の流れに影響させない（-230px = 本文の左端からレール幅＋余白） */
 @media (min-width: 1340px) {
   main.reading .side-toc {
     display: block;
-    position: fixed;
-    top: 120px;
+    position: sticky;
+    top: 20px;
+    float: left;
     width: 190px;
-    left: calc((100vw - 880px) / 2 - 210px);
-    max-height: 72vh;
+    margin: 0 28px 0 -230px;
+    max-height: calc(100vh - 40px);
     overflow: auto;
     padding-right: 10px;
     border-right: 2px solid var(--line);
@@ -83,11 +86,12 @@ main.reading { max-width: 880px; }
 @media (min-width: 1460px) {
   main:not(.reading) .side-toc {
     display: block;
-    position: fixed;
-    top: 120px;
+    position: sticky;
+    top: 20px;
+    float: left;
     width: 190px;
-    left: calc((100vw - 1000px) / 2 - 210px);
-    max-height: 72vh;
+    margin: 0 28px 0 -230px;
+    max-height: calc(100vh - 40px);
     overflow: auto;
     padding-right: 10px;
     border-right: 2px solid var(--line);
@@ -351,6 +355,9 @@ html { scroll-behavior: smooth; }
 .entry-main { font-weight: 700; }
 .entry-note { color: var(--ink-soft); font-size: 0.9rem; margin: 4px 0 0; line-height: 1.75; }
 .sent { display: block; }
+.entry-meta { color: var(--ink-soft); font-size: 0.85rem; margin-top: 2px; }
+.entry-link-note { color: var(--ink-soft); font-size: 0.82rem; font-weight: normal; }
+.entry-meta .entry-link-note { margin-left: 10px; }
 .terr-until-label { display: block; font-weight: 700; }
 .inline-article {
   display: inline-flex;
@@ -424,6 +431,12 @@ html { scroll-behavior: smooth; }
 
 /* 出典バッジ */
 .src-list li { margin-bottom: 10px; }
+.entry-list.src-list li { margin-bottom: 0; }
+.src-entry { display: grid; grid-template-columns: 7em 1fr; gap: 0 12px; align-items: start; }
+.src-badges { padding-top: 3px; white-space: nowrap; }
+@media (max-width: 600px) {
+  .src-entry { grid-template-columns: 1fr; }
+}
 .src-type, .src-primary {
   display: inline-block;
   font-size: 0.68rem;

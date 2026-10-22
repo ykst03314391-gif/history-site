@@ -2,6 +2,14 @@
 (function () {
   const contentEl = document.getElementById("content");
 
+  // 出典バッジ：資料の区分ごとの塗り色（style.css）と、出典欄の頭に置く凡例
+  const SRC_CLASS = { "一次資料": "src-primary1", "二次資料": "src-primary2", "研究": "src-research" };
+  const SRC_LEGEND = `<p class="src-legend muted">塗りつぶしは資料の区分：
+    <span class="src-primary src-primary1">一次資料</span>同時代の日記・書状など
+    <span class="src-primary src-primary2">二次資料</span>後世の軍記・編纂物
+    <span class="src-primary src-research">研究</span>研究者の解釈（説の典拠）
+    ／枠だけは資料の種別：<span class="src-type">史料</span><span class="src-type">研究書</span><span class="src-type">寄稿</span>など。区分の無いものは概要（Wikipediaなど）</p>`;
+
   const esc = (s) =>
     String(s ?? "").replace(/[&<>"']/g, (c) =>
       ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c])
@@ -59,6 +67,38 @@
     return flag ? `<span class="uncertain-badge">諸説あり</span>` : "";
   }
 
+  // 説明文を句点ごとに改行する（かっこの中の句点では切らない）。tail（出典マーカーなど）は最後の文の末尾に付ける
+  function sentences(text, tail = "") {
+    return splitSentences(String(text ?? ""))
+      .map((t, i, a) => `<span class="sent">${esc(t)}${i === a.length - 1 ? tail : ""}</span>`)
+      .join("");
+  }
+  // 文の区切り。HTML（linkText の結果など）を渡しても、タグに句点やかっこは無いのでそのまま使える
+  function splitSentences(s) {
+    const out = [];
+    let depth = 0, start = 0;
+    for (let i = 0; i < s.length; i++) {
+      const c = s[i];
+      if ("「『（(【".includes(c)) depth++;
+      else if ("」』）)】".includes(c)) depth = Math.max(0, depth - 1);
+      else if (c === "。" && depth === 0) {
+        out.push(s.slice(start, i + 1));
+        start = i + 1;
+      }
+    }
+    if (start < s.length) out.push(s.slice(start));
+    return out.filter((t) => t.trim());
+  }
+
+  // 一覧の1項目：見出し行（年などのラベル＋名前）と、その下の説明（句点ごとに改行）に分ける
+  function entry({ when = "", main = "", after = "", note = "", tail = "", extra = "" }) {
+    const head = `<div class="entry-head">${when ? `<span class="entry-when">${when}</span>` : ""}<span class="entry-main">${main}</span>${after}</div>`;
+    const body = note
+      ? `<div class="entry-note">${sentences(note, tail)}</div>`
+      : tail ? `<div class="entry-note">${tail}</div>` : "";
+    return `<li class="entry">${head}${body}${extra}</li>`;
+  }
+
   // 人物リンク（サイト内にページがあれば a、無ければテキスト）
   function personLink(rel) {
     const label = esc(rel.name || rel.person_id || "");
@@ -103,6 +143,11 @@
     }
     // 典拠が複数ある項目用（sourceId に配列も書ける）
     const srcMarks = (ids) => [].concat(ids || []).map(srcMark).join("");
+    // 改行（\n）で段落に分ける。tail（出典マーカーなど）は最後の段落の末尾に付ける
+    const paras = (text, tail = "") => {
+      const ps = String(text ?? "").split("\n");
+      return ps.map((t, i) => `<p>${esc(t)}${i === ps.length - 1 ? tail : ""}</p>`).join("");
+    };
     // ゆかりの地・墓所の名前（url があれば外部リンク。その場所自体のページでなければ urlLabel でリンク先を示す）
     const spotName = (s) =>
       s.url
@@ -178,19 +223,17 @@
     // 呼び名の変遷
     if (p.nameHistory && p.nameHistory.length) {
       const items = p.nameHistory
-        .map((n) => {
-          return `<li><b>${whenLabel(n.year, n.era)}</b>${esc(n.value)}${uncertain(n.uncertain)}${n.note ? ` <span class="muted">${esc(n.note)}</span>` : ""}${srcMark(n.sourceId)}</li>`;
-        })
+        .map((n) => entry({ when: whenLabel(n.year, n.era).trim(), main: esc(n.value), after: uncertain(n.uncertain), note: n.note, tail: srcMark(n.sourceId) }))
         .join("");
-      html.push(section("呼び名の変遷", `<ul class="list">${items}</ul>`));
+      html.push(section("呼び名の変遷", `<ul class="entry-list">${items}</ul>`));
     }
 
     // 官位変遷
     if (p.ranks && p.ranks.length) {
       const items = p.ranks
-        .map((r) => `<li><b>${whenLabel(r.year, r.era)}</b>${esc(r.title)}${r.note ? ` <span class="muted">${esc(r.note)}</span>` : ""}${srcMark(r.sourceId)}</li>`)
+        .map((r) => entry({ when: whenLabel(r.year, r.era).trim(), main: esc(r.title), note: r.note, tail: srcMark(r.sourceId) }))
         .join("");
-      html.push(section("官位", `<ul class="list">${items}</ul>`));
+      html.push(section("官位", `<ul class="entry-list">${items}</ul>`));
     }
 
     // 年表イベント・家系に紐付けて表示した記事は、末尾の関連記事から除外する
@@ -212,9 +255,9 @@
     };
     if (p.family && p.family.length) {
       const items = p.family
-        .map((r) => `<li><b>${esc(r.relation)}</b>：${personLink(r)}${r.note ? ` <span class="muted">${esc(r.note)}</span>` : ""}${srcMarks(r.sourceId)}${articleLink(r.article_id)}</li>`)
+        .map((r) => entry({ when: esc(r.relation), main: personLink(r), note: r.note, tail: srcMarks(r.sourceId), extra: articleLink(r.article_id) }))
         .join("");
-      html.push(section("家系・親族", `<ul class="list">${items}</ul>`));
+      html.push(section("家系・親族", `<ul class="entry-list">${items}</ul>`));
     }
 
     // 仕えた・仕えられた期間（例：（1573〜1591年）（〜1591年）（1576年〜））
@@ -227,29 +270,27 @@
     // 仕えた主君
     if (p.lords && p.lords.length) {
       const items = p.lords
-        .map((s) => `<li>${personLink(s)}${period(s)}${s.note ? ` <span class="muted">${esc(s.note)}</span>` : ""}${srcMark(s.sourceId)}</li>`)
+        .map((s) => entry({ main: personLink(s), after: period(s), note: s.note, tail: srcMark(s.sourceId) }))
         .join("");
-      html.push(section("仕えた人", `<ul class="list">${items}</ul>`));
+      html.push(section("仕えた人", `<ul class="entry-list">${items}</ul>`));
     }
 
     // 家臣団
     if (p.retainers && p.retainers.length) {
       const items = p.retainers
-        .map((r) => {
-          return `<li>${personLink(r)}${period(r)}${r.note ? ` <span class="muted">${esc(r.note)}</span>` : ""}${srcMark(r.sourceId)}</li>`;
-        })
+        .map((r) => entry({ main: personLink(r), after: period(r), note: r.note, tail: srcMark(r.sourceId) }))
         .join("");
-      html.push(section("家臣団", `<ul class="list">${items}</ul>`));
+      html.push(section("家臣団", `<ul class="entry-list">${items}</ul>`));
     }
 
     // 与力（主君から付けられた大名。家臣ではないので家臣団と分ける）
     if (p.yoriki && p.yoriki.length) {
       const items = p.yoriki
-        .map((r) => `<li>${personLink(r)}${period(r)}${r.note ? ` <span class="muted">${esc(r.note)}</span>` : ""}${srcMark(r.sourceId)}</li>`)
+        .map((r) => entry({ main: personLink(r), after: period(r), note: r.note, tail: srcMark(r.sourceId) }))
         .join("");
       const yn = p.yorikiNote;
-      const note = yn ? `<p class="muted">${esc(yn.text)}${srcMark(yn.sourceId)}</p>` : "";
-      html.push(section("与力", `<ul class="list">${items}</ul>${note}`));
+      const note = yn ? `<p class="entry-note">${sentences(yn.text, srcMark(yn.sourceId))}</p>` : "";
+      html.push(section("与力", `<ul class="entry-list">${items}</ul>${note}`));
     }
 
     // 領地変遷
@@ -257,14 +298,24 @@
       // 座標（lat/lng）か令制国名（province）のある領地は地図にも番号付きで示す
       const hasMap = p.territories.some(onMap);
       const items = p.territories
-        .map((t, i) => `<li>${hasMap && onMap(t) ? `<span class="terr-num" style="background:${terrColor(i)}">${i + 1}</span>` : ""}<b>${terrYears(t)}</b>${esc(t.name)}${t.prefecture ? `<span class="muted">（${[].concat(t.prefecture).map(esc).join("・")}）</span>` : ""}${t.note ? ` — <span class="muted">${esc(t.note)}</span>` : ""}${t.untilNote ? `<span class="muted terr-until">→ ${t.until ? esc(t.until) + "年 " : ""}${esc(t.untilNote)}</span>` : ""}${srcMarks(t.sourceId)}${hasMap && onMap(t) ? `<div class="terr-snap" data-i="${i}" role="img" aria-label="${esc(terrYears(t) + t.name)}の時点の領地"></div><p class="terr-snap-caption muted" data-i="${i}"></p>` : ""}</li>`)
+        .map((t, i) => {
+          const num = hasMap && onMap(t) ? `<span class="terr-num" style="background:${terrColor(i)}">${i + 1}</span>` : "";
+          const pref = t.prefecture ? `<span class="muted">（${[].concat(t.prefecture).map(esc).join("・")}）</span>` : "";
+          const until = t.untilNote
+            ? `<div class="entry-note terr-until"><span class="terr-until-label">→ ${t.until ? esc(t.until) + "年" : "その後"}</span>${sentences(t.untilNote)}</div>`
+            : "";
+          const snap = hasMap && onMap(t) ? `<div class="terr-snap" data-i="${i}" role="img" aria-label="${esc(terrYears(t) + t.name)}の時点の領地"></div><p class="terr-snap-caption muted" data-i="${i}"></p>` : "";
+          const head = `<div class="entry-head">${num}<span class="entry-when">${terrYears(t).trim()}</span><span class="entry-main">${esc(t.name)}</span>${pref}</div>`;
+          const note = t.note || t.sourceId ? `<div class="entry-note">${sentences(t.note, srcMarks(t.sourceId)) || srcMarks(t.sourceId)}</div>` : "";
+          return `<li class="entry">${head}${note}${until}${snap}</li>`;
+        })
         .join("");
       const mapHTML = hasMap
         ? `<div id="territory-map" class="territory-map" role="img" aria-label="領地の変遷の地図"></div>
            <div id="territory-legend" class="territory-legend"></div>
            <p class="territory-map-note muted">色は領地の範囲で、国の一部だけを領したときは郡の範囲を塗っています。色と番号は下の一覧と対応し、淡く点線で囲んだ範囲はのちに手放した領地です。一覧の各項目の下の地図は、その時点で持っていた領地だけを示します。線は年代順につないだもの、ピンは城など代表地点です。国界は1868年時点、郡界は1920年時点の境界による近似で、戦国期の境界とは細部で違います。</p>`
         : "";
-      html.push(section("領地の変遷", `${mapHTML}<ul class="list terr-list">${items}</ul>`));
+      html.push(section("領地の変遷", `${mapHTML}<ul class="entry-list terr-list">${items}</ul>`));
     }
 
     // 指定の合戦に関連する記事（この人物に関連するもの）を探す
@@ -306,7 +357,7 @@
             <span class="t-year"><span>${esc(e.year)}年</span>${e.month ? `<span>${esc(e.month)}月</span>` : ""}</span>
             <span>
               <span class="t-title">${title}</span>
-              ${e.description ? `<br><span class="t-desc">${linkText(e.description, e.links)}</span>` : ""}
+              ${e.description ? `<span class="t-desc">${splitSentences(linkText(e.description, e.links)).map((t) => `<span class="sent">${t}</span>`).join("")}</span>` : ""}
               ${e.sourceId ? `<br>${srcMark(e.sourceId)}` : ""}
               ${related ? `<br>${related}` : ""}
             </span>
@@ -319,9 +370,9 @@
     // 成し遂げたこと
     if (p.achievements && p.achievements.length) {
       const items = p.achievements
-        .map((a) => `<li><b>${esc(a.title)}</b>${a.description ? `<br><span class="muted">${esc(a.description)}</span>` : ""}${srcMark(a.sourceId)}</li>`)
+        .map((a) => entry({ main: esc(a.title), note: a.description, tail: srcMark(a.sourceId) }))
         .join("");
-      html.push(section("成し遂げたこと", `<ul class="list">${items}</ul>`));
+      html.push(section("成し遂げたこと", `<ul class="entry-list">${items}</ul>`));
     }
 
     // 人物評価（時代別。同じ era が続くときはラベルを最初の1つだけ出す）
@@ -330,7 +381,7 @@
         .map(
           (r, i) => `<div class="rep-item">
             ${i > 0 && p.reputation[i - 1].era === r.era ? "<span></span>" : `<span class="rep-era">${esc(r.era)}</span>`}
-            <div class="rep-body">${r.title ? `<b>${esc(r.title)}</b><br>` : ""}${esc(r.body)}${srcMark(r.sourceId)}</div>
+            <div class="rep-body">${r.title ? `<b>${esc(r.title)}</b>` : ""}${paras(r.body, srcMark(r.sourceId))}</div>
           </div>`
         )
         .join("");
@@ -340,49 +391,40 @@
     // 逸話
     if (p.episodes && p.episodes.length) {
       const items = p.episodes
-        .map((e) => `<li><b>${esc(e.title)}</b>${uncertain(e.uncertain)}<br><span class="muted">${esc(e.body)}</span>${srcMark(e.sourceId)}</li>`)
+        .map((e) => entry({ main: esc(e.title), after: uncertain(e.uncertain), note: e.body, tail: srcMark(e.sourceId) }))
         .join("");
-      html.push(section("逸話・エピソード", `<ul class="list">${items}</ul>`));
+      html.push(section("逸話・エピソード", `<ul class="entry-list">${items}</ul>`));
     }
 
-    // ゆかりの地
-    if (p.spots && p.spots.length) {
-      const items = p.spots
-        .map((s) => {
-          const place = [s.prefecture, s.city].filter(Boolean).map(esc).join(" ");
-          // castle_id があれば城ページへ、url があれば公式サイトなどへのリンクにする
-          const name = s.castle_id
-            ? `<a href="castle.html?id=${encodeURIComponent(s.castle_id)}">${esc(s.name)}</a>`
-            : spotName(s);
-          return `<div class="spot-item">
-            <span class="spot-type">${esc(s.type)}</span>
+    // ゆかりの地・史跡（墓所もここにまとめる。墓所の状態は不明・なしも必ず明示）
+    const spotItem = (s, type) => {
+      const place = [s.prefecture, s.city].filter(Boolean).map(esc).join(" ");
+      // castle_id があれば城ページへ、url があれば公式サイトなどへのリンクにする
+      const name = s.castle_id
+        ? `<a href="castle.html?id=${encodeURIComponent(s.castle_id)}">${esc(s.name)}</a>`
+        : spotName(s);
+      return `<div class="spot-item">
+            <span class="spot-type">${esc(type)}</span>
             <b>${name}</b>
             ${place ? `<span class="spot-place">／ ${place}</span>` : ""}
             ${s.description || s.sourceId ? `<div class="muted">${esc(s.description || "")}${srcMarks(s.sourceId)}</div>` : ""}
           </div>`;
-        })
-        .join("");
-      html.push(section("ゆかりの地・史跡", items));
-    }
-
-    // 墓所（状態は不明・なしも必ず明示）
-    if (p.graves) {
-      const g = p.graves;
-      const places = (g.places || [])
-        .map((pl) => {
-          const place = [pl.prefecture, pl.city].filter(Boolean).map(esc).join(" ");
-          return `<div class="spot-item">
-              <span class="spot-type">墓所</span>
-              <b>${spotName(pl)}</b>
-              ${place ? `<span class="spot-place">／ ${place}</span>` : ""}
-              ${pl.description || pl.sourceId ? `<div class="muted">${esc(pl.description || "")}${srcMarks(pl.sourceId)}</div>` : ""}
-            </div>`;
-        })
-        .join("");
-      const status = `<p class="grave-status">状態：<b>${esc(g.status || "不明")}</b>${
-        g.note ? ` <span class="muted">${esc(g.note)}</span>` : ""
-      }${srcMarks(g.sourceId)}</p>`;
-      html.push(section("墓所", status + places));
+    };
+    const g = p.graves;
+    const gravePlaces = (g && g.places) || [];
+    // 墓所と同じ場所が spots にもあれば、墓所の側だけを出す
+    const graveNames = new Set(gravePlaces.map((pl) => pl.name));
+    const spots = (p.spots || []).filter((s) => !graveNames.has(s.name));
+    if (g || spots.length) {
+      const grave = g
+        ? `<div class="grave-block">
+            <div class="grave-status">墓所：<b>${esc(g.status || "不明")}</b>
+              ${g.note || g.sourceId ? `<div class="entry-note">${sentences(g.note, srcMarks(g.sourceId)) || srcMarks(g.sourceId)}</div>` : ""}
+            </div>
+            ${gravePlaces.map((pl) => spotItem(pl, "墓所")).join("")}
+          </div>`
+        : "";
+      html.push(section("ゆかりの地・史跡", grave + spots.map((s) => spotItem(s, s.type)).join("")));
     }
 
     // 関連する考察・記事（年表イベントに紐付け済みのものは除外）
@@ -437,17 +479,16 @@
           const linkNote = s.url && s.urlLabel
             ? ` <span class="muted">［リンク先：${esc(s.urlLabel)}］</span>`
             : "";
+          // 塗りつぶし＝区分（色は SRC_CLASS）、枠だけ＝種別
           const badges =
-            (s.type ? `<span class="src-type">${esc(s.type)}</span>` : "") +
-            (s.primary
-              ? `<span class="src-primary src-${s.primary === "一次資料" ? "primary1" : "primary2"}">${esc(s.primary)}</span>`
-              : "");
+            (s.primary ? `<span class="src-primary ${SRC_CLASS[s.primary] || ""}">${esc(s.primary)}</span>` : "") +
+            (s.type ? `<span class="src-type">${esc(s.type)}</span>` : "");
           return `<li>${badges ? badges + " " : ""}${title}${linkNote}${
             meta ? ` <span class="muted">（${meta}）</span>` : ""
           }</li>`;
         })
         .join("");
-      html.push(section("出典", `<ul class="list src-list">${items}</ul>`));
+      html.push(section("出典", `${SRC_LEGEND}<ul class="list src-list">${items}</ul>`));
     }
 
     // 目次をヘッダー（html[0]）の直後に挿入

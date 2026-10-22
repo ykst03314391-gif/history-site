@@ -2,6 +2,14 @@
 (async function () {
   const el = document.getElementById("content");
 
+  // 出典バッジ：資料の区分ごとの塗り色（style.css）と、出典欄の頭に置く凡例
+  const SRC_CLASS = { "一次資料": "src-primary1", "二次資料": "src-primary2", "研究": "src-research" };
+  const SRC_LEGEND = `<p class="src-legend muted">塗りつぶしは資料の区分：
+    <span class="src-primary src-primary1">一次資料</span>同時代の日記・書状など
+    <span class="src-primary src-primary2">二次資料</span>後世の軍記・編纂物
+    <span class="src-primary src-research">研究</span>研究者の解釈（説の典拠）
+    ／枠だけは資料の種別：<span class="src-type">史料</span><span class="src-type">研究書</span><span class="src-type">寄稿</span>など。区分の無いものは概要（Wikipediaなど）</p>`;
+
   const esc = (s) =>
     String(s ?? "").replace(/[&<>"']/g, (c) =>
       ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c])
@@ -225,15 +233,14 @@
           const title = s.url
             ? `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title)}</a>`
             : esc(s.title);
+          // 塗りつぶし＝区分（色は SRC_CLASS）、枠だけ＝種別
           const badges =
-            (s.type ? `<span class="src-type">${esc(s.type)}</span>` : "") +
-            (s.primary
-              ? `<span class="src-primary src-${s.primary === "一次資料" ? "primary1" : "primary2"}">${esc(s.primary)}</span>`
-              : "");
+            (s.primary ? `<span class="src-primary ${SRC_CLASS[s.primary] || ""}">${esc(s.primary)}</span>` : "") +
+            (s.type ? `<span class="src-type">${esc(s.type)}</span>` : "");
           return `<li>${badges ? badges + " " : ""}${title}${m ? ` <span class="muted">（${m}）</span>` : ""}</li>`;
         })
         .join("");
-      html.push(`<section class="section"><h2>出典</h2><ul class="list src-list">${items}</ul></section>`);
+      html.push(`<section class="section"><h2>出典</h2>${SRC_LEGEND}<ul class="list src-list">${items}</ul></section>`);
     }
 
     if (b.updatedAt) html.push(`<p class="muted">最終更新：${esc(b.updatedAt)}</p>`);

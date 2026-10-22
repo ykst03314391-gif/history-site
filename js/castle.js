@@ -34,17 +34,6 @@
       : esc(name);
   }
 
-  function historyHTML(o) {
-    let hist = Array.isArray(o.history) ? o.history.slice() : [];
-    if (!hist.length && o.updatedAt) hist = [{ date: o.updatedAt, note: "" }];
-    if (!hist.length) return "";
-    hist.sort((a, b) => String(b.date || "").localeCompare(String(a.date || "")));
-    const items = hist
-      .map((h) => `<li><span class="hist-date">${esc(h.date || "")}</span>${esc(h.note || "")}</li>`)
-      .join("");
-    return `<section class="section"><h2>更新履歴</h2><ul class="history-list">${items}</ul></section>`;
-  }
-
   try {
     const [cRes, aRes, bRes, ciRes] = await Promise.all([
       fetch(`data/castles/${encodeURIComponent(id)}.json`),
@@ -311,7 +300,6 @@
       html.push(`<section class="section"><h2>出典</h2><ul class="list src-list">${items}</ul></section>`);
     }
 
-    html.push(historyHTML(c));
     if (c.updatedAt) html.push(`<p class="muted">最終更新：${esc(c.updatedAt)}</p>`);
 
     el.innerHTML = html.join("");

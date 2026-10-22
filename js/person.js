@@ -7,23 +7,6 @@
       ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c])
     );
 
-  // 更新履歴セクション（history 優先、無ければ updatedAt/date を1件表示）
-  function historyHTML(o) {
-    let hist = Array.isArray(o.history) ? o.history.slice() : [];
-    if (!hist.length && (o.updatedAt || o.date)) {
-      hist = [{ date: o.updatedAt || o.date, note: "" }];
-    }
-    if (!hist.length) return "";
-    hist.sort((a, b) => String(b.date || "").localeCompare(String(a.date || "")));
-    const items = hist
-      .map(
-        (h) =>
-          `<li><span class="hist-date">${esc(h.date || "")}</span>${esc(h.note || "")}</li>`
-      )
-      .join("");
-    return `<section class="section"><h2>更新履歴</h2><ul class="history-list">${items}</ul></section>`;
-  }
-
   // 本文中の語をサイト内ページへのリンクにする。links: [{ text, person_id | battle_id | castle_id }]
   // 各語は最初に出てきた1か所だけをリンクにする
   function linkText(text, links) {
@@ -451,9 +434,6 @@
         .join("");
       html.push(section("出典", `<ul class="list src-list">${items}</ul>`));
     }
-
-    const histSection = historyHTML(p);
-    if (histSection) html.push(histSection);
 
     // 目次をヘッダー（html[0]）の直後に挿入
     html.splice(1, 0, tocHTML());

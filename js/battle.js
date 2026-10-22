@@ -38,22 +38,6 @@
     return;
   }
 
-  function historyHTML(o) {
-    let hist = Array.isArray(o.history) ? o.history.slice() : [];
-    if (!hist.length && (o.updatedAt || o.date)) {
-      hist = [{ date: o.updatedAt || o.date, note: "" }];
-    }
-    if (!hist.length) return "";
-    hist.sort((a, b) => String(b.date || "").localeCompare(String(a.date || "")));
-    const items = hist
-      .map(
-        (h) =>
-          `<li><span class="hist-date">${esc(h.date || "")}</span>${esc(h.note || "")}</li>`
-      )
-      .join("");
-    return `<section class="section"><h2>更新履歴</h2><ul class="history-list">${items}</ul></section>`;
-  }
-
   function fmtDate(d) {
     if (!d) return "";
     if (d.era) return esc(d.era);

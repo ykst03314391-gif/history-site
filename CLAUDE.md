@@ -1,0 +1,76 @@
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
+## 概要
+
+戦国時代の個人メディア「戦国クロニクル」。**考察記事が主役で、人物・合戦・城・大名家のDBはそれを支える脚注**という位置づけ（詳しくは `README.md` の「コンセプト」）。ユーザーとのやりとり・コミットメッセージ・データ・ドキュメントはすべて日本語。
+
+## 起動
+
+ビルド・リンター・テストはない。素の HTML/CSS/JS の静的サイトで、データを `fetch` で読むため `file://` では動かない。ルートで簡易サーバーを立てる。
+
+```bash
+python -m http.server 8765
+# http://localhost:8765/index.html
+# http://localhost:8765/person.html?id=toyotomi-hidenaga
+```
+
+確認用に立てたサーバーは、ユーザーが「閉じて」と言うまで止めない。
+
+## 構成
+
+- **ページ = HTML 1枚 + `js/<page>.js` 1本**。一覧（`people.html`→`list.js`、`battles.html`→`battles.js` など）と詳細（`person.html?id=…`→`person.js` など）の組。`people.html` と `others.html` は `list.js` を共用し、`data-category="other"` で武将以外の人物を出す。`js/order.js` は一覧の並べ方（50音・地域・国・家）の共通処理で、令制国の並び順もここにある。
+- **データは `data/<種別>/`**：`index.json`（一覧カード用の要約）＋ `<id>.json`（詳細）。人物・合戦・城・大名家を足す／名前や要約・生没年・タグを変えるときは **`index.json` と個別ファイルの両方**を直す。記事は `data/articles/index.json`（メタ・series）＋ `data/articles/<id>.md`（本文。CDN の marked で描画）。トピックは `data/topics/index.json` のみ。
+- **スキーマは `docs/schema-*.md`**。フィールドを足したら該当スキーマ文書も更新する。
+- **相互参照は ID**（`person_id` / `battle_id` / `castle_id` / `article_id`）。説明文中の語をリンクにするには、各項目に `links: [{ text, person_id | battle_id | castle_id }]` を付ける（`person.js` の `linkText`）。出典は各項目の `sourceId` → その人物の `sources[].id`。
+- **原文の引用は `{{…}}`**（「」ではない）。表示で「…」に括って色を変え、書名・現代語訳の「」と区別する。
+- 人物の領地地図は Leaflet＋OSM。国は `territories[].province`、国の一部なら `district`（郡）で塗る。境界データ `assets/geo/*.geojson` は `tools/build-*.py` で生成（元データはリポジトリに入れない）。合戦・トピックの地図は OSM iframe（公開時に Google Maps Embed へ切り替える予定）。
+
+## 文字と色（`css/style.css`）
+
+色は `:root` の変数で持つ。新しい色はなるべく増やさず、既存の変数か下の色に合わせる。ダークモードはない。
+
+- **フォント**：全体は明朝体 `--serif`（Noto Serif JP〔Google Fonts、500/700〕→ Yu Mincho → Hiragino Mincho ProN）で、本文の太さは 500、行間は 1.8。ゴシック体（Yu Gothic → Hiragino Sans → Meiryo）は、リンク先の説明につける小さな札（`.entry-link-note`）にだけ使い、書誌と見分ける。
+- **サイズ**（rem）
+  - 見出し：人物名 `h1` 2、記事タイトル 1.9、節見出し `.section h2` 1.25（頭に朱の「◆ 」）、記事の `h2` 1.35、`h3` 1.1
+  - 本文：1。注記・説明（`.entry-note`・`.t-desc`）は 0.9〜0.92 で `--ink-soft`
+  - 年月の見出し（`.entry-when`）0.9。小さな札（出典マーカー・タグ・資料区分）は 0.68〜0.72
+- **基本色**
+  - 地 `--bg` #f4f1ea（生成り）、パネル `--bg-panel` #fbfaf6
+  - 文字 `--ink` #23201c（墨）、補足 `--ink-soft` #4f4940
+  - 強調 `--accent` #9b2d20（朱・臙脂）、`--accent-soft` #c66b5f
+  - 金 `--gold` #b08d33、罫線 `--line` #d9d2c5
+- **意味で色を分けているもの**
+  - 原文の引用 `{{…}}` → `.quote` 藍 #1f5f93
+  - 年月の見出し・生没年・「諸説あり」札（`.uncertain-badge`）→ 朱 `--accent`
+  - 資料の区分（塗りつぶしの札）→ 一次資料は朱 `--accent`、二次資料は黄土 #8a6d1f、研究は藍 #2f5d7c。種別（史料・研究書など）は枠だけの札（`.src-type`）
+  - 出典マーカー `.src-mark` → 薄茶の地 #efe9dc に、金の「▪」
+  - 仮置きの注記 → 金の左罫と淡い黄の地 #fbf3df、強調は #8a6a1e。出典を確認済みのとき（`.is-checked`）は藍 #2f5d7c の左罫
+  - トピックの区分 → 新説は朱、お出かけは緑 #2f7a52、ゲームは金
+
+## 編集者用で配信しないもの
+
+- `drafts/<id>.md` … 記事の①論文版（出典完備の完全版）。`data/articles/<id>.md` は②噛み砕き版で、同じ id で対応する。
+- `reference/` … 原典テキストの固定スナップショット（Wikisource・NDL ほか、各ファイル先頭に来歴）。事実の裏取りはまずここを当たる。当たり先の方針は `docs/sources.md`。
+
+## 進め方（秀長ページをひな型にする）
+
+- まず**豊臣秀長のページ（`data/people/toyotomi-hidenaga.json`）を完成させ**、それをひな型にして他のページを作成・更新する。
+- 秀長のページからリンクする人物・合戦・城などのページも作る。ただし**リンク先のページは概要だけ**にする（名前・読み・要約・生没年やタグなどの基本情報と、`index.json` への登録まで）。年表・家系・逸話・出典などの詳細は書かない。
+- 人物は、名前が出てくるだけでページを作るわけではない。ページを作るに値すると判断した人物だけ作る。秀長の家系・家臣のうち竹阿弥・木下弥右衛門・与一郎、横浜一庵・井上源五・杉若越前守・羽田長門守・岸田伯耆守・福智長通・吉川平介は、ページを作らないと判断済み（リンクしない）。
+- リンク先のページを詳しく書くのは、秀長のページが仕上がって、それをひな型として各ページに取りかかる段階になってから。
+
+## データ編集の方針
+
+- DBの記述は基本的に**仮置き**（一般知識による暫定値で、出典名は未検証のラベル）。DB系ページには仮置き注記が出る。出典を1つずつ当たり終えた人物だけ `sourcesChecked: true`（現状は豊臣秀長）にし、注記を確認状況の案内に替える。
+- 確かめきれない事柄は本文に断定で書かず、本文には要点と「要確認」だけを残し、食い違う日付・孫引きの経路・当たるべき資料は `toVerify`（要確認（調査メモ））に書く。
+- 更新履歴は廃止。`history` フィールドは書かない・表示しない。
+- 大名家の「一門」の範囲：家に入る者（血族・正室・養子・娘婿・他家へ養子に出た実子）は一門、他家へ嫁いだ実娘と家臣は含めない（`docs/schema-clan.md`）。
+- 人物の家系（`family`）には、その人物の生前に成立した関係だけを置く（死後の縁組は相手側の注記で伝える）。
+- 旅特集（series `travel`）の記事は `group` に都道府県名を入れる。
+- アフィリエイトは記事末の `references`（関連書籍）とトピックの `buy` だけ。記事本文には広告を挟まない。
+
+## コミット
+
+`main` に直接コミットしている。メッセージは日本語で「何をしたか：理由と具体的な変更点」の形（`git log` 参照）。

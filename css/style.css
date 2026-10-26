@@ -61,19 +61,24 @@ main {
 /* 読み物ページ（記事）は行長をやや抑えて可読性を上げる（広すぎ・狭すぎの中間） */
 main.reading { max-width: 880px; }
 
-/* 目次サイドレール：ワイド画面でだけ左の余白に固定表示（記事・人物・大名家・合戦で共通）。
-   記事(main.reading=880px)は 1340px から、DB詳細(1000px)はレール分の余白が要るので 1460px から出す。 */
-.side-toc { display: none; }
+/* 目次（記事・人物・大名家・合戦・城で共通）。
+   900px 以上では左に固定表示するサイドレール。左の余白に収まらない幅では、本文を右へ寄せてレールの場所を空ける。
+   900px 未満（スマホなど）はレールを置くと本文が細くなりすぎるので、置いた位置（本文の頭）に枠で出す。 */
+.side-toc {
+  margin: 0 0 24px;
+  padding: 12px 16px;
+  background: var(--bg-panel);
+  border: 1px solid var(--line);
+}
 .side-toc .toc-title { font-weight: 700; margin: 0 0 8px; font-size: 0.9rem; color: var(--ink-soft); }
-.side-toc ol { list-style: none; margin: 0; padding: 0; }
-.side-toc li { margin: 0 0 8px; line-height: 1.5; }
+.side-toc ol { list-style: none; margin: 0; padding: 0; columns: 12em; column-gap: 24px; }
+.side-toc li { margin: 0 0 8px; line-height: 1.5; break-inside: avoid; }
 .side-toc a { color: var(--ink-soft); border-bottom: none; font-size: 0.9rem; }
 .side-toc a:hover { color: var(--accent); }
 /* 置いた位置から始まり、スクロールしたら画面の上端近くに貼り付く（sticky）。
    本文の左外に出すため、幅0の float にして本文の流れに影響させない（-230px = 本文の左端からレール幅＋余白） */
-@media (min-width: 1340px) {
-  main.reading .side-toc {
-    display: block;
+@media (min-width: 900px) {
+  .side-toc {
     position: sticky;
     top: 20px;
     float: left;
@@ -81,23 +86,21 @@ main.reading { max-width: 880px; }
     margin: 0 28px 0 -230px;
     max-height: calc(100vh - 40px);
     overflow: auto;
-    padding-right: 10px;
+    padding: 0 10px 0 0;
+    background: none;
+    border: none;
     border-right: 2px solid var(--line);
   }
+  .side-toc ol { columns: auto; }
 }
-@media (min-width: 1460px) {
-  main:not(.reading) .side-toc {
-    display: block;
-    position: sticky;
-    top: 20px;
-    float: left;
-    width: 190px;
-    margin: 0 28px 0 -230px;
-    max-height: calc(100vh - 40px);
-    overflow: auto;
-    padding-right: 10px;
-    border-right: 2px solid var(--line);
-  }
+/* 左の余白にレールが収まらない幅：main の左に余白（レール幅＋余白 230px ＋本来の 20px）を取り、
+   その分 max-width を広げて、余裕があるうちは本文の幅を保つ。
+   記事(880px)は 1340px、DB詳細(1000px)は 1460px から余白に収まるので、そこでこの調整は外れる */
+@media (min-width: 900px) and (max-width: 1339px) {
+  main.reading:has(.side-toc) { max-width: 1110px; padding-left: 250px; }
+}
+@media (min-width: 900px) and (max-width: 1459px) {
+  main:not(.reading):has(.side-toc) { max-width: 1230px; padding-left: 250px; }
 }
 html { scroll-behavior: smooth; }
 .article-body h2 { scroll-margin-top: 18px; }

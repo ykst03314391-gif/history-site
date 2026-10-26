@@ -335,6 +335,27 @@
       ]
     },
     {
+      "id": "kugyo-bunin",
+      "level": 2,
+      "title": "公卿補任",
+      "yomi": "くぎょうぶにん",
+      "author": "朝廷（外記・官務が書き継ぐ）",
+      "kind": "史料",
+      "era": "神武天皇〜明治元年の記事",
+      "note": "朝廷の公卿（三位以上と参議）を年ごとに官職順に並べ、任官・叙位・死去を書き添えた名簿。同時代の記録をもとに書き継がれたが、後からまとめ直された編纂物で、日付の誤りや脱漏もある。経済雑誌社の国史大系本（第10巻『公卿補任』中編、1901年）を使用。",
+      "url": "https://dl.ndl.go.jp/pid/991100",
+      "usedIn": [
+        {
+          "type": "person",
+          "id": "toyotomi-hidenaga"
+        },
+        {
+          "type": "person",
+          "id": "toyotomi-hideyasu"
+        }
+      ]
+    },
+    {
       "id": "tamonin-nikki",
       "level": 1,
       "title": "多聞院日記",

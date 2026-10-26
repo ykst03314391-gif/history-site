@@ -13,7 +13,7 @@
 ```
 reference/
 ├─ wikisource/  … Wikisource（新字版）翻刻を parse API で取得（13本）
-├─ ndl/         … NDL 次世代デジタルライブラリーの OCR 全文（6本・要校正）
+├─ ndl/         … NDL 次世代デジタルライブラリーの OCR 全文（8本・要校正）
 ├─ jstage/      … J-STAGE 由来の論文（現状なし）      ┐
 ├─ cinii/       … CiNii の論文書誌メモ（2本）          ├ 論文系は発行年でさらに分ける（例 cinii/2025/）
 └─ other/       … 機関リポジトリ/青空文庫/刊本 等      ┘
@@ -43,7 +43,7 @@ reference/
 | `wikisource/kanchiron.txt` | 『官地論』 | 二次（軍記） | `kanchiron` | 加賀富樫氏・加賀一向一揆 |
 | `wikisource/ihon-odawaraki.txt` | 『異本小田原記』 | 二次（軍記・北条五代記系の異本） | `ihon-odawaraki` | 後北条・小田原 |
 
-### `ndl/`（NDL 次世代デジタルライブラリー OCR・6本／要校正）
+### `ndl/`（NDL 次世代デジタルライブラリー OCR・8本／要校正）
 
 | ファイル | 原典 | 史料区分 | sourceId | 主な関連 |
 |---|---|---|---|---|
@@ -53,6 +53,7 @@ reference/
 | `ndl/tamonin-nikki.txt` | 英俊ほか『多聞院日記』(全5巻・三教書院版) | **一次**（興福寺僧の日記・**OCR/要校正**） | `tamonin-nikki`（未登録） | 秀長・大和郡山・筒井・松永・奈良 |
 | `ndl/taiko-soseiki.txt` | 土屋知貞『太閤素生記』(改定史籍集覧 第13冊) | 二次（聞書・**OCR/要校正**） | `taiko-soseiki` | 秀吉の出自・大政所・朝日姫 |
 | `ndl/nara-meisho-yaezakura.txt` | 『奈良名所八重桜』(延宝6年刊・全12巻) | 二次（名所記・**版本OCR/誤認識多**） | `nara-meisho-yaezakura`（未登録） | 奈良の寺社縁起・光秀尼の逸話 |
+| `ndl/kugyo-bunin.txt` | 『公卿補任』(国史大系本 中編・正親町院〜後陽成院の部分) | 二次扱い（朝廷の公卿名簿・編纂物・**表組みOCRで段が崩れる**） | `kugyo-bunin` | 秀長・秀保・家康ら織豊期の公卿の任官日 |
 
 > - 各ファイルの「── コマ N ──」は NDL デジタルコレクションのコマ番号。画像は git 外の `D:\private\shiryo\<史料名>\` に同じ番号で保存している（`D:\private\shiryo\tools\` の取得スクリプトで再取得可）。
 

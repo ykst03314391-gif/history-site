@@ -163,12 +163,9 @@
     document.title = `${p.name} ｜ 戦国クロニクル`;
     const html = [];
 
-    // 出典を1つずつ確かめた人物（sourcesChecked）は、仮置きの注記を確認状況の案内に差し替える
+    // 出典を1つずつ確かめた人物（sourcesChecked）は、冒頭の仮置きの注記を出さず、確認状況の案内を「要確認（調査メモ）」の冒頭に置く
     const notice = document.querySelector(".provisional-notice");
-    if (notice && p.sourcesChecked) {
-      notice.classList.add("is-checked");
-      notice.innerHTML = `<strong>出典の確認状況</strong>：出典ごとの確認状況は、末尾の「出典」欄の各出典の説明に記しています。「原典未確認」とした記述は、研究書などからの孫引きです。`;
-    }
+    if (notice && p.sourcesChecked) notice.remove();
 
     // 出典マーカー：項目の sourceId を、末尾「出典」欄の該当典拠に対応づけて小さく表示
     const srcMap = new Map((p.sources || []).map((s) => [s.id, s]));
@@ -580,7 +577,10 @@
           })
         )
         .join("");
-      html.push(section("要確認（調査メモ）", `<p class="muted">ページの記述のうち、まだ原典や原本で確かめられていない事柄と、確かめるのに当たる資料の控えです。</p><ul class="entry-list verify-list">${items}</ul>`));
+      const checkedNote = p.sourcesChecked
+        ? `<p class="muted"><strong>出典の確認状況</strong>：出典ごとの確認状況は、すぐ上の「出典」欄の各出典の説明に記しています。「原典未確認」とした記述は、研究書などからの孫引きです。</p>`
+        : "";
+      html.push(section("要確認（調査メモ）", `${checkedNote}<p class="muted">ページの記述のうち、まだ原典や原本で確かめられていない事柄と、確かめるのに当たる資料の控えです。</p><ul class="entry-list verify-list">${items}</ul>`));
     }
 
     // 目次をヘッダー（html[0]）の直後に挿入

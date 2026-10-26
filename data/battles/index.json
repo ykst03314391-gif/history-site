@@ -105,6 +105,18 @@
       "sides": [{ "name": "羽柴軍", "outcome": "勝利" }, { "name": "別所軍", "outcome": "敗北" }]
     },
     {
+      "id": "tajima-campaign",
+      "name": "但馬平定",
+      "kana": "たじまへいてい",
+      "year": 1580,
+      "summary": "木下小一郎（秀長）が兄・秀吉の命で但馬に攻め入り、国を平定した戦い。",
+      "prefecture": "兵庫県",
+      "province": "但馬国",
+      "lat": 35.3006,
+      "lng": 134.8292,
+      "sides": [{ "name": "羽柴軍", "outcome": "勝利" }, { "name": "但馬の諸勢力", "outcome": "敗北" }]
+    },
+    {
       "id": "honnoji-no-hen",
       "photo": {"src": "assets/img/battles/honnoji-no-hen.jpg", "thumb": "assets/img/battles/thumbs/honnoji-no-hen.jpg", "caption": "本能寺跡の石碑", "note": "変のときの本能寺はこの場所にあった。いまの本能寺は、のちに寺町へ移ったもの", "author": "Saigen Jiro", "license": "CC0", "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en", "source": {"name": "Wikimedia Commons", "url": "https://commons.wikimedia.org/wiki/File:Honnoji-ato,_sekihi.jpg"}},
       "name": "本能寺の変",

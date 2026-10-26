@@ -1,0 +1,26 @@
+{
+  "id": "tajima-campaign",
+  "name": "但馬平定",
+  "kana": "たじまへいてい",
+  "summary": "羽柴秀吉の命で弟の木下小一郎（秀長）が兵を率いて但馬に攻め入り、国を平定した戦い。",
+  "date": { "year": 1580, "era": "天正8年", "note": "信長公記は、天正8年4月24日の宍粟郡攻めに始まる播磨平定の条に続けて記す" },
+  "place": { "name": "但馬国", "prefecture": "兵庫県", "city": "朝来市", "address": "兵庫県朝来市和田山町竹田（竹田城跡）", "lat": 35.3006, "lng": 134.8292 },
+  "description": [
+    "天正5年（1577年）、秀吉は但馬の竹田城を落として弟の木下小一郎（秀長）を城代に置いた。天正8年（1580年）、播磨を平定して姫路を居城と定めた秀吉は、小一郎に兵を加えて但馬へ攻め入らせた。信長公記によれば、小一郎は太田垣氏の旧居城（竹田）に入り、要所に兵を置いて但馬を平定した。"
+  ],
+  "links": [{ "text": "木下小一郎（秀長）", "person_id": "toyotomi-hidenaga" }, { "text": "秀吉", "person_id": "toyotomi-hideyoshi" }],
+  "sides": [
+    { "name": "羽柴軍", "outcome": "勝利", "commanders": [{ "person_id": "toyotomi-hidenaga", "name": "木下小一郎（秀長）" }], "note": "兄の秀吉から兵を預かった" },
+    { "name": "但馬の諸勢力", "outcome": "敗北" }
+  ],
+  "result": "但馬一国が羽柴方に平定された",
+  "relatedPeople": ["toyotomi-hidenaga", "toyotomi-hideyoshi"],
+  "spots": [
+    {"type": "城跡", "name": "竹田城跡", "prefecture": "兵庫県", "city": "朝来市", "description": "太田垣氏の居城。秀長が城代を務め、但馬平定の拠点とした。"}
+  ],
+  "sources": [
+    { "id": "shincho-koki", "title": "信長公記", "author": "太田牛一", "note": "巻十三。{{羽柴筑前守舎弟　木下小一郎に人数差加　但馬国へ乱入即時無滞申付　木下小一郎は小田垣居城に拵手之者共見計所〻に入置}}", "type": "史料", "primary": "一次資料" }
+  ],
+  "tags": ["豊臣秀長", "羽柴秀吉", "但馬"],
+  "updatedAt": "2026-10-27"
+}

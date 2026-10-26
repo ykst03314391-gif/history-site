@@ -119,6 +119,10 @@
         {
           "type": "person",
           "id": "chosokabe-motochika"
+        },
+        {
+          "type": "battle",
+          "id": "tajima-campaign"
         }
       ]
     },

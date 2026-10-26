@@ -68,9 +68,11 @@
   }
 
   // 説明文を句点ごとに改行する（かっこの中の句点では切らない）。tail（出典マーカーなど）は最後の文の末尾に付ける
-  function sentences(text, tail = "") {
-    return splitSentences(String(text ?? ""))
-      .map((t, i, a) => `<span class="sent">${fmtText(esc(t))}${i === a.length - 1 ? tail : ""}</span>`)
+  // links があれば、注記の中の語もサイト内ページへのリンクにする（年表の説明と同じ）
+  function sentences(text, tail = "", links) {
+    const html = links && links.length;
+    return splitSentences(html ? linkText(text, links) : String(text ?? ""))
+      .map((t, i, a) => `<span class="sent">${fmtText(html ? t : esc(t))}${i === a.length - 1 ? tail : ""}</span>`)
       .join("");
   }
   // 説明文の表示を整える：引用（「」の中）の色を変え、文末が数文字だけ次の行に残らないようにする
@@ -120,10 +122,10 @@
   }
 
   // 一覧の1項目：見出し行（年などのラベル＋名前）と、その下の説明（句点ごとに改行）に分ける
-  function entry({ when = "", main = "", after = "", note = "", tail = "", extra = "" }) {
+  function entry({ when = "", main = "", after = "", note = "", tail = "", extra = "", links }) {
     const head = `<div class="entry-head">${when ? `<span class="entry-when">${when}</span>` : ""}<span class="entry-main">${main}</span>${after}</div>`;
     const body = note
-      ? `<div class="entry-note">${sentences(note, tail)}</div>`
+      ? `<div class="entry-note">${sentences(note, tail, links)}</div>`
       : tail ? `<div class="entry-note">${tail}</div>` : "";
     return `<li class="entry">${head}${body}${extra}</li>`;
   }
@@ -180,9 +182,9 @@
     // 典拠が複数ある項目用（sourceId に配列も書ける）
     const srcMarks = (ids) => [].concat(ids || []).map(srcMark).join("");
     // 改行（\n）で段落に分ける。tail（出典マーカーなど）は最後の段落の末尾に付ける
-    const paras = (text, tail = "") => {
+    const paras = (text, tail = "", links) => {
       const ps = String(text ?? "").split("\n");
-      return ps.map((t, i) => `<p>${fmtText(esc(t))}${i === ps.length - 1 ? tail : ""}</p>`).join("");
+      return ps.map((t, i) => `<p>${fmtText(links && links.length ? linkText(t, links) : esc(t))}${i === ps.length - 1 ? tail : ""}</p>`).join("");
     };
     // ゆかりの地・墓所の名前（url があれば外部リンク）
     const spotName = (s) =>
@@ -258,7 +260,7 @@
     // 呼び名の変遷
     if (p.nameHistory && p.nameHistory.length) {
       const items = p.nameHistory
-        .map((n) => entry({ when: whenLabel(n.year, n.era).trim(), main: esc(n.value), after: uncertain(n.uncertain), note: n.note, tail: srcMarks(n.sourceId) }))
+        .map((n) => entry({ when: whenLabel(n.year, n.era).trim(), main: esc(n.value), after: uncertain(n.uncertain), note: n.note, links: n.links, tail: srcMarks(n.sourceId) }))
         .join("");
       html.push(section("呼び名の変遷", `<ul class="entry-list">${items}</ul>`));
     }
@@ -266,7 +268,7 @@
     // 官位変遷
     if (p.ranks && p.ranks.length) {
       const items = p.ranks
-        .map((r) => entry({ when: whenLabel(r.year, r.era).trim(), main: esc(r.title), note: r.note, tail: srcMarks(r.sourceId) }))
+        .map((r) => entry({ when: whenLabel(r.year, r.era).trim(), main: esc(r.title), note: r.note, links: r.links, tail: srcMarks(r.sourceId) }))
         .join("");
       html.push(section("官位", `<ul class="entry-list">${items}</ul>`));
     }
@@ -292,7 +294,7 @@
     };
     if (p.family && p.family.length) {
       const items = p.family
-        .map((r) => entry({ when: esc(r.relation), main: personLink(r), note: r.note, tail: srcMarks(r.sourceId), extra: articleLink(r.article_id) }))
+        .map((r) => entry({ when: esc(r.relation), main: personLink(r), note: r.note, links: r.links, tail: srcMarks(r.sourceId), extra: articleLink(r.article_id) }))
         .join("");
       html.push(section("家系・親族", `<ul class="entry-list">${items}</ul>`));
     }
@@ -307,7 +309,7 @@
     // 仕えた主君
     if (p.lords && p.lords.length) {
       const items = p.lords
-        .map((s) => entry({ main: personLink(s), after: period(s), note: s.note, tail: srcMarks(s.sourceId) }))
+        .map((s) => entry({ main: personLink(s), after: period(s), note: s.note, links: s.links, tail: srcMarks(s.sourceId) }))
         .join("");
       html.push(section("仕えた人", `<ul class="entry-list">${items}</ul>`));
     }
@@ -315,7 +317,7 @@
     // 家臣団
     if (p.retainers && p.retainers.length) {
       const items = p.retainers
-        .map((r) => entry({ main: personLink(r), after: period(r), note: r.note, tail: srcMarks(r.sourceId) }))
+        .map((r) => entry({ main: personLink(r), after: period(r), note: r.note, links: r.links, tail: srcMarks(r.sourceId) }))
         .join("");
       html.push(section("家臣団", `<ul class="entry-list">${items}</ul>`));
     }
@@ -323,10 +325,10 @@
     // 与力（主君から付けられた大名。家臣ではないので家臣団と分ける）
     if (p.yoriki && p.yoriki.length) {
       const items = p.yoriki
-        .map((r) => entry({ main: personLink(r), after: period(r), note: r.note, tail: srcMarks(r.sourceId) }))
+        .map((r) => entry({ main: personLink(r), after: period(r), note: r.note, links: r.links, tail: srcMarks(r.sourceId) }))
         .join("");
       const yn = p.yorikiNote;
-      const note = yn ? `<p class="entry-note">${sentences(yn.text, srcMarks(yn.sourceId))}</p>` : "";
+      const note = yn ? `<p class="entry-note">${sentences(yn.text, srcMarks(yn.sourceId), yn.links)}</p>` : "";
       html.push(section("与力", `<ul class="entry-list">${items}</ul>${note}`));
     }
 
@@ -339,11 +341,11 @@
           const num = hasMap && onMap(t) ? `<span class="terr-num" style="background:${terrColor(i)}">${i + 1}</span>` : "";
           const pref = t.prefecture ? `<span class="muted">（${[].concat(t.prefecture).map(esc).join("・")}）</span>` : "";
           const until = t.untilNote
-            ? `<div class="entry-note terr-until"><span class="terr-until-label">→ ${t.until ? esc(t.until) + "年" : "その後"}</span>${sentences(t.untilNote)}</div>`
+            ? `<div class="entry-note terr-until"><span class="terr-until-label">→ ${t.until ? esc(t.until) + "年" : "その後"}</span>${sentences(t.untilNote, "", t.links)}</div>`
             : "";
           const snap = hasMap && onMap(t) ? `<div class="terr-snap" data-i="${i}" role="img" aria-label="${esc(terrYears(t) + t.name)}の時点の領地"></div><p class="terr-snap-caption muted" data-i="${i}"></p>` : "";
           const head = `<div class="entry-head">${num}<span class="entry-when">${terrYears(t).trim()}</span><span class="entry-main">${esc(t.name)}</span>${pref}</div>`;
-          const note = t.note || t.sourceId ? `<div class="entry-note">${sentences(t.note, srcMarks(t.sourceId)) || srcMarks(t.sourceId)}</div>` : "";
+          const note = t.note || t.sourceId ? `<div class="entry-note">${sentences(t.note, srcMarks(t.sourceId), t.links) || srcMarks(t.sourceId)}</div>` : "";
           return `<li class="entry">${head}${note}${until}${snap}</li>`;
         })
         .join("");
@@ -418,7 +420,7 @@
     // 成し遂げたこと
     if (p.achievements && p.achievements.length) {
       const items = p.achievements
-        .map((a) => entry({ main: esc(a.title), note: a.description, tail: srcMarks(a.sourceId) }))
+        .map((a) => entry({ main: esc(a.title), note: a.description, links: a.links, tail: srcMarks(a.sourceId) }))
         .join("");
       html.push(section("成し遂げたこと", `<ul class="entry-list">${items}</ul>`));
     }
@@ -437,7 +439,7 @@
             ${i > 0 && p.reputation[i - 1].era === r.era ? "<span></span>" : `<span class="rep-era">${esc(r.era)}</span>`}
             <div class="rep-body">
               <div class="entry-head"><span class="entry-main">${markQuotes(esc(head))}</span>${rest ? "" : mark}</div>
-              ${rest ? `<div class="entry-note">${paras(rest, mark)}</div>` : ""}
+              ${rest ? `<div class="entry-note">${paras(rest, mark, r.links)}</div>` : ""}
             </div>
           </div>`;
         })
@@ -448,7 +450,7 @@
     // 逸話
     if (p.episodes && p.episodes.length) {
       const items = p.episodes
-        .map((e) => entry({ main: esc(e.title), after: uncertain(e.uncertain), note: e.body, tail: srcMarks(e.sourceId) }))
+        .map((e) => entry({ main: esc(e.title), after: uncertain(e.uncertain), note: e.body, links: e.links, tail: srcMarks(e.sourceId) }))
         .join("");
       html.push(section("逸話・エピソード", `<ul class="entry-list">${items}</ul>`));
     }
@@ -456,7 +458,7 @@
     // 諸説・疑問（題名と短い説明だけを出し、詳しくは考察記事へリンクする）
     if (p.questions && p.questions.length) {
       const items = p.questions
-        .map((q) => entry({ main: esc(q.title), note: q.text, tail: srcMarks(q.sourceId), extra: articleLink(q.article_id) }))
+        .map((q) => entry({ main: esc(q.title), note: q.text, links: q.links, tail: srcMarks(q.sourceId), extra: articleLink(q.article_id) }))
         .join("");
       html.push(section("諸説・疑問", `<ul class="entry-list">${items}</ul>`));
     }
@@ -470,7 +472,7 @@
         : spotName(s);
       return `<div class="spot-item">
             <div class="entry-head"><span class="spot-type">${esc(type)}</span><b>${name}</b>${place ? `<span class="spot-place">／ ${place}</span>` : ""}${s.castle_id ? "" : spotLinkNote(s)}</div>
-            ${s.description || s.sourceId ? `<div class="entry-note">${sentences(s.description, srcMarks(s.sourceId)) || srcMarks(s.sourceId)}</div>` : ""}
+            ${s.description || s.sourceId ? `<div class="entry-note">${sentences(s.description, srcMarks(s.sourceId), s.links) || srcMarks(s.sourceId)}</div>` : ""}
           </div>`;
     };
     const g = p.graves;
@@ -482,7 +484,7 @@
       const grave = g
         ? `<div class="grave-block">
             <div class="grave-status">墓所：<b>${esc(g.status || "不明")}</b>
-              ${g.note || g.sourceId ? `<div class="entry-note">${sentences(g.note, srcMarks(g.sourceId)) || srcMarks(g.sourceId)}</div>` : ""}
+              ${g.note || g.sourceId ? `<div class="entry-note">${sentences(g.note, srcMarks(g.sourceId), g.links) || srcMarks(g.sourceId)}</div>` : ""}
             </div>
             ${gravePlaces.map((pl) => spotItem(pl, "墓所")).join("")}
           </div>`
@@ -527,7 +529,7 @@
           // 1行目：書名・著者・出版社・年・リンク先、その下に紹介（句点ごとに改行）
           return `<li class="entry">
             <div class="entry-head"><span class="entry-main">${title}</span>${meta ? `<span class="entry-meta">${meta}</span>` : ""}${shop}</div>
-            ${r.note ? `<div class="entry-note">${sentences(r.note)}</div>` : ""}
+            ${r.note ? `<div class="entry-note">${sentences(r.note, "", r.links)}</div>` : ""}
           </li>`;
         })
         .join("");
@@ -555,7 +557,7 @@
             <span class="src-badges">${badges}</span>
             <div>
               <div class="entry-head"><span class="entry-main">${title}</span>${meta ? `<span class="entry-meta">${meta}</span>` : ""}${linkNote}</div>
-              ${s.note ? `<div class="entry-note">${sentences(s.note)}</div>` : ""}
+              ${s.note ? `<div class="entry-note">${sentences(s.note, "", s.links)}</div>` : ""}
             </div>
           </li>`;
         })
@@ -571,6 +573,7 @@
             when: esc(v.section || ""),
             main: esc(v.title),
             note: v.text,
+            links: v.links,
             extra: v.checkWith && v.checkWith.length
               ? `<div class="entry-note verify-with">確認先：${[].concat(v.checkWith).map((c) => fmtText(esc(c))).join("／")}</div>`
               : "",

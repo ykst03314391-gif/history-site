@@ -57,7 +57,6 @@
     { "relation": "正室", "person_id": "jiunin", "name": "慈雲院", "note": "法名。実名・出自は不明" },
     { "relation": "側室", "person_id": "koshunni", "name": "興俊尼", "note": "「光秀尼」と同じ人物とされる" },
     { "relation": "娘", "person_id": "daizenin", "name": "大善院", "note": "毛利秀元の正室となったとされる" },
-    { "relation": "娘婿", "person_id": "mori-hidemoto", "name": "毛利秀元", "note": "大善院の夫。毛利輝元の養子で、のちに長府毛利家の祖となる。縁組は秀長の死後で、秀吉の養女として嫁いだとされる" },
     { "relation": "子", "name": "与一郎", "note": "嫡男。早世し、秀長が大和に移った天正13年（1585）にはすでに亡かったとされる。跡継ぎには、天正16年（1588）正月に甥の秀保を養子に迎えた", "sourceId": ["takayama-ko-jitsuroku", "mori-sendai-jitsuroku", "kuroda-2025", "tamonin-nikki"] },
     { "relation": "養子", "person_id": "toyotomi-hideyasu", "name": "豊臣秀保", "note": "甥（姉ともの子）。秀長の跡を継いだ" },
     { "relation": "甥", "person_id": "toyotomi-hidetsugu", "name": "豊臣秀次", "note": "姉ともの長男で、秀保の兄。紀州・四国攻めでともに大将を務めた。のちに秀吉の跡を継いで関白となったが、秀長の死から4年後に切腹した" }

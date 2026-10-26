@@ -34,7 +34,7 @@
     {"relation": "弟", "person_id": "toyotomi-hidenaga", "name": "豊臣秀長"},
     {"relation": "妹", "person_id": "asahi-hime", "name": "朝日姫"},
     {"relation": "夫", "name": "三好吉房", "note": "木下弥助とも"},
-    {"relation": "子", "name": "豊臣秀次", "note": "秀吉の養子となり関白を継ぐ。文禄4年に切腹"},
+    {"relation": "子", "person_id": "toyotomi-hidetsugu", "name": "豊臣秀次", "note": "秀吉の養子となり関白を継ぐ。文禄4年に切腹"},
     {"relation": "子", "name": "豊臣秀勝", "note": "文禄元年、朝鮮の巨済島の陣中で病死"},
     {"relation": "子", "person_id": "toyotomi-hideyasu", "name": "豊臣秀保", "note": "秀長の養子となる。文禄4年に十津川で死去"}
   ],

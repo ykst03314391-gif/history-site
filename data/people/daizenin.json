@@ -26,12 +26,12 @@
     {"relation": "母", "name": "不明", "note": "興俊尼（光秀尼）とする説などがある。奈良名所八重桜は、興俊尼が産んだ秀長の娘が「安芸の毛利家の室」になったと書く"},
     {"relation": "養母", "person_id": "jiunin", "name": "慈雲院", "note": "父の正室。養母だったとする見方がある（諸説）"},
     {"relation": "養父", "person_id": "toyotomi-hideyoshi", "name": "豊臣秀吉", "note": "養女となって嫁いだ"},
-    {"relation": "夫", "name": "毛利秀元"}
+    {"relation": "夫", "person_id": "mori-hidemoto", "name": "毛利秀元"}
   ],
   "timeline": [
     {"year": 1588, "title": "誕生", "description": "秀長の娘として生まれたとされる"},
     {"year": 1591, "month": 1, "title": "父秀長の死", "description": "父が郡山城で病没する"},
-    {"year": 1595, "month": 2, "title": "毛利秀元に嫁ぐ", "description": "秀吉の養女として、毛利秀元に嫁いだとされる（原典未確認）"},
+    {"year": 1595, "month": 2, "title": "毛利秀元に嫁ぐ", "description": "秀吉の養女として、毛利秀元に嫁いだとされる（原典未確認）", "links": [{"text": "毛利秀元", "person_id": "mori-hidemoto"}]},
     {"year": 1609, "month": 11, "day": 29, "title": "死去", "description": "22歳で没した"}
   ],
   "episodes": [

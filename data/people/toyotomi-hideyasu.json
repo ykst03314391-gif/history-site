@@ -31,7 +31,7 @@
   "family": [
     {"relation": "父", "name": "三好吉房", "note": "木下弥助とも"},
     {"relation": "母", "person_id": "tomo", "name": "とも（日秀尼）"},
-    {"relation": "兄", "name": "豊臣秀次"},
+    {"relation": "兄", "person_id": "toyotomi-hidetsugu", "name": "豊臣秀次"},
     {"relation": "兄", "name": "豊臣秀勝"},
     {"relation": "養父", "person_id": "toyotomi-hidenaga", "name": "豊臣秀長", "note": "実子とする説もある"},
     {"relation": "妻", "name": "秀長の娘", "note": "従妹にあたる。多聞院日記は天正19年正月（秀長の死の直前）に、秀長の娘（「四五才歟」）と「養子侍従殿」の祝言があったと伝える。文禄3年に正式な婚礼を挙げたとする説もあるが、多聞院日記の文禄3年3月2日の祝言は金吾殿（秀俊）のもの（大善院のページを参照）"}

@@ -19,7 +19,7 @@
     { "person_id": "toyotomi-hidenaga", "name": "豊臣秀長", "role": "弟。補佐役", "type": "一門" },
     { "person_id": "asahi-hime", "name": "朝日姫", "role": "妹。徳川家康の正室", "type": "一門" },
     { "person_id": "toyotomi-hideyasu", "name": "豊臣秀保", "role": "甥。秀長の跡を継ぐ", "type": "一門" },
-    { "name": "豊臣秀次", "role": "甥（養子）。関白を継ぐも切腹", "type": "一門" },
+    { "person_id": "toyotomi-hidetsugu", "name": "豊臣秀次", "role": "甥（養子）。関白を継ぐも切腹", "type": "一門" },
     { "name": "豊臣秀頼", "role": "子。大坂の陣で滅ぶ", "type": "一門" },
     { "name": "石田三成", "role": "五奉行の一人。政権を支えた", "type": "家臣" },
     { "name": "加藤清正", "role": "子飼いの武将", "type": "家臣" },

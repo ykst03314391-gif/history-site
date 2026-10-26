@@ -563,6 +563,23 @@
       html.push(section("出典", `${SRC_LEGEND}<ul class="entry-list src-list">${items}</ul>`));
     }
 
+    // 要確認（調査メモ）：まだ確かめられていない事柄と、確かめるのに当たる資料。ページの最後に備考として出す
+    if (p.toVerify && p.toVerify.length) {
+      const items = p.toVerify
+        .map((v) =>
+          entry({
+            when: esc(v.section || ""),
+            main: esc(v.title),
+            note: v.text,
+            extra: v.checkWith && v.checkWith.length
+              ? `<div class="entry-note verify-with">確認先：${[].concat(v.checkWith).map((c) => fmtText(esc(c))).join("／")}</div>`
+              : "",
+          })
+        )
+        .join("");
+      html.push(section("要確認（調査メモ）", `<p class="muted">ページの記述のうち、まだ原典や原本で確かめられていない事柄と、確かめるのに当たる資料の控えです。</p><ul class="entry-list verify-list">${items}</ul>`));
+    }
+
     // 目次をヘッダー（html[0]）の直後に挿入
     html.splice(1, 0, tocHTML());
 

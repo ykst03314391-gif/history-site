@@ -34,19 +34,19 @@
   ],
   "lords": [
     {"name": "丹羽長秀", "note": "はじめは織田家の丹羽長秀に属したとされる（諸説）"},
-    {"person_id": "toyotomi-hidenaga", "name": "豊臣秀長", "to": 1591, "note": "秀長の重臣となる"},
+    {"person_id": "toyotomi-hidenaga", "name": "豊臣秀長", "to": 1591, "note": "秀長の重臣となる。甫庵太閤記は賤ヶ岳の砦の守りを{{美濃守内、桑山、修理亮}}と書き、秀長（美濃守）の家臣として扱う。いつ秀長に付いたかは未確認", "sourceId": "hoan-taikoki"},
     {"person_id": "toyotomi-hideyasu", "name": "豊臣秀保", "from": 1591, "to": 1595, "note": "秀保の後見役の一人とされる"},
     {"person_id": "toyotomi-hideyoshi", "name": "豊臣秀吉", "from": 1595, "to": 1598, "note": "秀保の死後、直臣となる"},
     {"name": "徳川家康", "from": 1600, "note": "関ヶ原で東軍につく"}
   ],
   "territories": [
-    {"year": 1583, "name": "但馬国（竹田城）", "prefecture": "兵庫県", "note": "天正記（柴田退治記）は賤ヶ岳の後の配置として「但馬竹田桑山修理進」と書く。城主とも城代ともいわれる", "sourceId": "tensho-ki", "province": "但馬国", "district": "但馬国朝来郡", "until": 1585, "untilNote": "紀州攻めの後、和歌山へ移る", "place": "竹田城跡", "lat": 35.3006, "lng": 134.8292},
+    {"year": 1583, "name": "但馬国（竹田城）", "prefecture": "兵庫県", "note": "天正記（柴田退治記）は賤ヶ岳の後の配置として{{但馬竹田桑山修理進}}と書く（経済雑誌社版『群書類従』第14輯、351頁の原本画像で確認）。同じ一覧で、秀長が{{播磨但馬守護羽柴美濃守秀長。姫路居城也}}とされ、それまで秀長がいた竹田城を桑山が任された形になる。城主とも城代ともいわれる", "sourceId": "tensho-ki", "province": "但馬国", "district": "但馬国朝来郡", "until": 1585, "untilNote": "紀州攻めの後、和歌山へ移る", "place": "竹田城跡", "lat": 35.3006, "lng": 134.8292},
     {"year": 1585, "name": "紀伊国（和歌山）", "prefecture": "和歌山県", "note": "紀州攻めの後、和歌山に入る。城代として3万石とも、城主として2万石加増ともいう", "sourceId": "kawasumi-taikoki", "province": "紀伊国", "district": "紀伊国海草郡", "place": "和歌山城", "lat": 34.2277, "lng": 135.1713},
     {"year": 1595, "name": "和泉国（谷川）", "prefecture": "大阪府", "note": "1万石を加えられ計4万石とされる。隠居後もここを保ち、谷川藩の初代とされる（原典未確認）", "province": "和泉国", "district": "和泉国泉南郡", "place": "谷川", "lat": 34.3218, "lng": 135.1263}
   ],
   "timeline": [
-    {"year": 1583, "month": 4, "title": "賤ヶ岳の戦い", "description": "甫庵太閤記によれば、秀長の配下として賤ヶ岳の砦を守った。佐久間盛政の攻撃で近くの砦が落ちるといったん城を出たが、丹羽長秀の加勢を知って引き返し、ともに砦を守った", "battle_id": "shizugatake", "sourceId": "hoan-taikoki"},
-    {"year": 1583, "title": "竹田城を任される", "castle_id": "takeda", "description": "天正記に「但馬竹田桑山修理進」とある", "sourceId": "tensho-ki"},
+    {"year": 1583, "month": 4, "title": "賤ヶ岳の戦い", "description": "秀長の配下として賤ヶ岳の砦を守った。甫庵太閤記は陣取りを{{志津嵩之城には美濃守内、桑山、修理亮、田上山（ハ）小一郎殿本陣として居城なり}}と書く。柴田退治記も、田上山に本陣を置いた秀長が{{志津嵩頂上。亦秀長入置人数成要害}}としたと書くが、守将の名は挙げない。甫庵太閤記によれば、佐久間盛政の攻撃で近くの砦（中川清秀の陣）が落ちるといったん城を出たが、丹羽長秀の加勢を知って引き返し、ともに砦を守った", "battle_id": "shizugatake", "sourceId": ["hoan-taikoki", "tensho-ki"]},
+    {"year": 1583, "title": "竹田城を任される", "castle_id": "takeda", "description": "賤ヶ岳の後の配置で、秀長が播磨・但馬を任されて姫路城を居城とし、竹田城には桑山が入った。天正記（柴田退治記）に{{但馬竹田桑山修理進}}とある", "links": [{"text": "秀長", "person_id": "toyotomi-hidenaga"}], "sourceId": "tensho-ki"},
     {"year": 1585, "month": 3, "title": "紀州攻め", "description": "紀州攻めの後、和歌山に入れ置かれる。川角太閤記は「和哥山へは桑山法印を入置かれ候」と書く", "battle_id": "kishu-campaign", "sourceId": "kawasumi-taikoki"},
     {"year": 1592, "title": "奈良で金を借りた者の召し取りを命じられる", "description": "秀長の死後の天正20年、多聞院日記に一晏法印・井上源吾・杉若越前守と並んで「桑山修理」の名が見え、奈良中で京・堺・大坂の金を借りた者を召し取るよう命じられている", "sourceId": "tamonin-nikki"},
     {"year": 1595, "title": "秀吉の直臣となる", "description": "秀保が没し、秀吉に直接仕えるようになる（原典未確認）"},
@@ -79,11 +79,11 @@
   },
   "sources": [
     {"id": "tamonin-nikki", "title": "多聞院日記", "author": "英俊ほか", "publisher": "三教書院（辻善之助編）", "year": "1935〜39", "page": "第4巻", "url": "https://dl.ndl.go.jp/pid/1920664", "note": "興福寺多聞院の僧の日記。秀長の死後の天正20年、秀長家の奉行衆と並んで「桑山修理」の名が見える。三教書院版のOCR本文による", "type": "史料", "primary": "一次資料"},
-    {"id": "tensho-ki", "title": "天正記（柴田退治記）", "author": "大村由己", "note": "賤ヶ岳の後の城の配置に「但馬竹田桑山修理進」とある。秀吉方の顕彰の文章", "type": "史料", "primary": "一次資料"},
-    {"id": "hoan-taikoki", "title": "太閤記", "author": "小瀬甫庵", "note": "賤ヶ岳の砦の守備と丹羽長秀とのやりとり。脚色の多い二次史料", "type": "史料", "primary": "二次資料"},
+    {"id": "tensho-ki", "title": "天正記（柴田退治記）", "author": "大村由己", "note": "天正11年11月の奥書がある。賤ヶ岳の陣取りで秀長が志津嵩の頂上に兵を入れたこと、戦いの後の城の配置に{{但馬竹田桑山修理進}}とあること（秀長は{{播磨但馬守護}}で姫路居城）を記す。秀吉方の顕彰の文章", "type": "史料", "primary": "一次資料"},
+    {"id": "hoan-taikoki", "title": "太閤記", "author": "小瀬甫庵", "note": "賤ヶ岳の陣取りで{{志津嵩之城には美濃守内、桑山、修理亮}}とあり、砦の守備と丹羽長秀とのやりとりを記す。脚色の多い二次史料", "type": "史料", "primary": "二次資料"},
     {"id": "kawasumi-taikoki", "title": "川角太閤記", "note": "紀州攻めの後に「和哥山へは桑山法印を入置かれ」と記す。江戸初期の覚書", "type": "史料", "primary": "二次資料"},
     {"id": "wikipedia", "title": "桑山重晴（Wikipedia）", "url": "https://ja.wikipedia.org/wiki/桑山重晴", "note": "生没年・家族・領地の変遷・墓所などの概要。原典は未確認", "type": "ネット記事"}
   ],
   "tags": ["豊臣家臣", "秀長家臣", "茶人"],
-  "updatedAt": "2026-10-21"
+  "updatedAt": "2026-10-27"
 }

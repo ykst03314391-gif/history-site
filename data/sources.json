@@ -135,6 +135,10 @@
       "usedIn": [
         {
           "type": "person",
+          "id": "toyotomi-hidetsugu"
+        },
+        {
+          "type": "person",
           "id": "toyotomi-hidenaga"
         },
         {
@@ -189,6 +193,10 @@
       "note": "秀吉の時代を伝える覚書・聞書。伝聞を含むため史実性は要検討。",
       "url": "https://ja.wikisource.org/wiki/川角太閤記",
       "usedIn": [
+        {
+          "type": "person",
+          "id": "toyotomi-hidetsugu"
+        },
         {
           "type": "person",
           "id": "toyotomi-hideyasu"
@@ -259,6 +267,10 @@
       "note": "秀吉の伝記。読み物としての脚色が多く、信頼性には注意が必要。",
       "url": "https://ja.wikisource.org/wiki/太閤記",
       "usedIn": [
+        {
+          "type": "person",
+          "id": "toyotomi-hidetsugu"
+        },
         {
           "type": "person",
           "id": "toyotomi-hideyoshi"
@@ -366,6 +378,10 @@
       "note": "奈良・興福寺多聞院の僧たちが書き継いだ日記。大和から見た織豊期の動きを伝える同時代の記録だが、伝聞も多い。辻善之助編・三教書院版（1935〜39年）を使用。",
       "url": "https://dl.ndl.go.jp/pid/1920656",
       "usedIn": [
+        {
+          "type": "person",
+          "id": "toyotomi-hidetsugu"
+        },
         {
           "type": "person",
           "id": "toyotomi-hidenaga"

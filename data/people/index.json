@@ -167,6 +167,18 @@
       "tags": ["豊臣家", "大和"]
     },
     {
+      "id": "toyotomi-hidetsugu",
+      "thumb": "assets/img/portraits/thumbs/toyotomi-hidetsugu.jpg",
+      "name": "豊臣秀次",
+      "kana": "とよとみ ひでつぐ",
+      "summary": "秀吉・秀長の甥。四国攻めで秀長とともに大将を務め、近江八幡山・尾張清洲の城主を経て関白を継いだが、高野山で切腹した。",
+      "birthYear": 1568,
+      "birthEra": "永禄11年",
+      "deathYear": 1595,
+      "deathEra": "文禄4年7月15日",
+      "tags": ["豊臣家", "関白", "近江"]
+    },
+    {
       "id": "todo-takatora",
       "thumb": "assets/img/portraits/thumbs/todo-takatora.jpg",
       "name": "藤堂高虎",
@@ -253,6 +265,17 @@
       "deathYear": 1599,
       "deathEra": "慶長4年5月19日",
       "tags": ["長宗我部家", "戦国大名", "豊臣大名", "四国"]
+    },
+    {
+      "id": "mori-hidemoto",
+      "name": "毛利秀元",
+      "kana": "もうり ひでもと",
+      "summary": "毛利輝元の養子で、朝鮮出兵では毛利勢を率いた。豊臣秀長の娘を妻とし、関ヶ原では南宮山で動けず、戦後は長府毛利家の祖となった。",
+      "birthYear": 1579,
+      "birthEra": "天正7年11月7日",
+      "deathYear": 1650,
+      "deathEra": "慶安3年閏10月3日",
+      "tags": ["毛利家", "長府藩"]
     }
   ]
 }

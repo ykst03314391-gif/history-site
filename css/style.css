@@ -445,6 +445,9 @@ html { scroll-behavior: smooth; }
 /* ゆかりの地の中の墓所のまとまり。ほかの場所との間に区切りを置く */
 .grave-block { padding-bottom: 6px; margin-bottom: 14px; border-bottom: 1px solid var(--line); }
 
+/* 要確認（調査メモ）：確認先の行は説明と分けて少し控えめに */
+.verify-list .verify-with { font-size: 0.85rem; color: var(--ink-soft); }
+
 /* 出典バッジ */
 .src-list li { margin-bottom: 10px; }
 .entry-list.src-list li { margin-bottom: 0; }

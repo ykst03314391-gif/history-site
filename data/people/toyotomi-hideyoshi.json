@@ -39,7 +39,7 @@
     { "relation": "姉", "person_id": "tomo", "name": "とも（日秀尼）", "note": "秀次・秀勝・秀保の母" },
     { "relation": "弟", "person_id": "toyotomi-hidenaga", "name": "豊臣秀長", "note": "秀吉を支えた補佐役" },
     { "relation": "妹", "person_id": "asahi-hime", "name": "朝日姫", "note": "徳川家康の正室となる" },
-    { "relation": "養子", "name": "豊臣秀次" },
+    { "relation": "養子", "person_id": "toyotomi-hidetsugu", "name": "豊臣秀次" },
     { "relation": "子", "name": "豊臣秀頼" }
   ],
   "lords": [

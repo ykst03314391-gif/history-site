@@ -1,0 +1,133 @@
+{
+  "id": "toyotomi-hidetsugu",
+  "name": "豊臣秀次",
+  "kana": "とよとみ ひでつぐ",
+  "summary": "豊臣秀吉の姉ともの長男。宮部継潤・三好康長の養子を経て叔父秀吉の一門に戻り、四国攻めでは叔父秀長とともに大将を務めた。近江八幡山、ついで尾張清洲の城主。秀吉の子鶴松の死後に関白を譲られたが、文禄4年（1595）に高野山で切腹し、妻子も三条河原で処刑された。",
+  "portrait": {"src": "assets/img/portraits/toyotomi-hidetsugu.jpg", "caption": "豊臣秀次像", "holder": "瑞泉寺（京都市中京区）", "note": "部分。17世紀前半の作とされ、原本は秀次の周りに殉死した家臣（雀部淡路守・不破万作ら）を描く。秀次の死から数十年後のもの", "source": {"name": "Wikimedia Commons", "url": "https://commons.wikimedia.org/wiki/File:Toyotomi_Hidetsugu-cropped.jpg"}, "license": "パブリックドメイン"},
+  "aliases": [
+    {"type": "通称", "value": "孫七郎"},
+    {"type": "その他", "value": "宮部吉継", "note": "宮部継潤の養子だったころの名とされる（原典未確認）"},
+    {"type": "その他", "value": "三好信吉", "note": "三好康長の養子だったころの名とされる（原典未確認）"},
+    {"type": "その他", "value": "次兵衛", "note": "多聞院日記は天正14年から17年ごろ、秀次を{{次兵衞殿}}と呼ぶ"},
+    {"type": "その他", "value": "近江中納言", "note": "近江八幡山の城主で権中納言だったことからの呼び名。甫庵太閤記・蓮成院記録に見える"},
+    {"type": "その他", "value": "殺生関白", "note": "後世の悪評による呼び名"}
+  ],
+  "nameHistory": [
+    {"year": 1583, "era": "天正11年", "value": "三好孫七郎秀次", "note": "天正記（柴田退治記）は伊勢攻めの記事で{{三好孫七郎秀次}}と書く。三好康長の養子だったころ", "sourceId": "tensho-ki"},
+    {"year": 1585, "era": "天正13年", "value": "羽柴孫七郎秀次", "note": "天正記（四国御発向並北国御動座記）は四国攻め・近江拝領の記事で{{羽柴孫七郎秀次}}と書く。羽柴に戻っている", "sourceId": "tensho-ki"},
+    {"year": 1586, "era": "天正14年〜17年", "value": "次兵衛殿", "note": "多聞院日記は天正14年10月の条（{{今日ハ又次兵衞殿へ被申入}}）から、聚楽第行幸（天正16年）、秀吉の奈良下向（天正17年10月）まで、秀次を{{次兵衞}}と呼ぶ。天正記は宮部継潤も{{宮部次兵衛尉}}と書くので、養父の通称を受け継いだものか", "sourceId": ["tamonin-nikki", "tensho-ki"]},
+    {"year": 1588, "era": "天正16年", "value": "近江権中納言豊臣秀次", "note": "甫庵太閤記の聚楽第行幸の記事の一覧に{{近江権中納言豊臣秀次}}とある", "sourceId": "hoan-taikoki"},
+    {"year": 1591, "era": "天正19年8月", "value": "中納言殿", "note": "多聞院日記は鶴松の死を伝える条で、天下を{{中納言殿}}へ譲ると書く", "sourceId": "tamonin-nikki"},
+    {"year": 1591, "era": "天正19年12月", "value": "関白殿", "note": "関白を継いでからの呼び名。川角太閤記は{{御甥秀次様へ聚洛を被進候則号関白}}と書く", "sourceId": "kawasumi-taikoki"}
+  ],
+  "birth": {
+    "year": 1568,
+    "era": "永禄11年",
+    "note": "文禄4年に28歳で没したことからの逆算（Wikipedia経由）。月日・出生地は不明",
+    "sourceId": "wikipedia"
+  },
+  "death": {
+    "year": 1595,
+    "month": 8,
+    "day": 20,
+    "era": "文禄4年7月15日",
+    "note": "高野山の青巌寺で切腹した。多聞院日記は{{同十五日歟ニ高野テ生害}}と、日付に「歟」を付けて書く"
+  },
+  "ranks": [
+    {"year": 1587, "title": "権中納言", "note": "天正15年の任官とされる（Wikipedia経由で、原典未確認）。天正16年の聚楽第行幸の記事で、甫庵太閤記は{{近江権中納言}}と書く", "sourceId": ["wikipedia", "hoan-taikoki"]},
+    {"year": 1591, "era": "天正19年12月", "title": "内大臣・関白", "note": "Wikipedia は12月4日に内大臣、28日に関白とする（原典未確認）。多聞院日記は同じ12月の条で、秀吉が聚楽を{{中納言殿}}へ譲ったと書く", "sourceId": ["wikipedia", "tamonin-nikki"]},
+    {"year": 1592, "title": "左大臣", "note": "Wikipedia経由で、原典未確認", "sourceId": "wikipedia"}
+  ],
+  "family": [
+    {"relation": "父", "name": "三好吉房", "note": "木下弥助とも。秀次の死後、讃岐へ流された"},
+    {"relation": "母", "person_id": "tomo", "name": "とも（日秀尼）", "note": "秀吉の姉"},
+    {"relation": "弟", "name": "豊臣秀勝", "note": "小吉秀勝。文禄の役の陣中で病死"},
+    {"relation": "弟", "person_id": "toyotomi-hideyasu", "name": "豊臣秀保", "note": "叔父秀長の養子となり、大和・紀伊を継いだ"},
+    {"relation": "叔父", "person_id": "toyotomi-hideyoshi", "name": "豊臣秀吉", "note": "母の弟。のちに養父となり、関白を譲った"},
+    {"relation": "叔父", "person_id": "toyotomi-hidenaga", "name": "豊臣秀長", "note": "母の弟。四国攻めでともに大将を務め、長宗我部元親の処遇を二人で任された"},
+    {"relation": "その他", "person_id": "omandokoro", "name": "大政所", "note": "祖母（母ともの母）"},
+    {"relation": "養父", "name": "宮部継潤", "note": "近江の浅井氏の家臣だった宮部継潤のもとへ、養子（実質は人質）として出されたとされる（原典未確認）"},
+    {"relation": "養父", "name": "三好康長", "note": "阿波の三好氏の一族、三好康長（笑岩）の養子となった。天正記は天正11年に{{三好孫七郎秀次}}と書く", "sourceId": "tensho-ki"},
+    {"relation": "妻", "name": "一の台", "note": "菊亭晴季の娘。川角太閤記は、秀次の妻子の処刑で最初に斬られたのがこの人で、秀吉の前を病と偽って秀次のもとへ入ったと書く", "sourceId": "kawasumi-taikoki"},
+    {"relation": "子", "name": "おせん・お百・お十", "note": "川角太閤記が三条河原で殺された{{若君三人}}として挙げる男子。母はそれぞれ日比野下野守の娘、山口松雲の娘、北野松梅院の娘", "sourceId": "kawasumi-taikoki"}
+  ],
+  "lords": [
+    {"person_id": "toyotomi-hideyoshi", "name": "豊臣秀吉", "to": 1595, "note": "叔父。関白を継いだ後も、太閤となった秀吉の下に置かれた"}
+  ],
+  "retainers": [
+    {"name": "中村一氏", "from": 1585, "note": "天正記は近江拝領のとき、中村・堀尾・一柳・山内の4人を{{殿下股肱の臣}}でありながら{{秀次家の年寄}}として付けたと書く", "sourceId": "tensho-ki"},
+    {"name": "堀尾吉晴", "from": 1585, "note": "秀次の年寄（天正記）。甫庵太閤記は、秀次事件のとき伏見へ下るよう秀次に勧めたと書く", "sourceId": ["tensho-ki", "hoan-taikoki"]},
+    {"name": "一柳直末", "from": 1585, "note": "秀次の年寄（天正記）", "sourceId": "tensho-ki"},
+    {"name": "山内一豊", "from": 1585, "note": "秀次の年寄（天正記）", "sourceId": "tensho-ki"},
+    {"name": "田中吉政（久兵衛）", "note": "甫庵太閤記は長久手の戦いの記事で{{秀次長臣}}と書く", "sourceId": "hoan-taikoki"},
+    {"name": "木村常陸介", "to": 1595, "note": "甫庵太閤記は秀次の近臣とし、秀次事件に連座して自害したと書く", "sourceId": "hoan-taikoki"}
+  ],
+  "territories": [
+    {"year": 1585, "name": "近江国（八幡山）", "prefecture": "滋賀県", "note": "四国攻めの後の国割で、天正記は秀次を{{江州物主}}とし、{{江州府中八幡山}}を居城に定めたと書く。川角太閤記は{{江州八幡山にて廿万石}}とする。年寄衆の分も合わせて43万石とする説もある（Wikipedia経由）", "sourceId": ["tensho-ki", "kawasumi-taikoki", "wikipedia"], "until": 1590, "untilNote": "小田原攻めの後、尾張へ移る", "mapNote": "近江のどの郡を領したかは確かめていないので、国は塗らずにピンだけを立てる", "place": "八幡山城跡", "lat": 35.1407, "lng": 136.0895},
+    {"year": 1590, "name": "尾張国・伊勢国の一部（清洲）", "prefecture": ["愛知県", "三重県"], "note": "小田原攻めの後、国替えを断った織田信雄から尾張を取り上げ、{{尾張伊勢をは御甥の三吉孫七郎殿拝領被成候}}と川角太閤記は書く。伊勢は北部の数郡とされる", "sourceId": "kawasumi-taikoki", "province": "尾張国", "mapNote": "伊勢のうちどの郡かは確かめていないので、尾張だけを塗る", "place": "清洲城跡", "lat": 35.2153, "lng": 136.8429}
+  ],
+  "timeline": [
+    {"year": 1568, "title": "誕生", "description": "秀吉の姉ともと三好吉房の長男として生まれる（Wikipedia経由）", "sourceId": "wikipedia"},
+    {"year": 1583, "title": "伊勢攻め", "description": "柴田方の滝川一益を攻める伊勢攻めで、羽柴軍の三手の一つを率いて大君畑越えから攻め入る。叔父の秀長は土岐多羅越えだった", "links": [{"text": "滝川一益", "person_id": "takigawa-kazumasu"}, {"text": "秀長", "person_id": "toyotomi-hidenaga"}], "battle_id": "ise-campaign", "sourceId": "tensho-ki"},
+    {"year": 1584, "month": 4, "day": 9, "title": "長久手で大敗", "place": "長久手（愛知県長久手市）", "lat": 35.1838, "lng": 137.0496, "approx": true, "description": "小牧の対陣中、池田恒興らと三河へ攻め入る別働隊に、1万の兵を率いて加わる。甫庵太閤記によれば、家康方の榊原康政らに襲われ、{{追立られ剛兵共多く討せ、敗軍し給ふ}}という知らせが池田勢の陣に届いた", "sourceId": "hoan-taikoki"},
+    {"year": 1585, "month": 3, "title": "紀州攻め", "description": "叔父の秀長とともに副将を務め、和泉の千石堀城を攻め落とす", "links": [{"text": "秀長", "person_id": "toyotomi-hidenaga"}], "battle_id": "kishu-campaign", "sourceId": ["hoan-taikoki", "tensho-ki"]},
+    {"year": 1585, "month": 6, "title": "四国攻め", "description": "摂津・丹波の兵を率いて明石から淡路へ渡り、総大将の秀長とともに阿波に攻め入る。7月15日には大将として脇城を囲み、城兵は人質を秀次の陣に入れて城を明け渡した。長宗我部元親は降伏し、自分の処遇を{{秀長秀次}}に任せた", "links": [{"text": "秀長", "person_id": "toyotomi-hidenaga"}, {"text": "長宗我部元親", "person_id": "chosokabe-motochika"}], "battle_id": "shikoku-campaign", "sourceId": "tensho-ki"},
+    {"year": 1585, "title": "近江八幡山の城主", "place": "八幡山城跡", "lat": 35.1407, "lng": 136.0895, "description": "近江を任され、八幡山に城を構える。中村一氏・堀尾吉晴・一柳直末・山内一豊が年寄として付けられた", "sourceId": "tensho-ki"},
+    {"year": 1587, "month": 3, "title": "九州攻めの間、大坂を守る", "place": "大坂城", "lat": 34.6873, "lng": 135.5262, "description": "秀吉が九州へ出陣したとき、多聞院日記は京の留守を前田玄以、{{大坂ノルスハ次兵衞也}}と伝える", "sourceId": "tamonin-nikki"},
+    {"year": 1588, "month": 1, "title": "弟の秀保が秀長の養子に", "description": "多聞院日記の正月8日の条に{{大納言殿へ次兵衞殿ノ弟爲養子被越}}とある", "links": [{"text": "秀保", "person_id": "toyotomi-hideyasu"}, {"text": "秀長", "person_id": "toyotomi-hidenaga"}], "sourceId": "tamonin-nikki"},
+    {"year": 1588, "month": 4, "title": "聚楽第行幸", "place": "聚楽第跡（京都市上京区）", "lat": 35.0276, "lng": 135.7482, "approx": true, "description": "後陽成天皇の聚楽第行幸で、家康・秀長らとともに関白秀吉の供を務める。多聞院日記は、内裏を永代守ると誓う誓詞を出した者に{{大納言}}（秀長）と{{次兵衞}}を挙げる", "links": [{"text": "秀長", "person_id": "toyotomi-hidenaga"}], "sourceId": ["tamonin-nikki", "hoan-taikoki"]},
+    {"year": 1590, "month": 3, "day": 29, "title": "山中城攻め", "place": "山中城跡（静岡県三島市）", "lat": 35.1406, "lng": 138.9952, "description": "小田原攻めで、伊豆の山中城の攻め手の大将を務める（川角太閤記・甫庵太閤記）", "sourceId": ["kawasumi-taikoki", "hoan-taikoki"]},
+    {"year": 1590, "title": "尾張清洲へ移る", "place": "清洲城跡", "lat": 35.2153, "lng": 136.8429, "description": "織田信雄が国替えを断って改易され、その跡の尾張と伊勢の一部を与えられる", "sourceId": "kawasumi-taikoki"},
+    {"year": 1591, "month": 1, "day": 22, "title": "叔父秀長の死", "description": "叔父の秀長が郡山城で没し、弟の秀保が大和・紀伊を継ぐ", "links": [{"text": "秀長", "person_id": "toyotomi-hidenaga"}, {"text": "秀保", "person_id": "toyotomi-hideyasu"}], "sourceId": "tamonin-nikki"},
+    {"year": 1591, "title": "奥州の一揆を鎮める", "description": "奥州で一揆が起こり、秀次が5万余騎を率いて二戸まで攻め下り、一揆の頭を成敗した（川角太閤記）", "sourceId": "kawasumi-taikoki"},
+    {"year": 1591, "month": 8, "title": "鶴松の死と天下の譲り", "description": "秀吉の子鶴松が3歳で死ぬ。多聞院日記は秀吉の嘆きを{{誠ニ目モ當レヌ式}}と書き、続けて{{頓テ則天下ヲ中納言殿ヘ御讓云〓}}と伝える", "sourceId": "tamonin-nikki"},
+    {"year": 1591, "month": 12, "title": "関白となる", "place": "聚楽第跡（京都市上京区）", "lat": 35.0276, "lng": 135.7482, "approx": true, "description": "秀吉から聚楽第を譲られ、関白を継ぐ。秀吉は太閤となった", "sourceId": ["tamonin-nikki", "kawasumi-taikoki"]},
+    {"year": 1595, "month": 4, "title": "弟秀保の死", "description": "弟の秀保が十津川で没し、秀長の家は絶えた", "links": [{"text": "秀保", "person_id": "toyotomi-hideyasu"}, {"text": "秀長", "person_id": "toyotomi-hidenaga"}], "sourceId": "tamonin-nikki"},
+    {"year": 1595, "month": 7, "day": 8, "title": "伏見から高野山へ", "description": "6月末から石田三成ら5人の使者が聚楽へ来て、謀反の心があるのではと問いただした。7月8日、孝蔵主の取りなしで伏見へ下ったが、秀吉に会えないまま高野山へ入るよう命じられた（川角太閤記）", "sourceId": ["kawasumi-taikoki", "hoan-taikoki"]},
+    {"year": 1595, "month": 7, "day": 15, "title": "高野山で切腹", "place": "高野山 青巌寺（現在の金剛峯寺）", "lat": 34.2131, "lng": 135.5841, "description": "福島正則・池田伊予守らが使者として登り、秀次は切腹した。多聞院日記は{{首ヲ京へ上、葬送モ無之、淺猿躰也}}と書く。家臣の雀部淡路守・不破万作らが殉じた", "sourceId": ["tamonin-nikki", "kawasumi-taikoki", "hoan-taikoki"]},
+    {"year": 1595, "month": 8, "day": 2, "title": "妻子の処刑", "place": "三条河原（京都市）", "lat": 35.0089, "lng": 135.7718, "description": "秀次の首を据えた三条河原で、若君3人と妻妾30人余りが殺された。川角太閤記は、塚が{{畜生塚}}と名付けられたと書く。多聞院日記は{{究竟ノ女姓衆卅四人一度ニ生害、目モアテラレヌ躰也}}と伝える", "sourceId": ["kawasumi-taikoki", "tamonin-nikki"]}
+  ],
+  "episodes": [
+    {"title": "長久手の敗報と堀秀政", "body": "甫庵太閤記によれば、長久手で秀次の隊が敗れたとき、秀次の家臣の田中久兵衛（吉政）が堀秀政の陣へ駆け込み、「孫七郎がいま榊原・丹羽と戦い、大軍に押し立てられている」と告げた。秀政は目をいからせ、「組頭が使いに来るものか。逃げて来ただけだろう」と叱りつけ、周りは「堀は推察の上手、田中は使いの下手」と笑ったという。江戸時代初めの軍記の話で、秀次の初陣の失敗を強く印象づけている。", "sourceId": "hoan-taikoki"},
+    {"title": "最期の将棋", "body": "川角太閤記によれば、切腹を促す使者が着いたとき、秀次は隆西堂と将棋を指していた。秀次は「この将棋は秀次の勝ちか」と皆に見させ、勝ちと決まると、駒を崩すなと言って床の間に上げさせた。その後、父母・妻・上臈衆に宛てて自筆の手紙を書き、家臣に京へ届けさせてから腹を切ったという。", "sourceId": "kawasumi-taikoki"},
+    {"title": "「殺生関白」の悪評", "body": "甫庵太閤記は、秀次は関白になってから行いが乱れ、人を斬るのを好んで自ら試し斬りをし、盲人まで斬ったと書く。比叡山に女房衆を連れて登り、殺生禁断の山で狩りをしたという話も載せる。ただし甫庵は秀次の死を「天罰」と説く立場で書いており、処刑を正当化するために広まった話ではないかとも言われる。", "sourceId": "hoan-taikoki", "uncertain": true}
+  ],
+  "questions": [
+    {"title": "秀次は本当に謀反を企てたのか？", "text": "甫庵太閤記は石田三成・増田長盛らの讒言を挙げ、川角太閤記は{{御謀叛は毛頭思召寄無き事}}と書く。同時代の多聞院日記は、追放と切腹を伝えるだけで理由を書かない。", "sourceId": ["hoan-taikoki", "kawasumi-taikoki", "tamonin-nikki"]},
+    {"title": "切腹は秀吉の命令だったのか？", "text": "秀吉が切腹を命じたというのが通説だが、高野山へ追放しただけで、秀次が自ら腹を切ったとする研究者もいる（矢部健太郎の説）。川角太閤記・甫庵太閤記はどちらも、使者が切腹の命令を伝えたと書く。", "sourceId": ["yabe-2016", "kawasumi-taikoki", "hoan-taikoki"]},
+    {"title": "秀長が生きていたら、秀次事件は防げたのか？", "text": "秀長の死から4年後に秀次事件が起きたため、「秀長がいれば」とよく言われる。四国攻めではともに大将を務め、元親の処遇も二人で任された間柄だった。", "article_id": "hidenaga-if-lived"}
+  ],
+  "reputation": [
+    {"era": "存命時", "title": "奈良の寺から見た跡継ぎ", "body": "秀吉の天下を継ぐ人と見られていた。多聞院日記は鶴松の死の直後に{{天下ヲ中納言殿ヘ御讓}}と書き留め、死については{{淺猿躰也}}{{聞モ悲キ事也}}と嘆く。", "sourceId": "tamonin-nikki"},
+    {"era": "死去後", "title": "江戸時代初めの太閤記", "body": "関白の職を軽んじ、天罰を受けた人と見られた。小瀬甫庵の太閤記は、秀次の行いの乱れと残酷さを並べ、{{天罰の急緩黙止して知へし}}と評する。一方で、讒言を受けたことも書く。", "sourceId": "hoan-taikoki"},
+    {"era": "死去後", "title": "川角太閤記", "body": "無実の罪で死んだ人として語られた。川角太閤記は謀反は{{毛頭思召寄無き事}}とし、秀吉の処断は秀次の行いの乱れを見て、自分の死後を案じたためと書く。", "sourceId": "kawasumi-taikoki"}
+  ],
+  "spots": [
+    {"type": "城跡", "name": "八幡山城跡", "prefecture": "滋賀県", "city": "近江八幡市", "description": "秀次が近江を任されて築いた城。城下の町と八幡堀が近江八幡の町のもとになった"},
+    {"type": "神社仏閣", "name": "瑞龍寺（村雲御所）", "prefecture": "滋賀県", "city": "近江八幡市", "description": "母の日秀が京都に開いた寺。昭和36年に八幡山城の本丸跡へ移った"},
+    {"type": "城跡", "name": "清洲城", "prefecture": "愛知県", "city": "清須市", "description": "小田原攻めの後に移った尾張の城"},
+    {"type": "城跡", "name": "山中城跡", "prefecture": "静岡県", "city": "三島市", "description": "小田原攻めで攻め手の大将を務めた城"},
+    {"type": "神社仏閣", "name": "金剛峯寺（旧青巌寺）", "prefecture": "和歌山県", "city": "伊都郡高野町", "description": "秀次が切腹した青巌寺の後身。「柳の間」が切腹の場と伝わる"},
+    {"type": "墓所", "name": "瑞泉寺", "prefecture": "京都府", "city": "京都市中京区", "description": "三条河原の秀次の塚の跡に、角倉了以が慶長16年（1611）に建てたとされる寺。秀次と妻子の墓がある。秀次像（このページの肖像画）を所蔵する"},
+    {"type": "神社仏閣", "name": "善正寺", "prefecture": "京都府", "city": "京都市左京区", "description": "母の日秀が秀次の菩提のために建てた寺とされる"}
+  ],
+  "graves": {
+    "status": "諸説あり",
+    "note": "京都三条の瑞泉寺に、秀次と妻子の墓がある。三条河原の塚（畜生塚）が荒れた跡に、角倉了以が寺を建てたとされる（Wikipedia経由）。母の日秀が建てた善正寺にも墓があるとされる。どちらも現地は未確認。",
+    "sourceId": "wikipedia",
+    "places": [
+      {"name": "瑞泉寺", "prefecture": "京都府", "city": "京都市中京区"},
+      {"name": "善正寺", "prefecture": "京都府", "city": "京都市左京区"}
+    ]
+  },
+  "sources": [
+    {"id": "tensho-ki", "title": "天正記", "author": "大村由己", "url": "https://ja.wikisource.org/wiki/天正記", "note": "柴田退治記（伊勢攻めの{{三好孫七郎秀次}}）、四国御発向並北国御動座記（淡路・阿波への渡海、脇城、元親の処遇、近江拝領と年寄4人）。秀吉方が書かせた同時代の記録", "type": "史料", "primary": "一次資料"},
+    {"id": "tamonin-nikki", "title": "多聞院日記", "author": "英俊ほか", "publisher": "三教書院（辻善之助編）", "year": "1935〜39", "page": "第4巻・第5巻", "url": "https://dl.ndl.go.jp/pid/1920664", "urlLabel": "NDLデジタルコレクション（第4巻）", "note": "興福寺多聞院の僧の日記。{{次兵衞}}の呼び名（天正14〜17年）、九州攻め中の大坂の留守（天正15年3月）、聚楽第行幸、鶴松の死と天下の譲り（天正19年8月、第4巻コマ160）、聚楽の譲り（同12月、コマ169）、秀次の追放・切腹と女房衆の処刑（文禄4年、第5巻コマ17）。追放の日を{{六月八日}}と書くが、他の記録は7月8日とする（OCRの誤りか日記の誤りかは原本画像で未確認）。NDLのOCRで検索", "type": "史料", "primary": "一次資料"},
+    {"id": "kawasumi-taikoki", "title": "川角太閤記", "url": "https://ja.wikisource.org/wiki/川角太閤記", "note": "近江八幡山20万石、尾張・伊勢の拝領、山中城攻め、奥州一揆、関白就任、秀次事件の経過（使者・孝蔵主・将棋・手紙）と三条河原の処刑、{{御謀叛は毛頭思召寄無き事}}。江戸初期の覚書なので史実性は要検討", "type": "史料", "primary": "二次資料"},
+    {"id": "hoan-taikoki", "title": "太閤記", "author": "小瀬甫庵", "url": "https://ja.wikisource.org/wiki/太閤記", "note": "長久手の敗戦と堀秀政の叱責、紀州攻めの千石堀、聚楽第行幸の{{近江権中納言}}、山中城、{{前関白秀次公之事}}以下の秀次事件の巻（讒言・切腹・妻子の処刑・悪行）。秀次を天罰を受けた人として描く。脚色の多い二次史料", "type": "史料", "primary": "二次資料"},
+    {"id": "yabe-2016", "title": "関白秀次の切腹", "author": "矢部健太郎", "publisher": "KADOKAWA", "year": 2016, "note": "秀吉は秀次を高野山へ追放しただけで、切腹は秀次が自ら選んだとする説。本は未見で、説の内容は一般の紹介による", "type": "研究書", "primary": "研究"},
+    {"id": "wikipedia", "title": "豊臣秀次（Wikipedia）", "url": "https://ja.wikipedia.org/wiki/豊臣秀次", "note": "生年・養子先での名・官位の日付・石高・墓所の概要。原典は未確認", "type": "ネット記事"}
+  ],
+  "tags": ["豊臣家", "関白", "近江"],
+  "updatedAt": "2026-10-27"
+}

@@ -11,7 +11,7 @@
     "秀吉が自ら四国へ渡ろうとすると、秀長は書状で「それでは秀長の力が足りないように見え、殿下の御威光も小さく見える」と諫めて止めた（天正記）。7月、秀次らが脇城を攻め、元親はついに降伏した。元親の処遇は秀長と秀次に任され、元親は土佐一国を安堵されて秀長の配下に置かれた。天正記は秀長を「比類なき大将」と称えるが、甫庵太閤記は平定の成功を秀吉の才知に帰している。"
   ],
   "sides": [
-    { "name": "羽柴軍", "outcome": "勝利", "commanders": [{ "person_id": "toyotomi-hidenaga", "name": "羽柴秀長" }], "participants": [{ "name": "羽柴秀次" }, { "name": "宇喜多秀家" }, { "name": "黒田孝高" }, { "name": "蜂須賀正勝" }, { "name": "仙石秀久" }, { "name": "小早川隆景" }], "note": "秀吉は渡海せず、秀長が総大将として軍を率いた" },
+    { "name": "羽柴軍", "outcome": "勝利", "commanders": [{ "person_id": "toyotomi-hidenaga", "name": "羽柴秀長" }], "participants": [{ "person_id": "toyotomi-hidetsugu", "name": "羽柴秀次" }, { "name": "宇喜多秀家" }, { "name": "黒田孝高" }, { "name": "蜂須賀正勝" }, { "name": "仙石秀久" }, { "name": "小早川隆景" }], "note": "秀吉は渡海せず、秀長が総大将として軍を率いた" },
     { "name": "長宗我部軍", "outcome": "敗北", "commanders": [{ "person_id": "chosokabe-motochika", "name": "長宗我部元親" }], "participants": [{ "name": "長宗我部親吉" }, { "name": "東条関兵衛" }], "note": "長宗我部親吉は脇城、東条関兵衛は木津城を守った（天正記）" }
   ],
   "result": "長宗我部元親が降伏し、土佐一国を安堵された",

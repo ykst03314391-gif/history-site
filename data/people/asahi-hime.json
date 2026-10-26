@@ -33,7 +33,7 @@
     {"relation": "兄", "person_id": "toyotomi-hideyoshi", "name": "豊臣秀吉"},
     {"relation": "兄", "person_id": "toyotomi-hidenaga", "name": "豊臣秀長"},
     {"relation": "姉", "person_id": "tomo", "name": "とも（日秀尼）"},
-    {"relation": "夫", "name": "徳川家康", "note": "天正14年に嫁ぐ"},
+    {"relation": "夫", "person_id": "tokugawa-ieyasu", "name": "徳川家康", "note": "天正14年に嫁ぐ"},
     {"relation": "その他", "name": "前夫", "note": "佐治日向守とも副田甚兵衛ともいう（諸説）。家康との縁組のために離縁させられたというのが通説だが、それ以前に離縁していたとする見方もある"}
   ],
   "timeline": [

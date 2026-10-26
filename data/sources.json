@@ -368,6 +368,10 @@
         {
           "type": "person",
           "id": "toyotomi-hideyasu"
+        },
+        {
+          "type": "person",
+          "id": "tokugawa-ieyasu"
         }
       ]
     },

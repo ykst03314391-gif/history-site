@@ -1,0 +1,30 @@
+{
+  "id": "tokugawa-ieyasu",
+  "name": "徳川家康",
+  "kana": "とくがわ いえやす",
+  "summary": "三河の戦国大名。織田信長と結んで勢力を広げ、信長の死後は小牧・長久手で羽柴秀吉と戦ったが、秀吉の妹・朝日姫を正室に迎えて臣従した。秀吉の死後、関ヶ原の戦いに勝って江戸幕府を開いた。三英傑の一人。",
+  "aliases": [
+    { "type": "幼名", "value": "竹千代", "note": "原典未確認" },
+    { "type": "その他", "value": "松平元康", "note": "徳川に改める前の名（原典未確認）" }
+  ],
+  "birth": { "year": 1543, "era": "天文11年12月26日", "note": "三河の岡崎城で生まれたとされる（原典未確認）" },
+  "death": { "year": 1616, "era": "元和2年4月17日", "note": "駿府で没したとされる（原典未確認）" },
+  "family": [
+    { "relation": "正室", "person_id": "asahi-hime", "name": "朝日姫", "note": "秀吉の妹。天正14年に嫁ぐ" },
+    { "relation": "その他", "person_id": "toyotomi-hidenaga", "name": "豊臣秀長", "note": "正室朝日姫の兄" }
+  ],
+  "ranks": [
+    { "year": 1587, "era": "天正15年", "title": "従二位・権大納言", "note": "公卿補任によれば、8月8日に豊臣秀長と同じ日に任じられた", "sourceId": "kugyo-bunin" }
+  ],
+  "timeline": [
+    { "year": 1586, "month": 5, "title": "朝日姫を正室に迎える", "description": "小牧・長久手の戦いの後、秀吉は妹の朝日姫を家康の正室とした（原典未確認）", "links": [{ "text": "朝日姫", "person_id": "asahi-hime" }, { "text": "秀吉", "person_id": "toyotomi-hideyoshi" }] },
+    { "year": 1586, "month": 10, "title": "上洛して秀吉に臣従する", "description": "母の大政所が岡崎に下ったのを受けて上洛し、秀吉に臣従した（原典未確認）", "links": [{ "text": "大政所", "person_id": "omandokoro" }] },
+    { "year": 1587, "month": 8, "day": 8, "title": "権大納言になる", "description": "秀長と同じ日に権大納言・従二位に任じられた", "links": [{ "text": "秀長", "person_id": "toyotomi-hidenaga" }], "sourceId": "kugyo-bunin" }
+  ],
+  "sources": [
+    { "id": "kugyo-bunin", "title": "公卿補任", "publisher": "経済雑誌社（国史大系 第10巻『公卿補任』中編）", "year": "1901", "url": "https://dl.ndl.go.jp/pid/991100/1/343", "note": "天正15年8月8日の権大納言・従二位。秀長のページで確かめたのと同じ箇所", "type": "史料", "primary": "二次資料" },
+    { "id": "wikipedia", "title": "徳川家康（Wikipedia）", "url": "https://ja.wikipedia.org/wiki/徳川家康", "note": "生没年・幼名・旧名・朝日姫との結婚・上洛などの概要。原典は未確認", "type": "ネット記事" }
+  ],
+  "tags": ["徳川家", "三英傑", "戦国大名"],
+  "updatedAt": "2026-10-27"
+}

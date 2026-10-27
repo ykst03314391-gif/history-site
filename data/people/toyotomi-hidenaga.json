@@ -176,13 +176,13 @@
   ],
   "spots": [
     { "type": "城跡", "name": "郡山城跡", "castle_id": "yamato-koriyama", "prefecture": "奈良県", "city": "大和郡山市", "description": "秀長が大和に入って本拠とした城。" },
-    { "type": "墓所", "name": "大納言塚", "url": "https://www.city.yamatokoriyama.lg.jp/soshiki/machidukuri_senryaku/rekishi_bunkazai/bunkazai101/s_bunkazai/shiseki/1864.html", "prefecture": "奈良県", "city": "大和郡山市", "description": "秀長の墓所と伝わる。" },
-    { "type": "神社仏閣", "name": "春岳院", "url": "https://www.city.yamatokoriyama.lg.jp/soshiki/chiikishinkoka/kanko/3/3508.html", "urlLabel": "大和郡山市の観光案内「城下町付近」。寺の公式サイトではない", "prefecture": "奈良県", "city": "大和郡山市", "description": "秀長の菩提寺。寺の名は法名「春岳紹栄」から。肖像画（豊臣秀長像）を所蔵する。" },
-    { "type": "神社仏閣", "name": "高野山奥之院（豊臣家墓所）", "url": "https://www.koyasan.or.jp/", "urlLabel": "金剛峯寺の公式サイト（トップページ）", "prefecture": "和歌山県", "city": "伊都郡高野町", "description": "法名と命日を刻んだ五輪塔（砂岩製・高さ183cm）がある。妻・慈雲院の五輪塔と並ぶ。", "sourceId": "kinoshita-okunoin" },
-    { "type": "神社仏閣", "name": "長谷寺", "url": "https://www.hasedera.or.jp/", "prefecture": "奈良県", "city": "桜井市", "description": "秀長が長谷寺の惣中・本願に宛てた書状（天正14年か）2通と、秀長の娘「三八女」が天正16年（1588）に寄進した釣灯籠が伝わる。", "sourceId": "toyotomi-kyodai-ten" },
-    { "type": "神社仏閣", "name": "談山神社（多武峰）", "url": "https://www.tanzan.or.jp/", "prefecture": "奈良県", "city": "桜井市", "description": "大和に入った直後の天正13年9月6日付で、秀長が多武峰の門前に出した下知状の写しが伝わる（内容は要確認）。", "sourceId": "toyotomi-kyodai-ten" },
-    { "type": "博物館", "name": "奈良国立博物館", "url": "https://www.narahaku.go.jp/", "prefecture": "奈良県", "city": "奈良市", "description": "天正18年（1590）10月の「羽柴秀長都状」を所蔵する。秀長の年を{{五十一}}と記すとされ（要確認）、生年を天文9年とする根拠になっている。", "sourceId": "toyotomi-kyodai-ten" },
-    { "type": "名物", "name": "肩衝茶入 銘 薬師院（香雪美術館蔵）","url": "https://www.kosetsu-museum.or.jp/mikage/", "urlLabel": "所蔵先の香雪美術館の公式サイト", "prefecture": "兵庫県", "city": "神戸市", "description": "秀長らが所持したとされる南宋〜元時代の茶入。", "sourceId": "toyotomi-kyodai-ten" },
+    { "type": "墓所", "name": "大納言塚", "lat": 34.6456, "lng": 135.7743, "url": "https://www.city.yamatokoriyama.lg.jp/soshiki/machidukuri_senryaku/rekishi_bunkazai/bunkazai101/s_bunkazai/shiseki/1864.html", "prefecture": "奈良県", "city": "大和郡山市", "description": "秀長の墓所と伝わる。" },
+    { "type": "神社仏閣", "name": "春岳院", "lat": 34.6503, "lng": 135.7848, "approx": true, "url": "https://www.city.yamatokoriyama.lg.jp/soshiki/chiikishinkoka/kanko/3/3508.html", "urlLabel": "大和郡山市の観光案内「城下町付近」。寺の公式サイトではない", "prefecture": "奈良県", "city": "大和郡山市", "description": "秀長の菩提寺。寺の名は法名「春岳紹栄」から。肖像画（豊臣秀長像）を所蔵する。" },
+    { "type": "神社仏閣", "name": "高野山奥之院（豊臣家墓所）", "lat": 34.2208, "lng": 135.6055, "url": "https://www.koyasan.or.jp/", "urlLabel": "金剛峯寺の公式サイト（トップページ）", "prefecture": "和歌山県", "city": "伊都郡高野町", "description": "法名と命日を刻んだ五輪塔（砂岩製・高さ183cm）がある。妻・慈雲院の五輪塔と並ぶ。", "sourceId": "kinoshita-okunoin" },
+    { "type": "神社仏閣", "name": "長谷寺", "lat": 34.5351, "lng": 135.9067, "url": "https://www.hasedera.or.jp/", "prefecture": "奈良県", "city": "桜井市", "description": "秀長が長谷寺の惣中・本願に宛てた書状（天正14年か）2通と、秀長の娘「三八女」が天正16年（1588）に寄進した釣灯籠が伝わる。", "sourceId": "toyotomi-kyodai-ten" },
+    { "type": "神社仏閣", "name": "談山神社（多武峰）", "lat": 34.4656, "lng": 135.8614, "url": "https://www.tanzan.or.jp/", "prefecture": "奈良県", "city": "桜井市", "description": "大和に入った直後の天正13年9月6日付で、秀長が多武峰の門前に出した下知状の写しが伝わる（内容は要確認）。", "sourceId": "toyotomi-kyodai-ten" },
+    { "type": "博物館", "name": "奈良国立博物館", "lat": 34.6831, "lng": 135.8383, "url": "https://www.narahaku.go.jp/", "prefecture": "奈良県", "city": "奈良市", "description": "天正18年（1590）10月の「羽柴秀長都状」を所蔵する。秀長の年を{{五十一}}と記すとされ（要確認）、生年を天文9年とする根拠になっている。", "sourceId": "toyotomi-kyodai-ten" },
+    { "type": "名物", "name": "肩衝茶入 銘 薬師院（香雪美術館蔵）", "lat": 34.7236, "lng": 135.2559,"url": "https://www.kosetsu-museum.or.jp/mikage/", "urlLabel": "所蔵先の香雪美術館の公式サイト", "prefecture": "兵庫県", "city": "神戸市", "description": "秀長らが所持したとされる南宋〜元時代の茶入。", "sourceId": "toyotomi-kyodai-ten" },
     { "type": "城跡", "name": "竹田城跡", "castle_id": "takeda", "prefecture": "兵庫県", "city": "朝来市", "description": "秀長が城代を務めたと信長公記に見える。" }
   ],
   "graves": {
@@ -190,8 +190,8 @@
     "note": "郡山の大納言塚が墓所と伝わる。ほかに高野山奥之院の豊臣家墓所に、法名と命日（天正十九年正月廿二）を刻んだ五輪塔がある。妻の慈雲院が、天正19年5月に自分の生前供養の塔を建てたとき、あわせて建てたとみられる（木下浩良氏の推測）。",
     "sourceId": "kinoshita-okunoin",
     "places": [
-      { "name": "大納言塚", "url": "https://www.city.yamatokoriyama.lg.jp/soshiki/machidukuri_senryaku/rekishi_bunkazai/bunkazai101/s_bunkazai/shiseki/1864.html", "prefecture": "奈良県", "city": "大和郡山市", "description": "秀長の墓所と伝わる。" },
-      { "name": "高野山奥之院（豊臣家墓所）", "url": "https://www.koyasan.or.jp/", "urlLabel": "金剛峯寺の公式サイト（トップページ）", "prefecture": "和歌山県", "city": "伊都郡高野町", "description": "法名と命日を刻んだ五輪塔（供養塔。砂岩製・高さ183cm）がある。妻・慈雲院の五輪塔と並ぶ。", "sourceId": "kinoshita-okunoin" }
+      { "name": "大納言塚", "lat": 34.6456, "lng": 135.7743, "url": "https://www.city.yamatokoriyama.lg.jp/soshiki/machidukuri_senryaku/rekishi_bunkazai/bunkazai101/s_bunkazai/shiseki/1864.html", "prefecture": "奈良県", "city": "大和郡山市", "description": "秀長の墓所と伝わる。" },
+      { "name": "高野山奥之院（豊臣家墓所）", "lat": 34.2208, "lng": 135.6055, "url": "https://www.koyasan.or.jp/", "urlLabel": "金剛峯寺の公式サイト（トップページ）", "prefecture": "和歌山県", "city": "伊都郡高野町", "description": "法名と命日を刻んだ五輪塔（供養塔。砂岩製・高さ183cm）がある。妻・慈雲院の五輪塔と並ぶ。", "sourceId": "kinoshita-okunoin" }
     ]
   },
   "images": [],

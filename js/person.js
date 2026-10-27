@@ -498,14 +498,21 @@
     }
 
     // ゆかりの地・史跡（墓所もここにまとめる。墓所の状態は不明・なしも必ず明示）
+    // 地点の分かる場所（座標か城のページがある）は、欄の上の地図に番号付きで示す。番号は墓所→ゆかりの地の表示順
+    const spotPts = [];
     const spotItem = (s, type) => {
       const place = [s.prefecture, s.city].filter(Boolean).map(esc).join(" ");
+      let num = "";
+      if (hasCoords(s) || s.castle_id) {
+        spotPts.push({ s, type, n: spotPts.length + 1 });
+        num = `<span class="terr-num">${spotPts.length}</span>`;
+      }
       // castle_id があれば城ページへ、url があれば公式サイトなどへのリンクにする
       const name = s.castle_id
         ? `<a href="castle.html?id=${encodeURIComponent(s.castle_id)}">${esc(s.name)}</a>`
         : spotName(s);
       return `<div class="spot-item">
-            <div class="entry-head"><span class="spot-type">${esc(type)}</span><b>${name}</b>${place ? `<span class="spot-place">／ ${place}</span>` : ""}${s.castle_id ? "" : spotLinkNote(s)}</div>
+            <div class="entry-head">${num}<span class="spot-type">${esc(type)}</span><b>${name}</b>${place ? `<span class="spot-place">／ ${place}</span>` : ""}${s.castle_id ? "" : spotLinkNote(s)}</div>
             ${s.description || s.sourceId ? `<div class="entry-note">${sentences(s.description, srcMarks(s.sourceId), s.links) || srcMarks(s.sourceId)}</div>` : ""}
           </div>`;
     };
@@ -523,7 +530,12 @@
             ${gravePlaces.map((pl) => spotItem(pl, "墓所")).join("")}
           </div>`
         : "";
-      put("spots", "ゆかりの地・史跡", grave + spots.map((s) => spotItem(s, s.type)).join(""));
+      const list = spots.map((s) => spotItem(s, s.type)).join("");
+      const mapHTML = spotPts.length
+        ? `<div id="spot-map" class="territory-map" role="img" aria-label="ゆかりの地・史跡の地図"></div>
+           <p class="territory-map-note muted">番号は下の一覧と対応しています。城跡は城のページの地点に置いています。近い場所は1本のピンにまとめ、拡大すると分かれます。</p>`
+        : "";
+      put("spots", "ゆかりの地・史跡", mapHTML + grave + list);
     }
 
     // 関連する考察・記事（年表イベントに紐付け済みのものは除外）
@@ -639,6 +651,7 @@
     contentEl.innerHTML = html.join("");
     if (document.getElementById("territory-map")) initTerritoryMap(p.territories);
     if (document.getElementById("timeline-map")) initTimelineMap(timeline);
+    if (document.getElementById("spot-map")) initSpotMap(spotPts);
   }
 
   // 年表の出来事の場所：座標があればそこ、無ければ城、合戦のページの地点
@@ -656,12 +669,6 @@
         .then((d) => new Map((d[key] || []).map((x) => [x.id, x])));
     Promise.all([loadLeaflet(), index("data/battles/index.json", "battles"), index("data/castles/index.json", "castles")])
       .then(([L, battles, castles]) => {
-        const map = L.map(el, { scrollWheelZoom: false }).setView([35, 136], 6);
-        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-          maxZoom: 18,
-          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-        }).addTo(map);
-
         const pts = events
           .map((e, i) => {
             const at = hasCoords(e) ? e : castles.get(e.castle_id) || battles.get(e.battle_id);
@@ -670,47 +677,80 @@
             return { e, n: i + 1, ll: [Number(at.lat), Number(at.lng)], where };
           })
           .filter(Boolean);
-        if (!pts.length) {
-          el.remove();
-          return;
-        }
-
-        // 画面上で重なるほど近い出来事は 1 本のピンにまとめる（例：「2・3」）。拡大・縮小のたびにまとめ直す
-        const markers = L.layerGroup().addTo(map);
-        const drawPins = () => {
-          markers.clearLayers();
-          const groups = [];
-          for (const x of pts) {
-            const px = map.latLngToContainerPoint(x.ll);
-            const g = groups.find((g) => g.px.distanceTo(px) < 28);
-            if (g) g.list.push(x);
-            else groups.push({ px, list: [x] });
-          }
-          for (const { list } of groups) {
-            const label = list.map((x) => x.n).join("・");
-            const icon = L.divIcon({ className: "terr-marker", html: `<span>${esc(label)}</span>`, iconSize: null });
-            const popup = list
-              .map(({ e, n, where }) => {
-                const when = `${esc(e.year)}年${e.month ? esc(e.month) + "月" : ""}`;
-                const place = where ? `地図の位置：${esc(where)}${e.approx ? "（おおよそ）" : ""}` : "";
-                return `<div class="terr-popup"><b>${n}. ${when} ${esc(e.title)}</b>${place ? `<div class="muted">${place}</div>` : ""}</div>`;
-              })
-              .join("");
-            L.marker(list[0].ll, { icon, title: label }).bindPopup(popup).addTo(markers);
-          }
-        };
-
-        map.invalidateSize();
-        const bounds = L.latLngBounds(pts.map((x) => x.ll));
-        if (pts.length === 1) map.setView(pts[0].ll, 10);
-        else map.fitBounds(bounds, { padding: [24, 24] });
-        drawPins();
-        map.on("zoomend", drawPins);
+        pinMap(L, el, pts, ({ e, n, where }) => {
+          const when = `${esc(e.year)}年${e.month ? esc(e.month) + "月" : ""}`;
+          const place = where ? `地図の位置：${esc(where)}${e.approx ? "（おおよそ）" : ""}` : "";
+          return `<div class="terr-popup"><b>${n}. ${when} ${esc(e.title)}</b>${place ? `<div class="muted">${place}</div>` : ""}</div>`;
+        });
       })
       .catch((err) => {
         console.error(err);
         el.outerHTML = `<p class="muted">地図を読み込めませんでした。</p>`;
       });
+  }
+
+  // ゆかりの地・史跡の地図：場所ごとの番号付きピン（座標が無ければ城のページの地点）
+  function initSpotMap(spotPts) {
+    const el = document.getElementById("spot-map");
+    Promise.all([
+      loadLeaflet(),
+      fetch("data/castles/index.json")
+        .then((res) => (res.ok ? res.json() : {}))
+        .catch(() => ({}))
+        .then((d) => new Map((d.castles || []).map((x) => [x.id, x]))),
+    ])
+      .then(([L, castles]) => {
+        const pts = spotPts
+          .map((x) => {
+            const at = hasCoords(x.s) ? x.s : castles.get(x.s.castle_id);
+            return hasCoords(at) ? { ...x, ll: [Number(at.lat), Number(at.lng)] } : null;
+          })
+          .filter(Boolean);
+        pinMap(L, el, pts, ({ s, type, n }) =>
+          `<div class="terr-popup"><b>${n}. ${esc(s.name)}</b><div class="muted">${esc(type)}${s.approx ? "（地図の位置はおおよそ）" : ""}</div></div>`
+        );
+      })
+      .catch((err) => {
+        console.error(err);
+        el.outerHTML = `<p class="muted">地図を読み込めませんでした。</p>`;
+      });
+  }
+
+  // 番号付きピンの地図（年表・ゆかりの地で共通）。pts は { n, ll }、popupOf はピンの吹き出しの HTML
+  function pinMap(L, el, pts, popupOf) {
+    if (!pts.length) {
+      el.remove();
+      return;
+    }
+    const map = L.map(el, { scrollWheelZoom: false }).setView([35, 136], 6);
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      maxZoom: 18,
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    }).addTo(map);
+
+    // 画面上で重なるほど近い地点は 1 本のピンにまとめる（例：「2・3」）。拡大・縮小のたびにまとめ直す
+    const markers = L.layerGroup().addTo(map);
+    const drawPins = () => {
+      markers.clearLayers();
+      const groups = [];
+      for (const x of pts) {
+        const px = map.latLngToContainerPoint(x.ll);
+        const g = groups.find((g) => g.px.distanceTo(px) < 28);
+        if (g) g.list.push(x);
+        else groups.push({ px, list: [x] });
+      }
+      for (const { list } of groups) {
+        const label = list.map((x) => x.n).join("・");
+        const icon = L.divIcon({ className: "terr-marker", html: `<span>${esc(label)}</span>`, iconSize: null });
+        L.marker(list[0].ll, { icon, title: label }).bindPopup(list.map(popupOf).join("")).addTo(markers);
+      }
+    };
+
+    map.invalidateSize();
+    if (pts.length === 1) map.setView(pts[0].ll, 10);
+    else map.fitBounds(L.latLngBounds(pts.map((x) => x.ll)), { padding: [24, 24] });
+    drawPins();
+    map.on("zoomend", drawPins);
   }
 
   function hasCoords(t) {

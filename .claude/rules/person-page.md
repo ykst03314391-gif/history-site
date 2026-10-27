@@ -108,6 +108,7 @@ paths:
 
 ### spots と graves（ゆかりの地・墓所）
 - `spots` は城跡・神社仏閣・博物館・名物など。城ページがあれば `castle_id`、なければ公式や自治体のページを `url`（その場所自体のページでなければ `urlLabel`）。
+- 城ページのない場所（墓所の `places` も）には `lat`/`lng` を付け、欄の上の地図に出す。座標は OpenStreetMap（Nominatim）で名前を引いて確かめ、見つからなければ住所の町の中心を置いて `approx: true`（秀長：春岳院は新中町の中心）。
 - `graves.status` は必ず書く（現存・諸説あり・不明・なし）。墓が複数あるなら、どれが何か（墓所と伝わる・供養塔・逆修塔など）を `note` と各 `description` で区別する。
 
 ### sources（出典）

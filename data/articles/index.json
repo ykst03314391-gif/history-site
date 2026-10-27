@@ -161,6 +161,18 @@
         { "title": "大和大納言 豊臣秀長 補佐役か、もう一人の秀吉か", "author": "天野忠幸", "affiliateUrl": "https://www.amazon.co.jp/dp/4582477534", "note": "副題そのものがこの記事の問い。畿内の戦国史の研究者による評伝" },
         { "title": "羽柴秀長 秀吉の天下を支えた弟（角川選書）", "author": "柴裕之", "affiliateUrl": "https://www.amazon.co.jp/dp/4047037400", "note": "一門筆頭としての秀長を描く評伝" }
       ]
+    },
+    {
+      "id": "sibling-conflict",
+      "title": "兄弟間での争い ― 兄に背いた兄弟は、何を頼ったか",
+      "category": "考察",
+      "summary": "信長と信勝、元就と元綱、政宗と小次郎。兄に背いた戦国の兄弟は、父から譲られた足場か、外の大名・家中の一派・権威のどれかを頼った。その比べから、背く道のなかった弟・秀長も見えてくる。",
+      "date": "2026-10-27",
+      "author": "管理人",
+      "relatedPeople": ["oda-nobunaga", "toyotomi-hidenaga", "toyotomi-hideyoshi", "tokugawa-ieyasu"],
+      "relatedBattles": [],
+      "tags": ["兄弟", "織田信長", "織田信勝", "豊臣秀長", "お家騒動", "考察"],
+      "references": []
     }
   ]
 }

@@ -670,8 +670,27 @@ html { scroll-behavior: smooth; }
   margin: 32px 0 14px;
 }
 .article-body h2::before { content: "◆ "; color: var(--accent); font-size: 0.9em; }
-.article-body h3 { font-size: 1.1rem; margin: 24px 0 10px; }
+/* 小見出しは本文より一段大きくし、朱の左罫で節の切れ目を見せる */
+.article-body h3 {
+  font-size: 1.2rem;
+  margin: 34px 0 12px;
+  padding-left: 10px;
+  border-left: 4px solid var(--accent);
+  line-height: 1.5;
+}
 .article-body p { margin: 0 0 20px; }
+/* 1行を40字前後に抑える */
+.article-body > p, .article-body > ul, .article-body > ol, .article-body > blockquote { max-width: 40em; }
+/* 論点ごとの結論：枠で囲んで本文から浮かせる */
+.article-body .sec-conclusion {
+  margin: 26px 0 8px;
+  padding: 12px 18px;
+  background: #f3eee3;
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--accent);
+  font-weight: 700;
+}
+.sec-conclusion-label { display: block; font-size: 0.8rem; color: var(--accent); letter-spacing: 0.05em; }
 .article-body blockquote {
   margin: 18px 0;
   padding: 8px 18px;
@@ -975,7 +994,7 @@ footer.site-footer {
 .topic-buy .buy-links { display: flex; flex-wrap: wrap; gap: 10px; }
 .buy-btn { text-decoration: none; }
 .buy-note { font-size: 0.8rem; font-weight: 400; }
-.affiliate-disclosure {
+.affiliate-disclosure, .sources-note {
   margin: 10px 0 0;
   font-size: 0.78rem;
   color: var(--ink-soft);

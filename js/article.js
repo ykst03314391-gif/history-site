@@ -106,6 +106,25 @@
       else tmp.prepend(fig);
     }
 
+    // 参考文献・出典（本文末の「## 参考文献・出典」以下）は本文の枠から出し、関連人物の下に関連書籍と同じ形で置く
+    let sources = "";
+    const srcHead = Array.from(tmp.querySelectorAll("h2")).find((h) => /^(参考文献|出典)/.test(h.textContent.trim()));
+    if (srcHead) {
+      const prev = srcHead.previousElementSibling;
+      if (prev && prev.tagName === "HR") prev.remove();
+      const box = document.createElement("div");
+      while (srcHead.nextSibling) box.appendChild(srcHead.nextSibling);
+      box.querySelectorAll("ul").forEach((u) => u.classList.add("list"));
+      box.querySelectorAll("p").forEach((p) => {
+        if (p.textContent.trim().startsWith("※")) p.className = "sources-note";
+      });
+      sources = `<section class="article-books">
+          <h3>${esc(srcHead.textContent.trim())}</h3>
+          ${box.innerHTML}
+        </section>`;
+      srcHead.remove();
+    }
+
     // 目次（h2 見出しから生成。2個以上あるときだけ。ワイド画面で左余白に表示）
     let toc = "";
     const heads = Array.from(tmp.querySelectorAll("h2"));
@@ -120,7 +139,7 @@
       toc = `<nav class="side-toc" aria-label="目次"><p class="toc-title">目次</p><ol>${items}</ol></nav>`;
     }
 
-    el.innerHTML = `${head}${toc}<div class="article-body">${tmp.innerHTML}</div>${related}${books}`;
+    el.innerHTML = `${head}${toc}<div class="article-body">${tmp.innerHTML}</div>${related}${sources}${books}`;
   } catch (err) {
     el.innerHTML = `<p class="error">記事を読み込めませんでした（ID: ${esc(id)}）。ローカルで開いている場合は簡易サーバー経由で表示してください（README参照）。</p>`;
     console.error(err);

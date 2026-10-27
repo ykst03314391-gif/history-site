@@ -151,11 +151,16 @@
       "series": "myth-busting",
       "category": "考察",
       "summary": "兄を支える名補佐役と語られる秀長。大大名となり軍の大将も務めながら、なぜ自立しなかったのか。「補佐役」という像の出どころと、当時の兄弟・一門の在り方から考える。",
-      "date": "",
+      "date": "2026-10-27",
       "author": "管理人",
-      "relatedPeople": ["toyotomi-hidenaga", "toyotomi-hideyoshi"],
+      "image": { "src": "assets/img/portraits/toyotomi-hidenaga.jpg", "caption": "豊臣秀長像（春岳院蔵、天明8年〈1788〉の作とされる）※参考イメージ", "credit": "Wikimedia Commons", "license": "パブリックドメイン" },
+      "relatedPeople": ["toyotomi-hidenaga", "toyotomi-hideyoshi", "tsutsui-sadatsugu", "chosokabe-motochika", "toyotomi-hideyasu", "oda-nobunaga"],
+      "relatedBattles": ["shikoku-campaign"],
       "tags": ["豊臣秀長", "豊臣秀吉", "補佐役", "豊臣政権", "考察"],
-      "draft": true
+      "references": [
+        { "title": "大和大納言 豊臣秀長 補佐役か、もう一人の秀吉か", "author": "天野忠幸", "affiliateUrl": "https://www.amazon.co.jp/dp/4582477534", "note": "副題そのものがこの記事の問い。畿内の戦国史の研究者による評伝" },
+        { "title": "羽柴秀長 秀吉の天下を支えた弟（角川選書）", "author": "柴裕之", "affiliateUrl": "https://www.amazon.co.jp/dp/4047037400", "note": "一門筆頭としての秀長を描く評伝" }
+      ]
     }
   ]
 }

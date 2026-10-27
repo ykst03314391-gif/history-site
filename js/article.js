@@ -44,10 +44,11 @@
          </div>`
       : "";
 
-    // 本文（Markdown → HTML）
+    // 本文（Markdown → HTML）。原文の引用 {{…}} は人物ページと同じく「…」に括って色を変える
+    const quoted = md.replace(/\{\{([^{}]*)\}\}/g, (m, q) => `<span class="quote">「${q}」</span>`);
     const bodyHTML =
       typeof marked !== "undefined"
-        ? marked.parse(md)
+        ? marked.parse(quoted)
         : `<pre>${esc(md)}</pre>`;
 
     // 関連人物（DB連携）

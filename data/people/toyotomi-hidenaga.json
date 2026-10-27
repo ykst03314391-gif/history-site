@@ -49,9 +49,9 @@
     { "year": 1587, "era": "天正15年", "title": "従二位・権大納言", "note": "「大和大納言」の呼び名はここから。公卿補任は{{八月八日任。同日叙従二位}}とし、徳川家康も同じ日に権大納言・従二位となっている。天正19年の条に{{正月廿二日薨}}とあり、死去まで権大納言のまま。", "sourceId": "kugyo-bunin" }
   ],
   "family": [
-    { "relation": "父", "name": "竹阿弥", "note": "『太閤素生記』による通説。織田信秀の同朋で、木下弥右衛門の死後に大政所の夫となり、秀長と朝日姫をもうけたとする。", "sourceId": "taiko-soseiki", "article_id": "hidenaga-father-chikuami" },
+    { "relation": "父", "name": "竹阿弥", "note": "『太閤素生記』による通説。織田信秀の同朋で、木下弥右衛門の死後に大政所の夫となり、秀長と朝日姫をもうけたとする。", "sourceId": "taiko-soseiki" },
     { "relation": "その他", "name": "木下弥右衛門", "note": "母・大政所の最初の夫で、秀吉・ともの父とされる。秀長の父も弥右衛門で、秀吉と父が同じとする見方もある。" },
-    { "relation": "兄", "person_id": "toyotomi-hideyoshi", "name": "豊臣秀吉", "note": "父が同じか違うかには議論がある（父を木下弥右衛門とする説と、竹阿弥とする説）。", "article_id": "hidenaga-father-chikuami" },
+    { "relation": "兄", "person_id": "toyotomi-hideyoshi", "name": "豊臣秀吉", "note": "父が同じか違うかには議論がある（父を木下弥右衛門とする説と、竹阿弥とする説）。" },
     { "relation": "母", "person_id": "omandokoro", "name": "大政所" },
     { "relation": "姉", "person_id": "tomo", "name": "とも（日秀尼）", "note": "豊臣秀次・秀保の母。" },
     { "relation": "妹", "person_id": "asahi-hime", "name": "朝日姫", "note": "のちに徳川家康の正室となる。" },

@@ -149,6 +149,7 @@ Spot = {
   "note"?: string,
   "sourceId"?: string | string[], // 関係・注記の根拠（sources の id）。リンク先の人物ページで出典を示せる場合は付けない
   "article_id"?: string } // この関係を論じた考察記事の id。注記の横に「考察」リンクを出す。記事が下書き（draft）の間はリンクにせず「考察（執筆中）」と予告する
+                          // 同じ記事を家系の欄の末尾の疑問（questions の place: "family"）でつないでいるときは付けない
 ```
 
 ### Service（仕えた主君）

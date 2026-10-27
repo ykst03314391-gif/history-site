@@ -139,23 +139,41 @@
     return label;
   }
 
-  // 目次（TOC）用にセクション見出しを収集
-  const toc = [];
+  // 欄の組と並び。考察が主役なので「捉え直す」を先頭に、出典と調査メモを最後に置く
+  const GROUPS = [
+    { title: "捉え直す", sub: "本当にそうか？", keys: ["lens", "reputation", "questions", "articles"] },
+    { title: "どんな人だっけ？", sub: "事績と生涯", keys: ["achievements", "timeline", "territories", "episodes"] },
+    { title: "誰だっけ？", sub: "家系・主従・呼び名", keys: ["family", "lords", "retainers", "yoriki", "ranks", "nameHistory"] },
+    { title: "もっと知りたい！", sub: "読む本・行く現地", keys: ["references", "spots"] },
+    { title: "出典と確認状況", sub: "", keys: ["sources", "toVerify"] },
+  ];
+
+  // 欄の中身をいったん集め、最後に GROUPS の順で組み立てる
+  const S = {};
+  function put(key, title, inner) {
+    if (inner) S[key] = { title, inner };
+  }
+
+  // 目次（TOC）用に組と欄の見出しを収集
+  const tocGroups = [];
+  let secCount = 0;
   function section(title, inner) {
     if (!inner) return "";
-    const secId = "sec-" + (toc.length + 1);
-    toc.push({ id: secId, title });
+    const secId = "sec-" + ++secCount;
+    tocGroups[tocGroups.length - 1].items.push({ id: secId, title });
     return `<section class="section" id="${secId}"><h2>${esc(title)}</h2>${inner}</section>`;
   }
 
   function tocHTML() {
-    if (toc.length < 2) return "";
-    const items = toc
-      .map((t) => `<li><a href="#${t.id}">${esc(t.title)}</a></li>`)
+    if (secCount < 2) return "";
+    const groups = tocGroups
+      .map((grp) => `<li class="toc-group"><a class="toc-group-link" href="#${grp.id}">${esc(grp.title)}</a>
+          <ol>${grp.items.map((t) => `<li><a href="#${t.id}">${esc(t.title)}</a></li>`).join("")}</ol>
+        </li>`)
       .join("");
     return `<nav class="side-toc" aria-label="目次">
       <p class="toc-title">目次</p>
-      <ol>${items}</ol>
+      <ol>${groups}</ol>
     </nav>`;
   }
 
@@ -259,7 +277,7 @@
       const items = p.nameHistory
         .map((n) => entry({ when: whenLabel(n.year, n.era).trim(), main: esc(n.value), after: uncertain(n.uncertain), note: n.note, links: n.links, tail: srcMarks(n.sourceId) }))
         .join("");
-      html.push(section("呼び名の変遷", `<ul class="entry-list">${items}</ul>`));
+      put("nameHistory", "呼び名の変遷", `<ul class="entry-list">${items}</ul>`);
     }
 
     // 官位変遷
@@ -267,7 +285,7 @@
       const items = p.ranks
         .map((r) => entry({ when: whenLabel(r.year, r.era).trim(), main: esc(r.title), note: r.note, links: r.links, tail: srcMarks(r.sourceId) }))
         .join("");
-      html.push(section("官位", `<ul class="entry-list">${items}</ul>`));
+      put("ranks", "官位", `<ul class="entry-list">${items}</ul>`);
     }
 
     // 年表イベント・家系に紐付けて表示した記事は、末尾の関連記事から除外する
@@ -293,7 +311,7 @@
       const items = p.family
         .map((r) => entry({ when: esc(r.relation), main: personLink(r), note: r.note, links: r.links, tail: srcMarks(r.sourceId), extra: articleLink(r.article_id) }))
         .join("");
-      html.push(section("家系・親族", `<ul class="entry-list">${items}</ul>`));
+      put("family", "家系・親族", `<ul class="entry-list">${items}</ul>`);
     }
 
     // 仕えた・仕えられた期間（例：（1573〜1591年）（〜1591年）（1576年〜））
@@ -308,7 +326,7 @@
       const items = p.lords
         .map((s) => entry({ main: personLink(s), after: period(s), note: s.note, links: s.links, tail: srcMarks(s.sourceId) }))
         .join("");
-      html.push(section("仕えた人", `<ul class="entry-list">${items}</ul>`));
+      put("lords", "仕えた人", `<ul class="entry-list">${items}</ul>`);
     }
 
     // 家臣団
@@ -316,7 +334,7 @@
       const items = p.retainers
         .map((r) => entry({ main: personLink(r), after: period(r), note: r.note, links: r.links, tail: srcMarks(r.sourceId) }))
         .join("");
-      html.push(section("家臣団", `<ul class="entry-list">${items}</ul>`));
+      put("retainers", "家臣団", `<ul class="entry-list">${items}</ul>`);
     }
 
     // 与力（主君から付けられた大名。家臣ではないので家臣団と分ける）
@@ -326,7 +344,7 @@
         .join("");
       const yn = p.yorikiNote;
       const note = yn ? `<p class="entry-note">${sentences(yn.text, srcMarks(yn.sourceId), yn.links)}</p>` : "";
-      html.push(section("与力", `<ul class="entry-list">${items}</ul>${note}`));
+      put("yoriki", "与力", `<ul class="entry-list">${items}</ul>${note}`);
     }
 
     // 領地変遷
@@ -349,7 +367,7 @@
       const mapHTML = hasMap
         ? `<div id="territory-map" class="territory-map" role="img" aria-label="領地の変遷の地図"></div>           <p class="territory-map-note muted">色は領地の範囲で、国の一部だけを領したときは郡の範囲を塗っています。色と番号は下の一覧と対応し、淡く点線で囲んだ範囲はのちに手放した領地です。一覧の各項目の下の地図は、その時点で持っていた領地だけを示します。線は年代順につないだもの、ピンは城など代表地点です。国界は1868年時点、郡界は1920年時点の境界による近似で、戦国期の境界とは細部で違います。</p>`
         : "";
-      html.push(section("領地の変遷", `${mapHTML}<ul class="entry-list terr-list">${items}</ul>`));
+      put("territories", "領地の変遷", `${mapHTML}<ul class="entry-list terr-list">${items}</ul>`);
     }
 
     // 指定の合戦に関連する記事（この人物に関連するもの）を探す
@@ -411,7 +429,7 @@
         ? `<div id="timeline-map" class="territory-map" role="img" aria-label="年表の出来事の地図"></div>
            <p class="territory-map-note muted">番号は下の年表と対応しています。合戦・城の項目はそのページの地点に、ほかは出来事の場所に置いています。近い地点の出来事は1本のピンにまとめ、拡大すると分かれます。</p>`
         : "";
-      html.push(section("年表", `${mapHTML}<ul class="timeline">${items}</ul>`));
+      put("timeline", "年表", `${mapHTML}<ul class="timeline">${items}</ul>`);
     }
 
     // 成し遂げたこと
@@ -419,7 +437,7 @@
       const items = p.achievements
         .map((a) => entry({ main: esc(a.title), note: a.description, links: a.links, tail: srcMarks(a.sourceId) }))
         .join("");
-      html.push(section("成し遂げたこと", `<ul class="entry-list">${items}</ul>`));
+      put("achievements", "成し遂げたこと", `<ul class="entry-list">${items}</ul>`);
     }
 
     // 人物評価（時代別。同じ era が続くときはラベルを最初の1つだけ出す）
@@ -441,7 +459,7 @@
           </div>`;
         })
         .join("");
-      html.push(section("人物評価", `<div class="rep-list">${items}</div>`));
+      put("reputation", "人物評価", `<div class="rep-list">${items}</div>`);
     }
 
     // 逸話
@@ -449,15 +467,34 @@
       const items = p.episodes
         .map((e) => entry({ main: esc(e.title), after: uncertain(e.uncertain), note: e.body, links: e.links, tail: srcMarks(e.sourceId) }))
         .join("");
-      html.push(section("逸話・エピソード", `<ul class="entry-list">${items}</ul>`));
+      put("episodes", "逸話・エピソード", `<ul class="entry-list">${items}</ul>`);
     }
 
-    // 諸説・疑問（題名と短い説明だけを出し、詳しくは考察記事へリンクする）
-    if (p.questions && p.questions.length) {
-      const items = p.questions
+    // 諸説・疑問（題名と短い説明だけを出し、詳しくは考察記事へリンクする）。
+    // place があれば置き場所を変える：lens は冒頭の「この人物への問い」の下、family・nameHistory などはその欄の末尾。
+    // 置き場所の欄が無ければ、ふつうの「諸説・疑問」に出す
+    const lens = p.lens && p.lens.question ? p.lens : null;
+    const qItems = (list) =>
+      list
         .map((q) => entry({ main: esc(q.title), note: q.text, links: q.links, tail: srcMarks(q.sourceId), extra: articleLink(q.article_id) }))
         .join("");
-      html.push(section("諸説・疑問", `<ul class="entry-list">${items}</ul>`));
+    const qPlace = (q) => (q.place === "lens" ? (lens ? "lens" : "") : q.place && S[q.place] ? q.place : "");
+    const qs = p.questions || [];
+    for (const place of new Set(qs.map(qPlace))) {
+      if (!place || place === "lens") continue;
+      S[place].inner += `<div class="sec-questions"><p class="sec-questions-title">この欄をめぐる疑問</p><ul class="entry-list">${qItems(qs.filter((q) => qPlace(q) === place))}</ul></div>`;
+    }
+    const restQs = qs.filter((q) => !qPlace(q));
+    if (restQs.length) put("questions", "諸説・疑問", `<ul class="entry-list">${qItems(restQs)}</ul>`);
+
+    // この人物への問い：ページ全体で捉え直す大きな問いと、筆者の見立て（view）。その下に place: "lens" の問いを並べる
+    if (lens) {
+      const lensQs = qs.filter((q) => qPlace(q) === "lens");
+      put("lens", lens.title || "この人物への問い", `<div class="lens">
+          <p class="lens-question">${fmtText(esc(lens.question))}</p>
+          ${lens.view ? `<div class="lens-view"><span class="lens-view-label">筆者の見立て</span>${paras(lens.view, "", lens.links)}</div>` : ""}
+        </div>
+        ${lensQs.length ? `<ul class="entry-list">${qItems(lensQs)}</ul>` : ""}`);
     }
 
     // ゆかりの地・史跡（墓所もここにまとめる。墓所の状態は不明・なしも必ず明示）
@@ -486,7 +523,7 @@
             ${gravePlaces.map((pl) => spotItem(pl, "墓所")).join("")}
           </div>`
         : "";
-      html.push(section("ゆかりの地・史跡", grave + spots.map((s) => spotItem(s, s.type)).join("")));
+      put("spots", "ゆかりの地・史跡", grave + spots.map((s) => spotItem(s, s.type)).join(""));
     }
 
     // 関連する考察・記事（年表イベントに紐付け済みのものは除外）
@@ -508,7 +545,7 @@
           </div>`
         )
         .join("");
-      html.push(section("関連する考察・記事", items));
+      put("articles", "関連する考察・記事", items);
     }
 
     // 参考書籍
@@ -530,7 +567,7 @@
           </li>`;
         })
         .join("");
-      html.push(section("参考書籍", `<ul class="entry-list">${items}</ul>`));
+      put("references", "参考書籍", `<ul class="entry-list">${items}</ul>`);
     }
 
     // 出典（種別・一次/二次を明示）
@@ -559,7 +596,7 @@
           </li>`;
         })
         .join("");
-      html.push(section("出典", `${SRC_LEGEND}<ul class="entry-list src-list">${items}</ul>`));
+      put("sources", "出典", `${SRC_LEGEND}<ul class="entry-list src-list">${items}</ul>`);
     }
 
     // 要確認（調査メモ）：まだ確かめられていない事柄と、確かめるのに当たる資料。ページの最後に備考として出す
@@ -580,7 +617,20 @@
       const checkedNote = p.sourcesChecked
         ? `<p class="muted"><strong>出典の確認状況</strong>：出典ごとの確認状況は、すぐ上の「出典」欄の各出典の説明に記しています。「原典未確認」とした記述は、研究書などからの孫引きです。</p>`
         : "";
-      html.push(section("要確認（調査メモ）", `${checkedNote}<p class="muted">ページの記述のうち、まだ原典や原本で確かめられていない事柄と、確かめるのに当たる資料の控えです。</p><ul class="entry-list verify-list">${items}</ul>`));
+      put("toVerify", "要確認（調査メモ）", `${checkedNote}<p class="muted">ページの記述のうち、まだ原典や原本で確かめられていない事柄と、確かめるのに当たる資料の控えです。</p><ul class="entry-list verify-list">${items}</ul>`);
+    }
+
+    // 欄を組ごとに並べる（組の見出しは README の人物データベースの問いかけ）。中身のない組は出さない
+    let gn = 0;
+    for (const grp of GROUPS) {
+      const keys = grp.keys.filter((k) => S[k]);
+      if (!keys.length) continue;
+      const gid = "grp-" + ++gn;
+      tocGroups.push({ id: gid, title: grp.title, items: [] });
+      html.push(`<div class="sec-group-head" id="${gid}" role="heading" aria-level="2">
+          <span class="sec-group-title">${esc(grp.title)}</span>${grp.sub ? `<span class="sec-group-sub">${esc(grp.sub)}</span>` : ""}
+        </div>`);
+      for (const k of keys) html.push(section(S[k].title, S[k].inner));
     }
 
     // 目次をヘッダー（html[0]）の直後に挿入

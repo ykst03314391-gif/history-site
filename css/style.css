@@ -75,6 +75,14 @@ main.reading { max-width: 880px; }
 .side-toc li { margin: 0 0 8px; line-height: 1.5; break-inside: avoid; }
 .side-toc a { color: var(--ink-soft); border-bottom: none; font-size: 0.9rem; }
 .side-toc a:hover { color: var(--accent); }
+/* いま画面に開いている節（js/toc.js が付ける） */
+.side-toc a.is-current { color: var(--accent); font-weight: 700; }
+/* 人物ページの目次は組ごとに入れ子にする（組の見出しは太字、中の欄は字下げ） */
+.side-toc li.toc-group { margin-bottom: 12px; }
+.side-toc a.toc-group-link { color: var(--ink); font-weight: 700; }
+.side-toc li.toc-group.has-current > a.toc-group-link { color: var(--accent); }
+.side-toc li.toc-group ol { columns: auto; margin: 4px 0 0 0.9em; }
+.side-toc li.toc-group li { margin-bottom: 4px; }
 /* 置いた位置から始まり、スクロールしたら画面の上端近くに貼り付く（sticky）。
    本文の左外に出すため、幅0の float にして本文の流れに影響させない（-230px = 本文の左端からレール幅＋余白） */
 @media (min-width: 900px) {
@@ -329,6 +337,39 @@ html { scroll-behavior: smooth; }
   margin: 0 0 14px;
 }
 .section h2::before { content: "◆ "; color: var(--accent); font-size: 0.9em; }
+
+/* 人物ページの欄の組（捉え直す／どんな人だっけ？…）の見出し。欄の見出し（h2）より一段大きく、墨の太線で区切る */
+.sec-group-head {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+  margin: 52px 0 22px;
+  padding-bottom: 6px;
+  border-bottom: 3px double var(--ink);
+  scroll-margin-top: 16px;
+}
+.sec-group-title { font-size: 1.5rem; font-weight: 700; letter-spacing: 0.08em; }
+.sec-group-sub { font-size: 0.92rem; color: var(--ink-soft); }
+/* この人物への問い：大きな問いを朱の左罫で立て、筆者の見立ては枠で囲む */
+.lens-question {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 0 0 14px;
+  padding-left: 12px;
+  border-left: 4px solid var(--accent);
+}
+.lens-view {
+  margin: 0 0 18px;
+  padding: 10px 16px;
+  background: var(--bg-panel);
+  border: 1px solid var(--line);
+}
+.lens-view p { margin: 0.3em 0; }
+.lens-view-label { font-size: 0.8rem; font-weight: 700; color: var(--accent); }
+/* 欄の末尾に置く「この欄をめぐる疑問」 */
+.sec-questions { margin-top: 18px; padding-left: 12px; border-left: 3px solid var(--accent-soft); }
+.sec-questions-title { margin: 0 0 6px; font-size: 0.9rem; font-weight: 700; color: var(--ink-soft); }
 .head-note { font-size: 0.8rem; color: var(--ink-soft); font-weight: normal; margin-left: 6px; }
 
 /* 定義リスト（基本情報） */
